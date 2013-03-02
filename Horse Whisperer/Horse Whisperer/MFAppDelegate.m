@@ -146,14 +146,28 @@ NSString *PresetDropType = @"presetDropType";
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:NO];
     [panel setAllowsMultipleSelection:NO];
+
+    // Open to the default Fuse backup directory (if it exists)
+    NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
     
-    if ([panel runModal] == NSOKButton)
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if ([fileMan fileExistsAtPath:defaultFuseDir])
     {
-        NSArray *folders = [panel URLs];
-        
-        // only allowing one item to be selected, so it should just be the first one
-        NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
-        NSLog(@"selected folder: %@", cFolder);
+        NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
+        [panel setDirectoryURL:[NSURL URLWithString:openDir]];
     }
+    
+    [panel beginWithCompletionHandler:^(NSInteger result) {
+        
+        if (result == NSOKButton)
+        {        
+            NSArray *folders = [panel URLs];
+            
+            // only allowing one item to be selected, so it should just be the first one
+            NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
+            NSLog(@"selected folder: %@", cFolder);
+        }
+    }];
 }
 @end
