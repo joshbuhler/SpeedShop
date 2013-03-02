@@ -40,6 +40,9 @@ NSString *PresetDropType = @"presetDropType";
     }
 }
 
+#pragma mark - File Loading
+
+
 #pragma mark - Tableview Delegate Methods
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView
@@ -135,5 +138,22 @@ NSString *PresetDropType = @"presetDropType";
 - (IBAction)onReloadBtn:(id)sender
 {
     [self.ampPresetTable reloadData];
+}
+
+- (IBAction)onOpenBackupFolder:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setCanChooseDirectories:YES];
+    [panel setCanChooseFiles:NO];
+    [panel setAllowsMultipleSelection:NO];
+    
+    if ([panel runModal] == NSOKButton)
+    {
+        NSArray *folders = [panel URLs];
+        
+        // only allowing one item to be selected, so it should just be the first one
+        NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
+        NSLog(@"selected folder: %@", cFolder);
+    }
 }
 @end

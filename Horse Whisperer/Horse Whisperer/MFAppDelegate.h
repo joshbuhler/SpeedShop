@@ -14,5 +14,6 @@
 @property (weak) IBOutlet NSTableView *ampPresetTable;
 
 - (IBAction)onReloadBtn:(id)sender;
+- (IBAction)onOpenBackupFolder:(id)sender;
 
 @end
