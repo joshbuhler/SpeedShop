@@ -167,6 +167,9 @@ NSString *PresetDropType = @"presetDropType";
             // only allowing one item to be selected, so it should just be the first one
             NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
             NSLog(@"selected folder: %@", cFolder);
+            
+            // now start scanning the folder for everything. Begin an async
+            // operation here, and verify that we have a valid file before going any farther
         }
     }];
 }
