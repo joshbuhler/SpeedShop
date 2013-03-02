@@ -43,19 +43,19 @@
     STAssertThrows(testBackup = [[MFFuseBackup alloc] initWithBackupFolder:nil], @"Backup obj allowed nil param.");
     
     NSFileManager *fileMan = [NSFileManager defaultManager];
-    STAssertTrue([fileMan fileExistsAtPath:[fuse270dir relativePath]], @"Sample backup not found - fuse270");
+    STAssertTrue([fileMan fileExistsAtPath:[fuse270dir path]], @"Sample backup not found - fuse270");
 }
 
-- (void) testBackupLoading
-{
-    STAssertNotNil(nil, @"Test not implemented");
-}
+//- (void) testBackupLoading
+//{
+//    STAssertNotNil(nil, @"Test not implemented");
+//}
 
 
 
 - (void) testBackupValidation
 {
-    MFFuseBackup *testBackup = [[MFFuseBackup alloc] init];
+    MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
     
     STAssertTrue([testBackup validateBackupContents], @"Validation of sample contents failed.");
 }
