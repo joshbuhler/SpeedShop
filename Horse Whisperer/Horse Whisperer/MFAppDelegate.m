@@ -109,15 +109,15 @@ NSString *PresetDropType = @"presetDropType";
     //NSArray *allItemsArray = self.ampPresets;
     NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];
     
-    [draggedItemsArray addObject:@"alskfj"];
-    
-    /*
-    unsigned int currentItemIndex;
+    NSUInteger currentItemIndex;
     NSRange range = NSMakeRange(0, [rowIndexes lastIndex] + 1);
+     
     while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
     {
         NSObject *cItem = [self.ampPresets objectAtIndex:currentItemIndex];
+        NSLog(@"cItem: %@", cItem);
         [draggedItemsArray addObject:cItem];
+        //NSLog(@"obj: %@", [draggedItemsArray objectAtIndex:0]);
     }
     
     int count;
@@ -138,7 +138,7 @@ NSString *PresetDropType = @"presetDropType";
     }
     
     //NSArray *startItemsArray = [self itemsWith]
-    */
+
     return YES;
 }
 
