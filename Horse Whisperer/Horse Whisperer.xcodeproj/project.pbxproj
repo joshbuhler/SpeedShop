@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327251C16E2AE93003A8E3E /* MFFuseBackup.m */; };
+		0327252016E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
+		0327252116E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
 		03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
 		03BF544816DF11CF00895128 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544616DF11CF00895128 /* InfoPlist.strings */; };
 		03BF544A16DF11CF00895128 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF544916DF11CF00895128 /* main.m */; };
@@ -18,9 +21,7 @@
 		03BF546516DF11CF00895128 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF546316DF11CF00895128 /* InfoPlist.strings */; };
 		03BF546816DF11CF00895128 /* Horse_WhispererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF546716DF11CF00895128 /* Horse_WhispererTests.m */; };
 		03BF547416DF1BDD00895128 /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547316DF1BDD00895128 /* MFPreset.m */; };
-		03BF547516DF1BDD00895128 /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547316DF1BDD00895128 /* MFPreset.m */; };
 		03BF547816DF1BFF00895128 /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547716DF1BFF00895128 /* MFModule.m */; };
-		03BF547916DF1BFF00895128 /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547716DF1BFF00895128 /* MFModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0327251B16E2AE93003A8E3E /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
+		0327251C16E2AE93003A8E3E /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
+		0327251F16E2B244003A8E3E /* SampleBackups */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SampleBackups; path = ../SampleBackups; sourceTree = "<group>"; };
 		03BF543A16DF11CF00895128 /* Horse Whisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Horse Whisperer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF543D16DF11CF00895128 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		03BF544016DF11CF00895128 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -83,6 +87,7 @@
 		03BF543116DF11CF00895128 = {
 			isa = PBXGroup;
 			children = (
+				0327251F16E2B244003A8E3E /* SampleBackups */,
 				03BF544316DF11CF00895128 /* Horse Whisperer */,
 				03BF546016DF11CF00895128 /* Horse WhispererTests */,
 				03BF543C16DF11CF00895128 /* Frameworks */,
@@ -169,6 +174,8 @@
 				03BF547316DF1BDD00895128 /* MFPreset.m */,
 				03BF547616DF1BFF00895128 /* MFModule.h */,
 				03BF547716DF1BFF00895128 /* MFModule.m */,
+				0327251B16E2AE93003A8E3E /* MFFuseBackup.h */,
+				0327251C16E2AE93003A8E3E /* MFFuseBackup.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 				03BF544816DF11CF00895128 /* InfoPlist.strings in Resources */,
 				03BF544E16DF11CF00895128 /* Credits.rtf in Resources */,
 				03BF545416DF11CF00895128 /* MainMenu.xib in Resources */,
+				0327252016E2B244003A8E3E /* SampleBackups in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BF546516DF11CF00895128 /* InfoPlist.strings in Resources */,
+				0327252116E2B244003A8E3E /* SampleBackups in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +295,7 @@
 				03BF545116DF11CF00895128 /* MFAppDelegate.m in Sources */,
 				03BF547416DF1BDD00895128 /* MFPreset.m in Sources */,
 				03BF547816DF1BFF00895128 /* MFModule.m in Sources */,
+				0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BF546816DF11CF00895128 /* Horse_WhispererTests.m in Sources */,
-				03BF547516DF1BDD00895128 /* MFPreset.m in Sources */,
-				03BF547916DF1BFF00895128 /* MFModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +485,7 @@
 				03BF546D16DF11CF00895128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Horse WhispererTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +494,7 @@
 				03BF547016DF11CF00895128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
