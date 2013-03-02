@@ -7,6 +7,7 @@
 //
 
 #import "MFFuseBackup.h"
+#import "MFFuseBackup+MFFuseBackup_Private.h"
 
 @implementation MFFuseBackup
 
@@ -31,6 +32,7 @@
     return newBackup;
 }
 
+#pragma mark - Private Methods
 
 - (BOOL) validateBackupContents
 {

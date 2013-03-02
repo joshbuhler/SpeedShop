@@ -8,6 +8,7 @@
 
 #import "Horse_WhispererTests.h"
 #import "MFFuseBackup.h"
+#import "MFFuseBackup+MFFuseBackup_Private.h"
 
 @interface Horse_WhispererTests()
 {
@@ -47,12 +48,16 @@
 
 - (void) testBackupLoading
 {
-    STAssertTrue(YES, @"alksjdf");
+    STAssertNotNil(nil, @"Test not implemented");
 }
+
+
 
 - (void) testBackupValidation
 {
+    MFFuseBackup *testBackup = [[MFFuseBackup alloc] init];
     
+    STAssertTrue([testBackup validateBackupContents], @"Validation of sample contents failed.");
 }
 
 @end
