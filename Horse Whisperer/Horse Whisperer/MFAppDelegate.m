@@ -106,7 +106,6 @@ NSString *PresetDropType = @"presetDropType";
     NSData *rowData = [pBoard dataForType:PresetDropType];
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     
-    //NSArray *allItemsArray = self.ampPresets;
     NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];
     
     NSUInteger currentItemIndex;
@@ -117,27 +116,16 @@ NSString *PresetDropType = @"presetDropType";
         NSObject *cItem = [self.ampPresets objectAtIndex:currentItemIndex];
         NSLog(@"cItem: %@", cItem);
         [draggedItemsArray addObject:cItem];
-        //NSLog(@"obj: %@", [draggedItemsArray objectAtIndex:0]);
     }
     
-    int count;
-    for (count = 0; count < [draggedItemsArray count]; count++)
-    {
-        NSObject *cItem = [draggedItemsArray objectAtIndex:count];
-        // set new index for cItem
-    }
+    // remove the items from the preset list
+    [_ampPresets removeObjectsInArray:draggedItemsArray];
     
-    int tempRow;
-    if (row == 0)
-    {
-        tempRow = -1;
-    }
-    else
-    {
-        tempRow = row;
-    }
-    
-    //NSArray *startItemsArray = [self itemsWith]
+    // now put them in their new location
+    NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
+    [_ampPresets insertObjects:draggedItemsArray atIndexes:newIndexes];
+        
+    [self.ampPresetTable reloadData];
 
     return YES;
 }
