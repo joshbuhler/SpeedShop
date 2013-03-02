@@ -15,14 +15,22 @@
 @end
 
 
+NSString *PresetDropType = @"presetDropType";
 
 @implementation MFAppDelegate
 
 @synthesize ampPresets = _ampPresets;
 
+
+#pragma mark - View LifeCycle
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
+    // init drag/drop for the tableview
+    [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:PresetDropType]];
+    
     
     // build some junk data for now
     _ampPresets = [NSMutableArray new];
@@ -64,6 +72,76 @@
     
     return returnValue;
 }
+
+- (BOOL) tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
+    [pboard declareTypes:[NSArray arrayWithObject:PresetDropType] owner:self];
+    [pboard setData:data forType:PresetDropType];
+    
+    return YES;
+}
+
+- (NSDragOperation) tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+{
+    if ([info draggingSource] == self.ampPresetTable)
+    {
+        if (dropOperation == NSTableViewDropOn)
+        {
+            [tableView setDropRow:row dropOperation:NSTableViewDropAbove];
+            return NSDragOperationMove;
+        }
+        else
+        {
+            return NSDragOperationNone;
+        }
+    }
+    
+    return NSDragOperationNone;
+}
+
+- (BOOL) tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
+{
+    NSPasteboard *pBoard = [info draggingPasteboard];
+    NSData *rowData = [pBoard dataForType:PresetDropType];
+    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    
+    //NSArray *allItemsArray = self.ampPresets;
+    NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];
+    
+    [draggedItemsArray addObject:@"alskfj"];
+    
+    /*
+    unsigned int currentItemIndex;
+    NSRange range = NSMakeRange(0, [rowIndexes lastIndex] + 1);
+    while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
+    {
+        NSObject *cItem = [self.ampPresets objectAtIndex:currentItemIndex];
+        [draggedItemsArray addObject:cItem];
+    }
+    
+    int count;
+    for (count = 0; count < [draggedItemsArray count]; count++)
+    {
+        NSObject *cItem = [draggedItemsArray objectAtIndex:count];
+        // set new index for cItem
+    }
+    
+    int tempRow;
+    if (row == 0)
+    {
+        tempRow = -1;
+    }
+    else
+    {
+        tempRow = row;
+    }
+    
+    //NSArray *startItemsArray = [self itemsWith]
+    */
+    return YES;
+}
+
 
 #pragma mark - UI Actions
 - (IBAction)onReloadBtn:(id)sender
