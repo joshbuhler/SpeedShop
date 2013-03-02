@@ -11,5 +11,6 @@
 @interface MFFuseBackup (MFFuseBackup_Private)
 
 - (BOOL) validateBackupContents;
-
+- (void) loadBackupContents;
+- (void) loadBackupDescription;
 @end

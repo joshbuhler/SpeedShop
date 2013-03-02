@@ -7,10 +7,12 @@
 //
 
 #import "MFAppDelegate.h"
+#import "MFFuseBackup.h"
 
 @interface MFAppDelegate()
 
 @property (nonatomic, strong) NSMutableArray *ampPresets;
+@property (nonatomic, strong) MFFuseBackup *currentBackup;
 
 @end
 
@@ -20,7 +22,7 @@ NSString *PresetDropType = @"presetDropType";
 @implementation MFAppDelegate
 
 @synthesize ampPresets = _ampPresets;
-
+@synthesize currentBackup = _currentBackup;
 
 #pragma mark - View LifeCycle
 
@@ -168,9 +170,31 @@ NSString *PresetDropType = @"presetDropType";
             NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
             NSLog(@"selected folder: %@", cFolder);
             
-            // now start scanning the folder for everything. Begin an async
-            // operation here, and verify that we have a valid file before going any farther
+            [self loadBackupFile:cFolder];
         }
     }];
 }
+
+- (void) loadBackupFile:(NSURL *)url
+{
+    self.currentBackup = [MFFuseBackup backupFromFolder:url];
+    
+    if (self.currentBackup == nil)
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to load a backup"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"No valid FUSE backups were found in the selected folder."];
+        
+        [alert beginSheetModalForWindow:self.window
+                          modalDelegate:nil
+                         didEndSelector:nil
+                            contextInfo:nil];
+        return;
+    }
+    
+    [self.presetNameField setStringValue:self.currentBackup.backupDescription];
+}
+
 @end

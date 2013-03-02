@@ -26,6 +26,11 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     self.folderURL = url;
     
+    if (![self validateBackupContents])
+        return nil;
+    
+    [self loadBackupContents];
+    
     return self;
 }
 
@@ -82,5 +87,21 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     return YES;
 }
 
+- (void) loadBackupContents
+{
+    [self loadBackupDescription];
+}
+
+- (void) loadBackupDescription
+{
+    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
+    
+    NSData *data = [NSData dataWithContentsOfURL:backupFile];
+    NSString *desc = [[NSString alloc] initWithBytes:[data bytes]
+                                              length:[data length]
+                                            encoding:NSUTF8StringEncoding];
+    
+    self.backupDescription = desc;    
+}
 
 @end

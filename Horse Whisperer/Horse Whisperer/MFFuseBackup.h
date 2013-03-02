@@ -11,6 +11,7 @@
 @interface MFFuseBackup : NSObject
 
 @property (nonatomic, strong) NSURL *folderURL;
+@property (nonatomic, strong) NSString *backupDescription;
 
 + (MFFuseBackup *) backupFromFolder:(NSURL *)url;
 

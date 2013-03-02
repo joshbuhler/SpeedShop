@@ -46,18 +46,17 @@
     STAssertTrue([fileMan fileExistsAtPath:[fuse270dir path]], @"Sample backup not found - fuse270");
 }
 
-//- (void) testBackupLoading
-//{
-//    STAssertNotNil(nil, @"Test not implemented");
-//}
-
-
-
 - (void) testBackupValidation
 {
     MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
     
     STAssertTrue([testBackup validateBackupContents], @"Validation of sample contents failed.");
+}
+
+- (void) testBackupDescription
+{
+    MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
+    STAssertTrue([testBackup.backupDescription isEqualToString:@"TestBackup - Mustang 3 - Fuse 2.7"], @"Backup description not loaded");
 }
 
 @end
