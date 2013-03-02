@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="94" POS="0" BypassState="1">
+      <Param ControlIndex="0">43520</Param>
+      <Param ControlIndex="1">65280</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">32000</Param>
+      <Param ControlIndex="4">64512</Param>
+      <Param ControlIndex="5">44544</Param>
+      <Param ControlIndex="6">59904</Param>
+      <Param ControlIndex="7">33536</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">32768</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">9</Param>
+      <Param ControlIndex="13">9</Param>
+      <Param ControlIndex="14">9</Param>
+      <Param ControlIndex="15">3</Param>
+      <Param ControlIndex="16">4</Param>
+      <Param ControlIndex="17">6</Param>
+      <Param ControlIndex="18">9</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="60" POS="0" BypassState="1">
+        <Param ControlIndex="0">55296</Param>
+        <Param ControlIndex="1">44800</Param>
+        <Param ControlIndex="2">40704</Param>
+        <Param ControlIndex="3">37632</Param>
+        <Param ControlIndex="4">45056</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="18" POS="5" BypassState="1">
+        <Param ControlIndex="0">20224</Param>
+        <Param ControlIndex="1">8448</Param>
+        <Param ControlIndex="2">5120</Param>
+        <Param ControlIndex="3">6400</Param>
+        <Param ControlIndex="4">32768</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="0">
+        <Param ControlIndex="0">28928</Param>
+        <Param ControlIndex="1">28160</Param>
+        <Param ControlIndex="2">4864</Param>
+        <Param ControlIndex="3">27904</Param>
+        <Param ControlIndex="4">16128</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="75" POS="7" BypassState="1">
+        <Param ControlIndex="0">18432</Param>
+        <Param ControlIndex="1">38656</Param>
+        <Param ControlIndex="2">42496</Param>
+        <Param ControlIndex="3">29696</Param>
+        <Param ControlIndex="4">17664</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Still of the Nite" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

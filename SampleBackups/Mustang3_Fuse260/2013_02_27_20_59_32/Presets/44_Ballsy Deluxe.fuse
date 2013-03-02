@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="83" POS="0" BypassState="1">
+      <Param ControlIndex="0">30583</Param>
+      <Param ControlIndex="1">57311</Param>
+      <Param ControlIndex="2">0</Param>
+      <Param ControlIndex="3">65535</Param>
+      <Param ControlIndex="4">29555</Param>
+      <Param ControlIndex="5">34181</Param>
+      <Param ControlIndex="6">11308</Param>
+      <Param ControlIndex="7">0</Param>
+      <Param ControlIndex="8">0</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">17990</Param>
+      <Param ControlIndex="11">0</Param>
+      <Param ControlIndex="12">3</Param>
+      <Param ControlIndex="13">3</Param>
+      <Param ControlIndex="14">3</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">3</Param>
+      <Param ControlIndex="18">3</Param>
+      <Param ControlIndex="19">0</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="136" POS="0" BypassState="1">
+        <Param ControlIndex="0">1</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="5" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">4626</Param>
+        <Param ControlIndex="1">35980</Param>
+        <Param ControlIndex="2">16448</Param>
+        <Param ControlIndex="3">4883</Param>
+        <Param ControlIndex="4">8481</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="11" POS="7" BypassState="1">
+        <Param ControlIndex="0">7967</Param>
+        <Param ControlIndex="1">21074</Param>
+        <Param ControlIndex="2">21845</Param>
+        <Param ControlIndex="3">61680</Param>
+        <Param ControlIndex="4">26985</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Ballsy Deluxe" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65535" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

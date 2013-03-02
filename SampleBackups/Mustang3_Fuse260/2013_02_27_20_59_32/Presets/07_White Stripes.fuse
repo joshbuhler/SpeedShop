@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="117" POS="0" BypassState="1">
+      <Param ControlIndex="0">43690</Param>
+      <Param ControlIndex="1">27499</Param>
+      <Param ControlIndex="2">32896</Param>
+      <Param ControlIndex="3">25443</Param>
+      <Param ControlIndex="4">51914</Param>
+      <Param ControlIndex="5">41377</Param>
+      <Param ControlIndex="6">55512</Param>
+      <Param ControlIndex="7">32896</Param>
+      <Param ControlIndex="8">32896</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">32896</Param>
+      <Param ControlIndex="11">32896</Param>
+      <Param ControlIndex="12">5</Param>
+      <Param ControlIndex="13">5</Param>
+      <Param ControlIndex="14">5</Param>
+      <Param ControlIndex="15">1</Param>
+      <Param ControlIndex="16">2</Param>
+      <Param ControlIndex="17">9</Param>
+      <Param ControlIndex="18">5</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">1</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="26" POS="2" BypassState="1">
+        <Param ControlIndex="0">37522</Param>
+        <Param ControlIndex="1">19789</Param>
+        <Param ControlIndex="2">22873</Param>
+        <Param ControlIndex="3">41377</Param>
+        <Param ControlIndex="4">62194</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="1" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="0" POS="6" BypassState="0"></Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="11" POS="7" BypassState="1">
+        <Param ControlIndex="0">10537</Param>
+        <Param ControlIndex="1">35723</Param>
+        <Param ControlIndex="2">18761</Param>
+        <Param ControlIndex="3">48573</Param>
+        <Param ControlIndex="4">32896</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="White Stripes" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65535" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

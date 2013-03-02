@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="114" POS="0" BypassState="1">
+      <Param ControlIndex="0">37779</Param>
+      <Param ControlIndex="1">24415</Param>
+      <Param ControlIndex="2">11308</Param>
+      <Param ControlIndex="3">22873</Param>
+      <Param ControlIndex="4">35466</Param>
+      <Param ControlIndex="5">38293</Param>
+      <Param ControlIndex="6">36494</Param>
+      <Param ControlIndex="7">32896</Param>
+      <Param ControlIndex="8">32896</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">35209</Param>
+      <Param ControlIndex="11">32896</Param>
+      <Param ControlIndex="12">6</Param>
+      <Param ControlIndex="13">6</Param>
+      <Param ControlIndex="14">6</Param>
+      <Param ControlIndex="15">4</Param>
+      <Param ControlIndex="16">5</Param>
+      <Param ControlIndex="17">10</Param>
+      <Param ControlIndex="18">6</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="0" POS="0" BypassState="1"></Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="5" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="22" POS="6" BypassState="1">
+        <Param ControlIndex="0">7710</Param>
+        <Param ControlIndex="1">16448</Param>
+        <Param ControlIndex="2">4369</Param>
+        <Param ControlIndex="3">7710</Param>
+        <Param ControlIndex="4">33153</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="59" POS="7" BypassState="1">
+        <Param ControlIndex="0">0</Param>
+        <Param ControlIndex="1">40863</Param>
+        <Param ControlIndex="2">32896</Param>
+        <Param ControlIndex="3">32896</Param>
+        <Param ControlIndex="4">33153</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Alkaline Trio" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65535" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

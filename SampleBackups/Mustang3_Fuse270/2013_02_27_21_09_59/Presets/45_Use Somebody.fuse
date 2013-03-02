@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="97" POS="0" BypassState="1">
+      <Param ControlIndex="0">41472</Param>
+      <Param ControlIndex="1">30976</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">25344</Param>
+      <Param ControlIndex="4">45824</Param>
+      <Param ControlIndex="5">37632</Param>
+      <Param ControlIndex="6">42496</Param>
+      <Param ControlIndex="7">0</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">32768</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">7</Param>
+      <Param ControlIndex="13">7</Param>
+      <Param ControlIndex="14">7</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">7</Param>
+      <Param ControlIndex="18">7</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="0" POS="0" BypassState="1"></Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="18" POS="6" BypassState="0">
+        <Param ControlIndex="0">29952</Param>
+        <Param ControlIndex="1">5120</Param>
+        <Param ControlIndex="2">5376</Param>
+        <Param ControlIndex="3">3584</Param>
+        <Param ControlIndex="4">32768</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="0" POS="2" BypassState="1"></Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="75" POS="7" BypassState="1">
+        <Param ControlIndex="0">28672</Param>
+        <Param ControlIndex="1">32768</Param>
+        <Param ControlIndex="2">37120</Param>
+        <Param ControlIndex="3">32768</Param>
+        <Param ControlIndex="4">46592</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Use Somebody" author="Josh Buhler" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="use somebody, kings of leon" fenderid="0">Basic tone for Kings of Leon - Use Somebody rhythm guitar.</Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

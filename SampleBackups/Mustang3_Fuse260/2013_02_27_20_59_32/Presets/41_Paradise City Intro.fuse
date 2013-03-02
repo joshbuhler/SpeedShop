@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="97" POS="0" BypassState="1">
+      <Param ControlIndex="0">43947</Param>
+      <Param ControlIndex="1">42919</Param>
+      <Param ControlIndex="2">32896</Param>
+      <Param ControlIndex="3">41634</Param>
+      <Param ControlIndex="4">55255</Param>
+      <Param ControlIndex="5">43690</Param>
+      <Param ControlIndex="6">19275</Param>
+      <Param ControlIndex="7">0</Param>
+      <Param ControlIndex="8">32896</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">32896</Param>
+      <Param ControlIndex="11">32896</Param>
+      <Param ControlIndex="12">7</Param>
+      <Param ControlIndex="13">7</Param>
+      <Param ControlIndex="14">7</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">7</Param>
+      <Param ControlIndex="18">7</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="0" POS="3" BypassState="1"></Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="18" POS="5" BypassState="1">
+        <Param ControlIndex="0">65535</Param>
+        <Param ControlIndex="1">3598</Param>
+        <Param ControlIndex="2">6425</Param>
+        <Param ControlIndex="3">6425</Param>
+        <Param ControlIndex="4">32896</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="22" POS="4" BypassState="1">
+        <Param ControlIndex="0">16448</Param>
+        <Param ControlIndex="1">22873</Param>
+        <Param ControlIndex="2">25957</Param>
+        <Param ControlIndex="3">26728</Param>
+        <Param ControlIndex="4">23130</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="75" POS="7" BypassState="1">
+        <Param ControlIndex="0">11565</Param>
+        <Param ControlIndex="1">32896</Param>
+        <Param ControlIndex="2">37265</Param>
+        <Param ControlIndex="3">32896</Param>
+        <Param ControlIndex="4">46774</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Paradise City Intro" author="Josh Buhler" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65535" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

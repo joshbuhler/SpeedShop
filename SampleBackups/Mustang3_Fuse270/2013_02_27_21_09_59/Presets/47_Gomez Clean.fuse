@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="117" POS="0" BypassState="1">
+      <Param ControlIndex="0">45824</Param>
+      <Param ControlIndex="1">16896</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">25344</Param>
+      <Param ControlIndex="4">29184</Param>
+      <Param ControlIndex="5">34048</Param>
+      <Param ControlIndex="6">20224</Param>
+      <Param ControlIndex="7">32768</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">32768</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">5</Param>
+      <Param ControlIndex="13">5</Param>
+      <Param ControlIndex="14">5</Param>
+      <Param ControlIndex="15">1</Param>
+      <Param ControlIndex="16">2</Param>
+      <Param ControlIndex="17">9</Param>
+      <Param ControlIndex="18">5</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="7" POS="0" BypassState="1">
+        <Param ControlIndex="0">21504</Param>
+        <Param ControlIndex="1">26880</Param>
+        <Param ControlIndex="2">19712</Param>
+        <Param ControlIndex="3">32512</Param>
+        <Param ControlIndex="4">32512</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="5" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">14848</Param>
+        <Param ControlIndex="1">65280</Param>
+        <Param ControlIndex="2">12544</Param>
+        <Param ControlIndex="3">22528</Param>
+        <Param ControlIndex="4">17408</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="58" POS="7" BypassState="1">
+        <Param ControlIndex="0">21760</Param>
+        <Param ControlIndex="1">26624</Param>
+        <Param ControlIndex="2">39680</Param>
+        <Param ControlIndex="3">39680</Param>
+        <Param ControlIndex="4">1536</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Gomez Clean" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

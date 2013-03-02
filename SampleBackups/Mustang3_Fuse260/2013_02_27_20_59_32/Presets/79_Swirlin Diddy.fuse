@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="106" POS="0" BypassState="1">
+      <Param ControlIndex="0">43947</Param>
+      <Param ControlIndex="1">28784</Param>
+      <Param ControlIndex="2">0</Param>
+      <Param ControlIndex="3">65535</Param>
+      <Param ControlIndex="4">38036</Param>
+      <Param ControlIndex="5">39578</Param>
+      <Param ControlIndex="6">17219</Param>
+      <Param ControlIndex="7">32896</Param>
+      <Param ControlIndex="8">32896</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">12079</Param>
+      <Param ControlIndex="11">32896</Param>
+      <Param ControlIndex="12">4</Param>
+      <Param ControlIndex="13">4</Param>
+      <Param ControlIndex="14">4</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">4</Param>
+      <Param ControlIndex="18">4</Param>
+      <Param ControlIndex="19">0</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="7" POS="0" BypassState="1">
+        <Param ControlIndex="0">32639</Param>
+        <Param ControlIndex="1">7453</Param>
+        <Param ControlIndex="2">8481</Param>
+        <Param ControlIndex="3">0</Param>
+        <Param ControlIndex="4">32639</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="45" POS="5" BypassState="1">
+        <Param ControlIndex="0">49087</Param>
+        <Param ControlIndex="1">48573</Param>
+        <Param ControlIndex="2">16962</Param>
+        <Param ControlIndex="3">16705</Param>
+        <Param ControlIndex="4">24158</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">7196</Param>
+        <Param ControlIndex="1">29812</Param>
+        <Param ControlIndex="2">15934</Param>
+        <Param ControlIndex="3">0</Param>
+        <Param ControlIndex="4">12850</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="11" POS="7" BypassState="1">
+        <Param ControlIndex="0">13107</Param>
+        <Param ControlIndex="1">33924</Param>
+        <Param ControlIndex="2">19789</Param>
+        <Param ControlIndex="3">61680</Param>
+        <Param ControlIndex="4">32896</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Swirlin Diddy" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65535" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

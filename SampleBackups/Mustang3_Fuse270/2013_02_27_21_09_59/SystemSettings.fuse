@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<System>
+  <QA>0</QA>
+  <QA>22</QA>
+  <QA>21</QA>
+  <QA>3</QA>
+  <QA>4</QA>
+  <QA>5</QA>
+  <QA>6</QA>
+  <QA>7</QA>
+  <QA>8</QA>
+  <QA>9</QA>
+  <QA>10</QA>
+  <QA>11</QA>
+  <QA>12</QA>
+  <QA>13</QA>
+  <QA>14</QA>
+  <QA>15</QA>
+  <LCDContrast>103</LCDContrast>
+  <MemoryLock>0</MemoryLock>
+  <Foot2BtnMode>0</Foot2BtnMode>
+  <ExpPedalVolumeHeel>0</ExpPedalVolumeHeel>
+  <ExpPedalVolumeToe>0</ExpPedalVolumeToe>
+  <Foot4BtnMode>0</Foot4BtnMode>
+</System>

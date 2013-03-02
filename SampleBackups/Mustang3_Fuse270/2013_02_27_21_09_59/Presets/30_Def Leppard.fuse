@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang III/IV/V" ProductId="1">
+  <Amplifier>
+    <Module ID="94" POS="0" BypassState="1">
+      <Param ControlIndex="0">65280</Param>
+      <Param ControlIndex="1">45312</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">46080</Param>
+      <Param ControlIndex="4">43520</Param>
+      <Param ControlIndex="5">15360</Param>
+      <Param ControlIndex="6">32256</Param>
+      <Param ControlIndex="7">65280</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">65280</Param>
+      <Param ControlIndex="10">65280</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">9</Param>
+      <Param ControlIndex="13">9</Param>
+      <Param ControlIndex="14">9</Param>
+      <Param ControlIndex="15">5</Param>
+      <Param ControlIndex="16">9</Param>
+      <Param ControlIndex="17">10</Param>
+      <Param ControlIndex="18">9</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="60" POS="0" BypassState="0">
+        <Param ControlIndex="0">36352</Param>
+        <Param ControlIndex="1">32512</Param>
+        <Param ControlIndex="2">32512</Param>
+        <Param ControlIndex="3">32512</Param>
+        <Param ControlIndex="4">32512</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="18" POS="4" BypassState="1">
+        <Param ControlIndex="0">16896</Param>
+        <Param ControlIndex="1">0</Param>
+        <Param ControlIndex="2">65280</Param>
+        <Param ControlIndex="3">34048</Param>
+        <Param ControlIndex="4">33280</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="69" POS="5" BypassState="1">
+        <Param ControlIndex="0">14848</Param>
+        <Param ControlIndex="1">256</Param>
+        <Param ControlIndex="2">32768</Param>
+        <Param ControlIndex="3">43520</Param>
+        <Param ControlIndex="4">43520</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="0" POS="7" BypassState="1"></Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="1">
+    <SongFile Location="0">Tony Franklin Gb.wav</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>32767</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Def Leppard" author="BulldogXTRM" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="3307"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="1" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>
