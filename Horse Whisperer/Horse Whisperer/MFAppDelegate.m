@@ -212,6 +212,55 @@ NSString *PresetDropType = @"presetDropType";
     }];    
 }
 
+- (IBAction)onSaveSelected:(id)sender
+{
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    
+    // Open to the default Fuse backup directory (if it exists)
+    NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
+    
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if ([fileMan fileExistsAtPath:defaultFuseDir])
+    {
+        NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
+        [panel setDirectoryURL:[NSURL URLWithString:openDir]];
+    }
+    
+    [panel beginWithCompletionHandler:^(NSInteger result) {
+        
+        if (result == NSOKButton)
+        {
+            NSLog(@"url: %@", panel.URL);
+            [self.currentBackup saveBackup:panel.URL withCompletion:^(BOOL success)
+            {
+                NSAlert *alert;
+                if (success)
+                {
+                    alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
+                                                     defaultButton:@"OK"
+                                                   alternateButton:nil
+                                                       otherButton:nil
+                                         informativeTextWithFormat:@""];
+                }
+                else
+                {
+                    alert = [NSAlert alertWithMessageText:@"Unable to save backup"
+                                            defaultButton:@"OK"
+                                          alternateButton:nil
+                                              otherButton:nil
+                                informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+                }
+                
+                [alert beginSheetModalForWindow:self.window
+                                  modalDelegate:nil
+                                 didEndSelector:nil
+                                    contextInfo:nil];
+            }];
+        }
+    }];
+}
+
 - (void) refreshUI
 {
     [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];

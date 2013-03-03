@@ -23,7 +23,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 {
     self.folderURL = url;
     
-    _completionBlock = block;
+    _loadCompletionBlock = block;
     
     if (![self validateBackupContents])
     {
@@ -134,8 +134,60 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void) completeLoading:(BOOL)success
 {
-    if (_completionBlock)
-        _completionBlock(success);
+    if (_loadCompletionBlock)
+        _loadCompletionBlock(success);
+}
+
+#pragma mark - Exporting / Saving
+- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
+{
+    _saveCompletionBlock = block;
+    
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    
+    // create a new folder at the specified path
+    NSError *error = nil;
+    [fileMan createDirectoryAtURL:url
+      withIntermediateDirectories:YES
+                       attributes:nil
+                            error:&error];
+    if (error)
+    {
+        [self completeSaving:NO];
+        return;
+    }
+    
+    // now copy over the settings & description files
+    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
+    [fileMan copyItemAtPath:[backupFile path]
+                     toPath:[[url path] stringByAppendingPathComponent:BACKUP_FILENAME]
+                      error:&error];
+    
+    if (error)
+    {
+        [self completeSaving:NO];
+        return;
+    }
+    
+    
+    NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
+    [fileMan copyItemAtPath:[settingsFile path]
+                     toPath:[[url path] stringByAppendingPathComponent:SETTINGS_FILENAME]
+                      error:&error];
+    
+    if (error)
+    {
+        [self completeSaving:NO];
+        return;
+    }
+    
+    [self completeSaving:YES];
+}
+
+- (void) completeSaving:(BOOL)success
+{
+    if (_saveCompletionBlock)
+        _saveCompletionBlock(success);
 }
 
 @end

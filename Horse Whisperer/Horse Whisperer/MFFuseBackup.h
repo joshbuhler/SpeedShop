@@ -13,7 +13,8 @@ typedef void (^MFFuseBackupCompletion)(BOOL);
 
 @interface MFFuseBackup : NSObject
 {
-    MFFuseBackupCompletion  _completionBlock;
+    MFFuseBackupCompletion  _loadCompletionBlock;
+    MFFuseBackupCompletion  _saveCompletionBlock;
 }
 
 @property (nonatomic, strong) NSURL *folderURL;
@@ -22,5 +23,6 @@ typedef void (^MFFuseBackupCompletion)(BOOL);
 @property (nonatomic, strong) NSMutableArray *presets;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
+- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
 
 @end

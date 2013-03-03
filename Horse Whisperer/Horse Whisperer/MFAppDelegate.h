@@ -18,6 +18,8 @@
 @property (weak) IBOutlet NSTextField *presetDescriptionField;
 
 - (IBAction)onReloadBtn:(id)sender;
+
 - (IBAction)onOpenBackupFolder:(id)sender;
+- (IBAction)onSaveSelected:(id)sender;
 
 @end
