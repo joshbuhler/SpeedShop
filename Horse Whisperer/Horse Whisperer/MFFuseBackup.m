@@ -182,25 +182,23 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // now rename and copy over the items in the Presets folder based on their new order
-    [self copyPresetFilesToNewDir:url];
-    
-    [self completeSaving:YES];
+    [self completeSaving:[self copyPresetFilesToNewDir:url]];
 }
 
-- (void) copyPresetFilesToNewDir:(NSURL *)url
+- (BOOL) copyPresetFilesToNewDir:(NSURL *)url
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
     
-    NSURL *oldPresetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
+    //NSURL *oldPresetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
+    NSURL *oldFuseDir = [_folderURL URLByAppendingPathComponent:FUSE_FOLDER];
     NSURL *newPresetDir = [url URLByAppendingPathComponent:PRESET_FOLDER];
+    NSURL *newFuseDir = [url URLByAppendingPathComponent:FUSE_FOLDER];
     NSError *error = nil;
-    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[oldPresetDir path] error:&error];
     
     if (error)
     {
         NSLog(@"*** ERROR: error saving fuse files");
-        [self completeSaving:NO];
-        return;
+        return NO;
     }
     
     error = nil;
@@ -210,8 +208,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
                             error:&error];
     if (error)
     {
-        [self completeSaving:NO];
-        return;
+        return NO;
+    }
+    
+    error = nil;
+    [fileMan createDirectoryAtURL:newFuseDir
+      withIntermediateDirectories:YES
+                       attributes:nil
+                            error:&error];
+    if (error)
+    {
+        return NO;
     }
     
     for (int i = 0; i < _presets.count; i++)
@@ -231,19 +238,23 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         [fileMan copyItemAtPath:[cPreset.fileURL path]
                          toPath:[[newPresetDir path] stringByAppendingPathComponent:newFilename]
                           error:&error];
+        
+        // now move the item from the FUSE folder to it's new spot
+        NSString *oldFuseFilename = [NSString stringWithFormat:@"%02d.fuse", oldIndex];
+        NSString *newFuseFilename = [NSString stringWithFormat:@"%02d.fuse", newIndex];
+        
+        [fileMan copyItemAtPath:[[oldFuseDir path] stringByAppendingPathComponent:oldFuseFilename]
+                         toPath:[[newFuseDir path] stringByAppendingPathComponent:newFuseFilename]
+                          error:&error];
+        
+        if (error)
+        {
+            NSLog(@"*** ERROR: %@", error);
+            return NO;
+        }
     }
     
-    /*
-    for (int i = 0; i < presetContents.count; i++)
-    {
-        NSString *oldFilename = [presetContents objectAtIndex:i];
-        NSLog(@"old fileName: %@", oldFilename);
-        
-        int oldIndex = [[oldFilename substringToIndex:2] intValue];
-        int newIndex = i;
-        NSLog(@"old: %d new: %d", oldIndex, newIndex);
-    }
-     */
+    return YES;
 }
 
 - (void) completeSaving:(BOOL)success
