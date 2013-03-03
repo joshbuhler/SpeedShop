@@ -93,7 +93,7 @@ NSString *PresetDropType = @"presetDropType";
     {
         if (dropOperation == NSTableViewDropOn)
         {
-            [tableView setDropRow:row dropOperation:NSTableViewDropAbove];
+            [tableView setDropRow:row dropOperation:NSTableViewDropOn];
             return NSDragOperationMove;
         }
         else
@@ -118,17 +118,16 @@ NSString *PresetDropType = @"presetDropType";
      
     while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
     {
-        NSObject *cItem = [self.ampPresets objectAtIndex:currentItemIndex];
-        NSLog(@"cItem: %@", cItem);
+        NSObject *cItem = [self.currentBackup.presets objectAtIndex:currentItemIndex];
         [draggedItemsArray addObject:cItem];
     }
     
     // remove the items from the preset list
-    [_ampPresets removeObjectsInArray:draggedItemsArray];
+    [self.currentBackup.presets removeObjectsInArray:draggedItemsArray];
     
     // now put them in their new location
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
-    [_ampPresets insertObjects:draggedItemsArray atIndexes:newIndexes];
+    [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
         
     [self.ampPresetTable reloadData];
 
@@ -136,9 +135,7 @@ NSString *PresetDropType = @"presetDropType";
 }
 
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
-{
-    NSLog(@"row: %ld", self.ampPresetTable.selectedRow);
-    
+{   
     self.currentPreset = [self.currentBackup.presets objectAtIndex:self.ampPresetTable.selectedRow];
     
     [self refreshUI];
