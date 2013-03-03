@@ -225,7 +225,7 @@ NSString *PresetDropType = @"presetDropType";
     {
         NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
         
-        [self.currentBackup saveBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success)
+        [self.currentBackup saveBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
          {
              NSAlert *alert;
              if (success)
@@ -237,7 +237,7 @@ NSString *PresetDropType = @"presetDropType";
                              informativeTextWithFormat:@""];
                  
                  // todo: reload the newly saved file
-                 [self loadBackupFile:self.currentBackup.folderURL];
+                 [self loadBackupFile:newURL];
              }
              else
              {

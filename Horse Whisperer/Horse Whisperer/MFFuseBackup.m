@@ -14,6 +14,16 @@ NSString *PRESET_FOLDER = @"Presets";
 NSString *BACKUP_FILENAME = @"MU_BackupName.fuse";
 NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
+@interface MFFuseBackup()
+{
+    MFFuseBackupCompletion      _loadCompletionBlock;
+    MFFuseBackupSaveCompletion  _saveCompletionBlock;
+    
+    NSURL   *_newFolderURL;
+}
+
+@end
+
 @implementation MFFuseBackup
 
 @synthesize folderURL = _folderURL;
@@ -139,7 +149,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 #pragma mark - Exporting / Saving
-- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
+- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
 {
     _saveCompletionBlock = block;
     
@@ -262,7 +272,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         }
     }
     
-    self.folderURL = url;
+    _newFolderURL = url;
     
     return YES;
 }
@@ -270,7 +280,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 - (void) completeSaving:(BOOL)success
 {
     if (_saveCompletionBlock)
-        _saveCompletionBlock(success);
+        _saveCompletionBlock(success, _newFolderURL);
 }
 
 @end

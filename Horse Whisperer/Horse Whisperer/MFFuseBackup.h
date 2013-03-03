@@ -10,12 +10,9 @@
 #import "MFPreset.h"
 
 typedef void (^MFFuseBackupCompletion)(BOOL);
+typedef void (^MFFuseBackupSaveCompletion)(BOOL, NSURL*);
 
 @interface MFFuseBackup : NSObject
-{
-    MFFuseBackupCompletion  _loadCompletionBlock;
-    MFFuseBackupCompletion  _saveCompletionBlock;
-}
 
 @property (nonatomic, strong) NSURL *folderURL;
 @property (nonatomic, strong) NSString *backupDescription;
@@ -23,6 +20,6 @@ typedef void (^MFFuseBackupCompletion)(BOOL);
 @property (nonatomic, strong) NSMutableArray *presets;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
-- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
+- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
 
 @end
