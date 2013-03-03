@@ -16,4 +16,6 @@
 
 - (void) loadPresetFile:(NSURL *)url;
 
+- (NSURL *) fileURL;
+
 @end

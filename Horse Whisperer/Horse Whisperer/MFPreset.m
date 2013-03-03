@@ -11,6 +11,7 @@
 @interface MFPreset()
 {
     NSMutableString *currentElementValue;
+    NSURL *_fileURL;
 }
 
 @end
@@ -23,6 +24,8 @@
 
 - (void) loadPresetFile:(NSURL *)url
 {
+    _fileURL = url;
+    
     NSXMLParser *cParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     
     cParser.delegate = self;
@@ -30,6 +33,11 @@
     [cParser setShouldResolveExternalEntities:YES];
     
     [cParser parse];
+}
+
+- (NSURL *) fileURL
+{
+    return _fileURL;
 }
 
 

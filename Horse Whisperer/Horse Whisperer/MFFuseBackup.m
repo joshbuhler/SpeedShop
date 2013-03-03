@@ -10,7 +10,7 @@
 #import "MFFuseBackup+MFFuseBackup_Private.h"
 
 NSString *FUSE_FOLDER = @"FUSE";
-NSString *PRESET_FOLDER = @"PRESETS";
+NSString *PRESET_FOLDER = @"Presets";
 NSString *BACKUP_FILENAME = @"MU_BackupName.fuse";
 NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
@@ -181,7 +181,69 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return;
     }
     
+    // now rename and copy over the items in the Presets folder based on their new order
+    [self copyPresetFilesToNewDir:url];
+    
     [self completeSaving:YES];
+}
+
+- (void) copyPresetFilesToNewDir:(NSURL *)url
+{
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    
+    NSURL *oldPresetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
+    NSURL *newPresetDir = [url URLByAppendingPathComponent:PRESET_FOLDER];
+    NSError *error = nil;
+    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[oldPresetDir path] error:&error];
+    
+    if (error)
+    {
+        NSLog(@"*** ERROR: error saving fuse files");
+        [self completeSaving:NO];
+        return;
+    }
+    
+    error = nil;
+    [fileMan createDirectoryAtURL:newPresetDir
+      withIntermediateDirectories:YES
+                       attributes:nil
+                            error:&error];
+    if (error)
+    {
+        [self completeSaving:NO];
+        return;
+    }
+    
+    for (int i = 0; i < _presets.count; i++)
+    {
+        MFPreset *cPreset = [_presets objectAtIndex:i];
+        NSString *oldFilename = [cPreset.fileURL lastPathComponent];
+        NSLog(@"old fileName: %@", oldFilename);
+        
+        int oldIndex = [[oldFilename substringToIndex:2] intValue];
+        int newIndex = i;
+        NSLog(@"    old: %d new: %d", oldIndex, newIndex);
+        
+        NSString *presetName = [oldFilename substringFromIndex:2];
+        NSString *newFilename = [NSString stringWithFormat:@"%02d%@", newIndex, presetName];
+        NSLog(@"    newFilename: %@", newFilename);
+        
+        [fileMan copyItemAtPath:[cPreset.fileURL path]
+                         toPath:[[newPresetDir path] stringByAppendingPathComponent:newFilename]
+                          error:&error];
+    }
+    
+    /*
+    for (int i = 0; i < presetContents.count; i++)
+    {
+        NSString *oldFilename = [presetContents objectAtIndex:i];
+        NSLog(@"old fileName: %@", oldFilename);
+        
+        int oldIndex = [[oldFilename substringToIndex:2] intValue];
+        int newIndex = i;
+        NSLog(@"old: %d new: %d", oldIndex, newIndex);
+    }
+     */
 }
 
 - (void) completeSaving:(BOOL)success

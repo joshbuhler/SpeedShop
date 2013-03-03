@@ -242,6 +242,8 @@ NSString *PresetDropType = @"presetDropType";
                                                    alternateButton:nil
                                                        otherButton:nil
                                          informativeTextWithFormat:@""];
+                    
+                    // todo: reload the newly saved file
                 }
                 else
                 {
