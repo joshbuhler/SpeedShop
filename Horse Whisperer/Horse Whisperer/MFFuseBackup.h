@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSURL *folderURL;
 @property (nonatomic, strong) NSString *backupDescription;
 
+@property (nonatomic, strong) NSMutableArray *presets;
+
 + (MFFuseBackup *) backupFromFolder:(NSURL *)url;
 
 - (id) initWithBackupFolder:(NSURL *)url;

@@ -10,4 +10,7 @@
 
 @implementation MFPreset
 
+@synthesize name;
+@synthesize author;
+
 @end

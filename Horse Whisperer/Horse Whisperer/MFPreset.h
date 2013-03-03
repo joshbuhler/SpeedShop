@@ -10,4 +10,7 @@
 
 @interface MFPreset : NSObject
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *author;
+
 @end

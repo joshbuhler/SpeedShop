@@ -17,6 +17,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 @implementation MFFuseBackup
 
 @synthesize folderURL = _folderURL;
+@synthesize presets = _presets;
 
 - (id) initWithBackupFolder:(NSURL *)url
 {
@@ -62,7 +63,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // Do we have anything in here?
     NSError *error = nil;
     NSArray *fuseContents = [fileMan contentsOfDirectoryAtPath:[fuseDir path] error:&error];
-    if ([fuseContents count] <= 0)
+    if ([fuseContents count] <= 0 || error != nil)
         return NO;
     
     // now the Presets directory
@@ -71,7 +72,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return NO;
     
     NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
-    if ([presetContents count] <= 0)
+    if ([presetContents count] <= 0 || error != nil)
         return NO;
     
     NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
@@ -90,6 +91,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 - (void) loadBackupContents
 {
     [self loadBackupDescription];
+    
+    // TODO: delegate progress method for loading status (we do have to analyze 99 files, after all)
+    [self loadFuseFiles];
 }
 
 - (void) loadBackupDescription
@@ -102,6 +106,26 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
                                             encoding:NSUTF8StringEncoding];
     
     self.backupDescription = desc;    
+}
+
+- (void) loadFuseFiles
+{
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    
+    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:FUSE_FOLDER];
+    NSError *error = nil;
+    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
+    
+    if (error)
+    {
+        NSLog(@"*** ERROR: error loading fuse files");
+        return;
+    }
+    
+    for (int i = 0; i < presetContents.count; i++)
+    {
+        NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
+    }
 }
 
 @end
