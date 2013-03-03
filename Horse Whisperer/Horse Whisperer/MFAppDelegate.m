@@ -170,7 +170,9 @@ NSString *PresetDropType = @"presetDropType";
             NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
             NSLog(@"selected folder: %@", cFolder);
             
-            [self loadBackupFile:cFolder];
+            dispatch_async(dispatch_get_current_queue(), ^{
+                [self loadBackupFile:cFolder];
+            });
         }
     }];
 }
@@ -194,6 +196,13 @@ NSString *PresetDropType = @"presetDropType";
         return;
     }
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self refreshUI];
+    });
+}
+
+- (void) refreshUI
+{
     [self.presetNameField setStringValue:self.currentBackup.backupDescription];
 }
 
