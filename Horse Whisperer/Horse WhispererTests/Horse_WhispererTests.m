@@ -42,19 +42,25 @@
     NSFileManager *fileMan = [NSFileManager defaultManager];
     STAssertTrue([fileMan fileExistsAtPath:[fuse270dir path]], @"Sample backup not found - fuse270");
 }
-/*
-- (void) testBackupValidation
+
+- (void) testBackupLoad
 {
-    MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
-    
-    STAssertTrue([testBackup validateBackupContents], @"Validation of sample contents failed.");
+    MFFuseBackup *backup = [[MFFuseBackup alloc] init];
+    [backup loadBackup:fuse270dir withCompletion:^(BOOL success) {
+        STAssertTrue(success, @"Failed to load backup");
+        
+        STAssertTrue([backup.backupDescription isEqualToString:@"TestBackup - Mustang 3 - Fuse 2.7"], @"Failed to load backup name");
+        
+        STAssertTrue([backup.presets count] == 100, @"Failed to find 100 presets");
+    }];
 }
 
-- (void) testBackupDescription
+- (void) testBackupValidation
 {
-    MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
-    STAssertTrue([testBackup.backupDescription isEqualToString:@"TestBackup - Mustang 3 - Fuse 2.7"], @"Backup description not loaded");
+    MFFuseBackup *backup = [[MFFuseBackup alloc] init];
+    backup.folderURL = fuse270dir;
+    STAssertTrue([backup validateBackupContents], @"Validation of sample contents failed.");
 }
-*/
+
 
 @end

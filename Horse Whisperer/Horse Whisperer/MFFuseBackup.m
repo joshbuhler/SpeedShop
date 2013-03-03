@@ -84,7 +84,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     [self loadBackupDescription];
     
     // TODO: delegate progress method for loading status (we do have to analyze 99 files, after all)
-    [self loadFuseFiles];
+    [self loadPresetFiles];
 }
 
 - (void) loadBackupDescription
@@ -99,14 +99,12 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     self.backupDescription = desc;    
 }
 
-// Loads FUSE folder contents to get an overview of the preset files. Grabs the
-// basic detail info. If more detailed preset info is needed, then that will be
-// loaded from the Presets folder as needed.
-- (void) loadFuseFiles
+// Loads "Preset" folder contents to get an overview of the preset files.
+- (void) loadPresetFiles
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
     
-    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:FUSE_FOLDER];
+    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
     NSError *error = nil;
     NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
     

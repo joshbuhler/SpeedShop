@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *author;
+@property (nonatomic, strong) NSString *description;
 
 - (void) loadPresetFile:(NSURL *)url;
 

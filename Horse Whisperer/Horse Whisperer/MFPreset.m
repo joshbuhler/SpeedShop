@@ -8,10 +8,18 @@
 
 #import "MFPreset.h"
 
+@interface MFPreset()
+{
+    NSMutableString *currentElementValue;
+}
+
+@end
+
 @implementation MFPreset
 
 @synthesize name;
 @synthesize author;
+@synthesize description;
 
 - (void) loadPresetFile:(NSURL *)url
 {
@@ -33,9 +41,33 @@
         self.name = [attributeDict valueForKey:@"name"];
         self.author = [attributeDict valueForKey:@"author"];
         
-        NSLog(@"Preset: %@ by %@", self.name, self.author);
+        NSLog(@"     Preset: %@ by %@", self.name, self.author);
+        
+        currentElementValue = nil;
     }
 }
 
+- (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    if (!currentElementValue)
+    {
+        currentElementValue = [[NSMutableString alloc] initWithString:string];
+    }
+    else
+    {
+        [currentElementValue appendString:string];
+    }
+}
+
+- (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if ([elementName isEqualToString:@"Info"])
+    {
+        self.description = currentElementValue;
+        NSLog(@"     desc: %@", self.description);
+    }
+    
+    currentElementValue = nil;
+}
 
 @end
