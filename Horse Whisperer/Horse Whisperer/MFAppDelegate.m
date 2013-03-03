@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray *ampPresets;
 @property (nonatomic, strong) MFFuseBackup *currentBackup;
+@property (nonatomic, strong) MFPreset *currentPreset;
 
 @end
 
@@ -134,6 +135,14 @@ NSString *PresetDropType = @"presetDropType";
     return YES;
 }
 
+- (void) tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSLog(@"row: %ld", self.ampPresetTable.selectedRow);
+    
+    self.currentPreset = [self.currentBackup.presets objectAtIndex:self.ampPresetTable.selectedRow];
+    
+    [self refreshUI];
+}
 
 #pragma mark - UI Actions
 - (IBAction)onReloadBtn:(id)sender
@@ -184,8 +193,9 @@ NSString *PresetDropType = @"presetDropType";
         dispatch_async(dispatch_get_main_queue(), ^{
             if (success)
             {
+                self.currentPreset = [self.currentBackup.presets objectAtIndex:0];
+                [self.ampPresetTable reloadData];
                 [self refreshUI];
-                
             }
             else
             {
@@ -207,9 +217,8 @@ NSString *PresetDropType = @"presetDropType";
 
 - (void) refreshUI
 {
-    [self.presetNameField setStringValue:self.currentBackup.backupDescription];
-        
-    [self.ampPresetTable reloadData];
+    [self.backupNameField setStringValue:self.currentBackup.backupDescription];
+    [self.presetNameField setStringValue:self.currentPreset.name];
 }
 
 @end

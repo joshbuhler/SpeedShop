@@ -12,6 +12,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTableView *ampPresetTable;
+@property (weak) IBOutlet NSTextField *backupNameField;
 @property (weak) IBOutlet NSTextField *presetNameField;
 
 - (IBAction)onReloadBtn:(id)sender;
