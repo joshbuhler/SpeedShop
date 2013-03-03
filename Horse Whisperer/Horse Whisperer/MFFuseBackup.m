@@ -8,7 +8,6 @@
 
 #import "MFFuseBackup.h"
 #import "MFFuseBackup+MFFuseBackup_Private.h"
-#import "MFPreset.h"
 
 NSString *FUSE_FOLDER = @"FUSE";
 NSString *PRESET_FOLDER = @"PRESETS";
@@ -20,29 +19,20 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 @synthesize folderURL = _folderURL;
 @synthesize presets = _presets;
 
-- (id) initWithBackupFolder:(NSURL *)url
+- (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {
-    NSAssert(url != nil, @"URL must be supplied to init method.");
-    
-    self = [super init];
-    
     self.folderURL = url;
     
     if (![self validateBackupContents])
-        return nil;
+        return;
+    
+    _completionBlock = block;
+    
+    self.presets = [[NSMutableArray alloc] init];
     
     [self loadBackupContents];
-    
-    return self;
 }
 
-
-+ (MFFuseBackup *) backupFromFolder:(NSURL *)url
-{
-    MFFuseBackup *newBackup = [[MFFuseBackup alloc] initWithBackupFolder:url];
-    
-    return newBackup;
-}
 
 #pragma mark - Private Methods
 
@@ -133,6 +123,13 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
         MFPreset *cPreset = [[MFPreset alloc] init];
         [cPreset loadPresetFile:cURL];
+        
+        [self.presets addObject:cPreset];
+    }
+
+    if (_completionBlock)
+    {
+        _completionBlock(YES);
     }
 }
 

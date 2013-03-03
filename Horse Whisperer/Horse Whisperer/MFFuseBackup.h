@@ -7,16 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MFPreset.h"
+
+typedef void (^MFFuseBackupCompletion)(BOOL);
 
 @interface MFFuseBackup : NSObject
+{
+    MFFuseBackupCompletion  _completionBlock;
+}
 
 @property (nonatomic, strong) NSURL *folderURL;
 @property (nonatomic, strong) NSString *backupDescription;
 
 @property (nonatomic, strong) NSMutableArray *presets;
 
-+ (MFFuseBackup *) backupFromFolder:(NSURL *)url;
-
-- (id) initWithBackupFolder:(NSURL *)url;
+- (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
 
 @end

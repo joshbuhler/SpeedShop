@@ -62,9 +62,7 @@ NSString *PresetDropType = @"presetDropType";
     id returnValue = nil;
     
     NSString *columnID = [tableColumn identifier];
-    
-    NSString *presetName = [_ampPresets objectAtIndex:row];
-    
+        
     if ([columnID isEqualToString:@"presetIndex"])
     {
         returnValue = [NSString stringWithFormat:@"%02ld", row];
@@ -72,7 +70,8 @@ NSString *PresetDropType = @"presetDropType";
     
     if ([columnID isEqualToString:@"presetName"])
     {
-        returnValue = presetName;
+        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:row];
+        returnValue = cPreset.name;
     }
     
     return returnValue;
@@ -179,31 +178,38 @@ NSString *PresetDropType = @"presetDropType";
 
 - (void) loadBackupFile:(NSURL *)url
 {
-    self.currentBackup = [MFFuseBackup backupFromFolder:url];
-    
-    if (self.currentBackup == nil)
+    self.currentBackup = [[MFFuseBackup alloc] init];
+    [self.currentBackup loadBackup:url withCompletion:^(BOOL success)
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to load a backup"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"No valid FUSE backups were found in the selected folder."];
-        
-        [alert beginSheetModalForWindow:self.window
-                          modalDelegate:nil
-                         didEndSelector:nil
-                            contextInfo:nil];
-        return;
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self refreshUI];
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (success)
+            {
+                [self refreshUI];
+                
+            }
+            else
+            {
+                NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to load a backup"
+                                                 defaultButton:@"OK"
+                                               alternateButton:nil
+                                                   otherButton:nil
+                                     informativeTextWithFormat:@"No valid FUSE backups were found in the selected folder."];
+                
+                [alert beginSheetModalForWindow:self.window
+                                  modalDelegate:nil
+                                 didEndSelector:nil
+                                    contextInfo:nil];
+            }
+            
+        });
+    }];    
 }
 
 - (void) refreshUI
 {
     [self.presetNameField setStringValue:self.currentBackup.backupDescription];
+        
+    [self.ampPresetTable reloadData];
 }
 
 @end

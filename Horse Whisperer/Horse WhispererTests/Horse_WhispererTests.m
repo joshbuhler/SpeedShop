@@ -37,15 +37,12 @@
     [super tearDown];
 }
 
-- (void) testBackupCreation
+- (void) testSampleExistence
 {
-    MFFuseBackup *testBackup = nil;
-    STAssertThrows(testBackup = [[MFFuseBackup alloc] initWithBackupFolder:nil], @"Backup obj allowed nil param.");
-    
     NSFileManager *fileMan = [NSFileManager defaultManager];
     STAssertTrue([fileMan fileExistsAtPath:[fuse270dir path]], @"Sample backup not found - fuse270");
 }
-
+/*
 - (void) testBackupValidation
 {
     MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
@@ -58,5 +55,6 @@
     MFFuseBackup *testBackup = [[MFFuseBackup alloc] initWithBackupFolder:fuse270dir];
     STAssertTrue([testBackup.backupDescription isEqualToString:@"TestBackup - Mustang 3 - Fuse 2.7"], @"Backup description not loaded");
 }
+*/
 
 @end
