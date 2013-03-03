@@ -14,6 +14,8 @@
 @property (weak) IBOutlet NSTableView *ampPresetTable;
 @property (weak) IBOutlet NSTextField *backupNameField;
 @property (weak) IBOutlet NSTextField *presetNameField;
+@property (weak) IBOutlet NSTextField *authorNameField;
+@property (weak) IBOutlet NSTextField *presetDescriptionField;
 
 - (IBAction)onReloadBtn:(id)sender;
 - (IBAction)onOpenBackupFolder:(id)sender;

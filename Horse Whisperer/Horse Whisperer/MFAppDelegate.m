@@ -217,8 +217,10 @@ NSString *PresetDropType = @"presetDropType";
 
 - (void) refreshUI
 {
-    [self.backupNameField setStringValue:self.currentBackup.backupDescription];
-    [self.presetNameField setStringValue:self.currentPreset.name];
+    [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];
+    [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
+    [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
+    [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
 }
 
 @end

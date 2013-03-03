@@ -64,7 +64,6 @@
     if ([elementName isEqualToString:@"Info"])
     {
         self.description = currentElementValue;
-        NSLog(@"     desc: %@", self.description);
     }
     
     currentElementValue = nil;
