@@ -145,9 +145,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     NSFileManager *fileMan = [NSFileManager defaultManager];
     
-    // create a new folder at the specified path
+    // create a new folder at the specified path - filename must be a date, otherwise
+    // FUSE won't see it
+    NSDate *now = [NSDate date];
+    NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
+    [filenameFormat setDateFormat:@"yyyy_MM_dd_hh_mm_ss"];
+    NSString *dateFileName = [filenameFormat stringFromDate:now];
+    
+    NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
+    
     NSError *error = nil;
-    [fileMan createDirectoryAtURL:url
+    [fileMan createDirectoryAtURL:destURL
       withIntermediateDirectories:YES
                        attributes:nil
                             error:&error];
@@ -160,7 +168,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // now copy over the settings & description files
     NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
     [fileMan copyItemAtPath:[backupFile path]
-                     toPath:[[url path] stringByAppendingPathComponent:BACKUP_FILENAME]
+                     toPath:[[destURL path] stringByAppendingPathComponent:BACKUP_FILENAME]
                       error:&error];
     
     if (error)
@@ -172,7 +180,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
     [fileMan copyItemAtPath:[settingsFile path]
-                     toPath:[[url path] stringByAppendingPathComponent:SETTINGS_FILENAME]
+                     toPath:[[destURL path] stringByAppendingPathComponent:SETTINGS_FILENAME]
                       error:&error];
     
     if (error)
@@ -181,8 +189,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return;
     }
     
-    // now rename and copy over the items in the Presets folder based on their new order
-    [self completeSaving:[self copyPresetFilesToNewDir:url]];
+    // now rename and copy over the items in the Presets folder based on their new order    
+    [self completeSaving:[self copyPresetFilesToNewDir:destURL]];
 }
 
 - (BOOL) copyPresetFilesToNewDir:(NSURL *)url
@@ -253,6 +261,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
             return NO;
         }
     }
+    
+    self.folderURL = url;
     
     return YES;
 }
