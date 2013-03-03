@@ -23,10 +23,13 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 {
     self.folderURL = url;
     
-    if (![self validateBackupContents])
-        return;
-    
     _completionBlock = block;
+    
+    if (![self validateBackupContents])
+    {
+        [self completeLoading:NO];
+        return;
+    }
     
     self.presets = [[NSMutableArray alloc] init];
     
@@ -97,7 +100,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
                                             encoding:NSUTF8StringEncoding];
     
     self.backupDescription = desc;    
-}
+}   
 
 // Loads "Preset" folder contents to get an overview of the preset files.
 - (void) loadPresetFiles
@@ -111,6 +114,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if (error)
     {
         NSLog(@"*** ERROR: error loading fuse files");
+        [self completeLoading:NO];
         return;
     }
     
@@ -125,10 +129,13 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         [self.presets addObject:cPreset];
     }
 
+    [self completeLoading:YES];
+}
+
+- (void) completeLoading:(BOOL)success
+{
     if (_completionBlock)
-    {
-        _completionBlock(YES);
-    }
+        _completionBlock(success);
 }
 
 @end
