@@ -8,6 +8,7 @@
 
 #import "MFFuseBackup.h"
 #import "MFFuseBackup+MFFuseBackup_Private.h"
+#import "MFPreset.h"
 
 NSString *FUSE_FOLDER = @"FUSE";
 NSString *PRESET_FOLDER = @"PRESETS";
@@ -108,6 +109,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     self.backupDescription = desc;    
 }
 
+// Loads FUSE folder contents to get an overview of the preset files. Grabs the
+// basic detail info. If more detailed preset info is needed, then that will be
+// loaded from the Presets folder as needed.
 - (void) loadFuseFiles
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
@@ -125,6 +129,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     for (int i = 0; i < presetContents.count; i++)
     {
         NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
+        
+        NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
+        MFPreset *cPreset = [[MFPreset alloc] init];
+        [cPreset loadPresetFile:cURL];
     }
 }
 

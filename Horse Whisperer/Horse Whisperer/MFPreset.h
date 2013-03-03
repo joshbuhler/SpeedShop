@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MFPreset : NSObject
+@interface MFPreset : NSObject <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *author;
+
+- (void) loadPresetFile:(NSURL *)url;
 
 @end
