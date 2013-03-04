@@ -10,6 +10,9 @@
 #import "MFFuseBackup.h"
 
 @interface MFAppDelegate()
+{
+    BOOL    _backupModified;
+}
 
 @property (nonatomic, strong) NSMutableArray *ampPresets;
 @property (nonatomic, strong) MFFuseBackup *currentBackup;
@@ -30,6 +33,8 @@ NSString *PresetDropType = @"presetDropType";
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
+    _backupModified = NO;
     
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:PresetDropType]];
@@ -130,6 +135,8 @@ NSString *PresetDropType = @"presetDropType";
     [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
         
     [self.ampPresetTable reloadData];
+    
+    _backupModified = YES;
 
     return YES;
 }
@@ -193,6 +200,8 @@ NSString *PresetDropType = @"presetDropType";
                 self.currentPreset = [self.currentBackup.presets objectAtIndex:0];
                 [self.ampPresetTable reloadData];
                 [self refreshUI];
+                
+                _backupModified = NO;
             }
             else
             {
@@ -210,6 +219,16 @@ NSString *PresetDropType = @"presetDropType";
             
         });
     }];    
+}
+
+- (BOOL) validateMenuItem:(NSMenuItem *)menuItem
+{
+    SEL theAction = [menuItem action];
+    
+    if (theAction == @selector(onSaveSelected:))
+        return _backupModified;
+    
+    return YES;
 }
 
 - (IBAction)onSaveSelected:(id)sender
