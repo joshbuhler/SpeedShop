@@ -176,10 +176,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // now copy over the settings & description files
-    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
-    [fileMan copyItemAtPath:[backupFile path]
-                     toPath:[[destURL path] stringByAppendingPathComponent:BACKUP_FILENAME]
-                      error:&error];
+    [self.backupDescription writeToURL:[destURL URLByAppendingPathComponent:BACKUP_FILENAME]
+                            atomically:YES
+                              encoding:NSUTF8StringEncoding
+                                 error:&error];
     
     if (error)
     {

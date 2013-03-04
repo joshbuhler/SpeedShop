@@ -235,7 +235,7 @@ NSString *PresetDropType = @"presetDropType";
 {
     //NSSavePanel *panel = [NSSavePanel savePanel];
     
-    // Open to the default Fuse backup directory (if it exists)
+    // Save to the default Fuse backup directory - otherwise Fuse won't see it
     NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
     
@@ -243,6 +243,8 @@ NSString *PresetDropType = @"presetDropType";
     if ([fileMan fileExistsAtPath:defaultFuseDir])
     {
         NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
+        
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
         
         [self.currentBackup saveBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
          {
@@ -321,6 +323,18 @@ NSString *PresetDropType = @"presetDropType";
     [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
     [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
     [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
+}
+
+- (void) controlTextDidChange:(NSNotification *)obj
+{
+    if ([obj object] == self.backupNameField)
+    {
+        if (self.currentBackup == nil)
+            return;
+        
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
+        _backupModified = YES;
+    }
 }
 
 @end
