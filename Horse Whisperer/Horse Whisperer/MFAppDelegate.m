@@ -68,8 +68,16 @@
 
 - (BOOL) tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
+    NSMutableDictionary *dragData = [[NSMutableDictionary alloc] init];
+    [dragData setObject:rowIndexes forKey:@"rowIndexes"];
+    [dragData setObject:[self.currentBackup.presets objectAtIndex:rowIndexes.firstIndex] forKey:@"presets"];
+    
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dragData];
     [pboard declareTypes:[NSArray arrayWithObject:DropTypeMFPreset] owner:self];
+    
+    // TODO: should we pass a MFPreset here instead of the row index? Or maybe along with it?
+    
     [pboard setData:data forType:DropTypeMFPreset];
     
     return YES;
@@ -97,7 +105,10 @@
 {
     NSPasteboard *pBoard = [info draggingPasteboard];
     NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
-    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+//    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    
+    NSIndexSet *rowIndexes = [dragData objectForKey:@"rowIndexes"];
     
     NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];
     
