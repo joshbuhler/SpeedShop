@@ -19,9 +19,6 @@
 
 @end
 
-
-NSString *PresetDropType = @"presetDropType";
-
 @implementation MFAppDelegate
 
 @synthesize currentBackup = _currentBackup;
@@ -34,7 +31,7 @@ NSString *PresetDropType = @"presetDropType";
     _backupModified = NO;
     
     // init drag/drop for the tableview
-    [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:PresetDropType]];
+    [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
 }
 
 #pragma mark - Tableview Delegate Methods
@@ -72,8 +69,8 @@ NSString *PresetDropType = @"presetDropType";
 - (BOOL) tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:PresetDropType] owner:self];
-    [pboard setData:data forType:PresetDropType];
+    [pboard declareTypes:[NSArray arrayWithObject:DropTypeMFPreset] owner:self];
+    [pboard setData:data forType:DropTypeMFPreset];
     
     return YES;
 }
@@ -99,7 +96,7 @@ NSString *PresetDropType = @"presetDropType";
 - (BOOL) tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
     NSPasteboard *pBoard = [info draggingPasteboard];
-    NSData *rowData = [pBoard dataForType:PresetDropType];
+    NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     
     NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];

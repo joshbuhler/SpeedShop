@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const DropTypeMFPreset;
+
 @interface MFPreset : NSObject <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSString *name;

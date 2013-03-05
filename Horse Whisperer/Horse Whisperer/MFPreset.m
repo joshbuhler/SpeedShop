@@ -8,6 +8,8 @@
 
 #import "MFPreset.h"
 
+NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
+
 @interface MFPreset()
 {
     NSMutableString *currentElementValue;
