@@ -226,10 +226,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         [self completeSaving:NO];
     }
     
-    // TODO: copy from the temp dir to the destination
-//    [fileMan moveItemAtURL:tempDir
-//                     toURL:destURL
-//                     error:&error];
     [fileMan replaceItemAtURL:destURL
                 withItemAtURL:tempDir
                backupItemName:[NSString stringWithFormat:@"%@_backup", [destURL lastPathComponent]]
@@ -240,7 +236,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if (error)
     {
         [self completeSaving:NO];
-    }    
+    }
+    
+    _newFolderURL = destURL;
     
     // If we made it this far, we're good
     [self completeSaving:YES];
@@ -314,8 +312,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
             return NO;
         }
     }
-    
-    _newFolderURL = url;
     
     return YES;
 }
