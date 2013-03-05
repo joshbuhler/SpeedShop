@@ -20,6 +20,8 @@
 - (IBAction)onReloadBtn:(id)sender;
 
 - (IBAction)onOpenBackupFolder:(id)sender;
+
 - (IBAction)onSaveSelected:(id)sender;
+- (IBAction)onSaveAsSelected:(id)sender;
 
 @end

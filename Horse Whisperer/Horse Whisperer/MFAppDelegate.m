@@ -225,13 +225,45 @@ NSString *PresetDropType = @"presetDropType";
 {
     SEL theAction = [menuItem action];
     
-    if (theAction == @selector(onSaveSelected:))
+    if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
         return _backupModified;
     
     return YES;
 }
 
 - (IBAction)onSaveSelected:(id)sender
+{
+    [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
+     {
+         NSAlert *alert;
+         if (success)
+         {
+             alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
+                                     defaultButton:@"OK"
+                                   alternateButton:nil
+                                       otherButton:nil
+                         informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp."];
+             
+             // todo: reload the newly saved file
+             [self loadBackupFile:newURL];
+         }
+         else
+         {
+             alert = [NSAlert alertWithMessageText:@"Unable to save backup"
+                                     defaultButton:@"OK"
+                                   alternateButton:nil
+                                       otherButton:nil
+                         informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+         }
+         
+         [alert beginSheetModalForWindow:self.window
+                           modalDelegate:nil
+                          didEndSelector:nil
+                             contextInfo:nil];
+     }];
+}
+
+- (IBAction)onSaveAsSelected:(id)sender
 {
     //NSSavePanel *panel = [NSSavePanel savePanel];
     
@@ -255,7 +287,7 @@ NSString *PresetDropType = @"presetDropType";
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@""];
+                             informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp."];
                  
                  // todo: reload the newly saved file
                  [self loadBackupFile:newURL];

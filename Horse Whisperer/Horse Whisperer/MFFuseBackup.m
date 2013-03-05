@@ -149,9 +149,12 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 #pragma mark - Exporting / Saving
+// Saves to the existing location
 - (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block
 {
+    _saveCompletionBlock = block;
     
+    [self saveToURL:self.folderURL];
 }
 
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
@@ -172,9 +175,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 - (void) saveToURL:(NSURL *)destURL
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
-    
     NSError *error = nil;
-    [fileMan createDirectoryAtURL:destURL
+    
+    // copy write to a temp dir, then copy to the destination once done
+    NSURL *tempDir = [fileMan URLForDirectory:NSItemReplacementDirectory
+                                     inDomain:NSUserDomainMask
+                            appropriateForURL:destURL
+                                       create:YES
+                                        error:&error];
+    
+    
+    [fileMan createDirectoryAtURL:tempDir
       withIntermediateDirectories:YES
                        attributes:nil
                             error:&error];
@@ -185,7 +196,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // now copy over the settings & description files
-    [self.backupDescription writeToURL:[destURL URLByAppendingPathComponent:BACKUP_FILENAME]
+    [self.backupDescription writeToURL:[tempDir URLByAppendingPathComponent:BACKUP_FILENAME]
                             atomically:YES
                               encoding:NSUTF8StringEncoding
                                  error:&error];
@@ -199,7 +210,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
     [fileMan copyItemAtPath:[settingsFile path]
-                     toPath:[[destURL path] stringByAppendingPathComponent:SETTINGS_FILENAME]
+                     toPath:[[tempDir path] stringByAppendingPathComponent:SETTINGS_FILENAME]
                       error:&error];
     
     if (error)
@@ -208,8 +219,31 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return;
     }
     
-    // now rename and copy over the items in the Presets folder based on their new order    
-    [self completeSaving:[self copyPresetFilesToNewDir:destURL]];
+    // now rename and copy over the items in the Presets folder based on their new order
+    BOOL presetsCopied = [self copyPresetFilesToNewDir:tempDir];
+    if (presetsCopied == NO)
+    {
+        [self completeSaving:NO];
+    }
+    
+    // TODO: copy from the temp dir to the destination
+//    [fileMan moveItemAtURL:tempDir
+//                     toURL:destURL
+//                     error:&error];
+    [fileMan replaceItemAtURL:destURL
+                withItemAtURL:tempDir
+               backupItemName:[NSString stringWithFormat:@"%@_backup", [destURL lastPathComponent]]
+                      options:0
+             resultingItemURL:&destURL
+                        error:&error];
+    
+    if (error)
+    {
+        [self completeSaving:NO];
+    }    
+    
+    // If we made it this far, we're good
+    [self completeSaving:YES];
 }
 
 - (BOOL) copyPresetFilesToNewDir:(NSURL *)url
