@@ -128,6 +128,7 @@
     [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
         
     [self.ampPresetTable reloadData];
+    [self.ampPresetTable deselectAll:nil];
     
     _backupModified = YES;
 
@@ -135,8 +136,12 @@
 }
 
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
-{   
-    self.currentPreset = [self.currentBackup.presets objectAtIndex:self.ampPresetTable.selectedRow];
+{
+    NSInteger selectedRow = self.ampPresetTable.selectedRow;
+    if (selectedRow < 0)
+        return;
+    
+    self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
     
     [self refreshUI];
 }
