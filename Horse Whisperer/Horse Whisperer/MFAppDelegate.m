@@ -14,7 +14,6 @@
     BOOL    _backupModified;
 }
 
-@property (nonatomic, strong) NSMutableArray *ampPresets;
 @property (nonatomic, strong) MFFuseBackup *currentBackup;
 @property (nonatomic, strong) MFPreset *currentPreset;
 
@@ -25,31 +24,18 @@ NSString *PresetDropType = @"presetDropType";
 
 @implementation MFAppDelegate
 
-@synthesize ampPresets = _ampPresets;
 @synthesize currentBackup = _currentBackup;
 
 #pragma mark - View LifeCycle
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
-    
+    // Insert code here to initialize your application    
     _backupModified = NO;
     
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:PresetDropType]];
-    
-    
-    // build some junk data for now
-    _ampPresets = [NSMutableArray new];
-    for (int i = 0; i < 100; i++)
-    {
-        [_ampPresets addObject:[NSString stringWithFormat:@"Preset %02d", i]];
-    }
 }
-
-#pragma mark - File Loading
-
 
 #pragma mark - Tableview Delegate Methods
 
@@ -57,8 +43,8 @@ NSString *PresetDropType = @"presetDropType";
 {
     NSInteger count = 0;
     
-    if (_ampPresets)
-        count = _ampPresets.count;
+    if (self.currentBackup)
+        count = self.currentBackup.presets.count;
     
     return count;
 }
@@ -189,6 +175,7 @@ NSString *PresetDropType = @"presetDropType";
     }];
 }
 
+#pragma mark - File Loading
 - (void) loadBackupFile:(NSURL *)url
 {
     self.currentBackup = [[MFFuseBackup alloc] init];
