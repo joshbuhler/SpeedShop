@@ -149,11 +149,14 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 #pragma mark - Exporting / Saving
-- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
+- (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block
+{
+    
+}
+
+- (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
 {
     _saveCompletionBlock = block;
-    
-    NSFileManager *fileMan = [NSFileManager defaultManager];
     
     // create a new folder at the specified path - filename must be a date, otherwise
     // FUSE won't see it
@@ -163,6 +166,12 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSString *dateFileName = [filenameFormat stringFromDate:now];
     
     NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
+    [self saveToURL:destURL];
+}
+
+- (void) saveToURL:(NSURL *)destURL
+{
+    NSFileManager *fileMan = [NSFileManager defaultManager];
     
     NSError *error = nil;
     [fileMan createDirectoryAtURL:destURL

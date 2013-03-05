@@ -246,7 +246,7 @@ NSString *PresetDropType = @"presetDropType";
         
         self.currentBackup.backupDescription = self.backupNameField.stringValue;
         
-        [self.currentBackup saveBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
+        [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
          {
              NSAlert *alert;
              if (success)

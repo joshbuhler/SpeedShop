@@ -20,6 +20,7 @@ typedef void (^MFFuseBackupSaveCompletion)(BOOL, NSURL*);
 @property (nonatomic, strong) NSMutableArray *presets;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
-- (void) saveBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
+- (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block;
+- (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
 
 @end
