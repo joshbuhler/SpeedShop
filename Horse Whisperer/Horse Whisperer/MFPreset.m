@@ -12,7 +12,10 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
 @interface MFPreset()
 {
+    // Used for XML parsing
     NSMutableString *currentElementValue;
+    
+    // Location of the file on disk
     NSURL *_fileURL;
 }
 
@@ -40,6 +43,25 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 - (NSURL *) fileURL
 {
     return _fileURL;
+}
+
+#pragma mark - NSCoding Methods
+- (void) encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:name forKey:@"name"];
+    [encoder encodeObject:author forKey:@"author"];
+    [encoder encodeObject:description forKey:@"description"];
+    [encoder encodeObject:_fileURL forKey:@"fileURL"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self.name = [decoder decodeObjectForKey:@"name"];
+    self.author = [decoder decodeObjectForKey:@"author"];
+    self.description = [decoder decodeObjectForKey:@"description"];
+    _fileURL = [decoder decodeObjectForKey:@"fileURL"];
+    
+    return self;
 }
 
 

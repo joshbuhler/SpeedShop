@@ -10,7 +10,7 @@
 
 extern NSString *const DropTypeMFPreset;
 
-@interface MFPreset : NSObject <NSXMLParserDelegate>
+@interface MFPreset : NSObject <NSCoding, NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *author;

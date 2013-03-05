@@ -70,13 +70,10 @@
 {
     NSMutableDictionary *dragData = [[NSMutableDictionary alloc] init];
     [dragData setObject:rowIndexes forKey:@"rowIndexes"];
-    [dragData setObject:[self.currentBackup.presets objectAtIndex:rowIndexes.firstIndex] forKey:@"presets"];
-    
+    [dragData setObject:[self.currentBackup.presets objectAtIndex:rowIndexes.firstIndex] forKey:@"preset"];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dragData];
     [pboard declareTypes:[NSArray arrayWithObject:DropTypeMFPreset] owner:self];
-    
-    // TODO: should we pass a MFPreset here instead of the row index? Or maybe along with it?
     
     [pboard setData:data forType:DropTypeMFPreset];
     
@@ -105,8 +102,10 @@
 {
     NSPasteboard *pBoard = [info draggingPasteboard];
     NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
-//    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    
+    MFPreset *thePreset = [dragData objectForKey:@"preset"];
+    NSLog(@"dragged: %@", thePreset.name);
     
     NSIndexSet *rowIndexes = [dragData objectForKey:@"rowIndexes"];
     
