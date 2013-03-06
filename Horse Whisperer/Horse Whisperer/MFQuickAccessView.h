@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MFFuseBackup.h"
 
 @interface MFQuickAccessView : NSView
+
+@property (nonatomic, strong) MFPreset *preset;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MFQuickAccessView.h"
 
 @interface MFAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
@@ -16,6 +17,9 @@
 @property (weak) IBOutlet NSTextField *presetNameField;
 @property (weak) IBOutlet NSTextField *authorNameField;
 @property (weak) IBOutlet NSTextField *presetDescriptionField;
+@property (weak) IBOutlet MFQuickAccessView *qaBox1;
+@property (weak) IBOutlet MFQuickAccessView *qaBox2;
+@property (weak) IBOutlet MFQuickAccessView *qaBox3;
 
 - (IBAction)onReloadBtn:(id)sender;
 

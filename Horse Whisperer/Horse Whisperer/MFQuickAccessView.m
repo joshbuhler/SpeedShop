@@ -7,9 +7,11 @@
 //
 
 #import "MFQuickAccessView.h"
-#import "MFFuseBackup.h"
+
 
 @implementation MFQuickAccessView
+
+@synthesize preset = _preset;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -52,7 +54,12 @@
     if ([[pBoard types] containsObject:DropTypeMFPreset])
     {
         // accept the preset
-        NSLog(@"preset accepted:");
+        NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
+        NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+        
+        MFPreset *thePreset = [dragData objectForKey:@"preset"];
+        NSLog(@"preset accepted: %@", thePreset.name);
+        self.preset = thePreset;
     }
     
     return YES;
