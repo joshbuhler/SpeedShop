@@ -29,8 +29,11 @@
         // Initialization code here.
         [self registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
         
-        [NSBundle loadNibNamed:@"MFQuickAccessView"
-                                      owner:self];
+        NSNib *nib = [[NSNib alloc] initWithNibNamed:@"MFQuickAccessView"
+                                              bundle:[NSBundle mainBundle]];
+        [nib instantiateNibWithOwner:self
+                     topLevelObjects:nil];
+                      
         [self addSubview:self.view];
     }
     
