@@ -8,10 +8,18 @@
 
 #import "MFQuickAccessView.h"
 
+@interface MFQuickAccessView()
+
+@property (nonatomic, strong) IBOutlet NSTextField *presetLabel;
+@property (nonatomic, strong) IBOutlet NSView *view;
+
+@end
 
 @implementation MFQuickAccessView
 
 @synthesize preset = _preset;
+@synthesize presetLabel;
+@synthesize view;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -20,9 +28,20 @@
     {
         // Initialization code here.
         [self registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
+        
+        [NSBundle loadNibNamed:@"MFQuickAccessView"
+                                      owner:self];
+        [self addSubview:self.view];
     }
     
     return self;
+}
+
+- (void) awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self addSubview:self.view];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -60,6 +79,7 @@
         MFPreset *thePreset = [dragData objectForKey:@"preset"];
         NSLog(@"preset accepted: %@", thePreset.name);
         self.preset = thePreset;
+        [presetLabel setStringValue:thePreset.name];
     }
     
     return YES;

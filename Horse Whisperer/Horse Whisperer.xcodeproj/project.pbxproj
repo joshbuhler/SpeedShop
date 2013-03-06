@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0303040D16E6F9C100490253 /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303040C16E6F9C100490253 /* MFQuickAccessView.m */; };
+		0303040F16E702E200490253 /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0303040E16E702E200490253 /* MFQuickAccessView.xib */; };
 		0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327251C16E2AE93003A8E3E /* MFFuseBackup.m */; };
 		0327252016E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
 		0327252116E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		0303040B16E6F9C100490253 /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
 		0303040C16E6F9C100490253 /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
+		0303040E16E702E200490253 /* MFQuickAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFQuickAccessView.xib; sourceTree = "<group>"; };
 		0327251B16E2AE93003A8E3E /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
 		0327251C16E2AE93003A8E3E /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
 		0327251F16E2B244003A8E3E /* SampleBackups */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SampleBackups; path = ../SampleBackups; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				03BF544416DF11CF00895128 /* Supporting Files */,
 				0303040B16E6F9C100490253 /* MFQuickAccessView.h */,
 				0303040C16E6F9C100490253 /* MFQuickAccessView.m */,
+				0303040E16E702E200490253 /* MFQuickAccessView.xib */,
 			);
 			path = "Horse Whisperer";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				03BF544E16DF11CF00895128 /* Credits.rtf in Resources */,
 				03BF545416DF11CF00895128 /* MainMenu.xib in Resources */,
 				0327252016E2B244003A8E3E /* SampleBackups in Resources */,
+				0303040F16E702E200490253 /* MFQuickAccessView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
