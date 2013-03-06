@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0303040D16E6F9C100490253 /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303040C16E6F9C100490253 /* MFQuickAccessView.m */; };
 		0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327251C16E2AE93003A8E3E /* MFFuseBackup.m */; };
 		0327252016E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
 		0327252116E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0303040B16E6F9C100490253 /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
+		0303040C16E6F9C100490253 /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
 		0327251B16E2AE93003A8E3E /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
 		0327251C16E2AE93003A8E3E /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
 		0327251F16E2B244003A8E3E /* SampleBackups */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SampleBackups; path = ../SampleBackups; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				03BF545016DF11CF00895128 /* MFAppDelegate.m */,
 				03BF545216DF11CF00895128 /* MainMenu.xib */,
 				03BF544416DF11CF00895128 /* Supporting Files */,
+				0303040B16E6F9C100490253 /* MFQuickAccessView.h */,
+				0303040C16E6F9C100490253 /* MFQuickAccessView.m */,
 			);
 			path = "Horse Whisperer";
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				03BF547416DF1BDD00895128 /* MFPreset.m in Sources */,
 				03BF547816DF1BFF00895128 /* MFModule.m in Sources */,
 				0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */,
+				0303040D16E6F9C100490253 /* MFQuickAccessView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
