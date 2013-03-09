@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class MFFuseBackup;
+
 extern NSString *const DropTypeMFPreset;
 
 @interface MFPreset : NSObject <NSCoding, NSXMLParserDelegate>
+
+@property (nonatomic, strong) MFFuseBackup *backup;
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *author;

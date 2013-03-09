@@ -26,5 +26,5 @@ typedef void (^MFFuseBackupSaveCompletion)(BOOL, NSURL*);
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
 
 - (MFPreset *) presetForQASlot:(int)qaSlot;
-
+- (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot;
 @end

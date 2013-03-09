@@ -32,6 +32,10 @@
     
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
+    
+    self.qaBox1.delegate = self;
+    self.qaBox2.delegate = self;
+    self.qaBox3.delegate = self;
 }
 
 #pragma mark - Tableview Delegate Methods
@@ -370,6 +374,27 @@
         self.currentBackup.backupDescription = self.backupNameField.stringValue;
         _backupModified = YES;
     }
+}
+
+- (void) presetDidChangeForQAView:(MFQuickAccessView *)qaView
+{
+    int qaSlot = 0;
+    if (qaView == self.qaBox1)
+    {
+        qaSlot = 0;
+    }
+    
+    if (qaView == self.qaBox2)
+    {
+        qaSlot = 1;
+    }
+    
+    if (qaView == self.qaBox3)
+    {
+        qaSlot = 2;
+    }
+    
+    [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
 }
 
 @end

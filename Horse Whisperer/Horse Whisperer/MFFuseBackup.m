@@ -187,6 +187,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         
         NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
         MFPreset *cPreset = [[MFPreset alloc] init];
+        
+        cPreset.backup = self;
+        
         [cPreset loadPresetFile:cURL];
         
         [self.presets addObject:cPreset];
@@ -381,6 +384,11 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     int theIndex = [[self.quickAccessPresets objectAtIndex:qaSlot] intValue];
     MFPreset *preset = [self.presets objectAtIndex:theIndex];
     return preset;
+}
+
+- (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot
+{
+    [self.quickAccessPresets setObject:preset atIndexedSubscript:qaSlot];
 }
 
 @end

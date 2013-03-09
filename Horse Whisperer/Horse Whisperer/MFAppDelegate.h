@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "MFQuickAccessView.h"
 
-@interface MFAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface MFAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, MFQuickAccessViewDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTableView *ampPresetTable;

@@ -23,6 +23,8 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
 @implementation MFPreset
 
+@synthesize backup;
+
 @synthesize name;
 @synthesize author;
 @synthesize description;

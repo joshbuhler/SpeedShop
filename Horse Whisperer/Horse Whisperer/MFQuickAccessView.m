@@ -20,6 +20,7 @@
 @synthesize preset = _preset;
 @synthesize presetLabel;
 @synthesize view;
+@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -95,9 +96,19 @@
         NSLog(@"preset accepted: %@", thePreset.name);
         self.preset = thePreset;
         [presetLabel setStringValue:thePreset.name];
+        
+        if (self.delegate)
+        {
+            if ([self.delegate respondsToSelector:@selector(presetDidChangeForQAView:)])
+            {
+                [self.delegate presetDidChangeForQAView:self];
+            }
+        }
     }
     
     return YES;
 }
+
+
 
 @end
