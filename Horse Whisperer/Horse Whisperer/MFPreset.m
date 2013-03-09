@@ -28,6 +28,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 @synthesize name;
 @synthesize author;
 @synthesize description;
+@synthesize uuid;
 
 - (void) loadPresetFile:(NSURL *)url
 {
@@ -54,6 +55,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     [encoder encodeObject:author forKey:@"author"];
     [encoder encodeObject:description forKey:@"description"];
     [encoder encodeObject:_fileURL forKey:@"fileURL"];
+    [encoder encodeObject:uuid forKey:@"uuid"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -62,6 +64,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     self.author = [decoder decodeObjectForKey:@"author"];
     self.description = [decoder decodeObjectForKey:@"description"];
     _fileURL = [decoder decodeObjectForKey:@"fileURL"];
+    self.uuid = [decoder decodeObjectForKey:@"uuid"];
     
     return self;
 }

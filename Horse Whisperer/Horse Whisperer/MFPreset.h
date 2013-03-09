@@ -20,6 +20,11 @@ extern NSString *const DropTypeMFPreset;
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *description;
 
+// For tracking a preset as it moves around. Odds are good that we'll have name
+// overlaps, so comparing a preset name is no good. When a preset is loaded
+// with the backup, we'll generate a uuid to save with the preset.
+@property (nonatomic, strong) NSString *uuid;
+
 - (void) loadPresetFile:(NSURL *)url;
 
 - (NSURL *) fileURL;
