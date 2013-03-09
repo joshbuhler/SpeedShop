@@ -12,12 +12,14 @@
 typedef void (^MFFuseBackupCompletion)(BOOL);
 typedef void (^MFFuseBackupSaveCompletion)(BOOL, NSURL*);
 
-@interface MFFuseBackup : NSObject
+@interface MFFuseBackup : NSObject <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSURL *folderURL;
 @property (nonatomic, strong) NSString *backupDescription;
 
 @property (nonatomic, strong) NSMutableArray *presets;
+
+@property (nonatomic, strong) NSMutableArray *quickAccessPresets;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
 - (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block;

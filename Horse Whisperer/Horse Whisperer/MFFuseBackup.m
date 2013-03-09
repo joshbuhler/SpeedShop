@@ -20,6 +20,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     MFFuseBackupSaveCompletion  _saveCompletionBlock;
     
     NSURL   *_newFolderURL;
+    
+    // Used for XML parsing
+    NSMutableString *currentElementValue;
 }
 
 @end
@@ -28,6 +31,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 @synthesize folderURL = _folderURL;
 @synthesize presets = _presets;
+@synthesize quickAccessPresets = _quickAccessPresets;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {
@@ -42,6 +46,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     self.presets = [[NSMutableArray alloc] init];
+    self.quickAccessPresets = [[NSMutableArray alloc] init];
     
     [self loadBackupContents];
 }
@@ -95,6 +100,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 - (void) loadBackupContents
 {
     [self loadBackupDescription];
+    [self loadAmpSettings];
     
     // TODO: delegate progress method for loading status (we do have to analyze 99 files, after all)
     [self loadPresetFiles];
@@ -110,7 +116,54 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
                                             encoding:NSUTF8StringEncoding];
     
     self.backupDescription = desc;    
-}   
+}
+
+- (void) loadAmpSettings
+{
+    NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
+    
+    NSXMLParser *cParser = [[NSXMLParser alloc] initWithContentsOfURL:settingsFile];
+    
+    currentElementValue = nil;
+    self.quickAccessPresets = [[NSMutableArray alloc] init];
+    
+    cParser.delegate = self;
+    [cParser setShouldResolveExternalEntities:YES];
+    [cParser parse];
+}
+
+#pragma mark - NSXMLParserDelegate methods
+- (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    if ([elementName isEqualToString:@"QA"])
+    {
+        currentElementValue = nil;
+    }
+}
+
+- (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    if (!currentElementValue)
+    {
+        currentElementValue = [[NSMutableString alloc] initWithString:string];
+    }
+    else
+    {
+        [currentElementValue appendString:string];
+    }
+}
+
+- (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if ([elementName isEqualToString:@"QA"])
+    {
+        [_quickAccessPresets addObject:[NSNumber numberWithInt:[currentElementValue intValue]]];
+    }
+    
+    currentElementValue = nil;
+}
+
+#pragma mark - Preset Loading
 
 // Loads "Preset" folder contents to get an overview of the preset files.
 - (void) loadPresetFiles
@@ -143,7 +196,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 - (void) completeLoading:(BOOL)success
-{
+{    
     if (_loadCompletionBlock)
         _loadCompletionBlock(success);
 }
