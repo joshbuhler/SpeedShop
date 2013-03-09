@@ -189,6 +189,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         MFPreset *cPreset = [[MFPreset alloc] init];
         
         cPreset.backup = self;
+        cPreset.uuid = [self newUUID];
         
         [cPreset loadPresetFile:cURL];
         
@@ -263,8 +264,31 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return;
     }
     
-    
+    //**
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
+    NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
+                                                                      options:NSXMLDocumentTidyXML
+                                                                        error:&error];
+    NSXMLElement *docRoot = [settingsXML rootElement];
+    // replace the first three QA nodes
+    NSNumber *qaIndex1 = (NSNumber *)[self.quickAccessPresets objectAtIndex:0];
+    MFPreset *preset1 = (MFPreset *)[self.presets objectAtIndex:[qaIndex1 intValue]];
+    int index1 = [self indexForPreset:preset1];
+    NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
+    [docRoot replaceChildAtIndex:0 withNode:qa1];
+    
+    NSNumber *qaIndex2 = (NSNumber *)[self.quickAccessPresets objectAtIndex:1];
+    MFPreset *preset2 = (MFPreset *)[self.presets objectAtIndex:[qaIndex2 intValue]];
+    int index2 = [self indexForPreset:preset2];
+    NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
+    [docRoot replaceChildAtIndex:1 withNode:qa2];
+    
+    NSNumber *qaIndex3 = (NSNumber *)[self.quickAccessPresets objectAtIndex:2];
+    MFPreset *preset3 = (MFPreset *)[self.presets objectAtIndex:[qaIndex3 intValue]];
+    int index3 = [self indexForPreset:preset3];
+    NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
+    [docRoot replaceChildAtIndex:2 withNode:qa3];
+    
     [fileMan copyItemAtPath:[settingsFile path]
                      toPath:[[tempDir path] stringByAppendingPathComponent:SETTINGS_FILENAME]
                       error:&error];
@@ -274,6 +298,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         [self completeSaving:NO];
         return;
     }
+    
+    //*****
     
     // now rename and copy over the items in the Presets folder based on their new order
     BOOL presetsCopied = [self copyPresetFilesToNewDir:tempDir];
@@ -388,7 +414,35 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot
 {
-    [self.quickAccessPresets setObject:preset atIndexedSubscript:qaSlot];
+    int index = [self indexForPreset:preset];
+    [self.quickAccessPresets setObject:[NSNumber numberWithInt:index]
+                    atIndexedSubscript:qaSlot];
+}
+
+- (int) indexForPreset:(MFPreset *)preset
+{
+    for (int i = 0; i < self.presets.count; i++)
+    {
+        MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
+        if ([preset.uuid isEqualToString:cPreset.uuid])
+        {
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
+- (NSString *) newUUID
+{
+    NSString *uuidString = nil;
+    CFUUIDRef uuid = CFUUIDCreate(NULL);
+    if (uuid)
+    {
+        uuidString = (NSString *)CFBridgingRelease(CFUUIDCreateString(NULL, uuid));
+        CFRelease(uuid);
+    }
+    return uuidString;
 }
 
 @end
