@@ -395,6 +395,7 @@
     }
     
     [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
+    _backupModified = YES;
 }
 
 @end
