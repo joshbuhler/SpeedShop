@@ -78,7 +78,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
         self.name = [attributeDict valueForKey:@"name"];
         self.author = [attributeDict valueForKey:@"author"];
         
-        NSLog(@"     Preset: %@ by %@", self.name, self.author);
+        //NSLog(@"     Preset: %@ by %@", self.name, self.author);
         
         currentElementValue = nil;
     }

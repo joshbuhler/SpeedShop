@@ -183,7 +183,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     for (int i = 0; i < presetContents.count; i++)
     {
-        NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
+        //NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
         
         NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
         MFPreset *cPreset = [[MFPreset alloc] init];
