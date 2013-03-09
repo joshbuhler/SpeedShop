@@ -13,6 +13,4 @@
 
 @property (nonatomic, strong) MFPreset *preset;
 
-//@property (weak) IBOutlet NSTextField *presetLabel;
-
 @end

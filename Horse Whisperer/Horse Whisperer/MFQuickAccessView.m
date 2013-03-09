@@ -52,6 +52,18 @@
     // Drawing code here.
 }
 
+- (void) setPreset:(MFPreset *)preset
+{
+    _preset = preset;
+    
+    [self refreshUI];
+}
+
+- (void) refreshUI
+{
+    [self.presetLabel setStringValue:_preset.name];
+}
+
 
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender
 {

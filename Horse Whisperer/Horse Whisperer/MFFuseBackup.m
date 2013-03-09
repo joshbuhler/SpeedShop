@@ -375,4 +375,12 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         _saveCompletionBlock(success, _newFolderURL);
 }
 
+
+- (MFPreset *) presetForQASlot:(int)qaSlot
+{
+    int theIndex = [[self.quickAccessPresets objectAtIndex:qaSlot] intValue];
+    MFPreset *preset = [self.presets objectAtIndex:theIndex];
+    return preset;
+}
+
 @end
