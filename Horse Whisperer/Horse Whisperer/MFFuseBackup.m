@@ -264,7 +264,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return;
     }
     
-    //**
+    // Saving of the settings file
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
     NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
                                                                       options:NSXMLDocumentTidyXML | NSXMLNodePreserveDTD
@@ -289,9 +289,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
     [docRoot replaceChildAtIndex:2 withNode:qa3];
     
-//    [fileMan copyItemAtPath:[settingsFile path]
-//                     toPath:[[tempDir path] stringByAppendingPathComponent:SETTINGS_FILENAME]
-//                      error:&error];
     NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint | NSXMLNodePreserveDTD];
     NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
@@ -305,8 +302,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         [self completeSaving:NO];
         return;
     }
-    
-    //*****
     
     // now rename and copy over the items in the Presets folder based on their new order
     BOOL presetsCopied = [self copyPresetFilesToNewDir:tempDir];
