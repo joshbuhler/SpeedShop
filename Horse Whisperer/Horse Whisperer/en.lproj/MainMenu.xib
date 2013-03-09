@@ -25,6 +25,10 @@
 			<string>NSTableView</string>
 			<string>NSTextField</string>
 			<string>NSTextFieldCell</string>
+			<string>NSToolbar</string>
+			<string>NSToolbarFlexibleSpaceItem</string>
+			<string>NSToolbarItem</string>
+			<string>NSToolbarSpaceItem</string>
 			<string>NSView</string>
 			<string>NSWindowTemplate</string>
 		</array>
@@ -663,7 +667,146 @@
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">Horse Whisperer</string>
 				<string key="NSWindowClass">NSWindow</string>
-				<nil key="NSViewClass"/>
+				<object class="NSToolbar" key="NSViewClass" id="805442432">
+					<object class="NSMutableString" key="NSToolbarIdentifier">
+						<characters key="NS.bytes">C55F7306-E437-4E6F-8385-51D910277ABB</characters>
+					</object>
+					<nil key="NSToolbarDelegate"/>
+					<bool key="NSToolbarPrefersToBeShown">YES</bool>
+					<bool key="NSToolbarShowsBaselineSeparator">YES</bool>
+					<bool key="NSToolbarAllowsUserCustomization">YES</bool>
+					<bool key="NSToolbarAutosavesConfiguration">NO</bool>
+					<int key="NSToolbarDisplayMode">1</int>
+					<int key="NSToolbarSizeMode">1</int>
+					<dictionary class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems">
+						<object class="NSToolbarItem" key="5971B531-FB49-46D8-AF90-18FC6544938B" id="417144867">
+							<object class="NSMutableString" key="NSToolbarItemIdentifier">
+								<characters key="NS.bytes">5971B531-FB49-46D8-AF90-18FC6544938B</characters>
+							</object>
+							<string key="NSToolbarItemLabel">Save As Copy</string>
+							<string key="NSToolbarItemPaletteLabel">Save As Copy</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<nil key="NSToolbarItemImage"/>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
+						<object class="NSToolbarItem" key="644CD90F-6478-4638-A8F6-859127099B88" id="682074946">
+							<object class="NSMutableString" key="NSToolbarItemIdentifier">
+								<characters key="NS.bytes">644CD90F-6478-4638-A8F6-859127099B88</characters>
+							</object>
+							<string key="NSToolbarItemLabel">Save Backup</string>
+							<string key="NSToolbarItemPaletteLabel">Save Backup</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<nil key="NSToolbarItemImage"/>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
+						<object class="NSToolbarFlexibleSpaceItem" key="NSToolbarFlexibleSpaceItem" id="321023063">
+							<string key="NSToolbarItemIdentifier">NSToolbarFlexibleSpaceItem</string>
+							<string key="NSToolbarItemLabel"/>
+							<string key="NSToolbarItemPaletteLabel">Flexible Space</string>
+							<nil key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<nil key="NSToolbarItemImage"/>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{1, 5}</string>
+							<string key="NSToolbarItemMaxSize">{20000, 32}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+							<object class="NSMenuItem" key="NSToolbarItemMenuFormRepresentation">
+								<bool key="NSIsDisabled">YES</bool>
+								<bool key="NSIsSeparator">YES</bool>
+								<string key="NSTitle"/>
+								<string key="NSKeyEquiv"/>
+								<int key="NSKeyEquivModMask">1048576</int>
+								<int key="NSMnemonicLoc">2147483647</int>
+								<reference key="NSOnImage" ref="35465992"/>
+								<reference key="NSMixedImage" ref="502551668"/>
+							</object>
+						</object>
+						<object class="NSToolbarItem" key="NSToolbarPrintItem" id="1062933829">
+							<string key="NSToolbarItemIdentifier">NSToolbarPrintItem</string>
+							<string key="NSToolbarItemLabel">Print</string>
+							<string key="NSToolbarItemPaletteLabel">Print</string>
+							<string key="NSToolbarItemToolTip">Print</string>
+							<nil key="NSToolbarItemView"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">NSToolbarPrint</string>
+							</object>
+							<nil key="NSToolbarItemTarget"/>
+							<string key="NSToolbarItemAction">printDocument:</string>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
+						<object class="NSToolbarSpaceItem" key="NSToolbarSpaceItem" id="866513557">
+							<string key="NSToolbarItemIdentifier">NSToolbarSpaceItem</string>
+							<string key="NSToolbarItemLabel"/>
+							<string key="NSToolbarItemPaletteLabel">Space</string>
+							<nil key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<nil key="NSToolbarItemImage"/>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{32, 5}</string>
+							<string key="NSToolbarItemMaxSize">{32, 32}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+							<object class="NSMenuItem" key="NSToolbarItemMenuFormRepresentation">
+								<bool key="NSIsDisabled">YES</bool>
+								<bool key="NSIsSeparator">YES</bool>
+								<string key="NSTitle"/>
+								<string key="NSKeyEquiv"/>
+								<int key="NSKeyEquivModMask">1048576</int>
+								<int key="NSMnemonicLoc">2147483647</int>
+								<reference key="NSOnImage" ref="35465992"/>
+								<reference key="NSMixedImage" ref="502551668"/>
+							</object>
+						</object>
+					</dictionary>
+					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
+						<reference ref="682074946"/>
+						<reference ref="417144867"/>
+						<reference ref="1062933829"/>
+						<reference ref="866513557"/>
+						<reference ref="321023063"/>
+					</array>
+					<array key="NSToolbarIBDefaultItems">
+						<reference ref="682074946"/>
+						<reference ref="417144867"/>
+						<reference ref="321023063"/>
+						<reference ref="1062933829"/>
+					</array>
+					<array key="NSToolbarIBSelectableItems" id="0"/>
+				</object>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMaxSize">{717, 663}</string>
 				<string key="NSWindowContentMinSize">{717, 663}</string>
@@ -1127,8 +1270,8 @@
 					<reference key="NSNextKeyView" ref="263748066"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
-				<string key="NSMinSize">{717, 685}</string>
-				<string key="NSMaxSize">{717, 685}</string>
+				<string key="NSMinSize">{717, 741}</string>
+				<string key="NSMaxSize">{717, 741}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSCustomObject" id="976324537">
@@ -1545,7 +1688,7 @@
 				<array key="orderedObjects">
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<array key="object" id="0"/>
+						<reference key="object" ref="0"/>
 						<reference key="children" ref="1048"/>
 						<nil key="parent"/>
 					</object>
@@ -1978,6 +2121,7 @@
 						<reference key="object" ref="972006081"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="439893737"/>
+							<reference ref="805442432"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -3067,6 +3211,43 @@
 						<reference key="object" ref="296145977"/>
 						<reference key="parent" ref="439893737"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">832</int>
+						<reference key="object" ref="805442432"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="866513557"/>
+							<reference ref="321023063"/>
+							<reference ref="1062933829"/>
+							<reference ref="682074946"/>
+							<reference ref="417144867"/>
+						</array>
+						<reference key="parent" ref="972006081"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">833</int>
+						<reference key="object" ref="866513557"/>
+						<reference key="parent" ref="805442432"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">837</int>
+						<reference key="object" ref="1062933829"/>
+						<reference key="parent" ref="805442432"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">839</int>
+						<reference key="object" ref="417144867"/>
+						<reference key="parent" ref="805442432"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">838</int>
+						<reference key="object" ref="682074946"/>
+						<reference key="parent" ref="805442432"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">836</int>
+						<reference key="object" ref="321023063"/>
+						<reference key="parent" ref="805442432"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3275,13 +3456,19 @@
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="830.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="831.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="832.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="833.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="836.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="837.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="838.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="839.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">831</int>
+			<int key="maxID">839</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3405,6 +3592,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NSMenuCheckmark">{11, 11}</string>
 			<string key="NSMenuMixedState">{10, 3}</string>
+			<string key="NSToolbarPrint">{32, 32}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 	</data>
