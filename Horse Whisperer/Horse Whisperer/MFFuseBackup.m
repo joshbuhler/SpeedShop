@@ -267,7 +267,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     //**
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
     NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
-                                                                      options:NSXMLDocumentTidyXML
+                                                                      options:NSXMLDocumentTidyXML | NSXMLNodePreserveDTD
                                                                         error:&error];
     NSXMLElement *docRoot = [settingsXML rootElement];
     // replace the first three QA nodes
@@ -289,9 +289,16 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
     [docRoot replaceChildAtIndex:2 withNode:qa3];
     
-    [fileMan copyItemAtPath:[settingsFile path]
-                     toPath:[[tempDir path] stringByAppendingPathComponent:SETTINGS_FILENAME]
-                      error:&error];
+//    [fileMan copyItemAtPath:[settingsFile path]
+//                     toPath:[[tempDir path] stringByAppendingPathComponent:SETTINGS_FILENAME]
+//                      error:&error];
+    NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+    NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint | NSXMLNodePreserveDTD];
+    NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
+    [exportString writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
+                  atomically:YES
+                    encoding:NSUTF8StringEncoding
+                       error:&error];
     
     if (error)
     {
@@ -366,15 +373,15 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     {
         MFPreset *cPreset = [_presets objectAtIndex:i];
         NSString *oldFilename = [cPreset.fileURL lastPathComponent];
-        NSLog(@"old fileName: %@", oldFilename);
+        //NSLog(@"old fileName: %@", oldFilename);
         
         int oldIndex = [[oldFilename substringToIndex:2] intValue];
         int newIndex = i;
-        NSLog(@"    old: %d new: %d", oldIndex, newIndex);
+        //NSLog(@"    old: %d new: %d", oldIndex, newIndex);
         
         NSString *presetName = [oldFilename substringFromIndex:2];
         NSString *newFilename = [NSString stringWithFormat:@"%02d%@", newIndex, presetName];
-        NSLog(@"    newFilename: %@", newFilename);
+        //NSLog(@"    newFilename: %@", newFilename);
         
         [fileMan copyItemAtPath:[cPreset.fileURL path]
                          toPath:[[newPresetDir path] stringByAppendingPathComponent:newFilename]
