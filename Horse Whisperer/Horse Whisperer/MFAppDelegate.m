@@ -44,6 +44,11 @@
     [self.presetDescriptionField setStringValue:@""];
 }
 
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    return YES;
+}
+
 #pragma mark - Tableview Delegate Methods
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView
