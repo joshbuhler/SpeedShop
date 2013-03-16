@@ -267,7 +267,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // Saving of the settings file
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
     NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
-                                                                      options:NSXMLDocumentTidyXML | NSXMLNodePreserveDTD
+                                                                      options:NSXMLDocumentTidyXML
                                                                         error:&error];
     NSXMLElement *docRoot = [settingsXML rootElement];
     // replace the first three QA nodes
@@ -289,10 +289,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
     [docRoot replaceChildAtIndex:2 withNode:qa3];
     
-    NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-    NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint | NSXMLNodePreserveDTD];
-    NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
-    [exportString writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
+//    NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+    NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint];
+//    NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
+    [settingsData writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
                   atomically:YES
                     encoding:NSUTF8StringEncoding
                        error:&error];
