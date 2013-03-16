@@ -36,6 +36,12 @@
     self.qaBox1.delegate = self;
     self.qaBox2.delegate = self;
     self.qaBox3.delegate = self;
+    
+    // empty the placeholder text (want to keep that around for working in IB though)
+    [self.backupNameField setStringValue:@""];
+    [self.presetNameField setStringValue:@""];
+    [self.authorNameField setStringValue:@""];
+    [self.presetDescriptionField setStringValue:@""];
 }
 
 #pragma mark - Tableview Delegate Methods
