@@ -82,22 +82,22 @@
 		0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		0364CA3E16F7BE0F002FDF46 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		03B6B3F316EBB08000D99520 /* Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icons.iconset; sourceTree = "<group>"; };
-		03BF543A16DF11CF00895128 /* Horse Whisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Horse Whisperer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03BF543A16DF11CF00895128 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF543D16DF11CF00895128 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		03BF544016DF11CF00895128 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		03BF544116DF11CF00895128 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		03BF544216DF11CF00895128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		03BF544516DF11CF00895128 /* Horse Whisperer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Horse Whisperer-Info.plist"; sourceTree = "<group>"; };
+		03BF544516DF11CF00895128 /* Speed Shop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Speed Shop-Info.plist"; sourceTree = "<group>"; };
 		03BF544716DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03BF544916DF11CF00895128 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03BF544B16DF11CF00895128 /* Horse Whisperer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Horse Whisperer-Prefix.pch"; sourceTree = "<group>"; };
+		03BF544B16DF11CF00895128 /* Speed Shop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Speed Shop-Prefix.pch"; sourceTree = "<group>"; };
 		03BF544D16DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		03BF544F16DF11CF00895128 /* MFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFAppDelegate.h; sourceTree = "<group>"; };
 		03BF545016DF11CF00895128 /* MFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFAppDelegate.m; sourceTree = "<group>"; };
 		03BF545316DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		03BF545A16DF11CF00895128 /* Horse WhispererTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Horse WhispererTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03BF545A16DF11CF00895128 /* Speed ShopTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Speed ShopTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF545B16DF11CF00895128 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		03BF546216DF11CF00895128 /* Horse WhispererTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Horse WhispererTests-Info.plist"; sourceTree = "<group>"; };
+		03BF546216DF11CF00895128 /* Speed ShopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Speed ShopTests-Info.plist"; sourceTree = "<group>"; };
 		03BF546416DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03BF546616DF11CF00895128 /* Horse_WhispererTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Horse_WhispererTests.h; sourceTree = "<group>"; };
 		03BF546716DF11CF00895128 /* Horse_WhispererTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Horse_WhispererTests.m; sourceTree = "<group>"; };
@@ -204,8 +204,8 @@
 		03BF543B16DF11CF00895128 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03BF543A16DF11CF00895128 /* Horse Whisperer.app */,
-				03BF545A16DF11CF00895128 /* Horse WhispererTests.octest */,
+				03BF543A16DF11CF00895128 /* Speed Shop.app */,
+				03BF545A16DF11CF00895128 /* Speed ShopTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,10 +248,10 @@
 		03BF544416DF11CF00895128 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03BF544516DF11CF00895128 /* Horse Whisperer-Info.plist */,
+				03BF544516DF11CF00895128 /* Speed Shop-Info.plist */,
 				03BF544616DF11CF00895128 /* InfoPlist.strings */,
 				03BF544916DF11CF00895128 /* main.m */,
-				03BF544B16DF11CF00895128 /* Horse Whisperer-Prefix.pch */,
+				03BF544B16DF11CF00895128 /* Speed Shop-Prefix.pch */,
 				03BF544C16DF11CF00895128 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -270,7 +270,7 @@
 		03BF546116DF11CF00895128 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03BF546216DF11CF00895128 /* Horse WhispererTests-Info.plist */,
+				03BF546216DF11CF00895128 /* Speed ShopTests-Info.plist */,
 				03BF546316DF11CF00895128 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -293,9 +293,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03BF543916DF11CF00895128 /* Horse Whisperer */ = {
+		03BF543916DF11CF00895128 /* Speed Shop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Horse Whisperer" */;
+			buildConfigurationList = 03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed Shop" */;
 			buildPhases = (
 				03BF543616DF11CF00895128 /* Sources */,
 				03BF543716DF11CF00895128 /* Frameworks */,
@@ -306,14 +306,14 @@
 			);
 			dependencies = (
 			);
-			name = "Horse Whisperer";
+			name = "Speed Shop";
 			productName = "Horse Whisperer";
-			productReference = 03BF543A16DF11CF00895128 /* Horse Whisperer.app */;
+			productReference = 03BF543A16DF11CF00895128 /* Speed Shop.app */;
 			productType = "com.apple.product-type.application";
 		};
-		03BF545916DF11CF00895128 /* Horse WhispererTests */ = {
+		03BF545916DF11CF00895128 /* Speed ShopTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Horse WhispererTests" */;
+			buildConfigurationList = 03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed ShopTests" */;
 			buildPhases = (
 				03BF545516DF11CF00895128 /* Sources */,
 				03BF545616DF11CF00895128 /* Frameworks */,
@@ -325,9 +325,9 @@
 			dependencies = (
 				03BF545F16DF11CF00895128 /* PBXTargetDependency */,
 			);
-			name = "Horse WhispererTests";
+			name = "Speed ShopTests";
 			productName = "Horse WhispererTests";
-			productReference = 03BF545A16DF11CF00895128 /* Horse WhispererTests.octest */;
+			productReference = 03BF545A16DF11CF00895128 /* Speed ShopTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -340,7 +340,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Joshua Buhler";
 			};
-			buildConfigurationList = 03BF543516DF11CF00895128 /* Build configuration list for PBXProject "Horse Whisperer" */;
+			buildConfigurationList = 03BF543516DF11CF00895128 /* Build configuration list for PBXProject "Speed Shop" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -352,8 +352,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03BF543916DF11CF00895128 /* Horse Whisperer */,
-				03BF545916DF11CF00895128 /* Horse WhispererTests */,
+				03BF543916DF11CF00895128 /* Speed Shop */,
+				03BF545916DF11CF00895128 /* Speed ShopTests */,
 			);
 		};
 /* End PBXProject section */
@@ -436,7 +436,7 @@
 /* Begin PBXTargetDependency section */
 		03BF545F16DF11CF00895128 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 03BF543916DF11CF00895128 /* Horse Whisperer */;
+			target = 03BF543916DF11CF00895128 /* Speed Shop */;
 			targetProxy = 03BF545E16DF11CF00895128 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -543,9 +543,9 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
-				INFOPLIST_FILE = "Horse Whisperer/Horse Whisperer-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "Horse Whisperer/Speed Shop-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -559,9 +559,9 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
-				INFOPLIST_FILE = "Horse Whisperer/Horse Whisperer-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "Horse Whisperer/Speed Shop-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -574,8 +574,8 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
-				INFOPLIST_FILE = "Horse WhispererTests/Horse WhispererTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
+				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -589,8 +589,8 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
-				INFOPLIST_FILE = "Horse WhispererTests/Horse WhispererTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
+				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -599,7 +599,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03BF543516DF11CF00895128 /* Build configuration list for PBXProject "Horse Whisperer" */ = {
+		03BF543516DF11CF00895128 /* Build configuration list for PBXProject "Speed Shop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03BF546916DF11CF00895128 /* Debug */,
@@ -608,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Horse Whisperer" */ = {
+		03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed Shop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03BF546C16DF11CF00895128 /* Debug */,
@@ -617,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Horse WhispererTests" */ = {
+		03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed ShopTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03BF546F16DF11CF00895128 /* Debug */,

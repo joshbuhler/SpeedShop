@@ -39,7 +39,7 @@
     
     // Insert code here to initialize your application    
     _backupModified = NO;
-    
+        
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
     
