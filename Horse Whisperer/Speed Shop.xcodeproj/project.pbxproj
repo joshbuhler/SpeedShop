@@ -359,6 +359,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed Shop" */;
 			buildPhases = (
+				03C26F8216F7D6F700374364 /* ShellScript */,
 				03BF543616DF11CF00895128 /* Sources */,
 				03BF543716DF11CF00895128 /* Frameworks */,
 				03BF543816DF11CF00895128 /* Resources */,
@@ -491,6 +492,19 @@
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		03C26F7D16F7D3FB00374364 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n##################################################\n#\n# BuildVersion incrementing script v1.0\n#\n##################################################\n\nprocessedPlist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nprojectPlist=\"${INFOPLIST_FILE}\"\nversionVar=\"CFBundleVersion\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print ${versionVar}\" \"${projectPlist}\" 2>&1)\nif [[ \"$buildNumber\" == *Does\\ Not\\ Exist ]] ; then\nbuildNumber=1\necho \"Create ${versionVar} and set to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${projectPlist}\"\nelse\nbuildNumber=$(($buildNumber + 1))\necho \"set ${versionVar} to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${projectPlist}\"\nfi";
+		};
+		03C26F8216F7D6F700374364 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
