@@ -58,6 +58,7 @@
 		03BF547816DF1BFF00895128 /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547716DF1BFF00895128 /* MFModule.m */; };
 		03C26F7916F7CF4100374364 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
 		03C26F7B16F7CF4A00374364 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
+		03C26F8116F7D57800374364 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03C26F8016F7D57800374364 /* ReleaseNotes.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		03BF547316DF1BDD00895128 /* MFPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPreset.m; sourceTree = "<group>"; };
 		03BF547616DF1BFF00895128 /* MFModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFModule.h; sourceTree = "<group>"; };
 		03BF547716DF1BFF00895128 /* MFModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFModule.m; sourceTree = "<group>"; };
+		03C26F8016F7D57800374364 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				03BF544916DF11CF00895128 /* main.m */,
 				03BF544B16DF11CF00895128 /* Speed Shop-Prefix.pch */,
 				03BF544C16DF11CF00895128 /* Credits.rtf */,
+				03C26F8016F7D57800374364 /* ReleaseNotes.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0364CA6716F7C970002FDF46 /* Build configuration list for PBXNativeTarget "Speed Shop Beta" */;
 			buildPhases = (
+				03C26F7D16F7D3FB00374364 /* ShellScript */,
 				0364CA4A16F7C970002FDF46 /* Sources */,
 				0364CA5116F7C970002FDF46 /* Frameworks */,
 				0364CA5416F7C970002FDF46 /* Resources */,
@@ -457,6 +461,7 @@
 				0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */,
 				0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */,
 				0364CA4316F7BE0F002FDF46 /* README.md in Resources */,
+				03C26F8116F7D57800374364 /* ReleaseNotes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +489,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		03C26F7D16F7D3FB00374364 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n##################################################\n#\n# BuildVersion incrementing script v1.0\n#\n##################################################\n\nprocessedPlist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nprojectPlist=\"${INFOPLIST_FILE}\"\nversionVar=\"CFBundleVersion\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print ${versionVar}\" \"${projectPlist}\" 2>&1)\nif [[ \"$buildNumber\" == *Does\\ Not\\ Exist ]] ; then\nbuildNumber=1\necho \"Create ${versionVar} and set to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${projectPlist}\"\nelse\nbuildNumber=$(($buildNumber + 1))\necho \"set ${versionVar} to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${projectPlist}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
