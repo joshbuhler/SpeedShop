@@ -18,6 +18,12 @@
 		0364CA3516F378FE002FDF46 /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */; };
 		0364CA3616F378FE002FDF46 /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3016F378FE002FDF46 /* QAWellBG.png */; };
 		0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */; };
+		0364CA3F16F7BE0F002FDF46 /* CrashReporter.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */; };
+		0364CA4016F7BE0F002FDF46 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
+		0364CA4116F7BE0F002FDF46 /* HockeySDK.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */; };
+		0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */; };
+		0364CA4316F7BE0F002FDF46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3E16F7BE0F002FDF46 /* README.md */; };
+		0364CA4516F7BEB8002FDF46 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
 		03B6B3F416EBB08000D99520 /* Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03B6B3F316EBB08000D99520 /* Icons.iconset */; };
 		03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
 		03BF544816DF11CF00895128 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544616DF11CF00895128 /* InfoPlist.strings */; };
@@ -43,6 +49,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0364CA4416F7BEA2002FDF46 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0364CA4516F7BEB8002FDF46 /* HockeySDK.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0303040B16E6F9C100490253 /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
 		0303040C16E6F9C100490253 /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
@@ -57,6 +76,11 @@
 		0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
 		0364CA3016F378FE002FDF46 /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
 		0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
+		0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = CrashReporter.framework.dSYM; sourceTree = "<group>"; };
+		0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = HockeySDK.framework.dSYM; sourceTree = "<group>"; };
+		0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		0364CA3E16F7BE0F002FDF46 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		03B6B3F316EBB08000D99520 /* Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icons.iconset; sourceTree = "<group>"; };
 		03BF543A16DF11CF00895128 /* Horse Whisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Horse Whisperer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF543D16DF11CF00895128 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -89,6 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */,
+				0364CA4016F7BE0F002FDF46 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +159,26 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
+		0364CA3816F7BE0F002FDF46 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0364CA3916F7BE0F002FDF46 /* HockeySDK-Mac */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		0364CA3916F7BE0F002FDF46 /* HockeySDK-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */,
+				0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */,
+				0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */,
+				0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */,
+				0364CA3E16F7BE0F002FDF46 /* README.md */,
+			);
+			path = "HockeySDK-Mac";
+			sourceTree = "<group>";
+		};
 		03B6B3E316EBADC500D99520 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +190,7 @@
 		03BF543116DF11CF00895128 = {
 			isa = PBXGroup;
 			children = (
+				0364CA3816F7BE0F002FDF46 /* Libraries */,
 				0364CA2916F378FE002FDF46 /* Resources */,
 				03B6B3E316EBADC500D99520 /* Graphics */,
 				0327251F16E2B244003A8E3E /* SampleBackups */,
@@ -254,6 +300,7 @@
 				03BF543616DF11CF00895128 /* Sources */,
 				03BF543716DF11CF00895128 /* Frameworks */,
 				03BF543816DF11CF00895128 /* Resources */,
+				0364CA4416F7BEA2002FDF46 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -328,6 +375,10 @@
 				0364CA3516F378FE002FDF46 /* MainWindowBG@2x.png in Resources */,
 				0364CA3616F378FE002FDF46 /* QAWellBG.png in Resources */,
 				0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */,
+				0364CA3F16F7BE0F002FDF46 /* CrashReporter.framework.dSYM in Resources */,
+				0364CA4116F7BE0F002FDF46 /* HockeySDK.framework.dSYM in Resources */,
+				0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */,
+				0364CA4316F7BE0F002FDF46 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,10 +495,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -476,6 +524,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -489,6 +538,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
 				INFOPLIST_FILE = "Horse Whisperer/Horse Whisperer-Info.plist";
@@ -501,6 +554,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
 				INFOPLIST_FILE = "Horse Whisperer/Horse Whisperer-Info.plist";

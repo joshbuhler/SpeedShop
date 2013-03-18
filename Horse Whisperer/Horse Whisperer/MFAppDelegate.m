@@ -8,6 +8,7 @@
 
 #import "MFAppDelegate.h"
 #import "MFFuseBackup.h"
+#import <HockeySDK/HockeySDK.h>
 
 @interface MFAppDelegate()
 {
@@ -27,6 +28,15 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+#ifdef CONFIGURATION_Debug
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"081a518d161a54f4ae068322c2d3b223"
+                                                        companyName:@"Joshua Buhler"
+                                         crashReportManagerDelegate:self];
+#endif
+    
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    
+    
     // Insert code here to initialize your application    
     _backupModified = NO;
     
@@ -48,6 +58,15 @@
 {
     return YES;
 }
+
+- (void) showMainApplicationWindow
+{
+    [self.window makeFirstResponder:nil];
+    [self.window makeKeyAndOrderFront:nil];
+}
+
+#pragma mark - HockeySDK
+
 
 #pragma mark - Tableview Delegate Methods
 

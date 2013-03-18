@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MFQuickAccessView.h"
+#import <HockeySDK/BITCrashReportManagerDelegate.h>
 
-@interface MFAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, MFQuickAccessViewDelegate>
+@interface MFAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, MFQuickAccessViewDelegate, BITCrashReportManagerDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTableView *ampPresetTable;
