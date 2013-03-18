@@ -34,6 +34,12 @@
                                          crashReportManagerDelegate:self];
 #endif
     
+#ifdef CONFIGURATION_Beta
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"6616530a5d76518fbdb150f116cacd05"
+                                                        companyName:@"Joshua Buhler"
+                                         crashReportManagerDelegate:self];
+#endif
+    
     [[BITHockeyManager sharedHockeyManager] startManager];
     
     

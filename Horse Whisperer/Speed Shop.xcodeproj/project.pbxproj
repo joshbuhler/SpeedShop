@@ -18,12 +18,9 @@
 		0364CA3516F378FE002FDF46 /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */; };
 		0364CA3616F378FE002FDF46 /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3016F378FE002FDF46 /* QAWellBG.png */; };
 		0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */; };
-		0364CA3F16F7BE0F002FDF46 /* CrashReporter.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */; };
 		0364CA4016F7BE0F002FDF46 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
-		0364CA4116F7BE0F002FDF46 /* HockeySDK.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */; };
 		0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */; };
 		0364CA4316F7BE0F002FDF46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3E16F7BE0F002FDF46 /* README.md */; };
-		0364CA4516F7BEB8002FDF46 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
 		0364CA4B16F7C970002FDF46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF544916DF11CF00895128 /* main.m */; };
 		0364CA4C16F7C970002FDF46 /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF545016DF11CF00895128 /* MFAppDelegate.m */; };
 		0364CA4D16F7C970002FDF46 /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547316DF1BDD00895128 /* MFPreset.m */; };
@@ -44,11 +41,8 @@
 		0364CA5E16F7C970002FDF46 /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */; };
 		0364CA5F16F7C970002FDF46 /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3016F378FE002FDF46 /* QAWellBG.png */; };
 		0364CA6016F7C970002FDF46 /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */; };
-		0364CA6116F7C970002FDF46 /* CrashReporter.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */; };
-		0364CA6216F7C970002FDF46 /* HockeySDK.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */; };
 		0364CA6316F7C970002FDF46 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */; };
 		0364CA6416F7C970002FDF46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3E16F7BE0F002FDF46 /* README.md */; };
-		0364CA6616F7C970002FDF46 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
 		03B6B3F416EBB08000D99520 /* Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03B6B3F316EBB08000D99520 /* Icons.iconset */; };
 		03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
 		03BF544816DF11CF00895128 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544616DF11CF00895128 /* InfoPlist.strings */; };
@@ -62,6 +56,8 @@
 		03BF546816DF11CF00895128 /* Horse_WhispererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF546716DF11CF00895128 /* Horse_WhispererTests.m */; };
 		03BF547416DF1BDD00895128 /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547316DF1BDD00895128 /* MFPreset.m */; };
 		03BF547816DF1BFF00895128 /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547716DF1BFF00895128 /* MFModule.m */; };
+		03C26F7916F7CF4100374364 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
+		03C26F7B16F7CF4A00374364 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,23 +71,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0364CA4416F7BEA2002FDF46 /* CopyFiles */ = {
+		03C26F7816F7CF3B00374364 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0364CA4516F7BEB8002FDF46 /* HockeySDK.framework in CopyFiles */,
+				03C26F7916F7CF4100374364 /* HockeySDK.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0364CA6516F7C970002FDF46 /* CopyFiles */ = {
+		03C26F7A16F7CF4600374364 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0364CA6616F7C970002FDF46 /* HockeySDK.framework in CopyFiles */,
+				03C26F7B16F7CF4A00374364 /* HockeySDK.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,9 +107,7 @@
 		0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
 		0364CA3016F378FE002FDF46 /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
 		0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
-		0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = CrashReporter.framework.dSYM; sourceTree = "<group>"; };
 		0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = HockeySDK.framework.dSYM; sourceTree = "<group>"; };
 		0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		0364CA3E16F7BE0F002FDF46 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		0364CA6B16F7C970002FDF46 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,9 +210,7 @@
 		0364CA3916F7BE0F002FDF46 /* HockeySDK-Mac */ = {
 			isa = PBXGroup;
 			children = (
-				0364CA3A16F7BE0F002FDF46 /* CrashReporter.framework.dSYM */,
 				0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */,
-				0364CA3C16F7BE0F002FDF46 /* HockeySDK.framework.dSYM */,
 				0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */,
 				0364CA3E16F7BE0F002FDF46 /* README.md */,
 			);
@@ -348,7 +340,7 @@
 				0364CA4A16F7C970002FDF46 /* Sources */,
 				0364CA5116F7C970002FDF46 /* Frameworks */,
 				0364CA5416F7C970002FDF46 /* Resources */,
-				0364CA6516F7C970002FDF46 /* CopyFiles */,
+				03C26F7A16F7CF4600374364 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -366,7 +358,7 @@
 				03BF543616DF11CF00895128 /* Sources */,
 				03BF543716DF11CF00895128 /* Frameworks */,
 				03BF543816DF11CF00895128 /* Resources */,
-				0364CA4416F7BEA2002FDF46 /* CopyFiles */,
+				03C26F7816F7CF3B00374364 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -442,8 +434,6 @@
 				0364CA5E16F7C970002FDF46 /* MainWindowBG@2x.png in Resources */,
 				0364CA5F16F7C970002FDF46 /* QAWellBG.png in Resources */,
 				0364CA6016F7C970002FDF46 /* QAWellBG@2x.png in Resources */,
-				0364CA6116F7C970002FDF46 /* CrashReporter.framework.dSYM in Resources */,
-				0364CA6216F7C970002FDF46 /* HockeySDK.framework.dSYM in Resources */,
 				0364CA6316F7C970002FDF46 /* LICENSE.txt in Resources */,
 				0364CA6416F7C970002FDF46 /* README.md in Resources */,
 			);
@@ -465,8 +455,6 @@
 				0364CA3516F378FE002FDF46 /* MainWindowBG@2x.png in Resources */,
 				0364CA3616F378FE002FDF46 /* QAWellBG.png in Resources */,
 				0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */,
-				0364CA3F16F7BE0F002FDF46 /* CrashReporter.framework.dSYM in Resources */,
-				0364CA4116F7BE0F002FDF46 /* HockeySDK.framework.dSYM in Resources */,
 				0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */,
 				0364CA4316F7BE0F002FDF46 /* README.md in Resources */,
 			);
