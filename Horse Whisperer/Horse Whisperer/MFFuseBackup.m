@@ -218,6 +218,11 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         //NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
         
         NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
+        
+        if (![[cURL pathExtension] isEqualToString:@"fuse"]) {
+            continue;
+        }
+        
         MFPreset *cPreset = [[MFPreset alloc] init];
         
         cPreset.backup = self;
