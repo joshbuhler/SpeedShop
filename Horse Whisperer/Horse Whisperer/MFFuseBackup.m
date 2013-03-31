@@ -142,6 +142,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void) loadAmpSettings
 {
+    if (_ampType == AmpSeries_GDec)
+        return;
+    
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
     
     NSXMLParser *cParser = [[NSXMLParser alloc] initWithContentsOfURL:settingsFile];

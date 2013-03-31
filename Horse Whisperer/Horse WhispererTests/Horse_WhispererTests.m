@@ -43,15 +43,28 @@
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
     STAssertTrue([fileMan fileExistsAtPath:[fuse270dir path]], @"Sample backup not found - fuse270");
+    STAssertTrue([fileMan fileExistsAtPath:[gdec30dir path]], @"Sample backup not found - G-Dec 30");
 }
 
-- (void) testBackupLoad
+- (void) testMustangLoad
 {
     MFFuseBackup *backup = [[MFFuseBackup alloc] init];
     [backup loadBackup:fuse270dir withCompletion:^(BOOL success) {
         STAssertTrue(success, @"Failed to load backup");
         
         STAssertTrue([backup.backupDescription isEqualToString:@"TestBackup - Mustang 3 - Fuse 2.7"], @"Failed to load backup name");
+        
+        STAssertTrue([backup.presets count] == 100, @"Failed to find 100 presets");
+    }];
+}
+
+- (void) testGDecLoad
+{
+    MFFuseBackup *backup = [[MFFuseBackup alloc] init];
+    [backup loadBackup:gdec30dir withCompletion:^(BOOL success) {
+        STAssertTrue(success, @"Failed to load backup");
+        
+        STAssertTrue([backup.backupDescription isEqualToString:@"TestBackup - G-Dec 30 - Fuse 2.7"], @"Failed to load backup name");
         
         STAssertTrue([backup.presets count] == 100, @"Failed to find 100 presets");
     }];
