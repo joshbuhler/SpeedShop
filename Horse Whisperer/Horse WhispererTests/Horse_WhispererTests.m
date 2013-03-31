@@ -14,6 +14,7 @@
 {
     NSURL *sampleBackupDir;
     NSURL *fuse270dir;
+    NSURL *gdec30dir;
 }
 
 @end
@@ -28,6 +29,7 @@
     sampleBackupDir = [[NSBundle mainBundle] URLForResource:@"SampleBackups" withExtension:nil];
     
     fuse270dir = [sampleBackupDir URLByAppendingPathComponent:@"Mustang3_Fuse270/2013_02_27_21_09_59/"];
+    gdec30dir = [sampleBackupDir URLByAppendingPathComponent:@"GDEC_30/2013_02_17_19_24_50/"];
 }
 
 - (void)tearDown
@@ -57,9 +59,13 @@
 
 - (void) testBackupValidation
 {
-    MFFuseBackup *backup = [[MFFuseBackup alloc] init];
-    backup.folderURL = fuse270dir;
-    STAssertTrue([backup validateBackupContents], @"Validation of sample contents failed.");
+    MFFuseBackup *mustangBackup = [[MFFuseBackup alloc] init];
+    mustangBackup.folderURL = fuse270dir;
+    STAssertTrue([mustangBackup validateBackupContents], @"Validation of sample contents failed - Mustang");
+    
+    MFFuseBackup *gDecBackup = [[MFFuseBackup alloc] init];
+    gDecBackup.folderURL = gdec30dir;
+    STAssertTrue([gDecBackup validateBackupContents], @"Validation of sample contents failed - G-DEC");
 }
 
 

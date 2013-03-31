@@ -11,7 +11,8 @@
 
 NSString *FUSE_FOLDER = @"FUSE";
 NSString *PRESET_FOLDER = @"Presets";
-NSString *BACKUP_FILENAME = @"MU_BackupName.fuse";
+NSString *BACKUP_FILENAME_GDEC = @"GD_BackupName.fuse";
+NSString *BACKUP_FILENAME_MUSTANG = @"MU_BackupName.fuse";
 NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 @interface MFFuseBackup()
@@ -20,6 +21,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     MFFuseBackupSaveCompletion  _saveCompletionBlock;
     
     NSURL   *_newFolderURL;
+    
+    AmpSeries   _ampType;
     
     // Used for XML parsing
     NSMutableString *currentElementValue;
@@ -60,8 +63,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // We should have four items:
     // - "FUSE" folder
     // - "Presets" folder
-    // - "MU_BackupName.fuse" file
-    // - "SystemSettings.fuse" file
+    // - "MU_BackupName.fuse" file or "GD_BackupName.fuse"
+    // - "SystemSettings.fuse" file - Mustang only
     
     NSFileManager *fileMan = [NSFileManager defaultManager];
     
@@ -84,14 +87,33 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if ([presetContents count] <= 0 || error != nil)
         return NO;
     
-    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
-    if ([fileMan fileExistsAtPath:[backupFile path]] == NO)
+    // Check for backup file
+    BOOL backupFileFound = NO;
+    
+    NSURL *backupFileMustang = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_MUSTANG];
+    if ([fileMan fileExistsAtPath:[backupFileMustang path]] == YES)
+    {
+        backupFileFound = YES;
+        _ampType = AmpSeries_Mustang;
+    }
+    
+    NSURL *backupFileGDec = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_GDEC];
+    if ([fileMan fileExistsAtPath:[backupFileGDec path]] == YES)
+    {
+        backupFileFound = YES;
+        _ampType = AmpSeries_GDec;
+    }
+    
+    if (!backupFileFound)
         return NO;
     
-    NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
-    if ([fileMan fileExistsAtPath:[settingsFile path]] == NO)
-        return NO;
-    
+    // Look for a settings file if it's a Mustang series
+    if (_ampType == AmpSeries_Mustang)
+    {
+        NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
+        if ([fileMan fileExistsAtPath:[settingsFile path]] == NO)
+            return NO;
+    }
     
     // Looks like on the surface everything is cool to begin parsing
     return YES;
@@ -108,7 +130,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void) loadBackupDescription
 {
-    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME];
+    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_MUSTANG];
     
     NSData *data = [NSData dataWithContentsOfURL:backupFile];
     NSString *desc = [[NSString alloc] initWithBytes:[data bytes]
@@ -253,7 +275,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // now copy over the settings & description files
-    [self.backupDescription writeToURL:[tempDir URLByAppendingPathComponent:BACKUP_FILENAME]
+    [self.backupDescription writeToURL:[tempDir URLByAppendingPathComponent:BACKUP_FILENAME_MUSTANG]
                             atomically:YES
                               encoding:NSUTF8StringEncoding
                                  error:&error];

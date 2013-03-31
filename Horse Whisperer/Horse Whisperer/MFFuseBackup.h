@@ -12,6 +12,12 @@
 typedef void (^MFFuseBackupCompletion)(BOOL);
 typedef void (^MFFuseBackupSaveCompletion)(BOOL, NSURL*);
 
+typedef enum
+{
+    AmpSeries_Mustang,
+    AmpSeries_GDec
+} AmpSeries;
+
 @interface MFFuseBackup : NSObject <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSURL *folderURL;
