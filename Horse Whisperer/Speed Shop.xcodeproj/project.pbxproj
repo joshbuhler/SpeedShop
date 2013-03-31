@@ -650,7 +650,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
+				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
 				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
 				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -798,11 +798,11 @@
 		03BF546F16DF11CF00895128 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Horse Whisperer.app/Contents/MacOS/Horse Whisperer";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Speed Shop.app/Contents/MacOS/Speed Shop";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
+				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
 				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
 				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -817,7 +817,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Horse Whisperer-Prefix.pch";
+				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
 				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
 				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
