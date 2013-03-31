@@ -19,6 +19,7 @@
 
 @synthesize preset = _preset;
 @synthesize presetLabel;
+@synthesize canAcceptDrag;
 @synthesize view;
 @synthesize delegate;
 
@@ -36,6 +37,8 @@
                      topLevelObjects:nil];
                       
         [self addSubview:self.view];
+        
+        self.canAcceptDrag = YES;
     }
     
     return self;
@@ -62,7 +65,11 @@
 
 - (void) refreshUI
 {
-    [self.presetLabel setStringValue:_preset.name];
+    NSString *presetName = @"";
+    if (_preset)
+        presetName = _preset.name;
+        
+    [self.presetLabel setStringValue:presetName];
 }
 
 
@@ -71,7 +78,7 @@
     NSPasteboard *pBoard = [sender draggingPasteboard];
     NSDragOperation dragOp = [sender draggingSourceOperationMask];
     
-    if ([[pBoard types] containsObject:DropTypeMFPreset])
+    if ([[pBoard types] containsObject:DropTypeMFPreset] && canAcceptDrag)
     {
         if (dragOp & NSDragOperationGeneric)
         {

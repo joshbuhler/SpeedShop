@@ -25,4 +25,6 @@
 
 @property (nonatomic, strong) id delegate;
 
+@property (nonatomic, assign) BOOL canAcceptDrag;
+
 @end

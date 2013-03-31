@@ -400,6 +400,20 @@
         self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
         self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
         self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+        
+        self.qaBox1.canAcceptDrag = YES;
+        self.qaBox2.canAcceptDrag = YES;
+        self.qaBox3.canAcceptDrag = YES;
+    }
+    else
+    {
+        self.qaBox1.preset = nil;
+        self.qaBox2.preset = nil;
+        self.qaBox3.preset = nil;
+        
+        self.qaBox1.canAcceptDrag = NO;
+        self.qaBox2.canAcceptDrag = NO;
+        self.qaBox3.canAcceptDrag = NO;
     }
 }
 
