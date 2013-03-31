@@ -24,6 +24,7 @@ typedef enum
 @property (nonatomic, strong) NSString *backupDescription;
 
 @property (nonatomic, strong) NSMutableArray *presets;
+@property (nonatomic, readonly) AmpSeries ampSeries;
 
 @property (nonatomic, strong) NSMutableArray *quickAccessPresets;
 

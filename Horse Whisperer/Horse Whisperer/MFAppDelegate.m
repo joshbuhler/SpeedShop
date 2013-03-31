@@ -395,9 +395,12 @@
     [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
     [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
     
-    self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
-    self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
-    self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+    if (self.currentBackup.ampSeries == AmpSeries_Mustang)
+    {
+        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
+        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
+        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+    }
 }
 
 - (void) controlTextDidChange:(NSNotification *)obj

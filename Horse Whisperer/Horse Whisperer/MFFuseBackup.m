@@ -22,8 +22,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     NSURL   *_newFolderURL;
     
-    AmpSeries   _ampType;
-    
     // Used for XML parsing
     NSMutableString *currentElementValue;
 }
@@ -35,6 +33,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 @synthesize folderURL = _folderURL;
 @synthesize presets = _presets;
 @synthesize quickAccessPresets = _quickAccessPresets;
+@synthesize ampSeries = _ampSeries;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {
@@ -94,21 +93,21 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if ([fileMan fileExistsAtPath:[backupFileMustang path]] == YES)
     {
         backupFileFound = YES;
-        _ampType = AmpSeries_Mustang;
+        _ampSeries = AmpSeries_Mustang;
     }
     
     NSURL *backupFileGDec = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_GDEC];
     if ([fileMan fileExistsAtPath:[backupFileGDec path]] == YES)
     {
         backupFileFound = YES;
-        _ampType = AmpSeries_GDec;
+        _ampSeries = AmpSeries_GDec;
     }
     
     if (!backupFileFound)
         return NO;
     
     // Look for a settings file if it's a Mustang series
-    if (_ampType == AmpSeries_Mustang)
+    if (_ampSeries == AmpSeries_Mustang)
     {
         NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
         if ([fileMan fileExistsAtPath:[settingsFile path]] == NO)
@@ -131,10 +130,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 - (void) loadBackupDescription
 {
     NSString *fileName = nil;
-    if (_ampType == AmpSeries_Mustang)
+    if (_ampSeries == AmpSeries_Mustang)
         fileName = BACKUP_FILENAME_MUSTANG;
     
-    if (_ampType == AmpSeries_GDec)
+    if (_ampSeries == AmpSeries_GDec)
         fileName = BACKUP_FILENAME_GDEC;
     
     NSURL *backupFile = [_folderURL URLByAppendingPathComponent:fileName];
@@ -149,7 +148,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void) loadAmpSettings
 {
-    if (_ampType == AmpSeries_GDec)
+    if (_ampSeries == AmpSeries_GDec)
         return;
     
     NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
@@ -290,7 +289,14 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // now copy over the settings & description files
-    [self.backupDescription writeToURL:[tempDir URLByAppendingPathComponent:BACKUP_FILENAME_MUSTANG]
+    NSString *backupFileName = nil;
+    if (_ampSeries == AmpSeries_Mustang)
+        backupFileName = BACKUP_FILENAME_MUSTANG;
+    
+    if (_ampSeries == AmpSeries_GDec)
+        backupFileName = BACKUP_FILENAME_GDEC;
+    
+    [self.backupDescription writeToURL:[tempDir URLByAppendingPathComponent:backupFileName]
                             atomically:YES
                               encoding:NSUTF8StringEncoding
                                  error:&error];
@@ -302,37 +308,43 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // Saving of the settings file
-    NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
-    NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
-                                                                      options:NSXMLDocumentTidyXML
-                                                                        error:&error];
-    NSXMLElement *docRoot = [settingsXML rootElement];
-    // replace the first three QA nodes
-    NSNumber *qaIndex1 = (NSNumber *)[self.quickAccessPresets objectAtIndex:0];
-    MFPreset *preset1 = (MFPreset *)[self.presets objectAtIndex:[qaIndex1 intValue]];
-    int index1 = [self indexForPreset:preset1];
-    NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
-    [docRoot replaceChildAtIndex:0 withNode:qa1];
+    if (_ampSeries == AmpSeries_Mustang)
+    {
+        NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
+        NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
+                                                                          options:NSXMLDocumentTidyXML
+                                                                            error:&error];
+        
+        NSXMLElement *docRoot = [settingsXML rootElement];
+        // replace the first three QA nodes
+        NSNumber *qaIndex1 = (NSNumber *)[self.quickAccessPresets objectAtIndex:0];
+        MFPreset *preset1 = (MFPreset *)[self.presets objectAtIndex:[qaIndex1 intValue]];
+        int index1 = [self indexForPreset:preset1];
+        NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
+        [docRoot replaceChildAtIndex:0 withNode:qa1];
+        
+        NSNumber *qaIndex2 = (NSNumber *)[self.quickAccessPresets objectAtIndex:1];
+        MFPreset *preset2 = (MFPreset *)[self.presets objectAtIndex:[qaIndex2 intValue]];
+        int index2 = [self indexForPreset:preset2];
+        NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
+        [docRoot replaceChildAtIndex:1 withNode:qa2];
+        
+        NSNumber *qaIndex3 = (NSNumber *)[self.quickAccessPresets objectAtIndex:2];
+        MFPreset *preset3 = (MFPreset *)[self.presets objectAtIndex:[qaIndex3 intValue]];
+        int index3 = [self indexForPreset:preset3];
+        NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
+        [docRoot replaceChildAtIndex:2 withNode:qa3];
+        
+        //    NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+        NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint];
+        //    NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
+        [settingsData writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
+                      atomically:YES
+                        encoding:NSUTF8StringEncoding
+                           error:&error];
+    }
     
-    NSNumber *qaIndex2 = (NSNumber *)[self.quickAccessPresets objectAtIndex:1];
-    MFPreset *preset2 = (MFPreset *)[self.presets objectAtIndex:[qaIndex2 intValue]];
-    int index2 = [self indexForPreset:preset2];
-    NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
-    [docRoot replaceChildAtIndex:1 withNode:qa2];
     
-    NSNumber *qaIndex3 = (NSNumber *)[self.quickAccessPresets objectAtIndex:2];
-    MFPreset *preset3 = (MFPreset *)[self.presets objectAtIndex:[qaIndex3 intValue]];
-    int index3 = [self indexForPreset:preset3];
-    NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
-    [docRoot replaceChildAtIndex:2 withNode:qa3];
-    
-//    NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-    NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint];
-//    NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
-    [settingsData writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
-                  atomically:YES
-                    encoding:NSUTF8StringEncoding
-                       error:&error];
     
     if (error)
     {
