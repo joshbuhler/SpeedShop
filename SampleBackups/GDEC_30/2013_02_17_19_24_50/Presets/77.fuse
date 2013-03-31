@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="G-DEC3" ProductId="10">
+  <Amplifier>
+    <Module ID="3" POS="0">
+      <Param ControlIndex="0">10</Param>
+      <Param ControlIndex="1">44150</Param>
+      <Param ControlIndex="2">44150</Param>
+      <Param ControlIndex="3">21759</Param>
+      <Param ControlIndex="4">51199</Param>
+      <Param ControlIndex="5">43263</Param>
+      <Param ControlIndex="6">3</Param>
+      <Param ControlIndex="7">2</Param>
+      <Param ControlIndex="8">0</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">0</Param>
+      <Param ControlIndex="11">17429</Param>
+      <Param ControlIndex="12">13735</Param>
+      <Param ControlIndex="13">65253</Param>
+      <Param ControlIndex="14">32639</Param>
+      <Param ControlIndex="15">1995</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="0" POS="0" />
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="1" />
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="42" POS="1">
+        <Param ControlIndex="0">55049</Param>
+        <Param ControlIndex="1">463</Param>
+        <Param ControlIndex="2">10427</Param>
+        <Param ControlIndex="3">10881</Param>
+        <Param ControlIndex="4">10239</Param>
+        <Param ControlIndex="5">32767</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="58" POS="1">
+        <Param ControlIndex="0">50970</Param>
+        <Param ControlIndex="1">32330</Param>
+        <Param ControlIndex="2">32330</Param>
+        <Param ControlIndex="3">32767</Param>
+        <Param ControlIndex="4">32767</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="1">
+    <SongFile Location="1">Tranquil Waters.mp3</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="GD_U2-Vox    " author="G-DEC 3" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0" />
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+</Preset>

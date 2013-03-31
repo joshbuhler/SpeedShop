@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="G-DEC3" ProductId="10">
+  <Amplifier>
+    <Module ID="3" POS="0">
+      <Param ControlIndex="0">2</Param>
+      <Param ControlIndex="1">44150</Param>
+      <Param ControlIndex="2">44150</Param>
+      <Param ControlIndex="3">29768</Param>
+      <Param ControlIndex="4">43319</Param>
+      <Param ControlIndex="5">27546</Param>
+      <Param ControlIndex="6">1</Param>
+      <Param ControlIndex="7">4</Param>
+      <Param ControlIndex="8">0</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">0</Param>
+      <Param ControlIndex="11">13205</Param>
+      <Param ControlIndex="12">21508</Param>
+      <Param ControlIndex="13">63132</Param>
+      <Param ControlIndex="14">32639</Param>
+      <Param ControlIndex="15">10230</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="0" POS="0" />
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="1" />
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="1">
+        <Param ControlIndex="0">32985</Param>
+        <Param ControlIndex="1">410</Param>
+        <Param ControlIndex="2">1310</Param>
+        <Param ControlIndex="3">49151</Param>
+        <Param ControlIndex="4">27524</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="33" POS="1">
+        <Param ControlIndex="0">15946</Param>
+        <Param ControlIndex="1">32767</Param>
+        <Param ControlIndex="2">32767</Param>
+        <Param ControlIndex="3">32767</Param>
+        <Param ControlIndex="4">32767</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="1">
+    <SongFile Location="1">Latin in A Minor.wav</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Carlos       " author="G-DEC 3" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0" />
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+</Preset>

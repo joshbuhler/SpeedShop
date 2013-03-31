@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FUSE>
+  <Info name="Clean Pick   " author="G-DEC 3" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0" />
+  <PedalColors>
+    <Color ID="1">14</Color>
+    <Color ID="2">1</Color>
+    <Color ID="3">2</Color>
+    <Color ID="4">10</Color>
+  </PedalColors>
+</FUSE>

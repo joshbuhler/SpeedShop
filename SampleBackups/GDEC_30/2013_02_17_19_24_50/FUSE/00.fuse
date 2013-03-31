@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FUSE>
+  <Info name="AfterHours Blues Club" author="aberkuta" rating="4.0" genre1="6" genre2="40" genre3="-1" tags="Grit, Blues, Soul, Overdriven" fenderid="0">Grit, Sweat, and Raw Blues SCREAM through this overdriven soulful sound. Great with all electric guitar pickups. Has a full tone with nice finish of modulation and reverb.  Can double as a solid Rock tone if you crank it up and allow for that "tube breaking" sound.</Info>
+  <PedalColors>
+    <Color ID="1">14</Color>
+    <Color ID="2">1</Color>
+    <Color ID="3">2</Color>
+    <Color ID="4">10</Color>
+  </PedalColors>
+</FUSE>
