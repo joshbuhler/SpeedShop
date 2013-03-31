@@ -130,7 +130,14 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void) loadBackupDescription
 {
-    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_MUSTANG];
+    NSString *fileName = nil;
+    if (_ampType == AmpSeries_Mustang)
+        fileName = BACKUP_FILENAME_MUSTANG;
+    
+    if (_ampType == AmpSeries_GDec)
+        fileName = BACKUP_FILENAME_GDEC;
+    
+    NSURL *backupFile = [_folderURL URLByAppendingPathComponent:fileName];
     
     NSData *data = [NSData dataWithContentsOfURL:backupFile];
     NSString *desc = [[NSString alloc] initWithBytes:[data bytes]

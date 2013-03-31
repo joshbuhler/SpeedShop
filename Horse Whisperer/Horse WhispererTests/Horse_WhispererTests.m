@@ -64,7 +64,7 @@
     [backup loadBackup:gdec30dir withCompletion:^(BOOL success) {
         STAssertTrue(success, @"Failed to load backup");
         
-        STAssertTrue([backup.backupDescription isEqualToString:@"TestBackup - G-Dec 30 - Fuse 2.7"], @"Failed to load backup name");
+        STAssertTrue([backup.backupDescription isEqualToString:@"Now with sorted Blues goodness!"], @"Failed to load backup name");
         
         STAssertTrue([backup.presets count] == 100, @"Failed to find 100 presets");
     }];
