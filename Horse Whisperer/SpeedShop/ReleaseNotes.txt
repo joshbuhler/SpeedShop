@@ -1,7 +1,3 @@
-.9
-
-Initial release to testers.
-
 Instructions
 ---------------
 
@@ -17,6 +13,15 @@ When you're ready to transfer the modified backup to your amp, return to *FUSE* 
 
 Remember - this app is designed to manipulate backup files for your Mustang-series amp. As with all software, there is always a possibility something may go wrong. I strongly recommend that you create a backup your original backup files before using this app. The creator of this software assumes no responsibility for damaged or corrupted backup files. Use at your own risk. Really. (Honestly, I'm pretty sure that you'll be just fine, and I've done some pretty thorough testing of this with my own personal gear, and it hasn't caught fire or otherwise stopped working yet. You'll likely have no problems at all.)
 
-If you have any issues, email me at josh@joshbuhler.com, or use the feedback form located on the download page for the app.
 
 **This app is in no way created by, endorsed, or otherwise affiliated with Fender Musical Instruments Corporation.**
+
+
+Release Notes
+-------------
+
+# 0.9
+* Initial test release
+
+# 0.9.1
+* Added G-Dec support
