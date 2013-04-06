@@ -7,58 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0303040D16E6F9C100490253 /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303040C16E6F9C100490253 /* MFQuickAccessView.m */; };
-		0303040F16E702E200490253 /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0303040E16E702E200490253 /* MFQuickAccessView.xib */; };
-		0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327251C16E2AE93003A8E3E /* MFFuseBackup.m */; };
 		0327252016E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
 		0327252116E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
-		0364CA3216F378FE002FDF46 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2B16F378FE002FDF46 /* OpenSans-ExtraBold.ttf */; };
-		0364CA3316F378FE002FDF46 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2C16F378FE002FDF46 /* OpenSans-Light.ttf */; };
-		0364CA3416F378FE002FDF46 /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2E16F378FE002FDF46 /* MainWindowBG.png */; };
-		0364CA3516F378FE002FDF46 /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */; };
-		0364CA3616F378FE002FDF46 /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3016F378FE002FDF46 /* QAWellBG.png */; };
-		0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */; };
-		0364CA4016F7BE0F002FDF46 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
-		0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */; };
-		0364CA4316F7BE0F002FDF46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3E16F7BE0F002FDF46 /* README.md */; };
-		0364CA4B16F7C970002FDF46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF544916DF11CF00895128 /* main.m */; };
-		0364CA4C16F7C970002FDF46 /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF545016DF11CF00895128 /* MFAppDelegate.m */; };
-		0364CA4D16F7C970002FDF46 /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547316DF1BDD00895128 /* MFPreset.m */; };
-		0364CA4E16F7C970002FDF46 /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547716DF1BFF00895128 /* MFModule.m */; };
-		0364CA4F16F7C970002FDF46 /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327251C16E2AE93003A8E3E /* MFFuseBackup.m */; };
-		0364CA5016F7C970002FDF46 /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303040C16E6F9C100490253 /* MFQuickAccessView.m */; };
+		03404026170E83AA008EFA2C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03404007170E83AA008EFA2C /* Credits.rtf */; };
+		03404027170E83AA008EFA2C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03404007170E83AA008EFA2C /* Credits.rtf */; };
+		03404028170E83AA008EFA2C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03404007170E83AA008EFA2C /* Credits.rtf */; };
+		03404029170E83AA008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404009170E83AA008EFA2C /* InfoPlist.strings */; };
+		0340402A170E83AA008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404009170E83AA008EFA2C /* InfoPlist.strings */; };
+		0340402B170E83AA008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404009170E83AA008EFA2C /* InfoPlist.strings */; };
+		0340402C170E83AA008EFA2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0340400B170E83AA008EFA2C /* MainMenu.xib */; };
+		0340402D170E83AA008EFA2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0340400B170E83AA008EFA2C /* MainMenu.xib */; };
+		0340402E170E83AA008EFA2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0340400B170E83AA008EFA2C /* MainMenu.xib */; };
+		0340402F170E83AA008EFA2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400D170E83AA008EFA2C /* main.m */; };
+		03404030170E83AA008EFA2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400D170E83AA008EFA2C /* main.m */; };
+		03404031170E83AA008EFA2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400D170E83AA008EFA2C /* main.m */; };
+		03404032170E83AA008EFA2C /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400F170E83AA008EFA2C /* MFAppDelegate.m */; };
+		03404033170E83AA008EFA2C /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400F170E83AA008EFA2C /* MFAppDelegate.m */; };
+		03404034170E83AA008EFA2C /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400F170E83AA008EFA2C /* MFAppDelegate.m */; };
+		03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
+		03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
+		03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
+		03404038170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
+		03404039170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
+		0340403A170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
+		0340403B170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
+		0340403C170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
+		0340403D170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
+		0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404018170E83AA008EFA2C /* MFQuickAccessView.m */; };
+		0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404018170E83AA008EFA2C /* MFQuickAccessView.m */; };
+		03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404018170E83AA008EFA2C /* MFQuickAccessView.m */; };
+		03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
+		03404042170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
+		03404043170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
+		03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
+		03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
+		03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
+		03404047170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		0340404A170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
+		0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
+		0340404C170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
+		0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
+		0340404E170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
+		0340404F170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
+		03404050170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404021170E83AA008EFA2C /* MainWindowBG@2x.png */; };
+		03404051170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404021170E83AA008EFA2C /* MainWindowBG@2x.png */; };
+		03404052170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404021170E83AA008EFA2C /* MainWindowBG@2x.png */; };
+		03404053170E83AA008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404022170E83AA008EFA2C /* QAWellBG.png */; };
+		03404054170E83AA008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404022170E83AA008EFA2C /* QAWellBG.png */; };
+		03404055170E83AA008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404022170E83AA008EFA2C /* QAWellBG.png */; };
+		03404056170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
+		03404057170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
+		03404058170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
+		03404059170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
+		0340405A170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
+		0340405B170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
+		03404065170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404066170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404067170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404068170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		03404069170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		0340406A170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		0340406B170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
+		0340406C170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
+		0340406D170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
+		0340406E170E840D008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404062170E840D008EFA2C /* MainWindowBG@2x.png */; };
+		0340406F170E840D008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404062170E840D008EFA2C /* MainWindowBG@2x.png */; };
+		03404070170E840D008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404062170E840D008EFA2C /* MainWindowBG@2x.png */; };
+		03404071170E840D008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404063170E840D008EFA2C /* QAWellBG.png */; };
+		03404072170E840D008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404063170E840D008EFA2C /* QAWellBG.png */; };
+		03404073170E840D008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404063170E840D008EFA2C /* QAWellBG.png */; };
+		03404074170E840D008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404064170E840D008EFA2C /* QAWellBG@2x.png */; };
+		03404075170E840D008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404064170E840D008EFA2C /* QAWellBG@2x.png */; };
+		03404076170E840D008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404064170E840D008EFA2C /* QAWellBG@2x.png */; };
+		0340407D170E848E008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404078170E848E008EFA2C /* InfoPlist.strings */; };
+		0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340407B170E848E008EFA2C /* Horse_WhispererTests.m */; };
+		0340407F170E848E008EFA2C /* Speed ShopTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */; };
 		0364CA5216F7C970002FDF46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
-		0364CA5316F7C970002FDF46 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
-		0364CA5516F7C970002FDF46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544616DF11CF00895128 /* InfoPlist.strings */; };
-		0364CA5616F7C970002FDF46 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544C16DF11CF00895128 /* Credits.rtf */; };
-		0364CA5716F7C970002FDF46 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF545216DF11CF00895128 /* MainMenu.xib */; };
 		0364CA5816F7C970002FDF46 /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
-		0364CA5916F7C970002FDF46 /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0303040E16E702E200490253 /* MFQuickAccessView.xib */; };
 		0364CA5A16F7C970002FDF46 /* Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03B6B3F316EBB08000D99520 /* Icons.iconset */; };
-		0364CA5B16F7C970002FDF46 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2B16F378FE002FDF46 /* OpenSans-ExtraBold.ttf */; };
-		0364CA5C16F7C970002FDF46 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2C16F378FE002FDF46 /* OpenSans-Light.ttf */; };
-		0364CA5D16F7C970002FDF46 /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2E16F378FE002FDF46 /* MainWindowBG.png */; };
-		0364CA5E16F7C970002FDF46 /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */; };
-		0364CA5F16F7C970002FDF46 /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3016F378FE002FDF46 /* QAWellBG.png */; };
-		0364CA6016F7C970002FDF46 /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */; };
-		0364CA6316F7C970002FDF46 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */; };
-		0364CA6416F7C970002FDF46 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0364CA3E16F7BE0F002FDF46 /* README.md */; };
 		03B6B3F416EBB08000D99520 /* Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03B6B3F316EBB08000D99520 /* Icons.iconset */; };
 		03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
-		03BF544816DF11CF00895128 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544616DF11CF00895128 /* InfoPlist.strings */; };
-		03BF544A16DF11CF00895128 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF544916DF11CF00895128 /* main.m */; };
-		03BF544E16DF11CF00895128 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03BF544C16DF11CF00895128 /* Credits.rtf */; };
-		03BF545116DF11CF00895128 /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF545016DF11CF00895128 /* MFAppDelegate.m */; };
-		03BF545416DF11CF00895128 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF545216DF11CF00895128 /* MainMenu.xib */; };
 		03BF545C16DF11CF00895128 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF545B16DF11CF00895128 /* SenTestingKit.framework */; };
 		03BF545D16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
-		03BF546516DF11CF00895128 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03BF546316DF11CF00895128 /* InfoPlist.strings */; };
-		03BF546816DF11CF00895128 /* Horse_WhispererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF546716DF11CF00895128 /* Horse_WhispererTests.m */; };
-		03BF547416DF1BDD00895128 /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547316DF1BDD00895128 /* MFPreset.m */; };
-		03BF547816DF1BFF00895128 /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BF547716DF1BFF00895128 /* MFModule.m */; };
-		03C26F7916F7CF4100374364 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
-		03C26F7B16F7CF4A00374364 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */; };
-		03C26F8116F7D57800374364 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03C26F8016F7D57800374364 /* ReleaseNotes.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,46 +103,43 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		03C26F7816F7CF3B00374364 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				03C26F7916F7CF4100374364 /* HockeySDK.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03C26F7A16F7CF4600374364 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				03C26F7B16F7CF4A00374364 /* HockeySDK.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		0303040B16E6F9C100490253 /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
-		0303040C16E6F9C100490253 /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
-		0303040E16E702E200490253 /* MFQuickAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFQuickAccessView.xib; sourceTree = "<group>"; };
-		0327251B16E2AE93003A8E3E /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
-		0327251C16E2AE93003A8E3E /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
 		0327251F16E2B244003A8E3E /* SampleBackups */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SampleBackups; path = ../SampleBackups; sourceTree = "<group>"; };
-		0327252216E2B94C003A8E3E /* MFFuseBackup+MFFuseBackup_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFFuseBackup+MFFuseBackup_Private.h"; sourceTree = "<group>"; };
-		0364CA2B16F378FE002FDF46 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		0364CA2C16F378FE002FDF46 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		0364CA2E16F378FE002FDF46 /* MainWindowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainWindowBG.png; sourceTree = "<group>"; };
-		0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
-		0364CA3016F378FE002FDF46 /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
-		0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
-		0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		0364CA3E16F7BE0F002FDF46 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		03404008170E83AA008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0340400A170E83AA008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0340400C170E83AA008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0340400D170E83AA008EFA2C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0340400E170E83AA008EFA2C /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAppDelegate.h; sourceTree = "<group>"; };
+		0340400F170E83AA008EFA2C /* MFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFAppDelegate.m; sourceTree = "<group>"; };
+		03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFFuseBackup+MFFuseBackup_Private.h"; sourceTree = "<group>"; };
+		03404011170E83AA008EFA2C /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
+		03404012170E83AA008EFA2C /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
+		03404013170E83AA008EFA2C /* MFModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFModule.h; sourceTree = "<group>"; };
+		03404014170E83AA008EFA2C /* MFModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFModule.m; sourceTree = "<group>"; };
+		03404015170E83AA008EFA2C /* MFPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPreset.h; sourceTree = "<group>"; };
+		03404016170E83AA008EFA2C /* MFPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPreset.m; sourceTree = "<group>"; };
+		03404017170E83AA008EFA2C /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
+		03404018170E83AA008EFA2C /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
+		03404019170E83AA008EFA2C /* MFQuickAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFQuickAccessView.xib; sourceTree = "<group>"; };
+		0340401A170E83AA008EFA2C /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		03404020170E83AA008EFA2C /* MainWindowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainWindowBG.png; sourceTree = "<group>"; };
+		03404021170E83AA008EFA2C /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
+		03404022170E83AA008EFA2C /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
+		03404023170E83AA008EFA2C /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
+		03404024170E83AA008EFA2C /* Speed Shop-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Speed Shop-Info.plist"; sourceTree = "<group>"; };
+		03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Speed Shop-Prefix.pch"; sourceTree = "<group>"; };
+		0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0340405F170E840D008EFA2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		03404061170E840D008EFA2C /* MainWindowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainWindowBG.png; sourceTree = "<group>"; };
+		03404062170E840D008EFA2C /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
+		03404063170E840D008EFA2C /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
+		03404064170E840D008EFA2C /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
+		03404079170E848E008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0340407A170E848E008EFA2C /* Horse_WhispererTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Horse_WhispererTests.h; sourceTree = "<group>"; };
+		0340407B170E848E008EFA2C /* Horse_WhispererTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Horse_WhispererTests.m; sourceTree = "<group>"; };
+		0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Speed ShopTests-Info.plist"; sourceTree = "<group>"; };
 		0364CA6B16F7C970002FDF46 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0364CA6C16F7C970002FDF46 /* Speed Shop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Speed Shop copy-Info.plist"; path = "/Users/josh/Sites/HorseWhisperer/Horse Whisperer/Speed Shop copy-Info.plist"; sourceTree = "<absolute>"; };
 		03B6B3F316EBB08000D99520 /* Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icons.iconset; sourceTree = "<group>"; };
@@ -119,25 +148,8 @@
 		03BF544016DF11CF00895128 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		03BF544116DF11CF00895128 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		03BF544216DF11CF00895128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		03BF544516DF11CF00895128 /* Speed Shop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Speed Shop-Info.plist"; sourceTree = "<group>"; };
-		03BF544716DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		03BF544916DF11CF00895128 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03BF544B16DF11CF00895128 /* Speed Shop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Speed Shop-Prefix.pch"; sourceTree = "<group>"; };
-		03BF544D16DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		03BF544F16DF11CF00895128 /* MFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFAppDelegate.h; sourceTree = "<group>"; };
-		03BF545016DF11CF00895128 /* MFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFAppDelegate.m; sourceTree = "<group>"; };
-		03BF545316DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		03BF545A16DF11CF00895128 /* Speed ShopTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Speed ShopTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF545B16DF11CF00895128 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		03BF546216DF11CF00895128 /* Speed ShopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Speed ShopTests-Info.plist"; sourceTree = "<group>"; };
-		03BF546416DF11CF00895128 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		03BF546616DF11CF00895128 /* Horse_WhispererTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Horse_WhispererTests.h; sourceTree = "<group>"; };
-		03BF546716DF11CF00895128 /* Horse_WhispererTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Horse_WhispererTests.m; sourceTree = "<group>"; };
-		03BF547216DF1BDD00895128 /* MFPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPreset.h; sourceTree = "<group>"; };
-		03BF547316DF1BDD00895128 /* MFPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPreset.m; sourceTree = "<group>"; };
-		03BF547616DF1BFF00895128 /* MFModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFModule.h; sourceTree = "<group>"; };
-		03BF547716DF1BFF00895128 /* MFModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFModule.m; sourceTree = "<group>"; };
-		03C26F8016F7D57800374364 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0364CA5216F7C970002FDF46 /* Cocoa.framework in Frameworks */,
-				0364CA5316F7C970002FDF46 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */,
-				0364CA4016F7BE0F002FDF46 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,52 +181,101 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0364CA2916F378FE002FDF46 /* Resources */ = {
+		03404006170E83AA008EFA2C /* SpeedShop */ = {
 			isa = PBXGroup;
 			children = (
-				0364CA2A16F378FE002FDF46 /* Fonts */,
-				0364CA2D16F378FE002FDF46 /* Graphics */,
+				03404007170E83AA008EFA2C /* Credits.rtf */,
+				03404009170E83AA008EFA2C /* InfoPlist.strings */,
+				0340400B170E83AA008EFA2C /* MainMenu.xib */,
+				0340400D170E83AA008EFA2C /* main.m */,
+				0340400E170E83AA008EFA2C /* MFAppDelegate.h */,
+				0340400F170E83AA008EFA2C /* MFAppDelegate.m */,
+				03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */,
+				03404011170E83AA008EFA2C /* MFFuseBackup.h */,
+				03404012170E83AA008EFA2C /* MFFuseBackup.m */,
+				03404013170E83AA008EFA2C /* MFModule.h */,
+				03404014170E83AA008EFA2C /* MFModule.m */,
+				03404015170E83AA008EFA2C /* MFPreset.h */,
+				03404016170E83AA008EFA2C /* MFPreset.m */,
+				03404017170E83AA008EFA2C /* MFQuickAccessView.h */,
+				03404018170E83AA008EFA2C /* MFQuickAccessView.m */,
+				03404019170E83AA008EFA2C /* MFQuickAccessView.xib */,
+				0340401A170E83AA008EFA2C /* ReleaseNotes.txt */,
+				0340401B170E83AA008EFA2C /* Resources */,
+				03404024170E83AA008EFA2C /* Speed Shop-Info.plist */,
+				03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */,
 			);
-			name = Resources;
-			path = "Horse Whisperer/Resources";
+			path = SpeedShop;
 			sourceTree = "<group>";
 		};
-		0364CA2A16F378FE002FDF46 /* Fonts */ = {
+		0340401B170E83AA008EFA2C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0364CA2B16F378FE002FDF46 /* OpenSans-ExtraBold.ttf */,
-				0364CA2C16F378FE002FDF46 /* OpenSans-Light.ttf */,
+				0340401C170E83AA008EFA2C /* Fonts */,
+				0340401F170E83AA008EFA2C /* Graphics */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0340401C170E83AA008EFA2C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */,
+				0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		0364CA2D16F378FE002FDF46 /* Graphics */ = {
+		0340401F170E83AA008EFA2C /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				0364CA2E16F378FE002FDF46 /* MainWindowBG.png */,
-				0364CA2F16F378FE002FDF46 /* MainWindowBG@2x.png */,
-				0364CA3016F378FE002FDF46 /* QAWellBG.png */,
-				0364CA3116F378FE002FDF46 /* QAWellBG@2x.png */,
+				03404020170E83AA008EFA2C /* MainWindowBG.png */,
+				03404021170E83AA008EFA2C /* MainWindowBG@2x.png */,
+				03404022170E83AA008EFA2C /* QAWellBG.png */,
+				03404023170E83AA008EFA2C /* QAWellBG@2x.png */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
 		};
-		0364CA3816F7BE0F002FDF46 /* Libraries */ = {
+		0340405C170E840D008EFA2C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0364CA3916F7BE0F002FDF46 /* HockeySDK-Mac */,
+				0340405D170E840D008EFA2C /* Fonts */,
+				03404060170E840D008EFA2C /* Graphics */,
 			);
-			path = Libraries;
+			name = Resources;
+			path = SpeedShop/Resources;
 			sourceTree = "<group>";
 		};
-		0364CA3916F7BE0F002FDF46 /* HockeySDK-Mac */ = {
+		0340405D170E840D008EFA2C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				0364CA3B16F7BE0F002FDF46 /* HockeySDK.framework */,
-				0364CA3D16F7BE0F002FDF46 /* LICENSE.txt */,
-				0364CA3E16F7BE0F002FDF46 /* README.md */,
+				0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */,
+				0340405F170E840D008EFA2C /* OpenSans-Light.ttf */,
 			);
-			path = "HockeySDK-Mac";
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		03404060170E840D008EFA2C /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				03404061170E840D008EFA2C /* MainWindowBG.png */,
+				03404062170E840D008EFA2C /* MainWindowBG@2x.png */,
+				03404063170E840D008EFA2C /* QAWellBG.png */,
+				03404064170E840D008EFA2C /* QAWellBG@2x.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		03404077170E848E008EFA2C /* SpeedShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				03404078170E848E008EFA2C /* InfoPlist.strings */,
+				0340407A170E848E008EFA2C /* Horse_WhispererTests.h */,
+				0340407B170E848E008EFA2C /* Horse_WhispererTests.m */,
+				0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */,
+			);
+			path = SpeedShopTests;
 			sourceTree = "<group>";
 		};
 		03B6B3E316EBADC500D99520 /* Graphics */ = {
@@ -230,12 +289,11 @@
 		03BF543116DF11CF00895128 = {
 			isa = PBXGroup;
 			children = (
-				0364CA3816F7BE0F002FDF46 /* Libraries */,
-				0364CA2916F378FE002FDF46 /* Resources */,
+				0340405C170E840D008EFA2C /* Resources */,
 				03B6B3E316EBADC500D99520 /* Graphics */,
 				0327251F16E2B244003A8E3E /* SampleBackups */,
-				03BF544316DF11CF00895128 /* Horse Whisperer */,
-				03BF546016DF11CF00895128 /* Horse WhispererTests */,
+				03404006170E83AA008EFA2C /* SpeedShop */,
+				03404077170E848E008EFA2C /* SpeedShopTests */,
 				03BF543C16DF11CF00895128 /* Frameworks */,
 				03BF543B16DF11CF00895128 /* Products */,
 				0364CA6C16F7C970002FDF46 /* Speed Shop copy-Info.plist */,
@@ -272,67 +330,6 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		03BF544316DF11CF00895128 /* Horse Whisperer */ = {
-			isa = PBXGroup;
-			children = (
-				03BF547116DF1BB700895128 /* Model */,
-				03BF544F16DF11CF00895128 /* MFAppDelegate.h */,
-				03BF545016DF11CF00895128 /* MFAppDelegate.m */,
-				03BF545216DF11CF00895128 /* MainMenu.xib */,
-				03BF544416DF11CF00895128 /* Supporting Files */,
-				0303040B16E6F9C100490253 /* MFQuickAccessView.h */,
-				0303040C16E6F9C100490253 /* MFQuickAccessView.m */,
-				0303040E16E702E200490253 /* MFQuickAccessView.xib */,
-			);
-			path = "Horse Whisperer";
-			sourceTree = "<group>";
-		};
-		03BF544416DF11CF00895128 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				03BF544516DF11CF00895128 /* Speed Shop-Info.plist */,
-				03BF544616DF11CF00895128 /* InfoPlist.strings */,
-				03BF544916DF11CF00895128 /* main.m */,
-				03BF544B16DF11CF00895128 /* Speed Shop-Prefix.pch */,
-				03BF544C16DF11CF00895128 /* Credits.rtf */,
-				03C26F8016F7D57800374364 /* ReleaseNotes.txt */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		03BF546016DF11CF00895128 /* Horse WhispererTests */ = {
-			isa = PBXGroup;
-			children = (
-				03BF546616DF11CF00895128 /* Horse_WhispererTests.h */,
-				03BF546716DF11CF00895128 /* Horse_WhispererTests.m */,
-				03BF546116DF11CF00895128 /* Supporting Files */,
-			);
-			path = "Horse WhispererTests";
-			sourceTree = "<group>";
-		};
-		03BF546116DF11CF00895128 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				03BF546216DF11CF00895128 /* Speed ShopTests-Info.plist */,
-				03BF546316DF11CF00895128 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		03BF547116DF1BB700895128 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				03BF547216DF1BDD00895128 /* MFPreset.h */,
-				03BF547316DF1BDD00895128 /* MFPreset.m */,
-				03BF547616DF1BFF00895128 /* MFModule.h */,
-				03BF547716DF1BFF00895128 /* MFModule.m */,
-				0327251B16E2AE93003A8E3E /* MFFuseBackup.h */,
-				0327252216E2B94C003A8E3E /* MFFuseBackup+MFFuseBackup_Private.h */,
-				0327251C16E2AE93003A8E3E /* MFFuseBackup.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -344,7 +341,6 @@
 				0364CA4A16F7C970002FDF46 /* Sources */,
 				0364CA5116F7C970002FDF46 /* Frameworks */,
 				0364CA5416F7C970002FDF46 /* Resources */,
-				03C26F7A16F7CF4600374364 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -363,7 +359,6 @@
 				03BF543616DF11CF00895128 /* Sources */,
 				03BF543716DF11CF00895128 /* Frameworks */,
 				03BF543816DF11CF00895128 /* Resources */,
-				03C26F7816F7CF3B00374364 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -427,20 +422,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0364CA5516F7C970002FDF46 /* InfoPlist.strings in Resources */,
-				0364CA5616F7C970002FDF46 /* Credits.rtf in Resources */,
-				0364CA5716F7C970002FDF46 /* MainMenu.xib in Resources */,
 				0364CA5816F7C970002FDF46 /* SampleBackups in Resources */,
-				0364CA5916F7C970002FDF46 /* MFQuickAccessView.xib in Resources */,
 				0364CA5A16F7C970002FDF46 /* Icons.iconset in Resources */,
-				0364CA5B16F7C970002FDF46 /* OpenSans-ExtraBold.ttf in Resources */,
-				0364CA5C16F7C970002FDF46 /* OpenSans-Light.ttf in Resources */,
-				0364CA5D16F7C970002FDF46 /* MainWindowBG.png in Resources */,
-				0364CA5E16F7C970002FDF46 /* MainWindowBG@2x.png in Resources */,
-				0364CA5F16F7C970002FDF46 /* QAWellBG.png in Resources */,
-				0364CA6016F7C970002FDF46 /* QAWellBG@2x.png in Resources */,
-				0364CA6316F7C970002FDF46 /* LICENSE.txt in Resources */,
-				0364CA6416F7C970002FDF46 /* README.md in Resources */,
+				03404028170E83AA008EFA2C /* Credits.rtf in Resources */,
+				0340402B170E83AA008EFA2C /* InfoPlist.strings in Resources */,
+				0340402E170E83AA008EFA2C /* MainMenu.xib in Resources */,
+				03404043170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
+				03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
+				03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340404C170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340404F170E83AA008EFA2C /* MainWindowBG.png in Resources */,
+				03404052170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404055170E83AA008EFA2C /* QAWellBG.png in Resources */,
+				03404058170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
+				0340405B170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
+				03404067170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340406A170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340406D170E840D008EFA2C /* MainWindowBG.png in Resources */,
+				03404070170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404073170E840D008EFA2C /* QAWellBG.png in Resources */,
+				03404076170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,21 +449,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BF544816DF11CF00895128 /* InfoPlist.strings in Resources */,
-				03BF544E16DF11CF00895128 /* Credits.rtf in Resources */,
-				03BF545416DF11CF00895128 /* MainMenu.xib in Resources */,
 				0327252016E2B244003A8E3E /* SampleBackups in Resources */,
-				0303040F16E702E200490253 /* MFQuickAccessView.xib in Resources */,
 				03B6B3F416EBB08000D99520 /* Icons.iconset in Resources */,
-				0364CA3216F378FE002FDF46 /* OpenSans-ExtraBold.ttf in Resources */,
-				0364CA3316F378FE002FDF46 /* OpenSans-Light.ttf in Resources */,
-				0364CA3416F378FE002FDF46 /* MainWindowBG.png in Resources */,
-				0364CA3516F378FE002FDF46 /* MainWindowBG@2x.png in Resources */,
-				0364CA3616F378FE002FDF46 /* QAWellBG.png in Resources */,
-				0364CA3716F378FE002FDF46 /* QAWellBG@2x.png in Resources */,
-				0364CA4216F7BE0F002FDF46 /* LICENSE.txt in Resources */,
-				0364CA4316F7BE0F002FDF46 /* README.md in Resources */,
-				03C26F8116F7D57800374364 /* ReleaseNotes.txt in Resources */,
+				03404026170E83AA008EFA2C /* Credits.rtf in Resources */,
+				03404029170E83AA008EFA2C /* InfoPlist.strings in Resources */,
+				0340402C170E83AA008EFA2C /* MainMenu.xib in Resources */,
+				03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
+				03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
+				03404047170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340404A170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */,
+				03404050170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404053170E83AA008EFA2C /* QAWellBG.png in Resources */,
+				03404056170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
+				03404059170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
+				03404065170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				03404068170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340406B170E840D008EFA2C /* MainWindowBG.png in Resources */,
+				0340406E170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404071170E840D008EFA2C /* QAWellBG.png in Resources */,
+				03404074170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,8 +476,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BF546516DF11CF00895128 /* InfoPlist.strings in Resources */,
 				0327252116E2B244003A8E3E /* SampleBackups in Resources */,
+				03404027170E83AA008EFA2C /* Credits.rtf in Resources */,
+				0340402A170E83AA008EFA2C /* InfoPlist.strings in Resources */,
+				0340402D170E83AA008EFA2C /* MainMenu.xib in Resources */,
+				03404042170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
+				03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
+				03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340404E170E83AA008EFA2C /* MainWindowBG.png in Resources */,
+				03404051170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404054170E83AA008EFA2C /* QAWellBG.png in Resources */,
+				03404057170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
+				0340405A170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
+				03404066170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				03404069170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340406C170E840D008EFA2C /* MainWindowBG.png in Resources */,
+				0340406F170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404072170E840D008EFA2C /* QAWellBG.png in Resources */,
+				03404075170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
+				0340407D170E848E008EFA2C /* InfoPlist.strings in Resources */,
+				0340407F170E848E008EFA2C /* Speed ShopTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,12 +549,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0364CA4B16F7C970002FDF46 /* main.m in Sources */,
-				0364CA4C16F7C970002FDF46 /* MFAppDelegate.m in Sources */,
-				0364CA4D16F7C970002FDF46 /* MFPreset.m in Sources */,
-				0364CA4E16F7C970002FDF46 /* MFModule.m in Sources */,
-				0364CA4F16F7C970002FDF46 /* MFFuseBackup.m in Sources */,
-				0364CA5016F7C970002FDF46 /* MFQuickAccessView.m in Sources */,
+				03404031170E83AA008EFA2C /* main.m in Sources */,
+				03404034170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
+				03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
+				0340403A170E83AA008EFA2C /* MFModule.m in Sources */,
+				0340403D170E83AA008EFA2C /* MFPreset.m in Sources */,
+				03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,12 +562,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BF544A16DF11CF00895128 /* main.m in Sources */,
-				03BF545116DF11CF00895128 /* MFAppDelegate.m in Sources */,
-				03BF547416DF1BDD00895128 /* MFPreset.m in Sources */,
-				03BF547816DF1BFF00895128 /* MFModule.m in Sources */,
-				0327251D16E2AE93003A8E3E /* MFFuseBackup.m in Sources */,
-				0303040D16E6F9C100490253 /* MFQuickAccessView.m in Sources */,
+				0340402F170E83AA008EFA2C /* main.m in Sources */,
+				03404032170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
+				03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
+				03404038170E83AA008EFA2C /* MFModule.m in Sources */,
+				0340403B170E83AA008EFA2C /* MFPreset.m in Sources */,
+				0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +575,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BF546816DF11CF00895128 /* Horse_WhispererTests.m in Sources */,
+				03404030170E83AA008EFA2C /* main.m in Sources */,
+				03404033170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
+				03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
+				03404039170E83AA008EFA2C /* MFModule.m in Sources */,
+				0340403C170E83AA008EFA2C /* MFPreset.m in Sources */,
+				0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+				0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,34 +596,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		03BF544616DF11CF00895128 /* InfoPlist.strings */ = {
+		03404007170E83AA008EFA2C /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03BF544716DF11CF00895128 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		03BF544C16DF11CF00895128 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03BF544D16DF11CF00895128 /* en */,
+				03404008170E83AA008EFA2C /* en */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		03BF545216DF11CF00895128 /* MainMenu.xib */ = {
+		03404009170E83AA008EFA2C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03BF545316DF11CF00895128 /* en */,
+				0340400A170E83AA008EFA2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0340400B170E83AA008EFA2C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0340400C170E83AA008EFA2C /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		03BF546316DF11CF00895128 /* InfoPlist.strings */ = {
+		03404078170E848E008EFA2C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				03BF546416DF11CF00895128 /* en */,
+				03404079170E848E008EFA2C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -636,8 +667,8 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
-				INFOPLIST_FILE = "Horse Whisperer/Speed Shop-Info.plist";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShop/Speed Shop-Info.plist";
 				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
 			};
@@ -650,8 +681,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
-				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShopTests/Speed ShopTests-Info.plist";
 				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -667,7 +698,7 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
 				INFOPLIST_FILE = "Speed Shop copy-Info.plist";
 				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
@@ -683,7 +714,7 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
 				INFOPLIST_FILE = "Speed Shop copy-Info.plist";
 				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
@@ -699,7 +730,7 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
 				INFOPLIST_FILE = "Speed Shop copy-Info.plist";
 				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
@@ -772,8 +803,8 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
-				INFOPLIST_FILE = "Horse Whisperer/Speed Shop-Info.plist";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShop/Speed Shop-Info.plist";
 				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
 			};
@@ -788,8 +819,8 @@
 					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
-				INFOPLIST_FILE = "Horse Whisperer/Speed Shop-Info.plist";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShop/Speed Shop-Info.plist";
 				PRODUCT_NAME = "Speed Shop";
 				WRAPPER_EXTENSION = app;
 			};
@@ -802,8 +833,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
-				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShopTests/Speed ShopTests-Info.plist";
 				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -817,8 +848,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Horse Whisperer/Speed Shop-Prefix.pch";
-				INFOPLIST_FILE = "Horse WhispererTests/Speed ShopTests-Info.plist";
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShopTests/Speed ShopTests-Info.plist";
 				PRODUCT_NAME = "Speed ShopTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
