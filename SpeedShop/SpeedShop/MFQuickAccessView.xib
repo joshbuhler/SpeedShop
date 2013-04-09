@@ -52,7 +52,7 @@
 							<int key="NSCellFlags2">138412032</int>
 							<string key="NSContents"/>
 							<object class="NSFont" key="NSSupport">
-								<string key="NSName">OpenSans-Light</string>
+								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">14</double>
 								<int key="NSfFlags">16</int>
 							</object>

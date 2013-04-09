@@ -483,7 +483,7 @@
 											<string key="NSFrameSize">{300, 495}</string>
 											<reference key="NSSuperview" ref="101493109"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="951030732"/>
+											<reference key="NSNextKeyView" ref="329006809"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="501436640">
@@ -675,7 +675,7 @@
 							<string key="NSFrame">{{20, 18}, {300, 512}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="329006809"/>
+							<reference key="NSNextKeyView" ref="101493109"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133680</int>
 							<reference key="NSVScroller" ref="951030732"/>
@@ -699,7 +699,7 @@
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents">PRESET NAME</string>
 								<object class="NSFont" key="NSSupport" id="936116683">
-									<string key="NSName">OpenSans-Extrabold</string>
+									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">20</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -720,7 +720,7 @@
 						<object class="NSTextField" id="331857633">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{333, 497}, {187, 33}}</string>
+							<string key="NSFrame">{{333, 506}, {179, 24}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="44699415"/>
@@ -869,7 +869,7 @@
 								<int key="NSCellFlags2">272629760</int>
 								<string key="NSContents">Good news, everyone! I've taught the toaster to feel love! Ask her how her day was. I don't 'need' to drink. I can quit anytime I want! Leela's gonna kill me.</string>
 								<object class="NSFont" key="NSSupport" id="539706827">
-									<string key="NSName">OpenSans-Light</string>
+									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -892,7 +892,7 @@
 						<object class="NSTextField" id="924432057">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{348, 382}, {532, 24}}</string>
+							<string key="NSFrame">{{348, 388}, {532, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="82406516"/>
@@ -920,7 +920,7 @@
 						<object class="NSTextField" id="910580416">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{348, 331}, {532, 24}}</string>
+							<string key="NSFrame">{{348, 337}, {532, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="564534312"/>
@@ -963,7 +963,7 @@
 						<object class="NSCustomView" id="705306345">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{346, 20}, {161, 117}}</string>
+							<string key="NSFrame">{{346, 20}, {153, 117}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="384534856"/>
@@ -986,7 +986,6 @@
 							<string key="NSFrame">{{714, 20}, {161, 117}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSClassName">MFQuickAccessView</string>
 						</object>
@@ -1249,6 +1248,62 @@
 						<reference key="destination" ref="992160144"/>
 					</object>
 					<int key="connectionID">811</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">cBackupHeader</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="331857633"/>
+					</object>
+					<int key="connectionID">1173</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">nameHeader</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="468011436"/>
+					</object>
+					<int key="connectionID">1174</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">authorHeader</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="82406516"/>
+					</object>
+					<int key="connectionID">1175</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">descHeader</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="564534312"/>
+					</object>
+					<int key="connectionID">1176</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">qa1Header</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1013328159"/>
+					</object>
+					<int key="connectionID">1177</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">qa2Header</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="384534856"/>
+					</object>
+					<int key="connectionID">1178</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">qa3Header</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="880051953"/>
+					</object>
+					<int key="connectionID">1179</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3320,7 +3375,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1172</int>
+			<int key="maxID">1179</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3353,10 +3408,17 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="ampPresetTable">NSTableView</string>
+						<string key="authorHeader">NSTextField</string>
 						<string key="authorNameField">NSTextField</string>
 						<string key="backupNameField">NSTextField</string>
+						<string key="cBackupHeader">NSTextField</string>
+						<string key="descHeader">NSTextField</string>
+						<string key="nameHeader">NSTextField</string>
 						<string key="presetDescriptionField">NSTextField</string>
 						<string key="presetNameField">NSTextField</string>
+						<string key="qa1Header">NSTextField</string>
+						<string key="qa2Header">NSTextField</string>
+						<string key="qa3Header">NSTextField</string>
 						<string key="qaBox1">MFQuickAccessView</string>
 						<string key="qaBox2">MFQuickAccessView</string>
 						<string key="qaBox3">MFQuickAccessView</string>
@@ -3367,6 +3429,10 @@
 							<string key="name">ampPresetTable</string>
 							<string key="candidateClassName">NSTableView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="authorHeader">
+							<string key="name">authorHeader</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="authorNameField">
 							<string key="name">authorNameField</string>
 							<string key="candidateClassName">NSTextField</string>
@@ -3375,12 +3441,36 @@
 							<string key="name">backupNameField</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="cBackupHeader">
+							<string key="name">cBackupHeader</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="descHeader">
+							<string key="name">descHeader</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="nameHeader">
+							<string key="name">nameHeader</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="presetDescriptionField">
 							<string key="name">presetDescriptionField</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="presetNameField">
 							<string key="name">presetNameField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="qa1Header">
+							<string key="name">qa1Header</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="qa2Header">
+							<string key="name">qa2Header</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="qa3Header">
+							<string key="name">qa3Header</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="qaBox1">

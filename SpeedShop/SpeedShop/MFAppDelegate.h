@@ -20,6 +20,13 @@
 @property (weak) IBOutlet MFQuickAccessView *qaBox1;
 @property (weak) IBOutlet MFQuickAccessView *qaBox2;
 @property (weak) IBOutlet MFQuickAccessView *qaBox3;
+@property (weak) IBOutlet NSTextField *cBackupHeader;
+@property (weak) IBOutlet NSTextField *nameHeader;
+@property (weak) IBOutlet NSTextField *authorHeader;
+@property (weak) IBOutlet NSTextField *descHeader;
+@property (weak) IBOutlet NSTextField *qa1Header;
+@property (weak) IBOutlet NSTextField *qa2Header;
+@property (weak) IBOutlet NSTextField *qa3Header;
 
 - (IBAction)onReloadBtn:(id)sender;
 

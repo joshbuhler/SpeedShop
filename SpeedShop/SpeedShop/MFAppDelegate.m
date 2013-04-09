@@ -42,6 +42,22 @@
     [self.presetNameField setStringValue:@""];
     [self.authorNameField setStringValue:@""];
     [self.presetDescriptionField setStringValue:@""];
+    
+    // Custom font for headers
+    NSFont *headerFont = [NSFont fontWithName:@"Open Sans Extrabold" size:20.0f];
+    NSFont *fieldFont = [NSFont fontWithName:@"Open Sans Light" size:14.0f];
+    self.cBackupHeader.font = headerFont;
+    self.nameHeader.font = headerFont;
+    self.authorHeader.font = headerFont;
+    self.descHeader.font = headerFont;
+    self.qa1Header.font = headerFont;
+    self.qa2Header.font = headerFont;
+    self.qa3Header.font = headerFont;
+    
+    self.backupNameField.font = fieldFont;
+    self.presetNameField.font = fieldFont;
+    self.authorNameField.font = fieldFont;
+    self.presetDescriptionField.font = fieldFont;
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender

@@ -91,6 +91,8 @@
 		03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
 		03BF545C16DF11CF00895128 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF545B16DF11CF00895128 /* SenTestingKit.framework */; };
 		03BF545D16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
+		066DE1BB1714B65100451196 /* OpenSans-ExtraBold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		066DE1BC1714B65400451196 /* OpenSans-Light.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,20 @@
 			remoteInfo = "Horse Whisperer";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		066DE1BA1714B62800451196 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				066DE1BB1714B65100451196 /* OpenSans-ExtraBold.ttf in CopyFiles */,
+				066DE1BC1714B65400451196 /* OpenSans-Light.ttf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0327251F16E2B244003A8E3E /* SampleBackups */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SampleBackups; path = ../SampleBackups; sourceTree = "<group>"; };
@@ -358,6 +374,7 @@
 				03C26F8216F7D6F700374364 /* ShellScript */,
 				03BF543616DF11CF00895128 /* Sources */,
 				03BF543716DF11CF00895128 /* Frameworks */,
+				066DE1BA1714B62800451196 /* CopyFiles */,
 				03BF543816DF11CF00895128 /* Resources */,
 			);
 			buildRules = (

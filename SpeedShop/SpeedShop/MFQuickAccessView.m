@@ -39,6 +39,8 @@
         [self addSubview:self.view];
         
         self.canAcceptDrag = YES;
+        
+        self.presetLabel.font = [NSFont fontWithName:@"Open Sans Light" size:14.0f];
     }
     
     return self;
@@ -100,7 +102,6 @@
         NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
         
         MFPreset *thePreset = [dragData objectForKey:@"preset"];
-        NSLog(@"preset accepted: %@", thePreset.name);
         self.preset = thePreset;
         [presetLabel setStringValue:thePreset.name];
         
