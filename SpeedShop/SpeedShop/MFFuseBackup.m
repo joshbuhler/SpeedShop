@@ -13,6 +13,7 @@ NSString *FUSE_FOLDER = @"FUSE";
 NSString *PRESET_FOLDER = @"Presets";
 NSString *BACKUP_FILENAME_GDEC = @"GD_BackupName.fuse";
 NSString *BACKUP_FILENAME_MUSTANG = @"MU_BackupName.fuse";
+NSString *BACKUP_FILENAME_MUSTANG_V2 = @"M2_BackupName.fuse";
 NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 @interface MFFuseBackup()
@@ -62,7 +63,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // We should have four items:
     // - "FUSE" folder
     // - "Presets" folder
-    // - "MU_BackupName.fuse" file or "GD_BackupName.fuse"
+    // - "MU_BackupName.fuse" or "M2_BackupName.fuse" or "GD_BackupName.fuse" file
     // - "SystemSettings.fuse" file - Mustang only
     
     NSFileManager *fileMan = [NSFileManager defaultManager];
@@ -96,6 +97,13 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         _ampSeries = AmpSeries_Mustang;
     }
     
+    NSURL *backupFileMustang_V2 = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_MUSTANG_V2];
+    if ([fileMan fileExistsAtPath:[backupFileMustang_V2 path]] == YES)
+    {
+        backupFileFound = YES;
+        _ampSeries = AmpSeries_Mustang_V2;
+    }
+    
     NSURL *backupFileGDec = [_folderURL URLByAppendingPathComponent:BACKUP_FILENAME_GDEC];
     if ([fileMan fileExistsAtPath:[backupFileGDec path]] == YES)
     {
@@ -107,7 +115,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         return NO;
     
     // Look for a settings file if it's a Mustang series
-    if (_ampSeries == AmpSeries_Mustang)
+    if (_ampSeries == AmpSeries_Mustang || _ampSeries == AmpSeries_Mustang_V2)
     {
         NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
         if ([fileMan fileExistsAtPath:[settingsFile path]] == NO)
@@ -132,6 +140,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSString *fileName = nil;
     if (_ampSeries == AmpSeries_Mustang)
         fileName = BACKUP_FILENAME_MUSTANG;
+    
+    if (_ampSeries == AmpSeries_Mustang_V2)
+        fileName = BACKUP_FILENAME_MUSTANG_V2;
     
     if (_ampSeries == AmpSeries_GDec)
         fileName = BACKUP_FILENAME_GDEC;
@@ -293,6 +304,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if (_ampSeries == AmpSeries_Mustang)
         backupFileName = BACKUP_FILENAME_MUSTANG;
     
+    if (_ampSeries == AmpSeries_Mustang_V2)
+        backupFileName = BACKUP_FILENAME_MUSTANG_V2;
+
     if (_ampSeries == AmpSeries_GDec)
         backupFileName = BACKUP_FILENAME_GDEC;
     
@@ -308,7 +322,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     // Saving of the settings file
-    if (_ampSeries == AmpSeries_Mustang)
+    if (_ampSeries == AmpSeries_Mustang || _ampSeries == AmpSeries_Mustang_V2)
     {
         NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
         NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
