@@ -386,7 +386,7 @@
     [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
     [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
     
-    if (self.currentBackup.ampSeries == AmpSeries_Mustang)
+    if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
         self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
         self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;

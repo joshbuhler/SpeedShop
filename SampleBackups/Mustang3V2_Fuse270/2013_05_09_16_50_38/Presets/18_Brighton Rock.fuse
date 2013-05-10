@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang V2 III/IV/V" ProductId="13">
+  <Amplifier>
+    <Module ID="97" POS="0" BypassState="1">
+      <Param ControlIndex="0">32256</Param>
+      <Param ControlIndex="1">43776</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">41472</Param>
+      <Param ControlIndex="4">7680</Param>
+      <Param ControlIndex="5">60928</Param>
+      <Param ControlIndex="6">33280</Param>
+      <Param ControlIndex="7">33792</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">32768</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">4</Param>
+      <Param ControlIndex="13">7</Param>
+      <Param ControlIndex="14">7</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">7</Param>
+      <Param ControlIndex="18">7</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="259" POS="0" BypassState="1">
+        <Param ControlIndex="0">31488</Param>
+        <Param ControlIndex="1">63232</Param>
+        <Param ControlIndex="2">0</Param>
+        <Param ControlIndex="3">29440</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="79" POS="1" BypassState="1">
+        <Param ControlIndex="0">54272</Param>
+        <Param ControlIndex="1">0</Param>
+        <Param ControlIndex="2">65280</Param>
+        <Param ControlIndex="3">24320</Param>
+        <Param ControlIndex="4">0</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="0" POS="6" BypassState="1"></Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="75" POS="7" BypassState="1">
+        <Param ControlIndex="0">14336</Param>
+        <Param ControlIndex="1">32768</Param>
+        <Param ControlIndex="2">37120</Param>
+        <Param ControlIndex="3">32768</Param>
+        <Param ControlIndex="4">46592</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Brighton Rock" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="0" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>
