@@ -14,6 +14,7 @@
 {
     NSURL *sampleBackupDir;
     NSURL *fuse270dir;
+    NSURL *fuse270_mustangV2_dir;
     NSURL *gdec30dir;
 }
 
@@ -29,7 +30,9 @@
     sampleBackupDir = [[NSBundle mainBundle] URLForResource:@"SampleBackups" withExtension:nil];
     
     fuse270dir = [sampleBackupDir URLByAppendingPathComponent:@"Mustang3_Fuse270/2013_02_27_21_09_59/"];
+    fuse270_mustangV2_dir = [sampleBackupDir URLByAppendingPathComponent:@"Mustang3V2_Fuse270/2013_05_09_16_50_38/"];
     gdec30dir = [sampleBackupDir URLByAppendingPathComponent:@"GDEC_30/2013_02_17_19_24_50/"];
+    
 }
 
 - (void)tearDown
@@ -44,6 +47,7 @@
     NSFileManager *fileMan = [NSFileManager defaultManager];
     STAssertTrue([fileMan fileExistsAtPath:[fuse270dir path]], @"Sample backup not found - fuse270");
     STAssertTrue([fileMan fileExistsAtPath:[gdec30dir path]], @"Sample backup not found - G-Dec 30");
+    STAssertTrue([fileMan fileExistsAtPath:[fuse270_mustangV2_dir path]], @"Sample backup not found - fuse270_Mustang3V2");
 }
 
 - (void) testMustangLoad
@@ -57,6 +61,19 @@
         STAssertTrue([backup.presets count] == 100, @"Failed to find 100 presets");
     }];
 }
+
+- (void) testMustangV2Load
+{
+    MFFuseBackup *backup = [[MFFuseBackup alloc] init];
+    [backup loadBackup:fuse270_mustangV2_dir withCompletion:^(BOOL success) {
+        STAssertTrue(success, @"Failed to load backup");
+        
+        STAssertTrue([backup.backupDescription isEqualToString:@"TestBackup - Mustang 3 V.2 - Fuse 2.7"], @"Failed to load backup name");
+        
+        STAssertTrue([backup.presets count] == 100, @"Failed to find 100 presets");
+    }];
+}
+
 
 - (void) testGDecLoad
 {
@@ -75,6 +92,10 @@
     MFFuseBackup *mustangBackup = [[MFFuseBackup alloc] init];
     mustangBackup.folderURL = fuse270dir;
     STAssertTrue([mustangBackup validateBackupContents], @"Validation of sample contents failed - Mustang");
+
+    MFFuseBackup *mustangV2Backup = [[MFFuseBackup alloc] init];
+    mustangV2Backup.folderURL = fuse270_mustangV2_dir;
+    STAssertTrue([mustangBackup validateBackupContents], @"Validation of sample contents failed - Mustang V.2");
     
     MFFuseBackup *gDecBackup = [[MFFuseBackup alloc] init];
     gDecBackup.folderURL = gdec30dir;

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang V2 III/IV/V" ProductId="13">
+  <Amplifier>
+    <Module ID="252" POS="0" BypassState="1">
+      <Param ControlIndex="0">42240</Param>
+      <Param ControlIndex="1">40704</Param>
+      <Param ControlIndex="2">33024</Param>
+      <Param ControlIndex="3">33024</Param>
+      <Param ControlIndex="4">51200</Param>
+      <Param ControlIndex="5">40448</Param>
+      <Param ControlIndex="6">39168</Param>
+      <Param ControlIndex="7">33024</Param>
+      <Param ControlIndex="8">33024</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">33024</Param>
+      <Param ControlIndex="11">33024</Param>
+      <Param ControlIndex="12">4</Param>
+      <Param ControlIndex="13">16</Param>
+      <Param ControlIndex="14">16</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">11</Param>
+      <Param ControlIndex="18">16</Param>
+      <Param ControlIndex="19">0</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="259" POS="0" BypassState="1">
+        <Param ControlIndex="0">30976</Param>
+        <Param ControlIndex="1">7680</Param>
+        <Param ControlIndex="2">0</Param>
+        <Param ControlIndex="3">56576</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="4" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="0" POS="6" BypassState="0"></Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="38" POS="7" BypassState="1">
+        <Param ControlIndex="0">22528</Param>
+        <Param ControlIndex="1">7680</Param>
+        <Param ControlIndex="2">28160</Param>
+        <Param ControlIndex="3">33024</Param>
+        <Param ControlIndex="4">33024</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Doom Hand" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="0" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

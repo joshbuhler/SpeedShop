@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang V2 III/IV/V" ProductId="13">
+  <Amplifier>
+    <Module ID="117" POS="0" BypassState="1">
+      <Param ControlIndex="0">56576</Param>
+      <Param ControlIndex="1">22016</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">25344</Param>
+      <Param ControlIndex="4">35584</Param>
+      <Param ControlIndex="5">30208</Param>
+      <Param ControlIndex="6">17408</Param>
+      <Param ControlIndex="7">32768</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">26624</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">5</Param>
+      <Param ControlIndex="13">5</Param>
+      <Param ControlIndex="14">5</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">9</Param>
+      <Param ControlIndex="18">5</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="0" POS="0" BypassState="0"></Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="31" POS="1" BypassState="1">
+        <Param ControlIndex="0">16384</Param>
+        <Param ControlIndex="1">32512</Param>
+        <Param ControlIndex="2">65280</Param>
+        <Param ControlIndex="3">32768</Param>
+        <Param ControlIndex="4">9728</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">41728</Param>
+        <Param ControlIndex="1">13312</Param>
+        <Param ControlIndex="2">9728</Param>
+        <Param ControlIndex="3">27392</Param>
+        <Param ControlIndex="4">32768</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="11" POS="7" BypassState="1">
+        <Param ControlIndex="0">18432</Param>
+        <Param ControlIndex="1">35584</Param>
+        <Param ControlIndex="2">18688</Param>
+        <Param ControlIndex="3">65280</Param>
+        <Param ControlIndex="4">32768</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Autumns End Scars" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="3" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="0" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

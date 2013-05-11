@@ -15,7 +15,8 @@ typedef void (^MFFuseBackupSaveCompletion)(BOOL, NSURL*);
 typedef enum
 {
     AmpSeries_Mustang,
-    AmpSeries_GDec
+    AmpSeries_GDec,
+    AmpSeries_Mustang_V2
 } AmpSeries;
 
 @interface MFFuseBackup : NSObject <NSXMLParserDelegate>
