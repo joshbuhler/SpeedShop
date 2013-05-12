@@ -265,6 +265,9 @@
 {
     [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
      {
+         NSString *msg = @"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: ";
+         msg = [msg stringByAppendingString:[[newURL absoluteString] lastPathComponent]];
+
          NSAlert *alert;
          if (success)
          {
@@ -272,7 +275,7 @@
                                      defaultButton:@"OK"
                                    alternateButton:nil
                                        otherButton:nil
-                         informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp."];
+                         informativeTextWithFormat:msg];
              
              // todo: reload the newly saved file
              [self loadBackupFile:newURL];
@@ -310,6 +313,9 @@
         
         [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
          {
+             NSString *msg = @"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: ";
+             msg = [msg stringByAppendingString:[[newURL absoluteString] lastPathComponent]];
+             
              NSAlert *alert;
              if (success)
              {
@@ -317,7 +323,7 @@
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp."];
+                             informativeTextWithFormat:msg];
                  
                  // todo: reload the newly saved file
                  [self loadBackupFile:newURL];
