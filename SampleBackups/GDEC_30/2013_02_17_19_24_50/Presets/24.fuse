@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="G-DEC3" ProductId="10">
+  <Amplifier>
+    <Module ID="3" POS="0">
+      <Param ControlIndex="0">1</Param>
+      <Param ControlIndex="1">44150</Param>
+      <Param ControlIndex="2">44150</Param>
+      <Param ControlIndex="3">45001</Param>
+      <Param ControlIndex="4">32768</Param>
+      <Param ControlIndex="5">46312</Param>
+      <Param ControlIndex="6">1</Param>
+      <Param ControlIndex="7">4</Param>
+      <Param ControlIndex="8">0</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">0</Param>
+      <Param ControlIndex="11">13205</Param>
+      <Param ControlIndex="12">21508</Param>
+      <Param ControlIndex="13">63132</Param>
+      <Param ControlIndex="14">32639</Param>
+      <Param ControlIndex="15">10230</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="60" POS="0">
+        <Param ControlIndex="0">39563</Param>
+        <Param ControlIndex="1">9467</Param>
+        <Param ControlIndex="2">54612</Param>
+        <Param ControlIndex="3">39078</Param>
+        <Param ControlIndex="4">39564</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="0" />
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="0" POS="0" />
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="33" POS="0">
+        <Param ControlIndex="0">7524</Param>
+        <Param ControlIndex="1">17233</Param>
+        <Param ControlIndex="2">15776</Param>
+        <Param ControlIndex="3">15776</Param>
+        <Param ControlIndex="4">41020</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="1">
+    <SongFile Location="1">Wake Up Mama - C.mp3</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Clapton      " author="G-DEC 3" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0" />
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+</Preset>

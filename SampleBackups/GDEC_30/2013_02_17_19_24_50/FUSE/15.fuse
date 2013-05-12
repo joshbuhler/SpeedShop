@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FUSE>
+  <Info name="Campbell Soup" author="John Dreyer - Fender" rating="0" genre1="40" genre2="3" genre3="-1" tags="" fenderid="974">Trying to get that great Mike Campbell tone. Enjoy!</Info>
+  <PedalColors>
+    <Color ID="1">14</Color>
+    <Color ID="2">1</Color>
+    <Color ID="3">2</Color>
+    <Color ID="4">10</Color>
+  </PedalColors>
+</FUSE>

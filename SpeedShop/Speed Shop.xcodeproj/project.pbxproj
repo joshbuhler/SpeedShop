@@ -1,0 +1,922 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0327252016E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
+		0327252116E2B244003A8E3E /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
+		03404026170E83AA008EFA2C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03404007170E83AA008EFA2C /* Credits.rtf */; };
+		03404027170E83AA008EFA2C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03404007170E83AA008EFA2C /* Credits.rtf */; };
+		03404028170E83AA008EFA2C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03404007170E83AA008EFA2C /* Credits.rtf */; };
+		03404029170E83AA008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404009170E83AA008EFA2C /* InfoPlist.strings */; };
+		0340402A170E83AA008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404009170E83AA008EFA2C /* InfoPlist.strings */; };
+		0340402B170E83AA008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404009170E83AA008EFA2C /* InfoPlist.strings */; };
+		0340402C170E83AA008EFA2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0340400B170E83AA008EFA2C /* MainMenu.xib */; };
+		0340402D170E83AA008EFA2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0340400B170E83AA008EFA2C /* MainMenu.xib */; };
+		0340402E170E83AA008EFA2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0340400B170E83AA008EFA2C /* MainMenu.xib */; };
+		0340402F170E83AA008EFA2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400D170E83AA008EFA2C /* main.m */; };
+		03404030170E83AA008EFA2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400D170E83AA008EFA2C /* main.m */; };
+		03404031170E83AA008EFA2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400D170E83AA008EFA2C /* main.m */; };
+		03404032170E83AA008EFA2C /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400F170E83AA008EFA2C /* MFAppDelegate.m */; };
+		03404033170E83AA008EFA2C /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400F170E83AA008EFA2C /* MFAppDelegate.m */; };
+		03404034170E83AA008EFA2C /* MFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340400F170E83AA008EFA2C /* MFAppDelegate.m */; };
+		03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
+		03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
+		03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
+		03404038170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
+		03404039170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
+		0340403A170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
+		0340403B170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
+		0340403C170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
+		0340403D170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
+		0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404018170E83AA008EFA2C /* MFQuickAccessView.m */; };
+		0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404018170E83AA008EFA2C /* MFQuickAccessView.m */; };
+		03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404018170E83AA008EFA2C /* MFQuickAccessView.m */; };
+		03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
+		03404042170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
+		03404043170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
+		03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
+		03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
+		03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
+		03404047170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		0340404A170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
+		0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
+		0340404C170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
+		0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
+		0340404E170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
+		0340404F170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
+		03404050170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404021170E83AA008EFA2C /* MainWindowBG@2x.png */; };
+		03404051170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404021170E83AA008EFA2C /* MainWindowBG@2x.png */; };
+		03404052170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404021170E83AA008EFA2C /* MainWindowBG@2x.png */; };
+		03404053170E83AA008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404022170E83AA008EFA2C /* QAWellBG.png */; };
+		03404054170E83AA008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404022170E83AA008EFA2C /* QAWellBG.png */; };
+		03404055170E83AA008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404022170E83AA008EFA2C /* QAWellBG.png */; };
+		03404056170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
+		03404057170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
+		03404058170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
+		03404059170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
+		0340405A170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
+		0340405B170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
+		03404065170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404066170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404067170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		03404068170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		03404069170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		0340406A170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		0340406B170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
+		0340406C170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
+		0340406D170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
+		0340406E170E840D008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404062170E840D008EFA2C /* MainWindowBG@2x.png */; };
+		0340406F170E840D008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404062170E840D008EFA2C /* MainWindowBG@2x.png */; };
+		03404070170E840D008EFA2C /* MainWindowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404062170E840D008EFA2C /* MainWindowBG@2x.png */; };
+		03404071170E840D008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404063170E840D008EFA2C /* QAWellBG.png */; };
+		03404072170E840D008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404063170E840D008EFA2C /* QAWellBG.png */; };
+		03404073170E840D008EFA2C /* QAWellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404063170E840D008EFA2C /* QAWellBG.png */; };
+		03404074170E840D008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404064170E840D008EFA2C /* QAWellBG@2x.png */; };
+		03404075170E840D008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404064170E840D008EFA2C /* QAWellBG@2x.png */; };
+		03404076170E840D008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404064170E840D008EFA2C /* QAWellBG@2x.png */; };
+		0340407D170E848E008EFA2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03404078170E848E008EFA2C /* InfoPlist.strings */; };
+		0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340407B170E848E008EFA2C /* Horse_WhispererTests.m */; };
+		0340407F170E848E008EFA2C /* Speed ShopTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */; };
+		0364CA5216F7C970002FDF46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
+		0364CA5816F7C970002FDF46 /* SampleBackups in Resources */ = {isa = PBXBuildFile; fileRef = 0327251F16E2B244003A8E3E /* SampleBackups */; };
+		0364CA5A16F7C970002FDF46 /* Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03B6B3F316EBB08000D99520 /* Icons.iconset */; };
+		03B6B3F416EBB08000D99520 /* Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 03B6B3F316EBB08000D99520 /* Icons.iconset */; };
+		03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
+		03BF545C16DF11CF00895128 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF545B16DF11CF00895128 /* SenTestingKit.framework */; };
+		03BF545D16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
+		066DE1BB1714B65100451196 /* OpenSans-ExtraBold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
+		066DE1BC1714B65400451196 /* OpenSans-Light.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03BF545E16DF11CF00895128 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03BF543216DF11CF00895128 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03BF543916DF11CF00895128;
+			remoteInfo = "Horse Whisperer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		066DE1BA1714B62800451196 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				066DE1BB1714B65100451196 /* OpenSans-ExtraBold.ttf in CopyFiles */,
+				066DE1BC1714B65400451196 /* OpenSans-Light.ttf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0327251F16E2B244003A8E3E /* SampleBackups */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SampleBackups; path = ../SampleBackups; sourceTree = "<group>"; };
+		03404008170E83AA008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0340400A170E83AA008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0340400C170E83AA008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0340400D170E83AA008EFA2C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0340400E170E83AA008EFA2C /* MFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAppDelegate.h; sourceTree = "<group>"; };
+		0340400F170E83AA008EFA2C /* MFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFAppDelegate.m; sourceTree = "<group>"; };
+		03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFFuseBackup+MFFuseBackup_Private.h"; sourceTree = "<group>"; };
+		03404011170E83AA008EFA2C /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
+		03404012170E83AA008EFA2C /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
+		03404013170E83AA008EFA2C /* MFModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFModule.h; sourceTree = "<group>"; };
+		03404014170E83AA008EFA2C /* MFModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFModule.m; sourceTree = "<group>"; };
+		03404015170E83AA008EFA2C /* MFPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPreset.h; sourceTree = "<group>"; };
+		03404016170E83AA008EFA2C /* MFPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPreset.m; sourceTree = "<group>"; };
+		03404017170E83AA008EFA2C /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
+		03404018170E83AA008EFA2C /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
+		03404019170E83AA008EFA2C /* MFQuickAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFQuickAccessView.xib; sourceTree = "<group>"; };
+		0340401A170E83AA008EFA2C /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		03404020170E83AA008EFA2C /* MainWindowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainWindowBG.png; sourceTree = "<group>"; };
+		03404021170E83AA008EFA2C /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
+		03404022170E83AA008EFA2C /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
+		03404023170E83AA008EFA2C /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
+		03404024170E83AA008EFA2C /* Speed Shop-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Speed Shop-Info.plist"; sourceTree = "<group>"; };
+		03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Speed Shop-Prefix.pch"; sourceTree = "<group>"; };
+		0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0340405F170E840D008EFA2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		03404061170E840D008EFA2C /* MainWindowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainWindowBG.png; sourceTree = "<group>"; };
+		03404062170E840D008EFA2C /* MainWindowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainWindowBG@2x.png"; sourceTree = "<group>"; };
+		03404063170E840D008EFA2C /* QAWellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QAWellBG.png; sourceTree = "<group>"; };
+		03404064170E840D008EFA2C /* QAWellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QAWellBG@2x.png"; sourceTree = "<group>"; };
+		03404079170E848E008EFA2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0340407A170E848E008EFA2C /* Horse_WhispererTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Horse_WhispererTests.h; sourceTree = "<group>"; };
+		0340407B170E848E008EFA2C /* Horse_WhispererTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Horse_WhispererTests.m; sourceTree = "<group>"; };
+		0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Speed ShopTests-Info.plist"; sourceTree = "<group>"; };
+		0364CA6B16F7C970002FDF46 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0364CA6C16F7C970002FDF46 /* Speed Shop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Speed Shop copy-Info.plist"; path = "/Users/josh/Sites/HorseWhisperer/Horse Whisperer/Speed Shop copy-Info.plist"; sourceTree = "<absolute>"; };
+		03B6B3F316EBB08000D99520 /* Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icons.iconset; sourceTree = "<group>"; };
+		03BF543A16DF11CF00895128 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03BF543D16DF11CF00895128 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		03BF544016DF11CF00895128 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		03BF544116DF11CF00895128 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		03BF544216DF11CF00895128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		03BF545A16DF11CF00895128 /* Speed ShopTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Speed ShopTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03BF545B16DF11CF00895128 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0364CA5116F7C970002FDF46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0364CA5216F7C970002FDF46 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03BF543716DF11CF00895128 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03BF543E16DF11CF00895128 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03BF545616DF11CF00895128 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03BF545C16DF11CF00895128 /* SenTestingKit.framework in Frameworks */,
+				03BF545D16DF11CF00895128 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03404006170E83AA008EFA2C /* SpeedShop */ = {
+			isa = PBXGroup;
+			children = (
+				03404007170E83AA008EFA2C /* Credits.rtf */,
+				03404009170E83AA008EFA2C /* InfoPlist.strings */,
+				0340400B170E83AA008EFA2C /* MainMenu.xib */,
+				0340400D170E83AA008EFA2C /* main.m */,
+				0340400E170E83AA008EFA2C /* MFAppDelegate.h */,
+				0340400F170E83AA008EFA2C /* MFAppDelegate.m */,
+				03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */,
+				03404011170E83AA008EFA2C /* MFFuseBackup.h */,
+				03404012170E83AA008EFA2C /* MFFuseBackup.m */,
+				03404013170E83AA008EFA2C /* MFModule.h */,
+				03404014170E83AA008EFA2C /* MFModule.m */,
+				03404015170E83AA008EFA2C /* MFPreset.h */,
+				03404016170E83AA008EFA2C /* MFPreset.m */,
+				03404017170E83AA008EFA2C /* MFQuickAccessView.h */,
+				03404018170E83AA008EFA2C /* MFQuickAccessView.m */,
+				03404019170E83AA008EFA2C /* MFQuickAccessView.xib */,
+				0340401A170E83AA008EFA2C /* ReleaseNotes.txt */,
+				0340401B170E83AA008EFA2C /* Resources */,
+				03404024170E83AA008EFA2C /* Speed Shop-Info.plist */,
+				03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */,
+			);
+			path = SpeedShop;
+			sourceTree = "<group>";
+		};
+		0340401B170E83AA008EFA2C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0340401C170E83AA008EFA2C /* Fonts */,
+				0340401F170E83AA008EFA2C /* Graphics */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0340401C170E83AA008EFA2C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */,
+				0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0340401F170E83AA008EFA2C /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				03404020170E83AA008EFA2C /* MainWindowBG.png */,
+				03404021170E83AA008EFA2C /* MainWindowBG@2x.png */,
+				03404022170E83AA008EFA2C /* QAWellBG.png */,
+				03404023170E83AA008EFA2C /* QAWellBG@2x.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		0340405C170E840D008EFA2C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0340405D170E840D008EFA2C /* Fonts */,
+				03404060170E840D008EFA2C /* Graphics */,
+			);
+			name = Resources;
+			path = SpeedShop/Resources;
+			sourceTree = "<group>";
+		};
+		0340405D170E840D008EFA2C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */,
+				0340405F170E840D008EFA2C /* OpenSans-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		03404060170E840D008EFA2C /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				03404061170E840D008EFA2C /* MainWindowBG.png */,
+				03404062170E840D008EFA2C /* MainWindowBG@2x.png */,
+				03404063170E840D008EFA2C /* QAWellBG.png */,
+				03404064170E840D008EFA2C /* QAWellBG@2x.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		03404077170E848E008EFA2C /* SpeedShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				03404078170E848E008EFA2C /* InfoPlist.strings */,
+				0340407A170E848E008EFA2C /* Horse_WhispererTests.h */,
+				0340407B170E848E008EFA2C /* Horse_WhispererTests.m */,
+				0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */,
+			);
+			path = SpeedShopTests;
+			sourceTree = "<group>";
+		};
+		03B6B3E316EBADC500D99520 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				03B6B3F316EBB08000D99520 /* Icons.iconset */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		03BF543116DF11CF00895128 = {
+			isa = PBXGroup;
+			children = (
+				0340405C170E840D008EFA2C /* Resources */,
+				03B6B3E316EBADC500D99520 /* Graphics */,
+				0327251F16E2B244003A8E3E /* SampleBackups */,
+				03404006170E83AA008EFA2C /* SpeedShop */,
+				03404077170E848E008EFA2C /* SpeedShopTests */,
+				03BF543C16DF11CF00895128 /* Frameworks */,
+				03BF543B16DF11CF00895128 /* Products */,
+				0364CA6C16F7C970002FDF46 /* Speed Shop copy-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		03BF543B16DF11CF00895128 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03BF543A16DF11CF00895128 /* Speed Shop.app */,
+				03BF545A16DF11CF00895128 /* Speed ShopTests.octest */,
+				0364CA6B16F7C970002FDF46 /* Speed Shop.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03BF543C16DF11CF00895128 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03BF543D16DF11CF00895128 /* Cocoa.framework */,
+				03BF545B16DF11CF00895128 /* SenTestingKit.framework */,
+				03BF543F16DF11CF00895128 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		03BF543F16DF11CF00895128 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03BF544016DF11CF00895128 /* AppKit.framework */,
+				03BF544116DF11CF00895128 /* CoreData.framework */,
+				03BF544216DF11CF00895128 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0364CA4916F7C970002FDF46 /* Speed Shop Beta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0364CA6716F7C970002FDF46 /* Build configuration list for PBXNativeTarget "Speed Shop Beta" */;
+			buildPhases = (
+				03C26F7D16F7D3FB00374364 /* ShellScript */,
+				0364CA4A16F7C970002FDF46 /* Sources */,
+				0364CA5116F7C970002FDF46 /* Frameworks */,
+				0364CA5416F7C970002FDF46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Speed Shop Beta";
+			productName = "Horse Whisperer";
+			productReference = 0364CA6B16F7C970002FDF46 /* Speed Shop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03BF543916DF11CF00895128 /* Speed Shop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed Shop" */;
+			buildPhases = (
+				03C26F8216F7D6F700374364 /* ShellScript */,
+				03BF543616DF11CF00895128 /* Sources */,
+				03BF543716DF11CF00895128 /* Frameworks */,
+				066DE1BA1714B62800451196 /* CopyFiles */,
+				03BF543816DF11CF00895128 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Speed Shop";
+			productName = "Horse Whisperer";
+			productReference = 03BF543A16DF11CF00895128 /* Speed Shop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03BF545916DF11CF00895128 /* Speed ShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed ShopTests" */;
+			buildPhases = (
+				03BF545516DF11CF00895128 /* Sources */,
+				03BF545616DF11CF00895128 /* Frameworks */,
+				03BF545716DF11CF00895128 /* Resources */,
+				03BF545816DF11CF00895128 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03BF545F16DF11CF00895128 /* PBXTargetDependency */,
+			);
+			name = "Speed ShopTests";
+			productName = "Horse WhispererTests";
+			productReference = 03BF545A16DF11CF00895128 /* Speed ShopTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03BF543216DF11CF00895128 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MF;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Joshua Buhler";
+			};
+			buildConfigurationList = 03BF543516DF11CF00895128 /* Build configuration list for PBXProject "Speed Shop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 03BF543116DF11CF00895128;
+			productRefGroup = 03BF543B16DF11CF00895128 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03BF543916DF11CF00895128 /* Speed Shop */,
+				03BF545916DF11CF00895128 /* Speed ShopTests */,
+				0364CA4916F7C970002FDF46 /* Speed Shop Beta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0364CA5416F7C970002FDF46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0364CA5816F7C970002FDF46 /* SampleBackups in Resources */,
+				0364CA5A16F7C970002FDF46 /* Icons.iconset in Resources */,
+				03404028170E83AA008EFA2C /* Credits.rtf in Resources */,
+				0340402B170E83AA008EFA2C /* InfoPlist.strings in Resources */,
+				0340402E170E83AA008EFA2C /* MainMenu.xib in Resources */,
+				03404043170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
+				03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
+				03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340404C170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340404F170E83AA008EFA2C /* MainWindowBG.png in Resources */,
+				03404052170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404055170E83AA008EFA2C /* QAWellBG.png in Resources */,
+				03404058170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
+				0340405B170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
+				03404067170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340406A170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340406D170E840D008EFA2C /* MainWindowBG.png in Resources */,
+				03404070170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404073170E840D008EFA2C /* QAWellBG.png in Resources */,
+				03404076170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03BF543816DF11CF00895128 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0327252016E2B244003A8E3E /* SampleBackups in Resources */,
+				03B6B3F416EBB08000D99520 /* Icons.iconset in Resources */,
+				03404026170E83AA008EFA2C /* Credits.rtf in Resources */,
+				03404029170E83AA008EFA2C /* InfoPlist.strings in Resources */,
+				0340402C170E83AA008EFA2C /* MainMenu.xib in Resources */,
+				03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
+				03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
+				03404047170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340404A170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */,
+				03404050170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404053170E83AA008EFA2C /* QAWellBG.png in Resources */,
+				03404056170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
+				03404059170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
+				03404065170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				03404068170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340406B170E840D008EFA2C /* MainWindowBG.png in Resources */,
+				0340406E170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404071170E840D008EFA2C /* QAWellBG.png in Resources */,
+				03404074170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03BF545716DF11CF00895128 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0327252116E2B244003A8E3E /* SampleBackups in Resources */,
+				03404027170E83AA008EFA2C /* Credits.rtf in Resources */,
+				0340402A170E83AA008EFA2C /* InfoPlist.strings in Resources */,
+				0340402D170E83AA008EFA2C /* MainMenu.xib in Resources */,
+				03404042170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
+				03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
+				03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340404E170E83AA008EFA2C /* MainWindowBG.png in Resources */,
+				03404051170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404054170E83AA008EFA2C /* QAWellBG.png in Resources */,
+				03404057170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
+				0340405A170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
+				03404066170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
+				03404069170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
+				0340406C170E840D008EFA2C /* MainWindowBG.png in Resources */,
+				0340406F170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
+				03404072170E840D008EFA2C /* QAWellBG.png in Resources */,
+				03404075170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
+				0340407D170E848E008EFA2C /* InfoPlist.strings in Resources */,
+				0340407F170E848E008EFA2C /* Speed ShopTests-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03BF545816DF11CF00895128 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		03C26F7D16F7D3FB00374364 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n##################################################\n#\n# BuildVersion incrementing script v1.0\n#\n##################################################\n\nprocessedPlist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nprojectPlist=\"${INFOPLIST_FILE}\"\nversionVar=\"CFBundleVersion\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print ${versionVar}\" \"${projectPlist}\" 2>&1)\nif [[ \"$buildNumber\" == *Does\\ Not\\ Exist ]] ; then\nbuildNumber=1\necho \"Create ${versionVar} and set to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${projectPlist}\"\nelse\nbuildNumber=$(($buildNumber + 1))\necho \"set ${versionVar} to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${projectPlist}\"\nfi";
+		};
+		03C26F8216F7D6F700374364 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n##################################################\n#\n# BuildVersion incrementing script v1.0\n#\n##################################################\n\nprocessedPlist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nprojectPlist=\"${INFOPLIST_FILE}\"\nversionVar=\"CFBundleVersion\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print ${versionVar}\" \"${projectPlist}\" 2>&1)\nif [[ \"$buildNumber\" == *Does\\ Not\\ Exist ]] ; then\nbuildNumber=1\necho \"Create ${versionVar} and set to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Add :${versionVar} String ${buildNumber}\" \"${projectPlist}\"\nelse\nbuildNumber=$(($buildNumber + 1))\necho \"set ${versionVar} to ${buildNumber}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${processedPlist}\"\n/usr/libexec/PlistBuddy -c \"Set :${versionVar} ${buildNumber}\" \"${projectPlist}\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0364CA4A16F7C970002FDF46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03404031170E83AA008EFA2C /* main.m in Sources */,
+				03404034170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
+				03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
+				0340403A170E83AA008EFA2C /* MFModule.m in Sources */,
+				0340403D170E83AA008EFA2C /* MFPreset.m in Sources */,
+				03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03BF543616DF11CF00895128 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0340402F170E83AA008EFA2C /* main.m in Sources */,
+				03404032170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
+				03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
+				03404038170E83AA008EFA2C /* MFModule.m in Sources */,
+				0340403B170E83AA008EFA2C /* MFPreset.m in Sources */,
+				0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03BF545516DF11CF00895128 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03404030170E83AA008EFA2C /* main.m in Sources */,
+				03404033170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
+				03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
+				03404039170E83AA008EFA2C /* MFModule.m in Sources */,
+				0340403C170E83AA008EFA2C /* MFPreset.m in Sources */,
+				0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+				0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03BF545F16DF11CF00895128 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03BF543916DF11CF00895128 /* Speed Shop */;
+			targetProxy = 03BF545E16DF11CF00895128 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03404007170E83AA008EFA2C /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03404008170E83AA008EFA2C /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		03404009170E83AA008EFA2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0340400A170E83AA008EFA2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0340400B170E83AA008EFA2C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0340400C170E83AA008EFA2C /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		03404078170E848E008EFA2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03404079170E848E008EFA2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0364CA4616F7C931002FDF46 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Beta;
+		};
+		0364CA4716F7C931002FDF46 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShop/Speed Shop-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Beta;
+		};
+		0364CA4816F7C931002FDF46 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Horse Whisperer.app/Contents/MacOS/Horse Whisperer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShopTests/Speed ShopTests-Info.plist";
+				PRODUCT_NAME = "Speed ShopTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Beta;
+		};
+		0364CA6816F7C970002FDF46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "Speed Shop copy-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0364CA6916F7C970002FDF46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "Speed Shop copy-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0364CA6A16F7C970002FDF46 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "Speed Shop copy-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Beta;
+		};
+		03BF546916DF11CF00895128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		03BF546A16DF11CF00895128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		03BF546C16DF11CF00895128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShop/Speed Shop-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		03BF546D16DF11CF00895128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/HockeySDK-Mac\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShop/Speed Shop-Info.plist";
+				PRODUCT_NAME = "Speed Shop";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		03BF546F16DF11CF00895128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Speed Shop.app/Contents/MacOS/Speed Shop";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShopTests/Speed ShopTests-Info.plist";
+				PRODUCT_NAME = "Speed ShopTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		03BF547016DF11CF00895128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Horse Whisperer.app/Contents/MacOS/Horse Whisperer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpeedShop/Speed Shop-Prefix.pch";
+				INFOPLIST_FILE = "SpeedShopTests/Speed ShopTests-Info.plist";
+				PRODUCT_NAME = "Speed ShopTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0364CA6716F7C970002FDF46 /* Build configuration list for PBXNativeTarget "Speed Shop Beta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0364CA6816F7C970002FDF46 /* Debug */,
+				0364CA6916F7C970002FDF46 /* Release */,
+				0364CA6A16F7C970002FDF46 /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03BF543516DF11CF00895128 /* Build configuration list for PBXProject "Speed Shop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03BF546916DF11CF00895128 /* Debug */,
+				03BF546A16DF11CF00895128 /* Release */,
+				0364CA4616F7C931002FDF46 /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03BF546B16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed Shop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03BF546C16DF11CF00895128 /* Debug */,
+				03BF546D16DF11CF00895128 /* Release */,
+				0364CA4716F7C931002FDF46 /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03BF546E16DF11CF00895128 /* Build configuration list for PBXNativeTarget "Speed ShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03BF546F16DF11CF00895128 /* Debug */,
+				03BF547016DF11CF00895128 /* Release */,
+				0364CA4816F7C931002FDF46 /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03BF543216DF11CF00895128 /* Project object */;
+}

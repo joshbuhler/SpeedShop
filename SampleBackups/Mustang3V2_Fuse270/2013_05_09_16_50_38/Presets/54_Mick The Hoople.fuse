@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang V2 III/IV/V" ProductId="13">
+  <Amplifier>
+    <Module ID="121" POS="0" BypassState="1">
+      <Param ControlIndex="0">28672</Param>
+      <Param ControlIndex="1">24064</Param>
+      <Param ControlIndex="2">32768</Param>
+      <Param ControlIndex="3">32000</Param>
+      <Param ControlIndex="4">44032</Param>
+      <Param ControlIndex="5">44800</Param>
+      <Param ControlIndex="6">50432</Param>
+      <Param ControlIndex="7">39936</Param>
+      <Param ControlIndex="8">32768</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">32768</Param>
+      <Param ControlIndex="11">32768</Param>
+      <Param ControlIndex="12">11</Param>
+      <Param ControlIndex="13">11</Param>
+      <Param ControlIndex="14">11</Param>
+      <Param ControlIndex="15">1</Param>
+      <Param ControlIndex="16">2</Param>
+      <Param ControlIndex="17">10</Param>
+      <Param ControlIndex="18">11</Param>
+      <Param ControlIndex="19">0</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="26" POS="0" BypassState="1">
+        <Param ControlIndex="0">64256</Param>
+        <Param ControlIndex="1">13568</Param>
+        <Param ControlIndex="2">23808</Param>
+        <Param ControlIndex="3">40704</Param>
+        <Param ControlIndex="4">28416</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="5" BypassState="1"></Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">11264</Param>
+        <Param ControlIndex="1">23296</Param>
+        <Param ControlIndex="2">0</Param>
+        <Param ControlIndex="3">25088</Param>
+        <Param ControlIndex="4">26880</Param>
+        <Param ControlIndex="5">0</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="0" POS="7" BypassState="1"></Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Mick The Hoople" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="2" HeelSetting="12288" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="0" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="1" ParameterIndex="1" />
+  <UsbGain>0</UsbGain>
+</Preset>

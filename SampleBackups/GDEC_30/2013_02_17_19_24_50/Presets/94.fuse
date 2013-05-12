@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="G-DEC3" ProductId="10">
+  <Amplifier>
+    <Module ID="3" POS="0">
+      <Param ControlIndex="0">16</Param>
+      <Param ControlIndex="1">26230</Param>
+      <Param ControlIndex="2">40310</Param>
+      <Param ControlIndex="3">61183</Param>
+      <Param ControlIndex="4">13056</Param>
+      <Param ControlIndex="5">65535</Param>
+      <Param ControlIndex="6">0</Param>
+      <Param ControlIndex="7">4</Param>
+      <Param ControlIndex="8">0</Param>
+      <Param ControlIndex="9">0</Param>
+      <Param ControlIndex="10">0</Param>
+      <Param ControlIndex="11">0</Param>
+      <Param ControlIndex="12">0</Param>
+      <Param ControlIndex="13">0</Param>
+      <Param ControlIndex="14">0</Param>
+      <Param ControlIndex="15">0</Param>
+      <Param ControlIndex="16">0</Param>
+      <Param ControlIndex="17">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="60" POS="0">
+        <Param ControlIndex="0">51711</Param>
+        <Param ControlIndex="1">25855</Param>
+        <Param ControlIndex="2">57343</Param>
+        <Param ControlIndex="3">23039</Param>
+        <Param ControlIndex="4">59647</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="0" POS="0" />
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="1">
+        <Param ControlIndex="0">30975</Param>
+        <Param ControlIndex="1">178</Param>
+        <Param ControlIndex="2">306</Param>
+        <Param ControlIndex="3">19557</Param>
+        <Param ControlIndex="4">17151</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="33" POS="0">
+        <Param ControlIndex="0">6399</Param>
+        <Param ControlIndex="1">32767</Param>
+        <Param ControlIndex="2">32767</Param>
+        <Param ControlIndex="3">32767</Param>
+        <Param ControlIndex="4">32767</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="1">
+    <SongFile Location="1">Waterfront Waltz.mp3</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Rev HH2      " author="G-DEC 3" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0" />
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+</Preset>
