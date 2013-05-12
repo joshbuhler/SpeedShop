@@ -269,7 +269,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // FUSE won't see it
     NSDate *now = [NSDate date];
     NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
-    [filenameFormat setDateFormat:@"yyyy_MM_dd_hh_mm_ss"];
+    [filenameFormat setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
     NSString *dateFileName = [filenameFormat stringFromDate:now];
     
     NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
