@@ -135,25 +135,45 @@
     NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
     NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     
-    MFPreset *thePreset = [dragData objectForKey:@"preset"];
-    NSLog(@"dragged: %@", thePreset.name);
-    
     NSIndexSet *rowIndexes = [dragData objectForKey:@"rowIndexes"];
     
     NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];
     
     NSUInteger currentItemIndex;
     NSRange range = NSMakeRange(0, [rowIndexes lastIndex] + 1);
-     
+
+    // prevent illegal multi-select drag'n'drops
+    if (row >= [rowIndexes firstIndex] && row <= [rowIndexes lastIndex])
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Illegal Drag'n'Drop Operation"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"It is impossible to insert a range into itself."];
+        
+        [alert beginSheetModalForWindow:self.window
+                          modalDelegate:nil
+                         didEndSelector:nil
+                            contextInfo:nil];
+        return NO;
+    }
+
     while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
     {
         NSObject *cItem = [self.currentBackup.presets objectAtIndex:currentItemIndex];
         [draggedItemsArray addObject:cItem];
+        NSLog(@"dragged: %@", ((MFPreset*)cItem).name);
     }
+    NSLog(@"first dragged Index: %ld", (long)[rowIndexes firstIndex]);
+    NSLog(@"dropped on: %ld", (long)row);
     
     // remove the items from the preset list
     [self.currentBackup.presets removeObjectsInArray:draggedItemsArray];
-    
+
+    // items have been removed, so we have to correct the target row if it is *after* the dragged items
+    if ([rowIndexes firstIndex] < row)
+        row = row - draggedItemsArray.count + 1;
+
     // now put them in their new location
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
     [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
@@ -169,10 +189,15 @@
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
 {
     NSInteger selectedRow = self.ampPresetTable.selectedRow;
+    
     if (selectedRow < 0)
         return;
     
-    self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
+    // if multiple items are selected, we don't have a "currentPreset"
+    if (self.ampPresetTable.selectedRowIndexes.count == 1)
+        self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
+    else
+        self.currentPreset = nil;
     
     [self refreshUI];
 }
