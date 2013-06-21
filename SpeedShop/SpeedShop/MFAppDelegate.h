@@ -34,5 +34,6 @@
 
 - (IBAction)onSaveSelected:(id)sender;
 - (IBAction)onSaveAsSelected:(id)sender;
+- (IBAction)onCopyPresetlist:(id)sender;
 
 @end

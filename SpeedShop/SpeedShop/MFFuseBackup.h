@@ -27,12 +27,10 @@ typedef enum
 @property (nonatomic, strong) NSMutableArray *presets;
 @property (nonatomic, readonly) AmpSeries ampSeries;
 
-@property (nonatomic, strong) NSMutableArray *quickAccessPresets;
-
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
 - (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block;
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
 
-- (MFPreset *) presetForQASlot:(int)qaSlot;
+- (MFPreset *) getPresetForQASlot:(int)qaSlot;
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot;
 @end

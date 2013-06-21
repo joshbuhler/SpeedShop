@@ -135,25 +135,45 @@
     NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
     NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     
-    MFPreset *thePreset = [dragData objectForKey:@"preset"];
-    NSLog(@"dragged: %@", thePreset.name);
-    
     NSIndexSet *rowIndexes = [dragData objectForKey:@"rowIndexes"];
     
     NSMutableArray *draggedItemsArray = [[NSMutableArray alloc] init];
     
     NSUInteger currentItemIndex;
     NSRange range = NSMakeRange(0, [rowIndexes lastIndex] + 1);
-     
+
+    // prevent illegal multi-select drag'n'drops
+    if (row >= [rowIndexes firstIndex] && row <= [rowIndexes lastIndex])
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Illegal Drag'n'Drop Operation"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"It is impossible to insert a range into itself."];
+        
+        [alert beginSheetModalForWindow:self.window
+                          modalDelegate:nil
+                         didEndSelector:nil
+                            contextInfo:nil];
+        return NO;
+    }
+
     while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
     {
         NSObject *cItem = [self.currentBackup.presets objectAtIndex:currentItemIndex];
         [draggedItemsArray addObject:cItem];
+        NSLog(@"dragged: %@", ((MFPreset*)cItem).name);
     }
+    NSLog(@"first dragged Index: %ld", (long)[rowIndexes firstIndex]);
+    NSLog(@"dropped on: %ld", (long)row);
     
     // remove the items from the preset list
     [self.currentBackup.presets removeObjectsInArray:draggedItemsArray];
-    
+
+    // items have been removed, so we have to correct the target row if it is *after* the dragged items
+    if ([rowIndexes firstIndex] < row)
+        row = row - draggedItemsArray.count + 1;
+
     // now put them in their new location
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
     [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
@@ -169,10 +189,15 @@
 - (void) tableViewSelectionDidChange:(NSNotification *)notification
 {
     NSInteger selectedRow = self.ampPresetTable.selectedRow;
+    
     if (selectedRow < 0)
         return;
     
-    self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
+    // if multiple items are selected, we don't have a "currentPreset"
+    if (self.ampPresetTable.selectedRowIndexes.count == 1)
+        self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
+    else
+        self.currentPreset = nil;
     
     [self refreshUI];
 }
@@ -258,6 +283,9 @@
     if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
         return _backupModified;
     
+    if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
+        return NO;
+    
     return YES;
 }
 
@@ -265,6 +293,9 @@
 {
     [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
      {
+         NSString *msg = @"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: ";
+         msg = [msg stringByAppendingString:[[newURL absoluteString] lastPathComponent]];
+
          NSAlert *alert;
          if (success)
          {
@@ -272,7 +303,7 @@
                                      defaultButton:@"OK"
                                    alternateButton:nil
                                        otherButton:nil
-                         informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp."];
+                         informativeTextWithFormat:msg];
              
              // todo: reload the newly saved file
              [self loadBackupFile:newURL];
@@ -310,6 +341,9 @@
         
         [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
          {
+             NSString *msg = @"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: ";
+             msg = [msg stringByAppendingString:[[newURL absoluteString] lastPathComponent]];
+             
              NSAlert *alert;
              if (success)
              {
@@ -317,7 +351,7 @@
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp."];
+                             informativeTextWithFormat:msg];
                  
                  // todo: reload the newly saved file
                  [self loadBackupFile:newURL];
@@ -379,6 +413,45 @@
     */
 }
 
+
+- (IBAction)onCopyPresetlist:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+    
+    NSString *thePresetList;
+    thePresetList = [[NSString alloc] init];
+    
+    for (int i=0; i<self.currentBackup.presets.count; i++)
+    {
+        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:i];
+        if (cPreset)
+        {
+            thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
+            thePresetList = [thePresetList stringByAppendingString:@"\t"];
+            thePresetList = [thePresetList stringByAppendingString:cPreset.name];
+            thePresetList = [thePresetList stringByAppendingString:@"\n"];
+        }
+    }
+    
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
+    
+    NSAlert *alert;
+    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
+                            defaultButton:@"OK"
+                          alternateButton:nil
+                              otherButton:nil
+                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
+    
+    [alert beginSheetModalForWindow:self.window
+                      modalDelegate:nil
+                     didEndSelector:nil
+                        contextInfo:nil];
+
+}
+
+
 - (void) refreshUI
 {
     [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];
@@ -388,9 +461,9 @@
     
     if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
-        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
-        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
-        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+        self.qaBox1.preset = [self.currentBackup getPresetForQASlot:0] ?: nil;
+        self.qaBox2.preset = [self.currentBackup getPresetForQASlot:1] ?: nil;
+        self.qaBox3.preset = [self.currentBackup getPresetForQASlot:2] ?: nil;
         
         self.qaBox1.canAcceptDrag = YES;
         self.qaBox2.canAcceptDrag = YES;
