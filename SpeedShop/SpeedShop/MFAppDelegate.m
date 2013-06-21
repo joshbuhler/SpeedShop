@@ -283,6 +283,9 @@
     if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
         return _backupModified;
     
+    if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
+        return NO;
+    
     return YES;
 }
 
@@ -409,6 +412,45 @@
     }];
     */
 }
+
+
+- (IBAction)onCopyPresetlist:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+    
+    NSString *thePresetList;
+    thePresetList = [[NSString alloc] init];
+    
+    for (int i=0; i<self.currentBackup.presets.count; i++)
+    {
+        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:i];
+        if (cPreset)
+        {
+            thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
+            thePresetList = [thePresetList stringByAppendingString:@"\t"];
+            thePresetList = [thePresetList stringByAppendingString:cPreset.name];
+            thePresetList = [thePresetList stringByAppendingString:@"\n"];
+        }
+    }
+    
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
+    
+    NSAlert *alert;
+    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
+                            defaultButton:@"OK"
+                          alternateButton:nil
+                              otherButton:nil
+                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
+    
+    [alert beginSheetModalForWindow:self.window
+                      modalDelegate:nil
+                     didEndSelector:nil
+                        contextInfo:nil];
+
+}
+
 
 - (void) refreshUI
 {
