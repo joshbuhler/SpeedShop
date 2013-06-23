@@ -25,6 +25,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     // Used for XML parsing
     NSMutableString *currentElementValue;
+    NSMutableArray *_quickAccessPresets;
+    NSMutableArray *_quickAccessPresetsUUID;
 }
 
 @end
@@ -33,7 +35,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 @synthesize folderURL = _folderURL;
 @synthesize presets = _presets;
-@synthesize quickAccessPresets = _quickAccessPresets;
 @synthesize ampSeries = _ampSeries;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
@@ -49,7 +50,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     
     self.presets = [[NSMutableArray alloc] init];
-    self.quickAccessPresets = [[NSMutableArray alloc] init];
+    _quickAccessPresets = [[NSMutableArray alloc] init];
+    _quickAccessPresetsUUID = [[NSMutableArray alloc] init];
     
     [self loadBackupContents];
 }
@@ -167,7 +169,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSXMLParser *cParser = [[NSXMLParser alloc] initWithContentsOfURL:settingsFile];
     
     currentElementValue = nil;
-    self.quickAccessPresets = [[NSMutableArray alloc] init];
+    _quickAccessPresets = [[NSMutableArray alloc] init];
+    _quickAccessPresetsUUID = [[NSMutableArray alloc] init];
     
     cParser.delegate = self;
     [cParser setShouldResolveExternalEntities:YES];
@@ -243,6 +246,14 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         [self.presets addObject:cPreset];
     }
 
+    // after loading all presets we can remember the UUIDs of the quick access presets
+    for (int j = 0; j < _quickAccessPresets.count; j++)
+    {
+        int presetNumber = [[_quickAccessPresets objectAtIndex:j] intValue];
+        NSString *qaUUID = ((MFPreset*)[self.presets objectAtIndex:presetNumber]).uuid;
+        [_quickAccessPresetsUUID addObject:qaUUID];
+    }
+    
     [self completeLoading:YES];
 }
 
@@ -269,7 +280,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     // FUSE won't see it
     NSDate *now = [NSDate date];
     NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
-    [filenameFormat setDateFormat:@"yyyy_MM_dd_hh_mm_ss"];
+    [filenameFormat setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
     NSString *dateFileName = [filenameFormat stringFromDate:now];
     
     NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
@@ -331,20 +342,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         
         NSXMLElement *docRoot = [settingsXML rootElement];
         // replace the first three QA nodes
-        NSNumber *qaIndex1 = (NSNumber *)[self.quickAccessPresets objectAtIndex:0];
-        MFPreset *preset1 = (MFPreset *)[self.presets objectAtIndex:[qaIndex1 intValue]];
+        MFPreset *preset1 = (MFPreset *)[self getPresetForQASlot:0];
         int index1 = [self indexForPreset:preset1];
         NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
         [docRoot replaceChildAtIndex:0 withNode:qa1];
         
-        NSNumber *qaIndex2 = (NSNumber *)[self.quickAccessPresets objectAtIndex:1];
-        MFPreset *preset2 = (MFPreset *)[self.presets objectAtIndex:[qaIndex2 intValue]];
+        MFPreset *preset2 = (MFPreset *)[self getPresetForQASlot:1];
         int index2 = [self indexForPreset:preset2];
         NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
         [docRoot replaceChildAtIndex:1 withNode:qa2];
         
-        NSNumber *qaIndex3 = (NSNumber *)[self.quickAccessPresets objectAtIndex:2];
-        MFPreset *preset3 = (MFPreset *)[self.presets objectAtIndex:[qaIndex3 intValue]];
+        MFPreset *preset3 = (MFPreset *)[self getPresetForQASlot:2];
         int index3 = [self indexForPreset:preset3];
         NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
         [docRoot replaceChildAtIndex:2 withNode:qa3];
@@ -470,17 +478,29 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 
-- (MFPreset *) presetForQASlot:(int)qaSlot
+// Get the preset for a QA slot, identified by the preset's UUID
+- (MFPreset *) getPresetForQASlot:(int)qaSlot
 {
-    int theIndex = [[self.quickAccessPresets objectAtIndex:qaSlot] intValue];
-    MFPreset *preset = [self.presets objectAtIndex:theIndex];
-    return preset;
+    NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
+    
+    for (int i = 0; i < self.presets.count; i++)
+    {
+        MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
+        if ([qaPresetUUID isEqualToString:cPreset.uuid])
+        {
+            NSLog (@"Found QA#%02d => %@", qaSlot, cPreset.name);
+            return cPreset;
+        }
+    }
+    
+    return nil;
 }
 
+
+// Set the preset for a QA slot, linking is done via the preset's UUID
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot
 {
-    int index = [self indexForPreset:preset];
-    [self.quickAccessPresets setObject:[NSNumber numberWithInt:index]
+    [_quickAccessPresetsUUID setObject:[preset uuid]
                     atIndexedSubscript:qaSlot];
 }
 
