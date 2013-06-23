@@ -29,3 +29,9 @@ Release Notes
 # 0.9.2
 * Added Mustang V.2 support
 
+# 0.9.3
+* **New feature:** Copy preset list to clipboard for pasting into other apps
+* **Bug Fix:** Multi-selection drag & drop (#2)
+* **Bug Fix:** Time format issue when saving new backups (#1)
+* **Bug Fix:** Resolving some issues with saving QA presets
+
