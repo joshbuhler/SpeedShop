@@ -23,12 +23,6 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
 @implementation MFPreset
 
-@synthesize backup;
-
-@synthesize name;
-@synthesize author;
-@synthesize description;
-@synthesize uuid;
 
 - (void) loadPresetFile:(NSURL *)url
 {
@@ -51,11 +45,11 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 #pragma mark - NSCoding Methods
 - (void) encodeWithCoder:(NSCoder *)encoder
 {
-    [encoder encodeObject:name forKey:@"name"];
-    [encoder encodeObject:author forKey:@"author"];
-    [encoder encodeObject:description forKey:@"description"];
+    [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_author forKey:@"author"];
+    [encoder encodeObject:_description forKey:@"description"];
     [encoder encodeObject:_fileURL forKey:@"fileURL"];
-    [encoder encodeObject:uuid forKey:@"uuid"];
+    [encoder encodeObject:_uuid forKey:@"uuid"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder

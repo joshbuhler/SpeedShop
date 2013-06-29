@@ -33,9 +33,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 @implementation MFFuseBackup
 
-@synthesize folderURL = _folderURL;
-@synthesize presets = _presets;
-@synthesize ampSeries = _ampSeries;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {

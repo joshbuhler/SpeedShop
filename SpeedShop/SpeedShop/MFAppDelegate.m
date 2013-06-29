@@ -21,8 +21,6 @@
 
 @implementation MFAppDelegate
 
-@synthesize currentBackup = _currentBackup;
-
 #pragma mark - View LifeCycle
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
