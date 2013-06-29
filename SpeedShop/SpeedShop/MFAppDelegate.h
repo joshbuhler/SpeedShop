@@ -9,7 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "MFQuickAccessView.h"
 
-@interface MFAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, MFQuickAccessViewDelegate>
+@interface MFAppDelegate : NSObject <NSApplicationDelegate
+        , NSTableViewDataSource
+        , NSTableViewDelegate
+        , MFQuickAccessViewDelegate
+        , NSWindowDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTableView *ampPresetTable;
@@ -35,5 +39,6 @@
 - (IBAction)onSaveSelected:(id)sender;
 - (IBAction)onSaveAsSelected:(id)sender;
 - (IBAction)onCopyPresetlist:(id)sender;
-
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender;
+- (BOOL)windowShouldClose:(id)sender;
 @end

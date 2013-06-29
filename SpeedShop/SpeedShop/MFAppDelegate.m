@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Joshua Buhler. All rights reserved.
 //
 
+#define APPLICATION_NAME @"Speed Shop"
+
 #import "MFAppDelegate.h"
 #import "MFFuseBackup.h"
 
@@ -56,6 +58,8 @@
     self.presetNameField.font = fieldFont;
     self.authorNameField.font = fieldFont;
     self.presetDescriptionField.font = fieldFont;
+
+    [_window setTitle:APPLICATION_NAME];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -180,6 +184,7 @@
     [self.ampPresetTable deselectAll:nil];
     
     _backupModified = YES;
+    [self refreshUI];
 
     return YES;
 }
@@ -271,7 +276,8 @@
             }
             
         });
-    }];    
+    }];
+    [self refreshUI];
 }
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuItem
@@ -302,6 +308,7 @@
              
              // todo: reload the newly saved file
              [self loadBackupFile:newURL];
+             _backupModified = NO;
          }
          else
          {
@@ -347,6 +354,7 @@
                  
                  // todo: reload the newly saved file
                  [self loadBackupFile:newURL];
+                 _backupModified = NO;
              }
              else
              {
@@ -471,6 +479,10 @@
         self.qaBox2.canAcceptDrag = NO;
         self.qaBox3.canAcceptDrag = NO;
     }
+    if (_backupModified)
+        [_window setTitle:APPLICATION_NAME @" [modified]"];
+    else
+        [_window setTitle:APPLICATION_NAME];
 }
 
 - (void) controlTextDidChange:(NSNotification *)obj
@@ -482,6 +494,7 @@
         
         self.currentBackup.backupDescription = self.backupNameField.stringValue;
         _backupModified = YES;
+        [self refreshUI];
     }
 }
 
@@ -505,6 +518,34 @@
     
     [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
     _backupModified = YES;
+}
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
+{
+    if (![_window isVisible])
+        return NSTerminateNow;
+
+    if (_backupModified)
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to quit?"
+                                         defaultButton:@"No"
+                                       alternateButton:@"Yes"
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Your backup is modified."];
+        [alert setAlertStyle: NSCriticalAlertStyle];
+
+        NSInteger buttonReturn = [alert runModal];
+        if (buttonReturn +1000 == NSAlertSecondButtonReturn) // Ask Apple, why the actual return value has a difference of 1000 to the predefined return value
+            return NSTerminateCancel;
+    }
+    return NSTerminateNow;
+}
+
+- (BOOL)windowShouldClose:(id)sender {
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return NO;
+    else
+        return YES;
 }
 
 @end
