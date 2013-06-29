@@ -27,9 +27,6 @@
 		03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
 		03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
 		03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
-		03404038170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
-		03404039170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
-		0340403A170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
 		0340403B170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
 		0340403C170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
 		0340403D170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
@@ -124,8 +121,6 @@
 		03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFFuseBackup+MFFuseBackup_Private.h"; sourceTree = "<group>"; };
 		03404011170E83AA008EFA2C /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
 		03404012170E83AA008EFA2C /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
-		03404013170E83AA008EFA2C /* MFModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFModule.h; sourceTree = "<group>"; };
-		03404014170E83AA008EFA2C /* MFModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFModule.m; sourceTree = "<group>"; };
 		03404015170E83AA008EFA2C /* MFPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPreset.h; sourceTree = "<group>"; };
 		03404016170E83AA008EFA2C /* MFPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPreset.m; sourceTree = "<group>"; };
 		03404017170E83AA008EFA2C /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
@@ -203,8 +198,6 @@
 				03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */,
 				03404011170E83AA008EFA2C /* MFFuseBackup.h */,
 				03404012170E83AA008EFA2C /* MFFuseBackup.m */,
-				03404013170E83AA008EFA2C /* MFModule.h */,
-				03404014170E83AA008EFA2C /* MFModule.m */,
 				03404015170E83AA008EFA2C /* MFPreset.h */,
 				03404016170E83AA008EFA2C /* MFPreset.m */,
 				03404017170E83AA008EFA2C /* MFQuickAccessView.h */,
@@ -557,7 +550,6 @@
 				03404031170E83AA008EFA2C /* main.m in Sources */,
 				03404034170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
 				03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
-				0340403A170E83AA008EFA2C /* MFModule.m in Sources */,
 				0340403D170E83AA008EFA2C /* MFPreset.m in Sources */,
 				03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 			);
@@ -570,7 +562,6 @@
 				0340402F170E83AA008EFA2C /* main.m in Sources */,
 				03404032170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
 				03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
-				03404038170E83AA008EFA2C /* MFModule.m in Sources */,
 				0340403B170E83AA008EFA2C /* MFPreset.m in Sources */,
 				0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 			);
@@ -583,7 +574,6 @@
 				03404030170E83AA008EFA2C /* main.m in Sources */,
 				03404033170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
 				03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
-				03404039170E83AA008EFA2C /* MFModule.m in Sources */,
 				0340403C170E83AA008EFA2C /* MFPreset.m in Sources */,
 				0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 				0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */,
