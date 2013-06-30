@@ -67,6 +67,35 @@
     return YES;
 }
 
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
+{
+    if (![_window isVisible])
+        return NSTerminateNow;
+
+    if (_backupModified)
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to quit?"
+                                         defaultButton:@"No"
+                                       alternateButton:@"Yes"
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Your backup is modified."];
+        [alert setAlertStyle: NSCriticalAlertStyle];
+
+        NSInteger buttonReturn = [alert runModal];
+        if (buttonReturn +1000 == NSAlertSecondButtonReturn) // Ask Apple, why the actual return value has a difference of 1000 to the predefined return value
+            return NSTerminateCancel;
+    }
+    return NSTerminateNow;
+}
+
+- (BOOL)windowShouldClose:(id)sender {
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return NO;
+    else
+        return YES;
+}
+
+
 #pragma mark - Tableview Delegate Methods
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView
@@ -221,30 +250,147 @@
     // Open to the default Fuse backup directory (if it exists)
     NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
-    
+
     NSFileManager *fileMan = [NSFileManager defaultManager];
     if ([fileMan fileExistsAtPath:defaultFuseDir])
     {
         NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
         [panel setDirectoryURL:[NSURL URLWithString:openDir]];
     }
-    
+
     [panel beginWithCompletionHandler:^(NSInteger result) {
-        
+
         if (result == NSOKButton)
-        {        
+        {
             NSArray *folders = [panel URLs];
-            
+
             // only allowing one item to be selected, so it should just be the first one
             NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
             NSLog(@"selected folder: %@", cFolder);
-            
+
             dispatch_async(dispatch_get_current_queue(), ^{
                 [self loadBackupFile:cFolder];
             });
         }
     }];
 }
+
+- (IBAction)onSaveSelected:(id)sender
+{
+    [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
+    {
+        NSAlert *alert;
+        if (success)
+        {
+            alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
+                                    defaultButton:@"OK"
+                                  alternateButton:nil
+                                      otherButton:nil
+                        informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@",[[newURL absoluteString]lastPathComponent]];
+
+            // todo: reload the newly saved file
+            [self loadBackupFile:newURL];
+            _backupModified = NO;
+        }
+        else
+        {
+            alert = [NSAlert alertWithMessageText:@"Unable to save backup"
+                                    defaultButton:@"OK"
+                                  alternateButton:nil
+                                      otherButton:nil
+                        informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+        }
+
+        [alert beginSheetModalForWindow:self.window
+                          modalDelegate:nil
+                         didEndSelector:nil
+                            contextInfo:nil];
+    }];
+}
+
+- (IBAction)onSaveAsSelected:(id)sender
+{
+    // Save to the default Fuse backup directory - otherwise Fuse won't see it
+    NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
+
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if ([fileMan fileExistsAtPath:defaultFuseDir])
+    {
+        NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
+
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
+        [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
+        {
+            NSAlert *alert;
+            if (success)
+            {
+                alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
+                                        defaultButton:@"OK"
+                                      alternateButton:nil
+                                          otherButton:nil
+                            informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@", [[newURL absoluteString] lastPathComponent]];
+
+                // todo: reload the newly saved file
+                [self loadBackupFile:newURL];
+                _backupModified = NO;
+            }
+            else
+            {
+                alert = [NSAlert alertWithMessageText:@"Unable to save backup"
+                                        defaultButton:@"OK"
+                                      alternateButton:nil
+                                          otherButton:nil
+                            informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+            }
+
+            [alert beginSheetModalForWindow:self.window
+                              modalDelegate:nil
+                             didEndSelector:nil
+                                contextInfo:nil];
+        }];
+    }
+}
+
+
+- (IBAction)onCopyPresetlist:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+
+    NSString *thePresetList;
+    thePresetList = [[NSString alloc] init];
+
+    for (int i=0; i<self.currentBackup.presets.count; i++)
+    {
+        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:i];
+        if (cPreset)
+        {
+            thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
+            thePresetList = [thePresetList stringByAppendingString:@"\t"];
+            thePresetList = [thePresetList stringByAppendingString:cPreset.name];
+            thePresetList = [thePresetList stringByAppendingString:@"\n"];
+        }
+    }
+
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
+
+    NSAlert *alert;
+    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
+                            defaultButton:@"OK"
+                          alternateButton:nil
+                              otherButton:nil
+                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
+
+    [alert beginSheetModalForWindow:self.window
+                      modalDelegate:nil
+                     didEndSelector:nil
+                        contextInfo:nil];
+
+}
+
 
 #pragma mark - File Loading
 - (void) loadBackupFile:(NSURL *)url
@@ -291,164 +437,6 @@
         return NO;
     
     return YES;
-}
-
-- (IBAction)onSaveSelected:(id)sender
-{
-    [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
-     {
-         NSAlert *alert;
-         if (success)
-         {
-             alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
-                                     defaultButton:@"OK"
-                                   alternateButton:nil
-                                       otherButton:nil
-                         informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@",[[newURL absoluteString]lastPathComponent]];
-             
-             // todo: reload the newly saved file
-             [self loadBackupFile:newURL];
-             _backupModified = NO;
-         }
-         else
-         {
-             alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                     defaultButton:@"OK"
-                                   alternateButton:nil
-                                       otherButton:nil
-                         informativeTextWithFormat:@"There was an error trying to save the new backup file."];
-         }
-         
-         [alert beginSheetModalForWindow:self.window
-                           modalDelegate:nil
-                          didEndSelector:nil
-                             contextInfo:nil];
-     }];
-}
-
-- (IBAction)onSaveAsSelected:(id)sender
-{
-    //NSSavePanel *panel = [NSSavePanel savePanel];
-    
-    // Save to the default Fuse backup directory - otherwise Fuse won't see it
-    NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
-    
-    NSFileManager *fileMan = [NSFileManager defaultManager];
-    if ([fileMan fileExistsAtPath:defaultFuseDir])
-    {
-        NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
-        
-        self.currentBackup.backupDescription = self.backupNameField.stringValue;
-        
-        [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
-         {
-             NSAlert *alert;
-             if (success)
-             {
-                 alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@", [[newURL absoluteString] lastPathComponent]];
-                 
-                 // todo: reload the newly saved file
-                 [self loadBackupFile:newURL];
-                 _backupModified = NO;
-             }
-             else
-             {
-                 alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"There was an error trying to save the new backup file."];
-             }
-             
-             [alert beginSheetModalForWindow:self.window
-                               modalDelegate:nil
-                              didEndSelector:nil
-                                 contextInfo:nil];
-         }];
-        //[panel setDirectoryURL:[NSURL URLWithString:openDir]];
-    }
-    
-    
-    /*
-    [panel beginWithCompletionHandler:^(NSInteger result) {
-        
-        if (result == NSOKButton)
-        {
-            NSLog(@"url: %@", panel.URL);
-            [self.currentBackup saveBackup:panel.URL withCompletion:^(BOOL success)
-            {
-                NSAlert *alert;
-                if (success)
-                {
-                    alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
-                                                     defaultButton:@"OK"
-                                                   alternateButton:nil
-                                                       otherButton:nil
-                                         informativeTextWithFormat:@""];
-                    
-                    // todo: reload the newly saved file
-                    [self loadBackupFile:panel.URL];
-                }
-                else
-                {
-                    alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                            defaultButton:@"OK"
-                                          alternateButton:nil
-                                              otherButton:nil
-                                informativeTextWithFormat:@"There was an error trying to save the new backup file."];
-                }
-                
-                [alert beginSheetModalForWindow:self.window
-                                  modalDelegate:nil
-                                 didEndSelector:nil
-                                    contextInfo:nil];
-            }];
-        }
-    }];
-    */
-}
-
-
-- (IBAction)onCopyPresetlist:(id)sender
-{
-    if (! self.currentBackup)
-        return;
-    
-    NSString *thePresetList;
-    thePresetList = [[NSString alloc] init];
-    
-    for (int i=0; i<self.currentBackup.presets.count; i++)
-    {
-        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:i];
-        if (cPreset)
-        {
-            thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
-            thePresetList = [thePresetList stringByAppendingString:@"\t"];
-            thePresetList = [thePresetList stringByAppendingString:cPreset.name];
-            thePresetList = [thePresetList stringByAppendingString:@"\n"];
-        }
-    }
-    
-    [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
-    
-    NSAlert *alert;
-    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
-                            defaultButton:@"OK"
-                          alternateButton:nil
-                              otherButton:nil
-                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
-    
-    [alert beginSheetModalForWindow:self.window
-                      modalDelegate:nil
-                     didEndSelector:nil
-                        contextInfo:nil];
-
 }
 
 
@@ -520,32 +508,5 @@
     _backupModified = YES;
 }
 
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
-{
-    if (![_window isVisible])
-        return NSTerminateNow;
-
-    if (_backupModified)
-    {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to quit?"
-                                         defaultButton:@"No"
-                                       alternateButton:@"Yes"
-                                           otherButton:nil
-                             informativeTextWithFormat:@"Your backup is modified."];
-        [alert setAlertStyle: NSCriticalAlertStyle];
-
-        NSInteger buttonReturn = [alert runModal];
-        if (buttonReturn +1000 == NSAlertSecondButtonReturn) // Ask Apple, why the actual return value has a difference of 1000 to the predefined return value
-            return NSTerminateCancel;
-    }
-    return NSTerminateNow;
-}
-
-- (BOOL)windowShouldClose:(id)sender {
-    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
-        return NO;
-    else
-        return YES;
-}
 
 @end
