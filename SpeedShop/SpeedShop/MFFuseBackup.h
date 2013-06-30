@@ -31,6 +31,6 @@ typedef enum
 - (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block;
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
 
-- (MFPreset *) getPresetForQASlot:(int)qaSlot;
+- (MFPreset *)presetForQASlot:(int)qaSlot;
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot;
 @end

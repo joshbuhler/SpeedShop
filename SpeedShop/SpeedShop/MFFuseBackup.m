@@ -53,8 +53,31 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     [self loadBackupContents];
 }
 
+// Saves to the existing location
+- (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block
+{
+    _saveCompletionBlock = block;
 
-#pragma mark - Private Methods
+    [self saveToURL:self.folderURL];
+}
+
+- (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
+{
+    _saveCompletionBlock = block;
+
+    // create a new folder at the specified path - filename must be a date, otherwise
+    // FUSE won't see it
+    NSDate *now = [NSDate date];
+    NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
+    [filenameFormat setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
+    NSString *dateFileName = [filenameFormat stringFromDate:now];
+
+    NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
+    [self saveToURL:destURL];
+}
+
+
+#pragma mark - Private Preset Loading
 
 - (BOOL) validateBackupContents
 {
@@ -174,6 +197,59 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     [cParser parse];
 }
 
+// Loads "Preset" folder contents to get an overview of the preset files.
+- (void) loadPresetFiles
+{
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+
+    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
+    NSError *error = nil;
+    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
+
+    if (error)
+    {
+        NSLog(@"*** ERROR: error loading fuse files");
+        [self completeLoading:NO];
+        return;
+    }
+
+    for (int i = 0; i < presetContents.count; i++)
+    {
+        //NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
+
+        NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
+
+        if (![[cURL pathExtension] isEqualToString:@"fuse"]) {
+            continue;
+        }
+
+        MFPreset *cPreset = [[MFPreset alloc] init];
+
+        cPreset.backup = self;
+        cPreset.uuid = [self newUUID];
+
+        [cPreset loadPresetFile:cURL];
+
+        [self.presets addObject:cPreset];
+    }
+
+    // after loading all presets we can remember the UUIDs of the quick access presets
+    for (int j = 0; j < _quickAccessPresets.count; j++)
+    {
+        int presetNumber = [[_quickAccessPresets objectAtIndex:j] intValue];
+        NSString *qaUUID = ((MFPreset*)[self.presets objectAtIndex:presetNumber]).uuid;
+        [_quickAccessPresetsUUID addObject:qaUUID];
+    }
+
+    [self completeLoading:YES];
+}
+
+- (void) completeLoading:(BOOL)success
+{
+    if (_loadCompletionBlock)
+        _loadCompletionBlock(success);
+}
+
 #pragma mark - NSXMLParserDelegate methods
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
@@ -205,85 +281,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     currentElementValue = nil;
 }
 
-#pragma mark - Preset Loading
 
-// Loads "Preset" folder contents to get an overview of the preset files.
-- (void) loadPresetFiles
-{
-    NSFileManager *fileMan = [NSFileManager defaultManager];
-    
-    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
-    NSError *error = nil;
-    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
-    
-    if (error)
-    {
-        NSLog(@"*** ERROR: error loading fuse files");
-        [self completeLoading:NO];
-        return;
-    }
-    
-    for (int i = 0; i < presetContents.count; i++)
-    {
-        //NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
-        
-        NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
-        
-        if (![[cURL pathExtension] isEqualToString:@"fuse"]) {
-            continue;
-        }
-        
-        MFPreset *cPreset = [[MFPreset alloc] init];
-        
-        cPreset.backup = self;
-        cPreset.uuid = [self newUUID];
-        
-        [cPreset loadPresetFile:cURL];
-        
-        [self.presets addObject:cPreset];
-    }
-
-    // after loading all presets we can remember the UUIDs of the quick access presets
-    for (int j = 0; j < _quickAccessPresets.count; j++)
-    {
-        int presetNumber = [[_quickAccessPresets objectAtIndex:j] intValue];
-        NSString *qaUUID = ((MFPreset*)[self.presets objectAtIndex:presetNumber]).uuid;
-        [_quickAccessPresetsUUID addObject:qaUUID];
-    }
-    
-    [self completeLoading:YES];
-}
-
-- (void) completeLoading:(BOOL)success
-{    
-    if (_loadCompletionBlock)
-        _loadCompletionBlock(success);
-}
-
-#pragma mark - Exporting / Saving
-// Saves to the existing location
-- (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block
-{
-    _saveCompletionBlock = block;
-    
-    [self saveToURL:self.folderURL];
-}
-
-- (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
-{
-    _saveCompletionBlock = block;
-    
-    // create a new folder at the specified path - filename must be a date, otherwise
-    // FUSE won't see it
-    NSDate *now = [NSDate date];
-    NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
-    [filenameFormat setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
-    NSString *dateFileName = [filenameFormat stringFromDate:now];
-    
-    NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
-    [self saveToURL:destURL];
-}
-
+#pragma mark - Private Exporting / Saving
 - (void) saveToURL:(NSURL *)destURL
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
@@ -339,17 +338,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         
         NSXMLElement *docRoot = [settingsXML rootElement];
         // replace the first three QA nodes
-        MFPreset *preset1 = (MFPreset *)[self getPresetForQASlot:0];
+        MFPreset *preset1 = (MFPreset *) [self presetForQASlot:0];
         int index1 = [self indexForPreset:preset1];
         NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
         [docRoot replaceChildAtIndex:0 withNode:qa1];
         
-        MFPreset *preset2 = (MFPreset *)[self getPresetForQASlot:1];
+        MFPreset *preset2 = (MFPreset *) [self presetForQASlot:1];
         int index2 = [self indexForPreset:preset2];
         NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
         [docRoot replaceChildAtIndex:1 withNode:qa2];
         
-        MFPreset *preset3 = (MFPreset *)[self getPresetForQASlot:2];
+        MFPreset *preset3 = (MFPreset *) [self presetForQASlot:2];
         int index3 = [self indexForPreset:preset3];
         NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
         [docRoot replaceChildAtIndex:2 withNode:qa3];
@@ -475,8 +474,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 
+#pragma mark - Other Private Stuff
+
 // Get the preset for a QA slot, identified by the preset's UUID
-- (MFPreset *) getPresetForQASlot:(int)qaSlot
+- (MFPreset *)presetForQASlot:(int)qaSlot
 {
     NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
     

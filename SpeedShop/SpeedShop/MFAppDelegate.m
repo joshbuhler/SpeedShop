@@ -449,9 +449,9 @@
     
     if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
-        self.qaBox1.preset = [self.currentBackup getPresetForQASlot:0] ?: nil;
-        self.qaBox2.preset = [self.currentBackup getPresetForQASlot:1] ?: nil;
-        self.qaBox3.preset = [self.currentBackup getPresetForQASlot:2] ?: nil;
+        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
+        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
+        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
         
         self.qaBox1.canAcceptDrag = YES;
         self.qaBox2.canAcceptDrag = YES;
