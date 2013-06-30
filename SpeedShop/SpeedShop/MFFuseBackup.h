@@ -23,6 +23,7 @@ typedef enum
 
 @property (nonatomic, strong) NSURL *folderURL;
 @property (nonatomic, strong) NSString *backupDescription;
+@property (nonatomic, readonly) BOOL isModified;
 
 @property (nonatomic, strong) NSMutableArray *presets;
 @property (nonatomic, readonly) AmpSeries ampSeries;
@@ -33,4 +34,5 @@ typedef enum
 
 - (MFPreset *)presetForQASlot:(int)qaSlot;
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot;
+- (id) init;
 @end

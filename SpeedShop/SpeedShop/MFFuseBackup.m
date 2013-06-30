@@ -33,6 +33,13 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 @implementation MFFuseBackup
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _isModified = NO;
+    }
+    return self;
+}
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {
@@ -498,9 +505,15 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 // Set the preset for a QA slot, linking is done via the preset's UUID
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot
 {
+    // No change. This preset is already in this QA slot
+    if ([[_quickAccessPresetsUUID objectAtIndex:qaSlot] isEqualToString:[preset uuid]])
+        return;
+
     [_quickAccessPresetsUUID setObject:[preset uuid]
                     atIndexedSubscript:qaSlot];
+    _isModified = YES;
 }
+
 
 - (int) indexForPreset:(MFPreset *)preset
 {

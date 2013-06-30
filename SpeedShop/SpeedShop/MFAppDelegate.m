@@ -467,7 +467,7 @@
         self.qaBox2.canAcceptDrag = NO;
         self.qaBox3.canAcceptDrag = NO;
     }
-    if (_backupModified)
+    if (self.currentBackup.isModified)
         [_window setTitle:APPLICATION_NAME @" [modified]"];
     else
         [_window setTitle:APPLICATION_NAME];
