@@ -205,6 +205,8 @@
 
     [self.ampPresetTable reloadData];
     [self.ampPresetTable deselectAll:nil];
+    // re-select the dragged items for improved user feedback
+    [self.ampPresetTable selectRowIndexes:newIndexes byExtendingSelection:NO];
     [self refreshUI];
 
     return YES;
