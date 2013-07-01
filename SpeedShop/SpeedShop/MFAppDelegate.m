@@ -12,9 +12,6 @@
 #import "MFFuseBackup.h"
 
 @interface MFAppDelegate()
-{
-    BOOL    _backupModified;
-}
 
 @property (nonatomic, strong) MFFuseBackup *currentBackup;
 @property (nonatomic, strong) MFPreset *currentPreset;
@@ -27,9 +24,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application    
-    _backupModified = NO;
-        
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
     
@@ -72,9 +66,9 @@
     if (![_window isVisible])
         return NSTerminateNow;
 
-    if (_backupModified)
+    if (self.currentBackup.isModified)
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to quit?"
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to procede?"
                                          defaultButton:@"No"
                                        alternateButton:@"Yes"
                                            otherButton:nil
@@ -103,7 +97,7 @@
     NSInteger count = 0;
     
     if (self.currentBackup)
-        count = self.currentBackup.presets.count;
+        count = [self.currentBackup presetsCount];
     
     return count;
 }
@@ -121,7 +115,7 @@
     
     if ([columnID isEqualToString:@"presetName"])
     {
-        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:row];
+        MFPreset *cPreset = [self.currentBackup presetsObjectAtIndex:(NSUInteger) row];
         returnValue = cPreset.name;
     }
     
@@ -132,7 +126,7 @@
 {
     NSMutableDictionary *dragData = [[NSMutableDictionary alloc] init];
     [dragData setObject:rowIndexes forKey:@"rowIndexes"];
-    [dragData setObject:[self.currentBackup.presets objectAtIndex:rowIndexes.firstIndex] forKey:@"preset"];
+    [dragData setObject:[self.currentBackup presetsObjectAtIndex:rowIndexes.firstIndex] forKey:@"preset"];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dragData];
     [pboard declareTypes:[NSArray arrayWithObject:DropTypeMFPreset] owner:self];
@@ -191,7 +185,7 @@
 
     while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
     {
-        NSObject *cItem = [self.currentBackup.presets objectAtIndex:currentItemIndex];
+        NSObject *cItem = [self.currentBackup presetsObjectAtIndex:currentItemIndex];
         [draggedItemsArray addObject:cItem];
         NSLog(@"dragged: %@", ((MFPreset*)cItem).name);
     }
@@ -199,7 +193,7 @@
     NSLog(@"dropped on: %ld", (long)row);
     
     // remove the items from the preset list
-    [self.currentBackup.presets removeObjectsInArray:draggedItemsArray];
+    [self.currentBackup presetsRemoveObjectsInArray:draggedItemsArray];
 
     // items have been removed, so we have to correct the target row if it is *after* the dragged items
     if ([rowIndexes firstIndex] < row)
@@ -207,12 +201,10 @@
 
     // now put them in their new location
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
-    [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
-        
+    [self.currentBackup presetsInsertObjects:draggedItemsArray atIndexes:newIndexes];
+
     [self.ampPresetTable reloadData];
     [self.ampPresetTable deselectAll:nil];
-    
-    _backupModified = YES;
     [self refreshUI];
 
     return YES;
@@ -227,7 +219,7 @@
     
     // if multiple items are selected, we don't have a "currentPreset"
     if (self.ampPresetTable.selectedRowIndexes.count == 1)
-        self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
+        self.currentPreset = [self.currentBackup presetsObjectAtIndex:(NSUInteger) selectedRow];
     else
         self.currentPreset = nil;
     
@@ -242,6 +234,10 @@
 
 - (IBAction)onOpenBackupFolder:(id)sender
 {
+    // Unsaved changes? does user really want to load other data?
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return;
+
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:NO];
@@ -271,12 +267,16 @@
             dispatch_async(dispatch_get_current_queue(), ^{
                 [self loadBackupFile:cFolder];
             });
+            [self refreshUI];
+            [self.ampPresetTable deselectAll:nil];
         }
     }];
 }
 
 - (IBAction)onSaveSelected:(id)sender
 {
+    [self.ampPresetTable deselectAll:nil];
+
     [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
     {
         NSAlert *alert;
@@ -288,9 +288,8 @@
                                       otherButton:nil
                         informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@",[[newURL absoluteString]lastPathComponent]];
 
-            // todo: reload the newly saved file
             [self loadBackupFile:newURL];
-            _backupModified = NO;
+            [self refreshUI];
         }
         else
         {
@@ -310,6 +309,8 @@
 
 - (IBAction)onSaveAsSelected:(id)sender
 {
+    [self.ampPresetTable deselectAll:nil];
+
     // Save to the default Fuse backup directory - otherwise Fuse won't see it
     NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
@@ -318,8 +319,6 @@
     if ([fileMan fileExistsAtPath:defaultFuseDir])
     {
         NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
-
-        self.currentBackup.backupDescription = self.backupNameField.stringValue;
 
         [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
         {
@@ -332,9 +331,8 @@
                                           otherButton:nil
                             informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@", [[newURL absoluteString] lastPathComponent]];
 
-                // todo: reload the newly saved file
                 [self loadBackupFile:newURL];
-                _backupModified = NO;
+                [self refreshUI];
             }
             else
             {
@@ -362,9 +360,9 @@
     NSString *thePresetList;
     thePresetList = [[NSString alloc] init];
 
-    for (int i=0; i<self.currentBackup.presets.count; i++)
+    for (int i=0; i < [self.currentBackup presetsCount]; i++)
     {
-        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:i];
+        MFPreset *cPreset = [self.currentBackup presetsObjectAtIndex:(NSUInteger) i];
         if (cPreset)
         {
             thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
@@ -389,6 +387,7 @@
                      didEndSelector:nil
                         contextInfo:nil];
 
+    [self.ampPresetTable deselectAll:nil];
 }
 
 
@@ -401,11 +400,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (success)
             {
-                self.currentPreset = [self.currentBackup.presets objectAtIndex:0];
+                self.currentPreset = [self.currentBackup presetsObjectAtIndex:0];
                 [self.ampPresetTable reloadData];
                 [self refreshUI];
-                
-                _backupModified = NO;
             }
             else
             {
@@ -431,7 +428,7 @@
     SEL theAction = [menuItem action];
     
     if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
-        return _backupModified;
+        return self.currentBackup.isModified;
     
     if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
         return NO;
@@ -468,7 +465,7 @@
         self.qaBox3.canAcceptDrag = NO;
     }
     if (self.currentBackup.isModified)
-        [_window setTitle:APPLICATION_NAME @" [modified]"];
+        [_window setTitle:APPLICATION_NAME @" [modified!]"];
     else
         [_window setTitle:APPLICATION_NAME];
 }
@@ -481,7 +478,6 @@
             return;
         
         self.currentBackup.backupDescription = self.backupNameField.stringValue;
-        _backupModified = YES;
         [self refreshUI];
     }
 }
@@ -505,7 +501,7 @@
     }
     
     [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
-    _backupModified = YES;
+    [self refreshUI];
 }
 
 

@@ -29,6 +29,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSMutableArray *_quickAccessPresetsUUID;
 }
 
+@property (nonatomic, strong) NSMutableArray *presets;
+
 @end
 
 @implementation MFFuseBackup
@@ -40,6 +42,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     return self;
 }
+
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {
@@ -58,6 +61,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     _quickAccessPresetsUUID = [[NSMutableArray alloc] init];
     
     [self loadBackupContents];
+    _isModified = NO;
 }
 
 // Saves to the existing location
@@ -66,6 +70,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     _saveCompletionBlock = block;
 
     [self saveToURL:self.folderURL];
+    _isModified = NO;
 }
 
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
@@ -81,7 +86,15 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
     NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
     [self saveToURL:destURL];
+    _isModified = NO;
 }
+
+- (void)setBackupDescription:(NSString *)newBackupDescription {
+    _backupDescription = newBackupDescription;
+    _isModified = YES;
+}
+
+
 
 
 #pragma mark - Private Preset Loading
@@ -539,6 +552,25 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         CFRelease(uuid);
     }
     return uuidString;
+}
+
+#pragma mark - Presets Access Methods
+- (NSUInteger)presetsCount {
+    return _presets.count;
+}
+
+- (MFPreset *)presetsObjectAtIndex:(NSUInteger)anIndex {
+    return [_presets objectAtIndex:anIndex];
+}
+
+- (void)presetsRemoveObjectsInArray:(NSArray *)anOtherArray {
+    [_presets removeObjectsInArray:anOtherArray];
+    _isModified = YES;
+}
+
+- (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet {
+    [_presets insertObjects:anOtherArray atIndexes:anIndexSet];
+    _isModified = YES;
 }
 
 @end
