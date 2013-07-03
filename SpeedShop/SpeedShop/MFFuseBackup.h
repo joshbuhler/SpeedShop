@@ -41,4 +41,10 @@ typedef enum
 - (void)presetsRemoveObjectsInArray:(NSArray *)anOtherArray;
 - (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet;
 
+- (void) performUndo;
+- (void) performRedo;
+- (BOOL) isUndoable;
+- (BOOL) isRedoable;
+- (void) forceModifiedYes;
+
 @end

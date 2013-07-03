@@ -877,7 +877,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="765214300">
 								<int key="NSCellFlags">-1805647871</int>
-								<int key="NSCellFlags2">272629760</int>
+								<int key="NSCellFlags2">268435456</int>
 								<string key="NSContents">Good news, everyone! I've taught the toaster to feel love! Ask her how her day was. I don't 'need' to drink. I can quit anytime I want!</string>
 								<object class="NSFont" key="NSSupport" id="539706827">
 									<string key="NSName">LucidaGrande</string>
@@ -910,7 +910,7 @@
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="452361386">
-								<int key="NSCellFlags">-2077228991</int>
+								<int key="NSCellFlags">-2079326144</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents">Good news, everyone! I've taught the toaster to feel love!</string>
 								<reference key="NSSupport" ref="539706827"/>
@@ -938,7 +938,7 @@
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="570763674">
-								<int key="NSCellFlags">-2077228991</int>
+								<int key="NSCellFlags">-2079326144</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents">Good news, everyone! I've taught the toaster to feel love!</string>
 								<reference key="NSSupport" ref="539706827"/>
@@ -958,7 +958,7 @@
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="57350721">
-								<int key="NSCellFlags">-2078277631</int>
+								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">272629760</int>
 								<string key="NSContents">Good news, everyone! I've taught the toaster to feel love! Ask her how her day was. I don't 'need' to drink. I can quit anytime I want! Leela's gonna kill me.</string>
 								<reference key="NSSupport" ref="539706827"/>
@@ -1095,14 +1095,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">undo:</string>
-						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="1058277027"/>
-					</object>
-					<int key="connectionID">223</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">copy:</string>
 						<reference key="source" ref="1014"/>
 						<reference key="destination" ref="860595796"/>
@@ -1124,14 +1116,6 @@
 						<reference key="destination" ref="296257095"/>
 					</object>
 					<int key="connectionID">228</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">redo:</string>
-						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="790794224"/>
-					</object>
-					<int key="connectionID">231</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1364,6 +1348,22 @@
 						<reference key="destination" ref="41048584"/>
 					</object>
 					<int key="connectionID">1198</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">onUndo:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1058277027"/>
+					</object>
+					<int key="connectionID">1212</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">onRedo:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="790794224"/>
+					</object>
+					<int key="connectionID">1213</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3505,7 +3505,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1211</int>
+			<int key="maxID">1213</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3515,9 +3515,11 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onCopyPresetlist:">id</string>
 						<string key="onOpenBackupFolder:">id</string>
+						<string key="onRedo:">id</string>
 						<string key="onReloadBtn:">id</string>
 						<string key="onSaveAsSelected:">id</string>
 						<string key="onSaveSelected:">id</string>
+						<string key="onUndo:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="onCopyPresetlist:">
@@ -3526,6 +3528,10 @@
 						</object>
 						<object class="IBActionInfo" key="onOpenBackupFolder:">
 							<string key="name">onOpenBackupFolder:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onRedo:">
+							<string key="name">onRedo:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="onReloadBtn:">
@@ -3538,6 +3544,10 @@
 						</object>
 						<object class="IBActionInfo" key="onSaveSelected:">
 							<string key="name">onSaveSelected:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onUndo:">
+							<string key="name">onUndo:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

@@ -8,6 +8,8 @@
 
 #import "MFFuseBackup.h"
 #import "MFFuseBackup+MFFuseBackup_Private.h"
+#import "MFFuseBackupMemento.h"
+#import "MFFuseBackupHistory.h"
 
 NSString *FUSE_FOLDER = @"FUSE";
 NSString *PRESET_FOLDER = @"Presets";
@@ -20,16 +22,21 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 {
     MFFuseBackupCompletion      _loadCompletionBlock;
     MFFuseBackupSaveCompletion  _saveCompletionBlock;
-    
+    MFFuseBackupHistory *_backupHistory;
+
     NSURL   *_newFolderURL;
     
     // Used for XML parsing
     NSMutableString *currentElementValue;
     NSMutableArray *_quickAccessPresets;
     NSMutableArray *_quickAccessPresetsUUID;
+
 }
 
 @property (nonatomic, strong) NSMutableArray *presets;
+
+-(void)storeStateToMemento;
+- (void) restoreStateFromMemento:(MFFuseBackupMemento *)memento;
 
 @end
 
@@ -39,6 +46,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     self = [super init];
     if (self) {
         _isModified = NO;
+        _backupHistory = [[MFFuseBackupHistory alloc] init];
     }
     return self;
 }
@@ -62,6 +70,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     
     [self loadBackupContents];
     _isModified = NO;
+    [_backupHistory removeAllObjects];
+    [self storeStateToMemento];
 }
 
 // Saves to the existing location
@@ -71,6 +81,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
     [self saveToURL:self.folderURL];
     _isModified = NO;
+    [_backupHistory removeAllObjects];
 }
 
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
@@ -87,9 +98,11 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
     [self saveToURL:destURL];
     _isModified = NO;
+    [_backupHistory removeAllObjects];
 }
 
 - (void)setBackupDescription:(NSString *)newBackupDescription {
+    [self storeStateToMemento];
     _backupDescription = newBackupDescription;
     _isModified = YES;
 }
@@ -358,17 +371,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         
         NSXMLElement *docRoot = [settingsXML rootElement];
         // replace the first three QA nodes
-        MFPreset *preset1 = (MFPreset *) [self presetForQASlot:0];
+        MFPreset *preset1 = [self presetForQASlot:0];
         int index1 = [self indexForPreset:preset1];
         NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
         [docRoot replaceChildAtIndex:0 withNode:qa1];
         
-        MFPreset *preset2 = (MFPreset *) [self presetForQASlot:1];
+        MFPreset *preset2 = [self presetForQASlot:1];
         int index2 = [self indexForPreset:preset2];
         NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
         [docRoot replaceChildAtIndex:1 withNode:qa2];
         
-        MFPreset *preset3 = (MFPreset *) [self presetForQASlot:2];
+        MFPreset *preset3 = [self presetForQASlot:2];
         int index3 = [self indexForPreset:preset3];
         NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
         [docRoot replaceChildAtIndex:2 withNode:qa3];
@@ -505,10 +518,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     {
         MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
         if ([qaPresetUUID isEqualToString:cPreset.uuid])
-        {
-            NSLog (@"Found QA#%02d => %@", qaSlot, cPreset.name);
             return cPreset;
-        }
     }
     
     return nil;
@@ -524,6 +534,14 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
     [_quickAccessPresetsUUID setObject:[preset uuid]
                     atIndexedSubscript:qaSlot];
+
+    MFPreset *qaPreset = [self presetForQASlot:qaSlot];
+    NSUInteger qaPresetIndex = [_presets indexOfObject:qaPreset];
+    NSString *qaPresetIndexString = [[NSString alloc] initWithFormat:@"%lu", qaPresetIndex];
+    [_quickAccessPresets setObject:qaPresetIndexString
+                    atIndexedSubscript:qaSlot];
+
+    [self storeStateToMemento];
     _isModified = YES;
 }
 
@@ -554,6 +572,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     return uuidString;
 }
 
+
 #pragma mark - Presets Access Methods
 - (NSUInteger)presetsCount {
     return _presets.count;
@@ -570,7 +589,61 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet {
     [_presets insertObjects:anOtherArray atIndexes:anIndexSet];
+    [self storeStateToMemento];
     _isModified = YES;
 }
+
+
+
+#pragma mark - Undo/Redo Methods
+- (void)storeStateToMemento {
+    if ([_presets count] == 0)
+        return;
+
+    MFFuseBackupMemento * memento = [[MFFuseBackupMemento alloc] initWithBackupState:_presets
+                                                                           qaPresets:_quickAccessPresets
+                                                                       qaPresetsUUID:_quickAccessPresetsUUID
+                                                                   backupDescription:_backupDescription ];
+    [_backupHistory addObject:memento];
+}
+
+
+- (void) restoreStateFromMemento:(MFFuseBackupMemento *)memento {
+    if (memento){
+        _presets = [[NSMutableArray alloc] initWithArray:memento.presets];
+        _quickAccessPresets = [[NSMutableArray alloc] initWithArray:memento.quickAccessPresets];
+        _quickAccessPresetsUUID = [[NSMutableArray alloc] initWithArray:memento.quickAccessPresetsUUID];
+        _backupDescription = [[NSString alloc] initWithString:memento.backupDescription];
+    }
+}
+
+
+- (void)performUndo {
+    MFFuseBackupMemento * memento = [_backupHistory undo];
+    if (memento)
+        [self restoreStateFromMemento:memento];
+}
+
+- (void)performRedo {
+    MFFuseBackupMemento * memento = [_backupHistory redo];
+    if (memento)
+        [self restoreStateFromMemento:memento];
+}
+
+- (BOOL)isUndoable {
+    return [_backupHistory isUndoable];
+}
+
+- (BOOL)isRedoable {
+    return [_backupHistory isRedoable];
+}
+
+// we need this for small backupDescription changes
+// which should not go to the undo history and thus
+// are not yet propagated to this class
+- (void)forceModifiedYes {
+    _isModified = YES;
+}
+
 
 @end

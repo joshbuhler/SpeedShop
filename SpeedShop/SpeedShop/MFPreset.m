@@ -100,4 +100,8 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     currentElementValue = nil;
 }
 
+-(NSString *) description
+{
+    return _name;
+}
 @end

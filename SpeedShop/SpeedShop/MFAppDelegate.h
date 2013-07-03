@@ -35,10 +35,12 @@
 - (IBAction)onReloadBtn:(id)sender;
 
 - (IBAction)onOpenBackupFolder:(id)sender;
-
 - (IBAction)onSaveSelected:(id)sender;
 - (IBAction)onSaveAsSelected:(id)sender;
 - (IBAction)onCopyPresetlist:(id)sender;
+- (IBAction)onUndo:(id)sender;
+- (IBAction)onRedo:(id)sender;
+
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender;
 - (BOOL)windowShouldClose:(id)sender;
 @end

@@ -84,6 +84,12 @@
 		03BF545D16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
 		066DE1BB1714B65100451196 /* OpenSans-ExtraBold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		066DE1BC1714B65400451196 /* OpenSans-Light.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		1CC931F9AC171FFB819E4544 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
+		1CC932EC40C323355690A2D6 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
+		1CC933FD7BF43302F15A12AA /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
+		1CC93958E5ED27A8AFAD7823 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
+		1CC93AA7A5085F99FF73DB97 /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
+		1CC93B58F37020E7686518AF /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +161,10 @@
 		03BF544216DF11CF00895128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03BF545A16DF11CF00895128 /* Speed ShopTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Speed ShopTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF545B16DF11CF00895128 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1CC935A06ECB7C8BA2653B7D /* MFFuseBackupMemento.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackupMemento.h; sourceTree = "<group>"; };
+		1CC9378680EC93690ECABA17 /* MFFuseBackupHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackupHistory.h; sourceTree = "<group>"; };
+		1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackupMemento.m; sourceTree = "<group>"; };
+		1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackupHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +217,10 @@
 				0340401B170E83AA008EFA2C /* Resources */,
 				03404024170E83AA008EFA2C /* Speed Shop-Info.plist */,
 				03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */,
+				1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */,
+				1CC9378680EC93690ECABA17 /* MFFuseBackupHistory.h */,
+				1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */,
+				1CC935A06ECB7C8BA2653B7D /* MFFuseBackupMemento.h */,
 			);
 			path = SpeedShop;
 			sourceTree = "<group>";
@@ -552,6 +566,8 @@
 				03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
 				0340403D170E83AA008EFA2C /* MFPreset.m in Sources */,
 				03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+				1CC93958E5ED27A8AFAD7823 /* MFFuseBackupHistory.m in Sources */,
+				1CC93AA7A5085F99FF73DB97 /* MFFuseBackupMemento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +580,8 @@
 				03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
 				0340403B170E83AA008EFA2C /* MFPreset.m in Sources */,
 				0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+				1CC932EC40C323355690A2D6 /* MFFuseBackupHistory.m in Sources */,
+				1CC93B58F37020E7686518AF /* MFFuseBackupMemento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +595,8 @@
 				0340403C170E83AA008EFA2C /* MFPreset.m in Sources */,
 				0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 				0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */,
+				1CC931F9AC171FFB819E4544 /* MFFuseBackupHistory.m in Sources */,
+				1CC933FD7BF43302F15A12AA /* MFFuseBackupMemento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

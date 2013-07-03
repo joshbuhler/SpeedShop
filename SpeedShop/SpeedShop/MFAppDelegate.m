@@ -20,7 +20,7 @@
 
 @implementation MFAppDelegate
 
-#pragma mark - View LifeCycle
+#pragma mark - Main Window Delegate Methods
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -30,8 +30,8 @@
     self.qaBox1.delegate = self;
     self.qaBox2.delegate = self;
     self.qaBox3.delegate = self;
-    
-    // empty the placeholder text (want to keep that around for working in IB though)
+
+            // empty the placeholder text (want to keep that around for working in IB though)
     [self.backupNameField setStringValue:@""];
     [self.presetNameField setStringValue:@""];
     [self.authorNameField setStringValue:@""];
@@ -82,12 +82,108 @@
     return NSTerminateNow;
 }
 
+- (BOOL) validateMenuItem:(NSMenuItem *)menuItem
+{
+    SEL theAction = [menuItem action];
+
+    if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
+        return self.currentBackup.isModified;
+
+    if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
+        return NO;
+
+    if (theAction == @selector(onUndo:) && ![self.currentBackup isUndoable])
+        return NO;
+
+    if (theAction == @selector(onRedo:) && ![self.currentBackup isRedoable])
+        return NO;
+
+    return YES;
+}
+
+
 - (BOOL)windowShouldClose:(id)sender {
     if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
         return NO;
     else
         return YES;
 }
+
+
+- (void) controlTextDidChange:(NSNotification *)obj
+{
+    if ([obj object] == self.backupNameField)
+    {
+        if (self.currentBackup == nil)
+            return;
+
+        // we don't want an undo memento for every tiny change.
+        // so we only enable SAVE-menu and write modified to the window title
+        [self.currentBackup forceModifiedYes];
+        [self refreshWindowTitle];
+    }
+}
+
+
+- (void) controlTextDidEndEditing:(NSNotification *)aNotification
+{
+    if ([aNotification object] == self.backupNameField)
+    {
+        if (self.currentBackup == nil)
+            return;
+
+        // user ended editing of backup description
+        // now we store the string and implicitly store an undo memento
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
+        [self refreshUI];
+    }
+}
+
+
+- (void) refreshUI
+{
+    // self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
+    if (self.ampPresetTable.selectedRowIndexes.count == 0)
+        self.currentPreset = nil;
+
+    [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];
+    [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
+    [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
+    [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
+
+    if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
+    {
+        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
+        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
+        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+
+        self.qaBox1.canAcceptDrag = YES;
+        self.qaBox2.canAcceptDrag = YES;
+        self.qaBox3.canAcceptDrag = YES;
+    }
+    else
+    {
+        self.qaBox1.preset = nil;
+        self.qaBox2.preset = nil;
+        self.qaBox3.preset = nil;
+
+        self.qaBox1.canAcceptDrag = NO;
+        self.qaBox2.canAcceptDrag = NO;
+        self.qaBox3.canAcceptDrag = NO;
+    }
+
+    [self refreshWindowTitle];
+}
+
+
+- (void)refreshWindowTitle {
+    if (self.currentBackup.isModified)
+        [_window setTitle:APPLICATION_NAME @" [modified!]"];
+    else
+        [_window setTitle:APPLICATION_NAME];
+}
+
 
 
 #pragma mark - Tableview Delegate Methods
@@ -279,6 +375,8 @@
 {
     [self.ampPresetTable deselectAll:nil];
 
+    self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
     [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
     {
         NSAlert *alert;
@@ -320,6 +418,8 @@
     NSFileManager *fileMan = [NSFileManager defaultManager];
     if ([fileMan fileExistsAtPath:defaultFuseDir])
     {
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
         NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
 
         [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
@@ -393,6 +493,31 @@
 }
 
 
+- (IBAction)onUndo:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+    [self.currentBackup performUndo];
+
+    self.currentPreset = nil;
+    [self.ampPresetTable reloadData];
+    [self.ampPresetTable deselectAll:nil];
+    [self refreshUI];
+}
+
+
+- (IBAction)onRedo:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+    [self.currentBackup performRedo];
+
+    self.currentPreset = nil;
+    [self.ampPresetTable reloadData];
+    [self.ampPresetTable deselectAll:nil];
+    [self refreshUI];
+}
+
 #pragma mark - File Loading
 - (void) loadBackupFile:(NSURL *)url
 {
@@ -425,64 +550,6 @@
     [self refreshUI];
 }
 
-- (BOOL) validateMenuItem:(NSMenuItem *)menuItem
-{
-    SEL theAction = [menuItem action];
-    
-    if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
-        return self.currentBackup.isModified;
-    
-    if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
-        return NO;
-    
-    return YES;
-}
-
-
-- (void) refreshUI
-{
-    [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];
-    [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
-    [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
-    [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
-    
-    if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
-    {
-        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
-        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
-        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
-        
-        self.qaBox1.canAcceptDrag = YES;
-        self.qaBox2.canAcceptDrag = YES;
-        self.qaBox3.canAcceptDrag = YES;
-    }
-    else
-    {
-        self.qaBox1.preset = nil;
-        self.qaBox2.preset = nil;
-        self.qaBox3.preset = nil;
-        
-        self.qaBox1.canAcceptDrag = NO;
-        self.qaBox2.canAcceptDrag = NO;
-        self.qaBox3.canAcceptDrag = NO;
-    }
-    if (self.currentBackup.isModified)
-        [_window setTitle:APPLICATION_NAME @" [modified!]"];
-    else
-        [_window setTitle:APPLICATION_NAME];
-}
-
-- (void) controlTextDidChange:(NSNotification *)obj
-{
-    if ([obj object] == self.backupNameField)
-    {
-        if (self.currentBackup == nil)
-            return;
-        
-        self.currentBackup.backupDescription = self.backupNameField.stringValue;
-        [self refreshUI];
-    }
-}
 
 - (void) presetDidChangeForQAView:(MFQuickAccessView *)qaView
 {
@@ -501,8 +568,12 @@
     {
         qaSlot = 2;
     }
-    
-    [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
+
+//    MFPreset *oldPreset = [self.currentBackup presetForQASlot:qaSlot];
+//
+//    if (![oldPreset.uuid isEqualToString:qaView.preset.uuid])   // any change?
+        [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
+
     [self refreshUI];
 }
 
