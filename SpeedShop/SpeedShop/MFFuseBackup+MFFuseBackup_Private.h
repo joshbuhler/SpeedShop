@@ -13,5 +13,4 @@
 - (BOOL) validateBackupContents;
 - (void) loadBackupContents;
 - (void) loadBackupDescription;
-- (void) loadFuseFiles;
 @end

@@ -6,13 +6,12 @@
 //  Copyright (c) 2013 Joshua Buhler. All rights reserved.
 //
 
+#define APPLICATION_NAME @"Speed Shop"
+
 #import "MFAppDelegate.h"
 #import "MFFuseBackup.h"
 
 @interface MFAppDelegate()
-{
-    BOOL    _backupModified;
-}
 
 @property (nonatomic, strong) MFFuseBackup *currentBackup;
 @property (nonatomic, strong) MFPreset *currentPreset;
@@ -21,23 +20,18 @@
 
 @implementation MFAppDelegate
 
-@synthesize currentBackup = _currentBackup;
-
-#pragma mark - View LifeCycle
+#pragma mark - Main Window Delegate Methods
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application    
-    _backupModified = NO;
-        
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
     
     self.qaBox1.delegate = self;
     self.qaBox2.delegate = self;
     self.qaBox3.delegate = self;
-    
-    // empty the placeholder text (want to keep that around for working in IB though)
+
+            // empty the placeholder text (want to keep that around for working in IB though)
     [self.backupNameField setStringValue:@""];
     [self.presetNameField setStringValue:@""];
     [self.authorNameField setStringValue:@""];
@@ -58,12 +52,139 @@
     self.presetNameField.font = fieldFont;
     self.authorNameField.font = fieldFont;
     self.presetDescriptionField.font = fieldFont;
+
+    [_window setTitle:APPLICATION_NAME];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
     return YES;
 }
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
+{
+    if (![_window isVisible])
+        return NSTerminateNow;
+
+    if (self.currentBackup.isModified)
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to procede?"
+                                         defaultButton:@"No"
+                                       alternateButton:@"Yes"
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Your backup is modified."];
+        [alert setAlertStyle: NSCriticalAlertStyle];
+
+        NSInteger buttonReturn = [alert runModal];
+        if (buttonReturn +1000 == NSAlertSecondButtonReturn) // Ask Apple, why the actual return value has a difference of 1000 to the predefined return value
+            return NSTerminateCancel;
+    }
+    return NSTerminateNow;
+}
+
+- (BOOL) validateMenuItem:(NSMenuItem *)menuItem
+{
+    SEL theAction = [menuItem action];
+
+    if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
+        return self.currentBackup.isModified;
+
+    if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
+        return NO;
+
+    if (theAction == @selector(onUndo:) && ![self.currentBackup isUndoable])
+        return NO;
+
+    if (theAction == @selector(onRedo:) && ![self.currentBackup isRedoable])
+        return NO;
+
+    return YES;
+}
+
+
+- (BOOL)windowShouldClose:(id)sender {
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return NO;
+    else
+        return YES;
+}
+
+
+- (void) controlTextDidChange:(NSNotification *)obj
+{
+    if ([obj object] == self.backupNameField)
+    {
+        if (self.currentBackup == nil)
+            return;
+
+        // we don't want an undo memento for every tiny change.
+        // so we only enable SAVE-menu and write modified to the window title
+        [self.currentBackup forceModifiedYes];
+        [self refreshWindowTitle];
+    }
+}
+
+
+- (void) controlTextDidEndEditing:(NSNotification *)aNotification
+{
+    if ([aNotification object] == self.backupNameField)
+    {
+        if (self.currentBackup == nil)
+            return;
+
+        // user ended editing of backup description
+        // now we store the string and implicitly store an undo memento
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
+        [self refreshUI];
+    }
+}
+
+
+- (void) refreshUI
+{
+    // self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
+    if (self.ampPresetTable.selectedRowIndexes.count == 0)
+        self.currentPreset = nil;
+
+    [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];
+    [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
+    [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
+    [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
+
+    if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
+    {
+        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
+        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
+        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+
+        self.qaBox1.canAcceptDrag = YES;
+        self.qaBox2.canAcceptDrag = YES;
+        self.qaBox3.canAcceptDrag = YES;
+    }
+    else
+    {
+        self.qaBox1.preset = nil;
+        self.qaBox2.preset = nil;
+        self.qaBox3.preset = nil;
+
+        self.qaBox1.canAcceptDrag = NO;
+        self.qaBox2.canAcceptDrag = NO;
+        self.qaBox3.canAcceptDrag = NO;
+    }
+
+    [self refreshWindowTitle];
+}
+
+
+- (void)refreshWindowTitle {
+    if (self.currentBackup.isModified)
+        [_window setTitle:APPLICATION_NAME @" [modified!]"];
+    else
+        [_window setTitle:APPLICATION_NAME];
+}
+
+
 
 #pragma mark - Tableview Delegate Methods
 
@@ -72,7 +193,7 @@
     NSInteger count = 0;
     
     if (self.currentBackup)
-        count = self.currentBackup.presets.count;
+        count = [self.currentBackup presetsCount];
     
     return count;
 }
@@ -90,7 +211,7 @@
     
     if ([columnID isEqualToString:@"presetName"])
     {
-        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:row];
+        MFPreset *cPreset = [self.currentBackup presetsObjectAtIndex:(NSUInteger) row];
         returnValue = cPreset.name;
     }
     
@@ -101,7 +222,7 @@
 {
     NSMutableDictionary *dragData = [[NSMutableDictionary alloc] init];
     [dragData setObject:rowIndexes forKey:@"rowIndexes"];
-    [dragData setObject:[self.currentBackup.presets objectAtIndex:rowIndexes.firstIndex] forKey:@"preset"];
+    [dragData setObject:[self.currentBackup presetsObjectAtIndex:rowIndexes.firstIndex] forKey:@"preset"];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dragData];
     [pboard declareTypes:[NSArray arrayWithObject:DropTypeMFPreset] owner:self];
@@ -160,7 +281,7 @@
 
     while ([rowIndexes getIndexes:&currentItemIndex maxCount:1 inIndexRange:&range] > 0)
     {
-        NSObject *cItem = [self.currentBackup.presets objectAtIndex:currentItemIndex];
+        NSObject *cItem = [self.currentBackup presetsObjectAtIndex:currentItemIndex];
         [draggedItemsArray addObject:cItem];
         NSLog(@"dragged: %@", ((MFPreset*)cItem).name);
     }
@@ -168,7 +289,7 @@
     NSLog(@"dropped on: %ld", (long)row);
     
     // remove the items from the preset list
-    [self.currentBackup.presets removeObjectsInArray:draggedItemsArray];
+    [self.currentBackup presetsRemoveObjectsInArray:draggedItemsArray];
 
     // items have been removed, so we have to correct the target row if it is *after* the dragged items
     if ([rowIndexes firstIndex] < row)
@@ -176,12 +297,13 @@
 
     // now put them in their new location
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
-    [self.currentBackup.presets insertObjects:draggedItemsArray atIndexes:newIndexes];
-        
+    [self.currentBackup presetsInsertObjects:draggedItemsArray atIndexes:newIndexes];
+
     [self.ampPresetTable reloadData];
     [self.ampPresetTable deselectAll:nil];
-    
-    _backupModified = YES;
+    // re-select the dragged items for improved user feedback
+    [self.ampPresetTable selectRowIndexes:newIndexes byExtendingSelection:NO];
+    [self refreshUI];
 
     return YES;
 }
@@ -195,7 +317,7 @@
     
     // if multiple items are selected, we don't have a "currentPreset"
     if (self.ampPresetTable.selectedRowIndexes.count == 1)
-        self.currentPreset = [self.currentBackup.presets objectAtIndex:selectedRow];
+        self.currentPreset = [self.currentBackup presetsObjectAtIndex:(NSUInteger) selectedRow];
     else
         self.currentPreset = nil;
     
@@ -210,6 +332,10 @@
 
 - (IBAction)onOpenBackupFolder:(id)sender
 {
+    // Unsaved changes? does user really want to load other data?
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return;
+
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:NO];
@@ -218,29 +344,178 @@
     // Open to the default Fuse backup directory (if it exists)
     NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
-    
+
     NSFileManager *fileMan = [NSFileManager defaultManager];
     if ([fileMan fileExistsAtPath:defaultFuseDir])
     {
         NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
         [panel setDirectoryURL:[NSURL URLWithString:openDir]];
     }
-    
+
     [panel beginWithCompletionHandler:^(NSInteger result) {
-        
+
         if (result == NSOKButton)
-        {        
+        {
             NSArray *folders = [panel URLs];
-            
+
             // only allowing one item to be selected, so it should just be the first one
             NSURL *cFolder = (NSURL *)[folders objectAtIndex:0];
             NSLog(@"selected folder: %@", cFolder);
-            
+
             dispatch_async(dispatch_get_current_queue(), ^{
                 [self loadBackupFile:cFolder];
             });
+            [self refreshUI];
+            [self.ampPresetTable deselectAll:nil];
         }
     }];
+}
+
+- (IBAction)onSaveSelected:(id)sender
+{
+    [self.ampPresetTable deselectAll:nil];
+
+    self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
+    [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
+    {
+        NSAlert *alert;
+        if (success)
+        {
+            alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
+                                    defaultButton:@"OK"
+                                  alternateButton:nil
+                                      otherButton:nil
+                        informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@",[[newURL absoluteString]lastPathComponent]];
+
+            [self loadBackupFile:newURL];
+            [self refreshUI];
+        }
+        else
+        {
+            alert = [NSAlert alertWithMessageText:@"Unable to save backup"
+                                    defaultButton:@"OK"
+                                  alternateButton:nil
+                                      otherButton:nil
+                        informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+        }
+
+        [alert beginSheetModalForWindow:self.window
+                          modalDelegate:nil
+                         didEndSelector:nil
+                            contextInfo:nil];
+    }];
+}
+
+- (IBAction)onSaveAsSelected:(id)sender
+{
+    [self.ampPresetTable deselectAll:nil];
+
+    // Save to the default Fuse backup directory - otherwise Fuse won't see it
+    NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
+
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if ([fileMan fileExistsAtPath:defaultFuseDir])
+    {
+        self.currentBackup.backupDescription = self.backupNameField.stringValue;
+
+        NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
+
+        [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
+        {
+            NSAlert *alert;
+            if (success)
+            {
+                alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
+                                        defaultButton:@"OK"
+                                      alternateButton:nil
+                                          otherButton:nil
+                            informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@", [[newURL absoluteString] lastPathComponent]];
+
+                [self loadBackupFile:newURL];
+                [self refreshUI];
+            }
+            else
+            {
+                alert = [NSAlert alertWithMessageText:@"Unable to save backup"
+                                        defaultButton:@"OK"
+                                      alternateButton:nil
+                                          otherButton:nil
+                            informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+            }
+
+            [alert beginSheetModalForWindow:self.window
+                              modalDelegate:nil
+                             didEndSelector:nil
+                                contextInfo:nil];
+        }];
+    }
+}
+
+
+- (IBAction)onCopyPresetlist:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+
+    NSString *thePresetList;
+    thePresetList = [[NSString alloc] init];
+
+    for (int i=0; i < [self.currentBackup presetsCount]; i++)
+    {
+        MFPreset *cPreset = [self.currentBackup presetsObjectAtIndex:(NSUInteger) i];
+        if (cPreset)
+        {
+            thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
+            thePresetList = [thePresetList stringByAppendingString:@"\t"];
+            thePresetList = [thePresetList stringByAppendingString:cPreset.name];
+            thePresetList = [thePresetList stringByAppendingString:@"\n"];
+        }
+    }
+
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
+
+    NSAlert *alert;
+    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
+                            defaultButton:@"OK"
+                          alternateButton:nil
+                              otherButton:nil
+                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
+
+    [alert beginSheetModalForWindow:self.window
+                      modalDelegate:nil
+                     didEndSelector:nil
+                        contextInfo:nil];
+
+    [self.ampPresetTable deselectAll:nil];
+}
+
+
+- (IBAction)onUndo:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+    [self.currentBackup performUndo];
+
+    self.currentPreset = nil;
+    [self.ampPresetTable reloadData];
+    [self.ampPresetTable deselectAll:nil];
+    [self refreshUI];
+}
+
+
+- (IBAction)onRedo:(id)sender
+{
+    if (! self.currentBackup)
+        return;
+    [self.currentBackup performRedo];
+
+    self.currentPreset = nil;
+    [self.ampPresetTable reloadData];
+    [self.ampPresetTable deselectAll:nil];
+    [self refreshUI];
 }
 
 #pragma mark - File Loading
@@ -252,11 +527,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (success)
             {
-                self.currentPreset = [self.currentBackup.presets objectAtIndex:0];
+                self.currentPreset = [self.currentBackup presetsObjectAtIndex:0];
                 [self.ampPresetTable reloadData];
                 [self refreshUI];
-                
-                _backupModified = NO;
             }
             else
             {
@@ -273,225 +546,10 @@
             }
             
         });
-    }];    
-}
-
-- (BOOL) validateMenuItem:(NSMenuItem *)menuItem
-{
-    SEL theAction = [menuItem action];
-    
-    if (theAction == @selector(onSaveSelected:) || theAction == @selector(onSaveAsSelected:))
-        return _backupModified;
-    
-    if (theAction == @selector(onCopyPresetlist:) && !self.currentBackup)
-        return NO;
-    
-    return YES;
-}
-
-- (IBAction)onSaveSelected:(id)sender
-{
-    [self.currentBackup saveWithCompletion:^(BOOL success, NSURL *newURL)
-     {
-         NSString *msg = @"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: ";
-         msg = [msg stringByAppendingString:[[newURL absoluteString] lastPathComponent]];
-
-         NSAlert *alert;
-         if (success)
-         {
-             alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
-                                     defaultButton:@"OK"
-                                   alternateButton:nil
-                                       otherButton:nil
-                         informativeTextWithFormat:msg];
-             
-             // todo: reload the newly saved file
-             [self loadBackupFile:newURL];
-         }
-         else
-         {
-             alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                     defaultButton:@"OK"
-                                   alternateButton:nil
-                                       otherButton:nil
-                         informativeTextWithFormat:@"There was an error trying to save the new backup file."];
-         }
-         
-         [alert beginSheetModalForWindow:self.window
-                           modalDelegate:nil
-                          didEndSelector:nil
-                             contextInfo:nil];
-     }];
-}
-
-- (IBAction)onSaveAsSelected:(id)sender
-{
-    //NSSavePanel *panel = [NSSavePanel savePanel];
-    
-    // Save to the default Fuse backup directory - otherwise Fuse won't see it
-    NSString *docsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *defaultFuseDir = [docsDir stringByAppendingPathComponent:@"Fender/FUSE/Backups/"];
-    
-    NSFileManager *fileMan = [NSFileManager defaultManager];
-    if ([fileMan fileExistsAtPath:defaultFuseDir])
-    {
-        NSString *openDir = [NSString stringWithFormat:@"file://localhost%@", defaultFuseDir];
-        
-        self.currentBackup.backupDescription = self.backupNameField.stringValue;
-        
-        [self.currentBackup saveAsNewBackup:[NSURL URLWithString:openDir] withCompletion:^(BOOL success, NSURL *newURL)
-         {
-             NSString *msg = @"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: ";
-             msg = [msg stringByAppendingString:[[newURL absoluteString] lastPathComponent]];
-             
-             NSAlert *alert;
-             if (success)
-             {
-                 alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:msg];
-                 
-                 // todo: reload the newly saved file
-                 [self loadBackupFile:newURL];
-             }
-             else
-             {
-                 alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"There was an error trying to save the new backup file."];
-             }
-             
-             [alert beginSheetModalForWindow:self.window
-                               modalDelegate:nil
-                              didEndSelector:nil
-                                 contextInfo:nil];
-         }];
-        //[panel setDirectoryURL:[NSURL URLWithString:openDir]];
-    }
-    
-    
-    /*
-    [panel beginWithCompletionHandler:^(NSInteger result) {
-        
-        if (result == NSOKButton)
-        {
-            NSLog(@"url: %@", panel.URL);
-            [self.currentBackup saveBackup:panel.URL withCompletion:^(BOOL success)
-            {
-                NSAlert *alert;
-                if (success)
-                {
-                    alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
-                                                     defaultButton:@"OK"
-                                                   alternateButton:nil
-                                                       otherButton:nil
-                                         informativeTextWithFormat:@""];
-                    
-                    // todo: reload the newly saved file
-                    [self loadBackupFile:panel.URL];
-                }
-                else
-                {
-                    alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                            defaultButton:@"OK"
-                                          alternateButton:nil
-                                              otherButton:nil
-                                informativeTextWithFormat:@"There was an error trying to save the new backup file."];
-                }
-                
-                [alert beginSheetModalForWindow:self.window
-                                  modalDelegate:nil
-                                 didEndSelector:nil
-                                    contextInfo:nil];
-            }];
-        }
     }];
-    */
+    [self refreshUI];
 }
 
-
-- (IBAction)onCopyPresetlist:(id)sender
-{
-    if (! self.currentBackup)
-        return;
-    
-    NSString *thePresetList;
-    thePresetList = [[NSString alloc] init];
-    
-    for (int i=0; i<self.currentBackup.presets.count; i++)
-    {
-        MFPreset *cPreset = [self.currentBackup.presets objectAtIndex:i];
-        if (cPreset)
-        {
-            thePresetList = [thePresetList stringByAppendingFormat:@"%02d", i];
-            thePresetList = [thePresetList stringByAppendingString:@"\t"];
-            thePresetList = [thePresetList stringByAppendingString:cPreset.name];
-            thePresetList = [thePresetList stringByAppendingString:@"\n"];
-        }
-    }
-    
-    [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
-    
-    NSAlert *alert;
-    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
-                            defaultButton:@"OK"
-                          alternateButton:nil
-                              otherButton:nil
-                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
-    
-    [alert beginSheetModalForWindow:self.window
-                      modalDelegate:nil
-                     didEndSelector:nil
-                        contextInfo:nil];
-
-}
-
-
-- (void) refreshUI
-{
-    [self.backupNameField setStringValue:self.currentBackup.backupDescription ?: @""];
-    [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
-    [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
-    [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
-    
-    if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
-    {
-        self.qaBox1.preset = [self.currentBackup getPresetForQASlot:0] ?: nil;
-        self.qaBox2.preset = [self.currentBackup getPresetForQASlot:1] ?: nil;
-        self.qaBox3.preset = [self.currentBackup getPresetForQASlot:2] ?: nil;
-        
-        self.qaBox1.canAcceptDrag = YES;
-        self.qaBox2.canAcceptDrag = YES;
-        self.qaBox3.canAcceptDrag = YES;
-    }
-    else
-    {
-        self.qaBox1.preset = nil;
-        self.qaBox2.preset = nil;
-        self.qaBox3.preset = nil;
-        
-        self.qaBox1.canAcceptDrag = NO;
-        self.qaBox2.canAcceptDrag = NO;
-        self.qaBox3.canAcceptDrag = NO;
-    }
-}
-
-- (void) controlTextDidChange:(NSNotification *)obj
-{
-    if ([obj object] == self.backupNameField)
-    {
-        if (self.currentBackup == nil)
-            return;
-        
-        self.currentBackup.backupDescription = self.backupNameField.stringValue;
-        _backupModified = YES;
-    }
-}
 
 - (void) presetDidChangeForQAView:(MFQuickAccessView *)qaView
 {
@@ -510,9 +568,14 @@
     {
         qaSlot = 2;
     }
-    
-    [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
-    _backupModified = YES;
+
+//    MFPreset *oldPreset = [self.currentBackup presetForQASlot:qaSlot];
+//
+//    if (![oldPreset.uuid isEqualToString:qaView.preset.uuid])   // any change?
+        [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
+
+    [self refreshUI];
 }
+
 
 @end
