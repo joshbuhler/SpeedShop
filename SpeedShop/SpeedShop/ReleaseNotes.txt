@@ -35,3 +35,7 @@ Release Notes
 * **Bug Fix:** Time format issue when saving new backups (#1)
 * **Bug Fix:** Resolving some issues with saving QA presets
 
+# 0.9.4
+* **New feature:** Prompt to save modified backups when loading or quitting. (#15)
+* **New feature:** Notifying user in UI of modified status
+* **Improvement:** Improved drag & drop of multiple rows
