@@ -72,7 +72,7 @@
                                          defaultButton:@"No"
                                        alternateButton:@"Yes"
                                            otherButton:nil
-                             informativeTextWithFormat:@"Your backup is modified."];
+                             informativeTextWithFormat:@"Your backup has been modified, and unsaved changes will be lost."];
         [alert setAlertStyle: NSCriticalAlertStyle];
 
         NSInteger buttonReturn = [alert runModal];
