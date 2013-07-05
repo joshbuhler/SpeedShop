@@ -17,11 +17,6 @@
 
 @implementation MFQuickAccessView
 
-@synthesize preset = _preset;
-@synthesize presetLabel;
-@synthesize canAcceptDrag;
-@synthesize view;
-@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -80,7 +75,7 @@
     NSPasteboard *pBoard = [sender draggingPasteboard];
     NSDragOperation dragOp = [sender draggingSourceOperationMask];
     
-    if ([[pBoard types] containsObject:DropTypeMFPreset] && canAcceptDrag)
+    if ([[pBoard types] containsObject:DropTypeMFPreset] && _canAcceptDrag)
     {
         if (dragOp & NSDragOperationGeneric)
         {
@@ -103,7 +98,7 @@
         
         MFPreset *thePreset = [dragData objectForKey:@"preset"];
         self.preset = thePreset;
-        [presetLabel setStringValue:thePreset.name];
+        [_presetLabel setStringValue:thePreset.name];
         
         if (self.delegate)
         {
