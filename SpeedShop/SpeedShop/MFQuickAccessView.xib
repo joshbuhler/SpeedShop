@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11G63</string>
+		<string key="IBDocument.SystemVersion">11G63b</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
@@ -45,6 +45,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{6, 36}, {149, 45}}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="563609455">
@@ -86,6 +87,7 @@
 						</set>
 						<string key="NSFrameSize">{161, 117}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSNextKeyView" ref="885119582"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="44345031">

@@ -28,5 +28,6 @@ extern NSString *const DropTypeMFPreset;
 - (void) loadPresetFile:(NSURL *)url;
 
 - (NSURL *) fileURL;
+-(NSString *) description;
 
 @end

@@ -23,14 +23,28 @@ typedef enum
 
 @property (nonatomic, strong) NSURL *folderURL;
 @property (nonatomic, strong) NSString *backupDescription;
+@property (nonatomic, readonly) BOOL isModified;
 
-@property (nonatomic, strong) NSMutableArray *presets;
 @property (nonatomic, readonly) AmpSeries ampSeries;
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block;
 - (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block;
 - (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block;
+- (void) setBackupDescription:(NSString *)newBackupDescription;
 
-- (MFPreset *) getPresetForQASlot:(int)qaSlot;
+- (MFPreset *)presetForQASlot:(int)qaSlot;
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot;
+- (id) init;
+
+- (NSUInteger)presetsCount;
+- (MFPreset *)presetsObjectAtIndex:(NSUInteger) anIndex;
+- (void)presetsRemoveObjectsInArray:(NSArray *)anOtherArray;
+- (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet;
+
+- (void) performUndo;
+- (void) performRedo;
+- (BOOL) isUndoable;
+- (BOOL) isRedoable;
+- (void) forceModifiedYes;
+
 @end

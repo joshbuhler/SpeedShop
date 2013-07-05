@@ -27,9 +27,6 @@
 		03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
 		03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
 		03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404012170E83AA008EFA2C /* MFFuseBackup.m */; };
-		03404038170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
-		03404039170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
-		0340403A170E83AA008EFA2C /* MFModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404014170E83AA008EFA2C /* MFModule.m */; };
 		0340403B170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
 		0340403C170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
 		0340403D170E83AA008EFA2C /* MFPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 03404016170E83AA008EFA2C /* MFPreset.m */; };
@@ -42,10 +39,8 @@
 		03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
 		03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
 		03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
-		03404047170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
-		0340404A170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
 		0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
 		0340404C170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
 		0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404020170E83AA008EFA2C /* MainWindowBG.png */; };
@@ -60,15 +55,11 @@
 		03404056170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
 		03404057170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
 		03404058170E83AA008EFA2C /* QAWellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404023170E83AA008EFA2C /* QAWellBG@2x.png */; };
-		03404059170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
 		0340405A170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
-		0340405B170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03404024170E83AA008EFA2C /* Speed Shop-Info.plist */; };
 		03404065170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		03404066170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
-		03404067170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		03404068170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
 		03404069170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
-		0340406A170E840D008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
 		0340406B170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
 		0340406C170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
 		0340406D170E840D008EFA2C /* MainWindowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 03404061170E840D008EFA2C /* MainWindowBG.png */; };
@@ -93,6 +84,12 @@
 		03BF545D16DF11CF00895128 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF543D16DF11CF00895128 /* Cocoa.framework */; };
 		066DE1BB1714B65100451196 /* OpenSans-ExtraBold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405E170E840D008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		066DE1BC1714B65400451196 /* OpenSans-Light.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0340405F170E840D008EFA2C /* OpenSans-Light.ttf */; };
+		1CC931F9AC171FFB819E4544 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
+		1CC932EC40C323355690A2D6 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
+		1CC933FD7BF43302F15A12AA /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
+		1CC93958E5ED27A8AFAD7823 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
+		1CC93AA7A5085F99FF73DB97 /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
+		1CC93B58F37020E7686518AF /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,8 +127,6 @@
 		03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFFuseBackup+MFFuseBackup_Private.h"; sourceTree = "<group>"; };
 		03404011170E83AA008EFA2C /* MFFuseBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackup.h; sourceTree = "<group>"; };
 		03404012170E83AA008EFA2C /* MFFuseBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackup.m; sourceTree = "<group>"; };
-		03404013170E83AA008EFA2C /* MFModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFModule.h; sourceTree = "<group>"; };
-		03404014170E83AA008EFA2C /* MFModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFModule.m; sourceTree = "<group>"; };
 		03404015170E83AA008EFA2C /* MFPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPreset.h; sourceTree = "<group>"; };
 		03404016170E83AA008EFA2C /* MFPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPreset.m; sourceTree = "<group>"; };
 		03404017170E83AA008EFA2C /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
@@ -157,7 +152,7 @@
 		0340407B170E848E008EFA2C /* Horse_WhispererTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Horse_WhispererTests.m; sourceTree = "<group>"; };
 		0340407C170E848E008EFA2C /* Speed ShopTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Speed ShopTests-Info.plist"; sourceTree = "<group>"; };
 		0364CA6B16F7C970002FDF46 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0364CA6C16F7C970002FDF46 /* Speed Shop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Speed Shop copy-Info.plist"; path = "/Users/josh/Sites/HorseWhisperer/Horse Whisperer/Speed Shop copy-Info.plist"; sourceTree = "<absolute>"; };
+		0364CA6C16F7C970002FDF46 /* Speed Shop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Speed Shop copy-Info.plist"; sourceTree = "<group>"; };
 		03B6B3F316EBB08000D99520 /* Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = Icons.iconset; sourceTree = "<group>"; };
 		03BF543A16DF11CF00895128 /* Speed Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Speed Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF543D16DF11CF00895128 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -166,6 +161,10 @@
 		03BF544216DF11CF00895128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03BF545A16DF11CF00895128 /* Speed ShopTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Speed ShopTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BF545B16DF11CF00895128 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1CC935A06ECB7C8BA2653B7D /* MFFuseBackupMemento.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackupMemento.h; sourceTree = "<group>"; };
+		1CC9378680EC93690ECABA17 /* MFFuseBackupHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackupHistory.h; sourceTree = "<group>"; };
+		1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackupMemento.m; sourceTree = "<group>"; };
+		1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackupHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,8 +208,6 @@
 				03404010170E83AA008EFA2C /* MFFuseBackup+MFFuseBackup_Private.h */,
 				03404011170E83AA008EFA2C /* MFFuseBackup.h */,
 				03404012170E83AA008EFA2C /* MFFuseBackup.m */,
-				03404013170E83AA008EFA2C /* MFModule.h */,
-				03404014170E83AA008EFA2C /* MFModule.m */,
 				03404015170E83AA008EFA2C /* MFPreset.h */,
 				03404016170E83AA008EFA2C /* MFPreset.m */,
 				03404017170E83AA008EFA2C /* MFQuickAccessView.h */,
@@ -220,6 +217,10 @@
 				0340401B170E83AA008EFA2C /* Resources */,
 				03404024170E83AA008EFA2C /* Speed Shop-Info.plist */,
 				03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */,
+				1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */,
+				1CC9378680EC93690ECABA17 /* MFFuseBackupHistory.h */,
+				1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */,
+				1CC935A06ECB7C8BA2653B7D /* MFFuseBackupMemento.h */,
 			);
 			path = SpeedShop;
 			sourceTree = "<group>";
@@ -452,9 +453,6 @@
 				03404052170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
 				03404055170E83AA008EFA2C /* QAWellBG.png in Resources */,
 				03404058170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
-				0340405B170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
-				03404067170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
-				0340406A170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
 				0340406D170E840D008EFA2C /* MainWindowBG.png in Resources */,
 				03404070170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
 				03404073170E840D008EFA2C /* QAWellBG.png in Resources */,
@@ -473,13 +471,10 @@
 				0340402C170E83AA008EFA2C /* MainMenu.xib in Resources */,
 				03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
 				03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
-				03404047170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
-				0340404A170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
 				0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */,
 				03404050170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
 				03404053170E83AA008EFA2C /* QAWellBG.png in Resources */,
 				03404056170E83AA008EFA2C /* QAWellBG@2x.png in Resources */,
-				03404059170E83AA008EFA2C /* Speed Shop-Info.plist in Resources */,
 				03404065170E840D008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
 				03404068170E840D008EFA2C /* OpenSans-Light.ttf in Resources */,
 				0340406B170E840D008EFA2C /* MainWindowBG.png in Resources */,
@@ -569,9 +564,10 @@
 				03404031170E83AA008EFA2C /* main.m in Sources */,
 				03404034170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
 				03404037170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
-				0340403A170E83AA008EFA2C /* MFModule.m in Sources */,
 				0340403D170E83AA008EFA2C /* MFPreset.m in Sources */,
 				03404040170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+				1CC93958E5ED27A8AFAD7823 /* MFFuseBackupHistory.m in Sources */,
+				1CC93AA7A5085F99FF73DB97 /* MFFuseBackupMemento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,9 +578,10 @@
 				0340402F170E83AA008EFA2C /* main.m in Sources */,
 				03404032170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
 				03404035170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
-				03404038170E83AA008EFA2C /* MFModule.m in Sources */,
 				0340403B170E83AA008EFA2C /* MFPreset.m in Sources */,
 				0340403E170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
+				1CC932EC40C323355690A2D6 /* MFFuseBackupHistory.m in Sources */,
+				1CC93B58F37020E7686518AF /* MFFuseBackupMemento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,10 +592,11 @@
 				03404030170E83AA008EFA2C /* main.m in Sources */,
 				03404033170E83AA008EFA2C /* MFAppDelegate.m in Sources */,
 				03404036170E83AA008EFA2C /* MFFuseBackup.m in Sources */,
-				03404039170E83AA008EFA2C /* MFModule.m in Sources */,
 				0340403C170E83AA008EFA2C /* MFPreset.m in Sources */,
 				0340403F170E83AA008EFA2C /* MFQuickAccessView.m in Sources */,
 				0340407E170E848E008EFA2C /* Horse_WhispererTests.m in Sources */,
+				1CC931F9AC171FFB819E4544 /* MFFuseBackupHistory.m in Sources */,
+				1CC933FD7BF43302F15A12AA /* MFFuseBackupMemento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

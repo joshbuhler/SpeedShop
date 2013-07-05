@@ -8,6 +8,8 @@
 
 #import "MFFuseBackup.h"
 #import "MFFuseBackup+MFFuseBackup_Private.h"
+#import "MFFuseBackupMemento.h"
+#import "MFFuseBackupHistory.h"
 
 NSString *FUSE_FOLDER = @"FUSE";
 NSString *PRESET_FOLDER = @"Presets";
@@ -20,22 +22,35 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 {
     MFFuseBackupCompletion      _loadCompletionBlock;
     MFFuseBackupSaveCompletion  _saveCompletionBlock;
-    
+    MFFuseBackupHistory *_backupHistory;
+
     NSURL   *_newFolderURL;
     
     // Used for XML parsing
     NSMutableString *currentElementValue;
     NSMutableArray *_quickAccessPresets;
     NSMutableArray *_quickAccessPresetsUUID;
+
 }
+
+@property (nonatomic, strong) NSMutableArray *presets;
+
+-(void)storeStateToMemento;
+- (void) restoreStateFromMemento:(MFFuseBackupMemento *)memento;
 
 @end
 
 @implementation MFFuseBackup
 
-@synthesize folderURL = _folderURL;
-@synthesize presets = _presets;
-@synthesize ampSeries = _ampSeries;
+- (id)init {
+    self = [super init];
+    if (self) {
+        _isModified = NO;
+        _backupHistory = [[MFFuseBackupHistory alloc] init];
+    }
+    return self;
+}
+
 
 - (void) loadBackup:(NSURL *)url withCompletion:(MFFuseBackupCompletion)block
 {
@@ -54,10 +69,48 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     _quickAccessPresetsUUID = [[NSMutableArray alloc] init];
     
     [self loadBackupContents];
+    _isModified = NO;
+    [_backupHistory removeAllObjects];
+    [self storeStateToMemento];
+}
+
+// Saves to the existing location
+- (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block
+{
+    _saveCompletionBlock = block;
+
+    [self saveToURL:self.folderURL];
+    _isModified = NO;
+    [_backupHistory removeAllObjects];
+}
+
+- (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
+{
+    _saveCompletionBlock = block;
+
+    // create a new folder at the specified path - filename must be a date, otherwise
+    // FUSE won't see it
+    NSDate *now = [NSDate date];
+    NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
+    [filenameFormat setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
+    NSString *dateFileName = [filenameFormat stringFromDate:now];
+
+    NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
+    [self saveToURL:destURL];
+    _isModified = NO;
+    [_backupHistory removeAllObjects];
+}
+
+- (void)setBackupDescription:(NSString *)newBackupDescription {
+    [self storeStateToMemento];
+    _backupDescription = newBackupDescription;
+    _isModified = YES;
 }
 
 
-#pragma mark - Private Methods
+
+
+#pragma mark - Private Preset Loading
 
 - (BOOL) validateBackupContents
 {
@@ -177,6 +230,59 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     [cParser parse];
 }
 
+// Loads "Preset" folder contents to get an overview of the preset files.
+- (void) loadPresetFiles
+{
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+
+    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
+    NSError *error = nil;
+    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
+
+    if (error)
+    {
+        NSLog(@"*** ERROR: error loading fuse files");
+        [self completeLoading:NO];
+        return;
+    }
+
+    for (int i = 0; i < presetContents.count; i++)
+    {
+        //NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
+
+        NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
+
+        if (![[cURL pathExtension] isEqualToString:@"fuse"]) {
+            continue;
+        }
+
+        MFPreset *cPreset = [[MFPreset alloc] init];
+
+        cPreset.backup = self;
+        cPreset.uuid = [self newUUID];
+
+        [cPreset loadPresetFile:cURL];
+
+        [self.presets addObject:cPreset];
+    }
+
+    // after loading all presets we can remember the UUIDs of the quick access presets
+    for (int j = 0; j < _quickAccessPresets.count; j++)
+    {
+        int presetNumber = [[_quickAccessPresets objectAtIndex:j] intValue];
+        NSString *qaUUID = ((MFPreset*)[self.presets objectAtIndex:presetNumber]).uuid;
+        [_quickAccessPresetsUUID addObject:qaUUID];
+    }
+
+    [self completeLoading:YES];
+}
+
+- (void) completeLoading:(BOOL)success
+{
+    if (_loadCompletionBlock)
+        _loadCompletionBlock(success);
+}
+
 #pragma mark - NSXMLParserDelegate methods
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
@@ -208,85 +314,8 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     currentElementValue = nil;
 }
 
-#pragma mark - Preset Loading
 
-// Loads "Preset" folder contents to get an overview of the preset files.
-- (void) loadPresetFiles
-{
-    NSFileManager *fileMan = [NSFileManager defaultManager];
-    
-    NSURL *presetDir = [_folderURL URLByAppendingPathComponent:PRESET_FOLDER];
-    NSError *error = nil;
-    NSArray *presetContents = [fileMan contentsOfDirectoryAtPath:[presetDir path] error:&error];
-    
-    if (error)
-    {
-        NSLog(@"*** ERROR: error loading fuse files");
-        [self completeLoading:NO];
-        return;
-    }
-    
-    for (int i = 0; i < presetContents.count; i++)
-    {
-        //NSLog(@"fileName: %@", [presetContents objectAtIndex:i]);
-        
-        NSURL *cURL = [presetDir URLByAppendingPathComponent:[presetContents objectAtIndex:i]];
-        
-        if (![[cURL pathExtension] isEqualToString:@"fuse"]) {
-            continue;
-        }
-        
-        MFPreset *cPreset = [[MFPreset alloc] init];
-        
-        cPreset.backup = self;
-        cPreset.uuid = [self newUUID];
-        
-        [cPreset loadPresetFile:cURL];
-        
-        [self.presets addObject:cPreset];
-    }
-
-    // after loading all presets we can remember the UUIDs of the quick access presets
-    for (int j = 0; j < _quickAccessPresets.count; j++)
-    {
-        int presetNumber = [[_quickAccessPresets objectAtIndex:j] intValue];
-        NSString *qaUUID = ((MFPreset*)[self.presets objectAtIndex:presetNumber]).uuid;
-        [_quickAccessPresetsUUID addObject:qaUUID];
-    }
-    
-    [self completeLoading:YES];
-}
-
-- (void) completeLoading:(BOOL)success
-{    
-    if (_loadCompletionBlock)
-        _loadCompletionBlock(success);
-}
-
-#pragma mark - Exporting / Saving
-// Saves to the existing location
-- (void) saveWithCompletion:(MFFuseBackupSaveCompletion)block
-{
-    _saveCompletionBlock = block;
-    
-    [self saveToURL:self.folderURL];
-}
-
-- (void) saveAsNewBackup:(NSURL *)url withCompletion:(MFFuseBackupSaveCompletion)block
-{
-    _saveCompletionBlock = block;
-    
-    // create a new folder at the specified path - filename must be a date, otherwise
-    // FUSE won't see it
-    NSDate *now = [NSDate date];
-    NSDateFormatter *filenameFormat = [[NSDateFormatter alloc] init];
-    [filenameFormat setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
-    NSString *dateFileName = [filenameFormat stringFromDate:now];
-    
-    NSURL *destURL = [url URLByAppendingPathComponent:dateFileName];
-    [self saveToURL:destURL];
-}
-
+#pragma mark - Private Exporting / Saving
 - (void) saveToURL:(NSURL *)destURL
 {
     NSFileManager *fileMan = [NSFileManager defaultManager];
@@ -342,17 +371,17 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         
         NSXMLElement *docRoot = [settingsXML rootElement];
         // replace the first three QA nodes
-        MFPreset *preset1 = (MFPreset *)[self getPresetForQASlot:0];
+        MFPreset *preset1 = [self presetForQASlot:0];
         int index1 = [self indexForPreset:preset1];
         NSXMLElement *qa1 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index1]];
         [docRoot replaceChildAtIndex:0 withNode:qa1];
         
-        MFPreset *preset2 = (MFPreset *)[self getPresetForQASlot:1];
+        MFPreset *preset2 = [self presetForQASlot:1];
         int index2 = [self indexForPreset:preset2];
         NSXMLElement *qa2 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index2]];
         [docRoot replaceChildAtIndex:1 withNode:qa2];
         
-        MFPreset *preset3 = (MFPreset *)[self getPresetForQASlot:2];
+        MFPreset *preset3 = [self presetForQASlot:2];
         int index3 = [self indexForPreset:preset3];
         NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
         [docRoot replaceChildAtIndex:2 withNode:qa3];
@@ -478,8 +507,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 }
 
 
+#pragma mark - Other Private Stuff
+
 // Get the preset for a QA slot, identified by the preset's UUID
-- (MFPreset *) getPresetForQASlot:(int)qaSlot
+- (MFPreset *)presetForQASlot:(int)qaSlot
 {
     NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
     
@@ -487,10 +518,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     {
         MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
         if ([qaPresetUUID isEqualToString:cPreset.uuid])
-        {
-            NSLog (@"Found QA#%02d => %@", qaSlot, cPreset.name);
             return cPreset;
-        }
     }
     
     return nil;
@@ -500,9 +528,23 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 // Set the preset for a QA slot, linking is done via the preset's UUID
 - (void) setPreset:(MFPreset *)preset toQASlot:(int)qaSlot
 {
+    // No change. This preset is already in this QA slot
+    if ([[_quickAccessPresetsUUID objectAtIndex:qaSlot] isEqualToString:[preset uuid]])
+        return;
+
     [_quickAccessPresetsUUID setObject:[preset uuid]
                     atIndexedSubscript:qaSlot];
+
+    MFPreset *qaPreset = [self presetForQASlot:qaSlot];
+    NSUInteger qaPresetIndex = [_presets indexOfObject:qaPreset];
+    NSString *qaPresetIndexString = [[NSString alloc] initWithFormat:@"%lu", qaPresetIndex];
+    [_quickAccessPresets setObject:qaPresetIndexString
+                    atIndexedSubscript:qaSlot];
+
+    [self storeStateToMemento];
+    _isModified = YES;
 }
+
 
 - (int) indexForPreset:(MFPreset *)preset
 {
@@ -529,5 +571,79 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     }
     return uuidString;
 }
+
+
+#pragma mark - Presets Access Methods
+- (NSUInteger)presetsCount {
+    return _presets.count;
+}
+
+- (MFPreset *)presetsObjectAtIndex:(NSUInteger)anIndex {
+    return [_presets objectAtIndex:anIndex];
+}
+
+- (void)presetsRemoveObjectsInArray:(NSArray *)anOtherArray {
+    [_presets removeObjectsInArray:anOtherArray];
+    _isModified = YES;
+}
+
+- (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet {
+    [_presets insertObjects:anOtherArray atIndexes:anIndexSet];
+    [self storeStateToMemento];
+    _isModified = YES;
+}
+
+
+
+#pragma mark - Undo/Redo Methods
+- (void)storeStateToMemento {
+    if ([_presets count] == 0)
+        return;
+
+    MFFuseBackupMemento * memento = [[MFFuseBackupMemento alloc] initWithBackupState:_presets
+                                                                           qaPresets:_quickAccessPresets
+                                                                       qaPresetsUUID:_quickAccessPresetsUUID
+                                                                   backupDescription:_backupDescription ];
+    [_backupHistory addObject:memento];
+}
+
+
+- (void) restoreStateFromMemento:(MFFuseBackupMemento *)memento {
+    if (memento){
+        _presets = [[NSMutableArray alloc] initWithArray:memento.presets];
+        _quickAccessPresets = [[NSMutableArray alloc] initWithArray:memento.quickAccessPresets];
+        _quickAccessPresetsUUID = [[NSMutableArray alloc] initWithArray:memento.quickAccessPresetsUUID];
+        _backupDescription = [[NSString alloc] initWithString:memento.backupDescription];
+    }
+}
+
+
+- (void)performUndo {
+    MFFuseBackupMemento * memento = [_backupHistory undo];
+    if (memento)
+        [self restoreStateFromMemento:memento];
+}
+
+- (void)performRedo {
+    MFFuseBackupMemento * memento = [_backupHistory redo];
+    if (memento)
+        [self restoreStateFromMemento:memento];
+}
+
+- (BOOL)isUndoable {
+    return [_backupHistory isUndoable];
+}
+
+- (BOOL)isRedoable {
+    return [_backupHistory isRedoable];
+}
+
+// we need this for small backupDescription changes
+// which should not go to the undo history and thus
+// are not yet propagated to this class
+- (void)forceModifiedYes {
+    _isModified = YES;
+}
+
 
 @end
