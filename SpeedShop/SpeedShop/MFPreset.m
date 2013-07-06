@@ -15,6 +15,8 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     // Used for XML parsing
     NSMutableString *currentElementValue;
     
+    BOOL    _parsingAmp;
+    
     // Location of the file on disk
     NSURL *_fileURL;
 }
@@ -65,8 +67,26 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
 
 #pragma mark - NSXMLParserDelegate methods
-- (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+- (void) parser:(NSXMLParser *)parser
+didStartElement:(NSString *)elementName
+   namespaceURI:(NSString *)namespaceURI
+  qualifiedName:(NSString *)qName
+     attributes:(NSDictionary *)attributeDict
 {
+    if ([elementName isEqualToString:@"Amplifier"])
+    {
+        _parsingAmp = YES;
+    }
+    
+    if ([elementName isEqualToString:@"Module"])
+    {
+        if (_parsingAmp)
+        {
+            NSLog(@"Amp: %d", [[attributeDict valueForKey:@"ID"] intValue]);
+        }
+    }
+    
+    
     if ([elementName isEqualToString:@"Info"])
     {
         self.name = [attributeDict valueForKey:@"name"];
@@ -92,6 +112,11 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
 - (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
+    if ([elementName isEqualToString:@"Amplifier"])
+    {
+        _parsingAmp = NO;
+    }
+    
     if ([elementName isEqualToString:@"Info"])
     {
         self.description = currentElementValue;
