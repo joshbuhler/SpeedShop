@@ -37,6 +37,12 @@
     [self.authorNameField setStringValue:@""];
     [self.presetDescriptionField setStringValue:@""];
     
+    [self.ampModelField setStringValue:@""];
+    [self.stompField setStringValue:@""];
+    [self.modField setStringValue:@""];
+    [self.delayField setStringValue:@""];
+    [self.reverbField setStringValue:@""];
+    
     // Custom font for headers
     NSFont *headerFont = [NSFont fontWithName:@"Open Sans Extrabold" size:20.0f];
     NSFont *fieldFont = [NSFont fontWithName:@"Open Sans Light" size:14.0f];
@@ -58,8 +64,6 @@
     self.modField.font = fieldFont;
     self.delayField.font = fieldFont;
     self.reverbField.font = fieldFont;
-    
-    
 
     [_window setTitle:APPLICATION_NAME];
 }
@@ -157,11 +161,14 @@
     [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
     [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
     
-    [self.ampModelField setStringValue:[MFPreset getNameForAmpModel:self.currentPreset.ampModel]];
-    [self.stompField setStringValue:[MFPreset getNameForFXStomp:self.currentPreset.fxStomp]];
-    [self.modField setStringValue:[MFPreset getNameForFXModulation:self.currentPreset.fxModulation]];
-    [self.delayField setStringValue:[MFPreset getNameForFXDelay:self.currentPreset.fxDelay]];
-    [self.reverbField setStringValue:[MFPreset getNameForFXReverb:self.currentPreset.fxReverb]];
+    if (self.currentPreset)
+    {
+        [self.ampModelField setStringValue:[MFPreset getNameForAmpModel:self.currentPreset.ampModel]];
+        [self.stompField setStringValue:[MFPreset getNameForFXStomp:self.currentPreset.fxStomp]];
+        [self.modField setStringValue:[MFPreset getNameForFXModulation:self.currentPreset.fxModulation]];
+        [self.delayField setStringValue:[MFPreset getNameForFXDelay:self.currentPreset.fxDelay]];
+        [self.reverbField setStringValue:[MFPreset getNameForFXReverb:self.currentPreset.fxReverb]];
+    }
 
     if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
