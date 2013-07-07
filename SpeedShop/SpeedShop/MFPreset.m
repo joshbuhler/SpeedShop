@@ -16,6 +16,10 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     NSMutableString *currentElementValue;
     
     BOOL    _parsingAmp;
+    BOOL    _parsingStomp;
+    BOOL    _parsingMod;
+    BOOL    _parsingDelay;
+    BOOL    _parsingReverb;
     
     // Location of the file on disk
     NSURL *_fileURL;
@@ -26,7 +30,10 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 @implementation MFPreset
 
 @synthesize ampModel = _ampModel;
-@synthesize fxModel = _fxModel;
+@synthesize fxStomp = _fxStomp;
+@synthesize fxModulation = _fxModulation;
+@synthesize fxDelay = _fxDelay;
+@synthesize fxReverb = _fxReverb;
 
 - (void) loadPresetFile:(NSURL *)url
 {
@@ -80,12 +87,56 @@ didStartElement:(NSString *)elementName
         _parsingAmp = YES;
     }
     
+    if ([elementName isEqualToString:@"Stompbox"])
+    {
+        _parsingStomp = YES;
+    }
+    
+    if ([elementName isEqualToString:@"Modulation"])
+    {
+        _parsingMod = YES;
+    }
+    
+    if ([elementName isEqualToString:@"Delay"])
+    {
+        _parsingDelay = YES;
+    }
+    
+    if ([elementName isEqualToString:@"Reverb"])
+    {
+        _parsingReverb = YES;
+    }
+    
     if ([elementName isEqualToString:@"Module"])
     {
         if (_parsingAmp)
         {
             _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"Amp: %@", [MFPreset getNameForAmpModel:_ampModel]);
+            NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
+        }
+        
+        if (_parsingStomp)
+        {
+            _fxStomp = [[attributeDict valueForKey:@"ID"] intValue];
+            NSLog(@"_fxStomp: %@", [MFPreset getNameForFXStomp:_fxStomp]);
+        }
+        
+        if (_parsingMod)
+        {
+            _fxModulation = [[attributeDict valueForKey:@"ID"] intValue];
+            NSLog(@"_fxModulation: %@", [MFPreset getNameForFXModulation:_fxModulation]);
+        }
+        
+        if (_parsingDelay)
+        {
+            _fxDelay = [[attributeDict valueForKey:@"ID"] intValue];
+            NSLog(@"_fxDelay: %@", [MFPreset getNameForFXDelay:_fxDelay]);
+        }
+        
+        if (_parsingReverb)
+        {
+            _fxReverb = [[attributeDict valueForKey:@"ID"] intValue];
+            NSLog(@"_fxReverb: %@", [MFPreset getNameForFXReverb:_fxReverb]);
         }
     }
     
@@ -118,6 +169,26 @@ didStartElement:(NSString *)elementName
     if ([elementName isEqualToString:@"Amplifier"])
     {
         _parsingAmp = NO;
+    }
+    
+    if ([elementName isEqualToString:@"Stompbox"])
+    {
+        _parsingStomp = NO;
+    }
+    
+    if ([elementName isEqualToString:@"Modulation"])
+    {
+        _parsingMod = NO;
+    }
+    
+    if ([elementName isEqualToString:@"Delay"])
+    {
+        _parsingDelay = NO;
+    }
+    
+    if ([elementName isEqualToString:@"Reverb"])
+    {
+        _parsingReverb = NO;
     }
     
     if ([elementName isEqualToString:@"Info"])
@@ -163,7 +234,121 @@ didStartElement:(NSString *)elementName
             return @"Metal 2000";            
             
         default:
-            return @"**** Unknown Amp Model ***";
+            return @"**** Unknown Amp Model ****";
+    }
+}
+
++ (NSString *) getNameForFXStomp:(FXStomp)model
+{
+    switch (model) {
+        case FX_Stomp_Empty:
+            return @"Empty";
+        case FX_Stomp_Overdrive:
+            return @"Overdrive";
+        case FX_Stomp_Wah:
+            return @"Wah";
+        case FX_Stomp_Touch_Wah:
+            return @"Touch Wah";
+        case FX_Stomp_Fuzz:
+            return @"Fuzz";
+        case FX_Stomp_Fuzz_Touch_Wah:
+            return @"Fuzz Touch Wah";
+        case FX_Stomp_Simple_Comp:
+            return @"Simple Comp";
+        case FX_Stomp_Compressor:
+            return @"Compressor";
+        default:
+            return [NSString stringWithFormat:@"**** UNKNOWN Stomp: %d", model];
+    }
+}
+
++ (NSString *) getNameForFXModulation:(FXModulation)model
+{
+    switch (model) {
+        case FX_Modulation_Empty:
+            return @"Empty";
+        case FX_Modulation_Sine_Chorus:
+            return @"Sine Chorus";
+        case FX_Modulation_Triangle_Chorus:
+            return @"Triangle Chorus";
+        case FX_Modulation_Sine_Flanger:
+            return @"Sine Flanger";
+        case FX_Modulation_Triangle_Flanger:
+            return @"Triangle Flanger";
+        case FX_Modulation_Vibratone:
+            return @"Vibratone";
+        case FX_Modulation_Vintage_Tremolo:
+            return @"Vintage Tremolo";
+        case FX_Modulation_Sine_Tremolo:
+            return @"Sine Tremolo";
+        case FX_Modulation_Ring_Modulator:
+            return @"Ring Modulator";
+        case FX_Modulation_Step_Filter:
+            return @"Step Filter";
+        case FX_Modulation_Phaser:
+            return @"Phaser";
+        case FX_Modulation_Pitch_Shifter:
+            return @"Pitch Shifter";
+        default:
+            return [NSString stringWithFormat:@"**** UNKNOWN Modulation: %d", model];
+    }
+}
+
++ (NSString *) getNameForFXDelay:(FXDelay)model
+{
+    switch (model) {
+        case FX_Delay_Empty:
+            return @"Empty";
+        case FX_Delay_Mono:
+            return @"Mono";
+        case FX_Delay_Mono_Echo_Filter:
+            return @"Mono Echo Filter";
+        case FX_Delay_Stereo_Echo_Filter:
+            return @"Stero Echo Filter";
+        case FX_Delay_Multitap:
+            return @"Multitap";
+        case FX_Delay_Ping_Pong:
+            return @"Ping Pong";
+        case FX_Delay_Ducking:
+            return @"Ducking";
+        case FX_Delay_Reverse:
+            return @"Reverse";
+        case FX_Delay_Tape:
+            return @"Tape";
+        case FX_Delay_Stereo_Tape:
+            return @"Stereo Tape";
+        default:
+            return [NSString stringWithFormat:@"**** UNKNOWN Delay: %d", model];
+    }
+}
+
++ (NSString *) getNameForFXReverb:(FXReverb)model
+{
+    switch (model) {
+        case FX_Reverb_Empty:
+            return @"Empty";
+        case FX_Reverb_Small_Hall:
+            return @"Small Hall";
+        case FX_Reverb_Large_Hall:
+            return @"Large Hall";
+        case FX_Reverb_Small_Room:
+            return @"Small Room";
+        case FX_Reverb_Large_Room:
+            return @"Large Room";
+        case FX_Reverb_Small_Plate:
+            return @"Small Plate";
+        case FX_Reverb_Large_Plate:
+            return @"Large Plate";
+        case FX_Reverb_Ambient:
+            return @"Ambient";
+        case FX_Reverb_Arena:
+            return @"Arena";
+        case FX_Reverb_Fender_63_Spring:
+            return @"Fender '63 Spring";
+        case FX_Reverb_Fender_65_Spring:
+            return @"Fender '65 Spring";
+        default:
+            return [NSString stringWithFormat:@"**** UNKNOWN Reverb: %d", model];
     }
 }
 @end
