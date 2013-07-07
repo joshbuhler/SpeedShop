@@ -25,6 +25,8 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
 @implementation MFPreset
 
+@synthesize ampModel = _ampModel;
+@synthesize fxModel = _fxModel;
 
 - (void) loadPresetFile:(NSURL *)url
 {
@@ -82,7 +84,8 @@ didStartElement:(NSString *)elementName
     {
         if (_parsingAmp)
         {
-            NSLog(@"Amp: %d", [[attributeDict valueForKey:@"ID"] intValue]);
+            _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
+            NSLog(@"Amp: %@", [MFPreset getNameForAmpModel:_ampModel]);
         }
     }
     
@@ -128,5 +131,39 @@ didStartElement:(NSString *)elementName
 -(NSString *) description
 {
     return _name;
+}
+
+#pragma mark - Conversion Helpers
++ (NSString *) getNameForAmpModel:(AmpModel)model
+{
+    switch (model) {
+        case AmpModel_Fender_57_Deluxe:
+            return @"Fender '57 Deluxe";
+        case AmpModel_Fender_59_Bassman:
+            return @"Fender '59 Bassman";
+        case AmpModel_Fender_57_Champ:
+            return @"Fender '57 Champ";
+        case AmpModel_Fender_65_Deluxe_Reverb:
+            return @"Fender '65 Deluxe Reverb";
+        case AmpModel_Fender_65_Princeton:
+            return @"Fender '65 Princeton";
+        case AmpModel_Fender_65_Twin_Reverb:
+            return @"Fender '65 Twin Reverb";
+        case AmpModel_Fender_Super_Sonic:
+            return @"Fender Super Sonic";
+        case AmpModel_British_60s:
+            return @"British '60s";
+        case AmpModel_British_70s:
+            return @"British '70s";
+        case AmpModel_British_80s:
+            return @"British '80s";
+        case AmpModel_American_90s:
+            return @"American '90s";
+        case AmpModel_Metal_2000:
+            return @"Metal 2000";            
+            
+        default:
+            return @"**** Unknown Amp Model ***";
+    }
 }
 @end
