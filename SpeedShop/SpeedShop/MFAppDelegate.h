@@ -16,6 +16,7 @@
         , NSWindowDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSView *mainView;
 @property (weak) IBOutlet NSTableView *ampPresetTable;
 @property (weak) IBOutlet NSTextField *backupNameField;
 @property (weak) IBOutlet NSTextField *presetNameField;

@@ -147,11 +147,8 @@
     }
 }
 
-
 - (void) refreshUI
 {
-    // self.currentBackup.backupDescription = self.backupNameField.stringValue;
-
     if (self.ampPresetTable.selectedRowIndexes.count == 0)
         self.currentPreset = nil;
 
