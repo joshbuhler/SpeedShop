@@ -7,6 +7,7 @@
 //
 
 #import "MFPreset.h"
+#import "MFFuseBackup.h"
 
 NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 
@@ -16,6 +17,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     NSMutableString *currentElementValue;
     
     BOOL    _parsingAmp;
+    BOOL    _parsingGDecAmp;
     BOOL    _parsingStomp;
     BOOL    _parsingMod;
     BOOL    _parsingDelay;
@@ -111,7 +113,18 @@ didStartElement:(NSString *)elementName
     {
         if (_parsingAmp)
         {
-            _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
+            if (self.backup.ampSeries == AmpSeries_GDec)
+            {
+                // TODO: parse amp model ID from param with ControlIndex "0"
+                if ([[attributeDict valueForKey:@"ControlIndex"] intValue] == 0)
+                {
+                    _parsingGDecAmp = YES;
+                }
+            }
+            else
+            {
+                _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
+            }
             NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
         }
         
@@ -140,6 +153,11 @@ didStartElement:(NSString *)elementName
         }
     }
     
+    if ([elementName isEqualToString:@"Param"])
+    {
+        
+    }
+    
     
     if ([elementName isEqualToString:@"Info"])
     {
@@ -166,6 +184,16 @@ didStartElement:(NSString *)elementName
 
 - (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
+    // parsing amp model for gdec amps
+    if (self.backup.ampSeries == AmpSeries_GDec)
+    {
+        if ([elementName isEqualToString:@"Param"] && _parsingGDecAmp)
+        {
+            _ampModel = [currentElementValue intValue];
+            _parsingGDecAmp = NO;
+        }
+    }
+    
     if ([elementName isEqualToString:@"Amplifier"])
     {
         _parsingAmp = NO;
