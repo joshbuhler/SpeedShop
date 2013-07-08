@@ -80,11 +80,11 @@
 
     if (self.currentBackup.isModified)
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to procede?"
-                                         defaultButton:@"No"
-                                       alternateButton:@"Yes"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Do you really want to procede?", @"")
+                                         defaultButton:NSLocalizedString(@"No", @"")
+                                       alternateButton:NSLocalizedString(@"Yes", @"")
                                            otherButton:nil
-                             informativeTextWithFormat:@"Your backup has been modified, and unsaved changes will be lost."];
+                             informativeTextWithFormat:NSLocalizedString(@"Your backup has been modified, and unsaved changes will be lost.", @"")];
         [alert setAlertStyle: NSCriticalAlertStyle];
 
         NSInteger buttonReturn = [alert runModal];
