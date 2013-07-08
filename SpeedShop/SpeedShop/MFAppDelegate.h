@@ -16,6 +16,7 @@
         , NSWindowDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSView *mainView;
 @property (weak) IBOutlet NSTableView *ampPresetTable;
 @property (weak) IBOutlet NSTextField *backupNameField;
 @property (weak) IBOutlet NSTextField *presetNameField;
@@ -31,6 +32,13 @@
 @property (weak) IBOutlet NSTextField *qa1Header;
 @property (weak) IBOutlet NSTextField *qa2Header;
 @property (weak) IBOutlet NSTextField *qa3Header;
+@property (weak) IBOutlet NSTextField *detailsHeader;
+
+@property (weak) IBOutlet NSTextField *ampModelField;
+@property (weak) IBOutlet NSTextField *stompField;
+@property (weak) IBOutlet NSTextField *modField;
+@property (weak) IBOutlet NSTextField *reverbField;
+@property (weak) IBOutlet NSTextField *delayField;
 
 - (IBAction)onReloadBtn:(id)sender;
 
