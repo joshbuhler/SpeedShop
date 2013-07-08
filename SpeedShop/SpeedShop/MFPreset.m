@@ -113,19 +113,11 @@ didStartElement:(NSString *)elementName
     {
         if (_parsingAmp)
         {
-            if (self.backup.ampSeries == AmpSeries_GDec)
-            {
-                // TODO: parse amp model ID from param with ControlIndex "0"
-                if ([[attributeDict valueForKey:@"ControlIndex"] intValue] == 0)
-                {
-                    _parsingGDecAmp = YES;
-                }
-            }
-            else
+            if (self.backup.ampSeries != AmpSeries_GDec)
             {
                 _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
+                NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
             }
-            NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
         }
         
         if (_parsingStomp)
@@ -155,7 +147,14 @@ didStartElement:(NSString *)elementName
     
     if ([elementName isEqualToString:@"Param"])
     {
-        
+        if (self.backup.ampSeries == AmpSeries_GDec && _parsingAmp)
+        {
+            // parse amp model ID from param with ControlIndex "0"
+            if ([[attributeDict valueForKey:@"ControlIndex"] intValue] == 0)
+            {
+                _parsingGDecAmp = YES;
+            }
+        }
     }
     
     
@@ -165,9 +164,10 @@ didStartElement:(NSString *)elementName
         self.author = [attributeDict valueForKey:@"author"];
         
         //NSLog(@"     Preset: %@ by %@", self.name, self.author);
-        
-        currentElementValue = nil;
     }
+    
+    // reset for the next node
+    currentElementValue = nil;
 }
 
 - (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -236,6 +236,54 @@ didStartElement:(NSString *)elementName
 + (NSString *) getNameForAmpModel:(AmpModel)model
 {
     switch (model) {
+            // G-Dec
+        case AmpModel_Tweed_Clean:
+            return @"Tweed Clean";
+        case AmpModel_Tweed_Drive:
+            return @"Tweed Drive";
+        case AmpModel_Tweed_Dirt:
+            return @"Tweed Dirt";
+        case AmpModel_Blackface_Clean:
+            return @"Blackface Clean";
+        case AmpModel_Blackface_Drive:
+            return @"Blackface Drive";
+        case AmpModel_Blackface_Distorted:
+            return @"Blackface Distorted";
+        case AmpModel_Jazzmaster:
+            return @"Jazzmaster";
+        case AmpModel_Garage_Rock:
+            return @"Garage Rock";
+        case AmpModel_Garage_Punk:
+            return @"Garage Punk";
+        case AmpModel_Very_Distorted:
+            return @"Very Distorted";
+        case AmpModel_Brit_Jangle:
+            return @"Brit Jangle";
+        case AmpModel_Brit_Blues:
+            return @"Brit Blues";
+        case AmpModel_British_Steel:
+            return @"British Steel";
+        case AmpModel_Modern_Crunch:
+            return @"Modern Crunch";
+        case AmpModel_Modern_Metal:
+            return @"Modern Metal";
+        case AmpModel_Modern_Shred:
+            return @"Modern Shred";
+        case AmpModel_HotRod_Grit:
+            return @"HotRod Grit";
+        case AmpModel_HotRod_Lead:
+            return @"HotRod Lead";
+        case AmpModel_Acoustic_Dred_M:
+            return @"Acou Dred M";
+        case AmpModel_Acoustic_Jumbo:
+            return @"Acou Jumbo";
+        case AmpModel_Acoustic_Dred_R:
+            return @"Acou Dred R";
+        case AmpModel_Acoustic_Parlor:
+            return @"Acou Parlor";
+            
+            
+            // Mustang
         case AmpModel_Fender_57_Deluxe:
             return @"Fender '57 Deluxe";
         case AmpModel_Fender_59_Bassman:

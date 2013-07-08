@@ -10,6 +10,31 @@
 
 typedef enum
 {
+    // G-DEC Models
+    AmpModel_Tweed_Clean = 0,
+    AmpModel_Tweed_Drive = 1,
+    AmpModel_Tweed_Dirt = 2,
+    AmpModel_Blackface_Clean = 3,
+    AmpModel_Blackface_Drive = 4,
+    AmpModel_Blackface_Distorted = 5,
+    AmpModel_Jazzmaster = 6,
+    AmpModel_Garage_Rock = 7,
+    AmpModel_Garage_Punk = 8,
+    AmpModel_Very_Distorted = 9,
+    AmpModel_Brit_Jangle = 10,
+    AmpModel_Brit_Blues = 11,
+    AmpModel_British_Steel = 12,
+    AmpModel_Modern_Crunch = 13,
+    AmpModel_Modern_Metal = 14,
+    AmpModel_Modern_Shred = 15,
+    AmpModel_HotRod_Grit = 16,
+    AmpModel_HotRod_Lead = 17,
+    AmpModel_Acoustic_Dred_M = 18,
+    AmpModel_Acoustic_Jumbo = 19,
+    AmpModel_Acoustic_Dred_R = 20,
+    AmpModel_Acoustic_Parlor = 21,
+    
+    // Mustang Models
     AmpModel_Fender_57_Deluxe = 103,
     AmpModel_Fender_59_Bassman = 100,
     AmpModel_Fender_57_Champ = 124,
