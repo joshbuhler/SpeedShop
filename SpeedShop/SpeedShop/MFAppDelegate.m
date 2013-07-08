@@ -37,6 +37,12 @@
     [self.authorNameField setStringValue:@""];
     [self.presetDescriptionField setStringValue:@""];
     
+    [self.ampModelField setStringValue:@""];
+    [self.stompField setStringValue:@""];
+    [self.modField setStringValue:@""];
+    [self.delayField setStringValue:@""];
+    [self.reverbField setStringValue:@""];
+    
     // Custom font for headers
     NSFont *headerFont = [NSFont fontWithName:@"Open Sans Extrabold" size:20.0f];
     NSFont *fieldFont = [NSFont fontWithName:@"Open Sans Light" size:14.0f];
@@ -47,11 +53,17 @@
     self.qa1Header.font = headerFont;
     self.qa2Header.font = headerFont;
     self.qa3Header.font = headerFont;
+    self.detailsHeader.font = headerFont;
     
     self.backupNameField.font = fieldFont;
     self.presetNameField.font = fieldFont;
     self.authorNameField.font = fieldFont;
     self.presetDescriptionField.font = fieldFont;
+    
+    self.stompField.font = fieldFont;
+    self.modField.font = fieldFont;
+    self.delayField.font = fieldFont;
+    self.reverbField.font = fieldFont;
 
     [_window setTitle:APPLICATION_NAME];
 }
@@ -139,11 +151,8 @@
     }
 }
 
-
 - (void) refreshUI
 {
-    // self.currentBackup.backupDescription = self.backupNameField.stringValue;
-
     if (self.ampPresetTable.selectedRowIndexes.count == 0)
         self.currentPreset = nil;
 
@@ -151,6 +160,15 @@
     [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
     [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
     [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
+    
+    if (self.currentPreset)
+    {
+        [self.ampModelField setStringValue:[MFPreset getNameForAmpModel:self.currentPreset.ampModel]];
+        [self.stompField setStringValue:[MFPreset getNameForFXStomp:self.currentPreset.fxStomp]];
+        [self.modField setStringValue:[MFPreset getNameForFXModulation:self.currentPreset.fxModulation]];
+        [self.delayField setStringValue:[MFPreset getNameForFXDelay:self.currentPreset.fxDelay]];
+        [self.reverbField setStringValue:[MFPreset getNameForFXReverb:self.currentPreset.fxReverb]];
+    }
 
     if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
