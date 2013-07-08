@@ -202,7 +202,26 @@
         [_window setTitle:APPLICATION_NAME];
 }
 
+// Open command fired by the "Open Recent >" menu
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
+{
+    NSURL *cFolder = [[NSURL alloc] initFileURLWithPath:filename isDirectory:YES];
+    NSLog(@"Open Recent Folder: >%@<", cFolder);
 
+    BOOL isDir;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:&isDir] && isDir)
+    {
+        dispatch_async(dispatch_get_current_queue(), ^{
+            [self loadBackupFile:cFolder];
+        });
+        [self refreshUI];
+        [self.ampPresetTable deselectAll:nil];
+
+        return YES;  // keep in "Open Recent >" menu
+    }
+
+    return NO;  // remove from "Open Recent >" menu
+}
 
 #pragma mark - Tableview Delegate Methods
 
@@ -540,6 +559,10 @@
 - (void) loadBackupFile:(NSURL *)url
 {
     self.currentBackup = [[MFFuseBackup alloc] init];
+
+    // put the to be loaded folder on top of the "Open Recent >" menu
+    [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:url];
+
     [self.currentBackup loadBackup:url withCompletion:^(BOOL success)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
