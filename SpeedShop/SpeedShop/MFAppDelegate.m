@@ -197,7 +197,7 @@
 
 - (void)refreshWindowTitle {
     if (self.currentBackup.isModified)
-        [_window setTitle:APPLICATION_NAME @" [modified!]"];
+        [_window setTitle:[[NSString alloc] initWithFormat:@"%@ %@", APPLICATION_NAME, NSLocalizedString(@"modified", @"") ]];
     else
         [_window setTitle:APPLICATION_NAME];
 }
@@ -303,11 +303,11 @@
     // prevent illegal multi-select drag'n'drops
     if (row >= [rowIndexes firstIndex] && row <= [rowIndexes lastIndex])
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Illegal Drag'n'Drop Operation"
-                                         defaultButton:@"OK"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Illegal Drag'n'Drop Operation", @"")
+                                         defaultButton:NSLocalizedString(@"OK", @"")
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"It is impossible to insert a range into itself."];
+                             informativeTextWithFormat:NSLocalizedString(@"It is impossible to insert a range into itself.", @"")];
         
         [alert beginSheetModalForWindow:self.window
                           modalDelegate:nil
@@ -419,22 +419,22 @@
         NSAlert *alert;
         if (success)
         {
-            alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
-                                    defaultButton:@"OK"
+            alert = [NSAlert alertWithMessageText:NSLocalizedString(@"The backup file has been saved", @"")
+                                    defaultButton:NSLocalizedString(@"OK", @"")
                                   alternateButton:nil
                                       otherButton:nil
-                        informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@",[[newURL absoluteString]lastPathComponent]];
+                        informativeTextWithFormat:NSLocalizedString(@"SaveMessageOK", @""), [[newURL absoluteString] lastPathComponent]];
 
             [self loadBackupFile:newURL];
             [self refreshUI];
         }
         else
         {
-            alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                    defaultButton:@"OK"
+            alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to save backup", @"")
+                                    defaultButton:NSLocalizedString(@"OK", @"")
                                   alternateButton:nil
                                       otherButton:nil
-                        informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+                        informativeTextWithFormat:NSLocalizedString(@"There was an error trying to save the new backup file.", @"")];
         }
 
         [alert beginSheetModalForWindow:self.window
@@ -464,22 +464,22 @@
             NSAlert *alert;
             if (success)
             {
-                alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
-                                        defaultButton:@"OK"
+                alert = [NSAlert alertWithMessageText:NSLocalizedString(@"The new backup file has been saved", @"")
+                                        defaultButton:NSLocalizedString(@"OK", @"")
                                       alternateButton:nil
                                           otherButton:nil
-                            informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@", [[newURL absoluteString] lastPathComponent]];
+                            informativeTextWithFormat:NSLocalizedString(@"SaveMessageOK", @""), [[newURL absoluteString] lastPathComponent]];
 
                 [self loadBackupFile:newURL];
                 [self refreshUI];
             }
             else
             {
-                alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                        defaultButton:@"OK"
+                alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to save backup", @"")
+                                        defaultButton:NSLocalizedString(@"OK", @"")
                                       alternateButton:nil
                                           otherButton:nil
-                            informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+                            informativeTextWithFormat:NSLocalizedString(@"There was an error trying to save the new backup file.", @"")];
             }
 
             [alert beginSheetModalForWindow:self.window
@@ -515,11 +515,11 @@
     [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
 
     NSAlert *alert;
-    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
-                            defaultButton:@"OK"
+    alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Copy Presetlist", @"")
+                            defaultButton:NSLocalizedString(@"OK", @"")
                           alternateButton:nil
                               otherButton:nil
-                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
+                informativeTextWithFormat:NSLocalizedString(@"Copied all your preset numbers and names to the clipboard.", @"")];
 
     [alert beginSheetModalForWindow:self.window
                       modalDelegate:nil
