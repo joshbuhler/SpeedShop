@@ -196,10 +196,13 @@
 
 
 - (void)refreshWindowTitle {
+
+    NSString * newTitle = APPLICATION_NAME;
+    if (self.currentBackup)
+        newTitle = [newTitle stringByAppendingFormat:@" - %@", [[self.currentBackup.folderURL path] lastPathComponent]];
     if (self.currentBackup.isModified)
-        [_window setTitle:[[NSString alloc] initWithFormat:@"%@ %@", APPLICATION_NAME, NSLocalizedString(@"modified", @"") ]];
-    else
-        [_window setTitle:APPLICATION_NAME];
+        newTitle = [newTitle stringByAppendingString:NSLocalizedString(@"modified", @"")];
+    [_window setTitle:newTitle];
 }
 
 // Open command fired by the "Open Recent >" menu

@@ -6,10 +6,13 @@
   Copyright (c) 2013 Joshua Buhler. All rights reserved.
 */
 
+"No" = "No";
+"Yes" = "Yes";
+"OK" = "OK";
 
 "modified" = " [modified!]";
+
 "Illegal Drag'n'Drop Operation" = "Illegal Drag'n'Drop Operation";
-"OK" = "OK";
 "It is impossible to insert a range into itself." = "It is impossible to insert a range into itself.";
 
 "The backup file has been saved" = "The backup file has been saved";
@@ -24,6 +27,4 @@
 "Copied all your preset numbers and names to the clipboard." = "Copied all your preset numbers and names to the clipboard.";
 
 "Do you really want to procede?" = "Do you really want to procede?";
-"No" = "No";
-"Yes" = "Yes";
 "Your backup has been modified, and unsaved changes will be lost." = "Your backup has been modified, and unsaved changes will be lost.";
