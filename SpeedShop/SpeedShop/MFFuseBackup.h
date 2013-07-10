@@ -40,6 +40,7 @@ typedef enum
 - (MFPreset *)presetsObjectAtIndex:(NSUInteger) anIndex;
 - (void)presetsRemoveObjectsInArray:(NSArray *)anOtherArray;
 - (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet;
+- (int) indexForPreset:(MFPreset *)preset;
 
 - (void) performUndo;
 - (void) performRedo;

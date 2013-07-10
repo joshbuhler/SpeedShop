@@ -172,9 +172,13 @@
 
     if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
-        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
-        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
-        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+        MFPreset * qaPreset;
+        qaPreset = [self.currentBackup presetForQASlot:0];
+        [self.qaBox1 setPreset:qaPreset fromAmpIndex:[self.currentBackup indexForPreset:qaPreset]];
+        qaPreset = [self.currentBackup presetForQASlot:1];
+        [self.qaBox2 setPreset:qaPreset fromAmpIndex:[self.currentBackup indexForPreset:qaPreset]];
+        qaPreset = [self.currentBackup presetForQASlot:2];
+        [self.qaBox3 setPreset:qaPreset fromAmpIndex:[self.currentBackup indexForPreset:qaPreset]];
 
         self.qaBox1.canAcceptDrag = YES;
         self.qaBox2.canAcceptDrag = YES;
@@ -182,9 +186,9 @@
     }
     else
     {
-        self.qaBox1.preset = nil;
-        self.qaBox2.preset = nil;
-        self.qaBox3.preset = nil;
+        [self.qaBox1 setPreset:nil fromAmpIndex:-1];
+        [self.qaBox2 setPreset:nil fromAmpIndex:-1];
+        [self.qaBox3 setPreset:nil fromAmpIndex:-1];
 
         self.qaBox1.canAcceptDrag = NO;
         self.qaBox2.canAcceptDrag = NO;
@@ -594,7 +598,7 @@
     [self refreshUI];
 }
 
-
+// called by MFQuickAccessView after a preset was dropped
 - (void) presetDidChangeForQAView:(MFQuickAccessView *)qaView
 {
     int qaSlot = 0;
@@ -613,9 +617,10 @@
         qaSlot = 2;
     }
 
-//    MFPreset *oldPreset = [self.currentBackup presetForQASlot:qaSlot];
-//
-//    if (![oldPreset.uuid isEqualToString:qaView.preset.uuid])   // any change?
+
+    // now store the new QA slot in MFBackup for later saving to the filesystem
+    MFPreset *oldPreset = [self.currentBackup presetForQASlot:qaSlot];
+    if (![oldPreset.uuid isEqualToString:qaView.preset.uuid])   // any change?
         [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
 
     [self refreshUI];
