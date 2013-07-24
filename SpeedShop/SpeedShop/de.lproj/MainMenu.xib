@@ -218,7 +218,7 @@
 										<array class="NSMutableArray" key="NSMenuItems">
 											<object class="NSMenuItem" id="847473406">
 												<reference key="NSMenu" ref="299272641"/>
-												<string key="NSTitle">Clear Menu</string>
+												<string key="NSTitle">Einträge löschen</string>
 												<string key="NSKeyEquiv"/>
 												<int key="NSKeyEquivModMask">1048576</int>
 												<int key="NSMnemonicLoc">2147483647</int>
@@ -803,7 +803,7 @@
 						<object class="NSTextField" id="331857633">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{333, 628}, {214, 24}}</string>
+							<string key="NSFrame">{{333, 609}, {244, 43}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="44699415"/>
@@ -1312,7 +1312,6 @@
 							<string key="NSFrame">{{714, 14}, {161, 117}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSClassName">MFQuickAccessView</string>
 						</object>
