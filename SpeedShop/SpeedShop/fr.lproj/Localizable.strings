@@ -18,8 +18,8 @@
 "The backup file has been saved" = "Le fichier de sauvegarde a été enregistré";
 "SaveMessageOK" = "Maintenant tu as besoin de ton logiciel Fender FUSE pour charger le fichier de sauvegarde sur ton ampli.\\nUtilise le dossier de sauvegarde : %@";
 
-"Unable to save backup" = "La sauvegarde a échouée.";
-"There was an error trying to save the new backup file." = "Un erreur est survenue lors de la sauvegarde du nouveau fichier.";
+"Unable to save backup" = "La sauvegarde a échoué.";
+"There was an error trying to save the new backup file." = "Une erreur est survenue lors de la sauvegarde du nouveau fichier.";
 
 "The new backup file has been saved" = "Le nouveau fichier de sauvegarde a été enregistré";
 
