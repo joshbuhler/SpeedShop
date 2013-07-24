@@ -26,7 +26,9 @@
 {
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
-    
+
+    [_ampPresetTable setSelectionHighlightStyle:NSTableViewDraggingDestinationFeedbackStyleSourceList];
+
     self.qaBox1.delegate = self;
     self.qaBox2.delegate = self;
     self.qaBox3.delegate = self;
@@ -282,7 +284,7 @@
     {
         if (dropOperation == NSTableViewDropOn)
         {
-            [tableView setDropRow:row dropOperation:NSTableViewDropOn];
+            [tableView setDropRow:row dropOperation:NSTableViewDropAbove];  // gives us a small blue line to insert BETWEEN existing presets
             return NSDragOperationMove;
         }
         else
@@ -333,18 +335,22 @@
     NSLog(@"dropped on: %ld", (long)row);
     
     // remove the items from the preset list
+    [_ampPresetTable beginUpdates];
+    [_ampPresetTable removeRowsAtIndexes:rowIndexes withAnimation:NSTableViewAnimationSlideUp | NSTableViewAnimationEffectFade];
     [self.currentBackup presetsRemoveObjectsInArray:draggedItemsArray];
+    [_ampPresetTable endUpdates];
 
     // items have been removed, so we have to correct the target row if it is *after* the dragged items
     if ([rowIndexes firstIndex] < row)
-        row = row - draggedItemsArray.count + 1;
+        row = row - draggedItemsArray.count;
 
     // now put them in their new location
+    [_ampPresetTable beginUpdates];
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
     [self.currentBackup presetsInsertObjects:draggedItemsArray atIndexes:newIndexes];
+    [_ampPresetTable insertRowsAtIndexes:newIndexes withAnimation:NSTableViewAnimationSlideDown | NSTableViewAnimationEffectGap];
+    [_ampPresetTable endUpdates];
 
-    [self.ampPresetTable reloadData];
-    [self.ampPresetTable deselectAll:nil];
     // re-select the dragged items for improved user feedback
     [self.ampPresetTable selectRowIndexes:newIndexes byExtendingSelection:NO];
     [self refreshUI];
@@ -502,6 +508,9 @@
 {
     if (! self.currentBackup)
         return;
+
+    [self.ampPresetTable reloadData];
+
 
     NSString *thePresetList;
     thePresetList = [[NSString alloc] init];
