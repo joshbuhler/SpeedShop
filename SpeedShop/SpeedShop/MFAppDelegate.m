@@ -264,6 +264,18 @@
     return returnValue;
 }
 
+
+// a table cell was edited!
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+
+    if (! [aTableColumn.identifier isEqualToString:@"presetName"])  // only editing of name allowed!
+        return;
+
+    [self.currentBackup setNewName:anObject toPresetAtIndex:(NSUInteger)rowIndex];
+    [_ampPresetTable reloadData];
+}
+
+
 - (BOOL) tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
     NSMutableDictionary *dragData = [[NSMutableDictionary alloc] init];
