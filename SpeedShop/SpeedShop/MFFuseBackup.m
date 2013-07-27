@@ -477,7 +477,11 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         NSString * lastNamePart = [NSString stringWithString:cPreset.name];
         // clean up new file name from dangerous characters that are allowed on amps LCD display and XML storage, but not on file names
         lastNamePart = [lastNamePart stringByReplacingOccurrencesOfString: @":" withString:@""];
-        NSString *newFilename = [NSString stringWithFormat:@"%02d_%@.fuse", newIndex, lastNamePart];
+        NSString *newFilename = @"";
+        if (_ampSeries == AmpSeries_GDec)
+            newFilename = [NSString stringWithFormat:@"%02d.fuse", newIndex];
+        else
+            newFilename = [NSString stringWithFormat:@"%02d_%@.fuse", newIndex, lastNamePart];
 
         [fileMan copyItemAtPath:[cPreset.fileURL path]
                          toPath:[[newPresetDir path] stringByAppendingPathComponent:newFilename]

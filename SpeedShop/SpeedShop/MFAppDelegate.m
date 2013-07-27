@@ -211,9 +211,14 @@
     [_window setTitle:newTitle];
 }
 
+
 // Open command fired by the "Open Recent >" menu
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
 {
+    // Unsaved changes? does user really want to load other data?
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return YES; // keep file in OpenRecent
+
     NSURL *cFolder = [[NSURL alloc] initFileURLWithPath:filename isDirectory:YES];
     NSLog(@"Open Recent Folder: >%@<", cFolder);
 
@@ -273,6 +278,7 @@
 
     [self.currentBackup setNewName:anObject toPresetAtIndex:(NSUInteger)rowIndex];
     [_ampPresetTable reloadData];
+    [self refreshUI];   // maybe one of the QA preset needs update?
 }
 
 
@@ -385,6 +391,8 @@
     
     [self refreshUI];
 }
+
+
 
 #pragma mark - UI Actions
 - (IBAction)onReloadBtn:(id)sender
