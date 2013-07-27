@@ -59,6 +59,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 - (void) encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_originalName forKey:@"originalName"];
     [encoder encodeObject:_author forKey:@"author"];
     [encoder encodeObject:_description forKey:@"description"];
     [encoder encodeObject:_fileURL forKey:@"fileURL"];
@@ -68,6 +69,7 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
 - (id)initWithCoder:(NSCoder *)decoder
 {
     self.name = [decoder decodeObjectForKey:@"name"];
+    self.originalName = [decoder decodeObjectForKey:@"originalName"];
     self.author = [decoder decodeObjectForKey:@"author"];
     self.description = [decoder decodeObjectForKey:@"description"];
     _fileURL = [decoder decodeObjectForKey:@"fileURL"];
@@ -161,6 +163,7 @@ didStartElement:(NSString *)elementName
     if ([elementName isEqualToString:@"Info"])
     {
         self.name = [attributeDict valueForKey:@"name"];
+        self.originalName = [NSString stringWithString:self.name];  // remember, if name is edited
         self.author = [attributeDict valueForKey:@"author"];
         
         //NSLog(@"     Preset: %@ by %@", self.name, self.author);

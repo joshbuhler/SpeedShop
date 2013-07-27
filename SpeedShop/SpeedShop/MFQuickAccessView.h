@@ -21,10 +21,11 @@
 
 @interface MFQuickAccessView : NSView
 
-@property (nonatomic, strong) MFPreset *preset;
-
 @property (nonatomic, strong) id delegate;
 
 @property (nonatomic, assign) BOOL canAcceptDrag;
+
+- (void)setPreset:(MFPreset *)newPreset fromAmpIndex:(int) newAmpIndex;
+- (MFPreset *) preset;
 
 @end
