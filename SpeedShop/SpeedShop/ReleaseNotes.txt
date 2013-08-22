@@ -39,3 +39,9 @@ Release Notes
 * **New feature:** Prompt to save modified backups when loading or quitting. (#15)
 * **New feature:** Notifying user in UI of modified status
 * **Improvement:** Improved drag & drop of multiple rows
+
+# 0.9.5
+* **New feature:** Speed shop ahora habla español. Es spricht auch Deutsch. Et un peu de français.
+* **New feature:** Put currently loaded backup name into titlebar.
+* **Improvement:** Undo/redo support.
+* **Improvement:** Misc UI improvements.
