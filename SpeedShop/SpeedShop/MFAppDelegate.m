@@ -26,7 +26,9 @@
 {
     // init drag/drop for the tableview
     [_ampPresetTable registerForDraggedTypes:[NSArray arrayWithObject:DropTypeMFPreset]];
-    
+
+    [_ampPresetTable setSelectionHighlightStyle:NSTableViewDraggingDestinationFeedbackStyleSourceList];
+
     self.qaBox1.delegate = self;
     self.qaBox2.delegate = self;
     self.qaBox3.delegate = self;
@@ -36,6 +38,12 @@
     [self.presetNameField setStringValue:@""];
     [self.authorNameField setStringValue:@""];
     [self.presetDescriptionField setStringValue:@""];
+    
+    [self.ampModelField setStringValue:@""];
+    [self.stompField setStringValue:@""];
+    [self.modField setStringValue:@""];
+    [self.delayField setStringValue:@""];
+    [self.reverbField setStringValue:@""];
     
     // Custom font for headers
     NSFont *headerFont = [NSFont fontWithName:@"Open Sans Extrabold" size:20.0f];
@@ -47,11 +55,17 @@
     self.qa1Header.font = headerFont;
     self.qa2Header.font = headerFont;
     self.qa3Header.font = headerFont;
+    self.detailsHeader.font = headerFont;
     
     self.backupNameField.font = fieldFont;
     self.presetNameField.font = fieldFont;
     self.authorNameField.font = fieldFont;
     self.presetDescriptionField.font = fieldFont;
+    
+    self.stompField.font = fieldFont;
+    self.modField.font = fieldFont;
+    self.delayField.font = fieldFont;
+    self.reverbField.font = fieldFont;
 
     [_window setTitle:APPLICATION_NAME];
 }
@@ -68,11 +82,11 @@
 
     if (self.currentBackup.isModified)
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Do you really want to procede?"
-                                         defaultButton:@"No"
-                                       alternateButton:@"Yes"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Do you really want to procede?", @"")
+                                         defaultButton:NSLocalizedString(@"No", @"")
+                                       alternateButton:NSLocalizedString(@"Yes", @"")
                                            otherButton:nil
-                             informativeTextWithFormat:@"Your backup has been modified, and unsaved changes will be lost."];
+                             informativeTextWithFormat:NSLocalizedString(@"Your backup has been modified, and unsaved changes will be lost.", @"")];
         [alert setAlertStyle: NSCriticalAlertStyle];
 
         NSInteger buttonReturn = [alert runModal];
@@ -139,11 +153,8 @@
     }
 }
 
-
 - (void) refreshUI
 {
-    // self.currentBackup.backupDescription = self.backupNameField.stringValue;
-
     if (self.ampPresetTable.selectedRowIndexes.count == 0)
         self.currentPreset = nil;
 
@@ -151,12 +162,25 @@
     [self.presetNameField setStringValue:self.currentPreset.name ?: @""];
     [self.authorNameField setStringValue:self.currentPreset.author ?: @""];
     [self.presetDescriptionField setStringValue:self.currentPreset.description ?: @""];
+    
+    if (self.currentPreset)
+    {
+        [self.ampModelField setStringValue:[MFPreset getNameForAmpModel:self.currentPreset.ampModel]];
+        [self.stompField setStringValue:[MFPreset getNameForFXStomp:self.currentPreset.fxStomp]];
+        [self.modField setStringValue:[MFPreset getNameForFXModulation:self.currentPreset.fxModulation]];
+        [self.delayField setStringValue:[MFPreset getNameForFXDelay:self.currentPreset.fxDelay]];
+        [self.reverbField setStringValue:[MFPreset getNameForFXReverb:self.currentPreset.fxReverb]];
+    }
 
     if (self.currentBackup.ampSeries == AmpSeries_Mustang || self.currentBackup.ampSeries == AmpSeries_Mustang_V2)
     {
-        self.qaBox1.preset = [self.currentBackup presetForQASlot:0] ?: nil;
-        self.qaBox2.preset = [self.currentBackup presetForQASlot:1] ?: nil;
-        self.qaBox3.preset = [self.currentBackup presetForQASlot:2] ?: nil;
+        MFPreset * qaPreset;
+        qaPreset = [self.currentBackup presetForQASlot:0];
+        [self.qaBox1 setPreset:qaPreset fromAmpIndex:[self.currentBackup indexForPreset:qaPreset]];
+        qaPreset = [self.currentBackup presetForQASlot:1];
+        [self.qaBox2 setPreset:qaPreset fromAmpIndex:[self.currentBackup indexForPreset:qaPreset]];
+        qaPreset = [self.currentBackup presetForQASlot:2];
+        [self.qaBox3 setPreset:qaPreset fromAmpIndex:[self.currentBackup indexForPreset:qaPreset]];
 
         self.qaBox1.canAcceptDrag = YES;
         self.qaBox2.canAcceptDrag = YES;
@@ -164,9 +188,9 @@
     }
     else
     {
-        self.qaBox1.preset = nil;
-        self.qaBox2.preset = nil;
-        self.qaBox3.preset = nil;
+        [self.qaBox1 setPreset:nil fromAmpIndex:-1];
+        [self.qaBox2 setPreset:nil fromAmpIndex:-1];
+        [self.qaBox3 setPreset:nil fromAmpIndex:-1];
 
         self.qaBox1.canAcceptDrag = NO;
         self.qaBox2.canAcceptDrag = NO;
@@ -178,13 +202,40 @@
 
 
 - (void)refreshWindowTitle {
+
+    NSString * newTitle = APPLICATION_NAME;
+    if (self.currentBackup)
+        newTitle = [newTitle stringByAppendingFormat:@" - %@", [[self.currentBackup.folderURL path] lastPathComponent]];
     if (self.currentBackup.isModified)
-        [_window setTitle:APPLICATION_NAME @" [modified!]"];
-    else
-        [_window setTitle:APPLICATION_NAME];
+        newTitle = [newTitle stringByAppendingString:NSLocalizedString(@"modified", @"")];
+    [_window setTitle:newTitle];
 }
 
 
+// Open command fired by the "Open Recent >" menu
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
+{
+    // Unsaved changes? does user really want to load other data?
+    if ([self applicationShouldTerminate:nil] == NSTerminateCancel)
+        return YES; // keep file in OpenRecent
+
+    NSURL *cFolder = [[NSURL alloc] initFileURLWithPath:filename isDirectory:YES];
+    NSLog(@"Open Recent Folder: >%@<", cFolder);
+
+    BOOL isDir;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:&isDir] && isDir)
+    {
+        dispatch_async(dispatch_get_current_queue(), ^{
+            [self loadBackupFile:cFolder];
+        });
+        [self refreshUI];
+        [self.ampPresetTable deselectAll:nil];
+
+        return YES;  // keep in "Open Recent >" menu
+    }
+
+    return NO;  // remove from "Open Recent >" menu
+}
 
 #pragma mark - Tableview Delegate Methods
 
@@ -218,6 +269,19 @@
     return returnValue;
 }
 
+
+// a table cell was edited!
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+
+    if (! [aTableColumn.identifier isEqualToString:@"presetName"])  // only editing of name allowed!
+        return;
+
+    [self.currentBackup setNewName:anObject toPresetAtIndex:(NSUInteger)rowIndex];
+    [_ampPresetTable reloadData];
+    [self refreshUI];   // maybe one of the QA preset needs update?
+}
+
+
 - (BOOL) tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
     NSMutableDictionary *dragData = [[NSMutableDictionary alloc] init];
@@ -238,7 +302,7 @@
     {
         if (dropOperation == NSTableViewDropOn)
         {
-            [tableView setDropRow:row dropOperation:NSTableViewDropOn];
+            [tableView setDropRow:row dropOperation:NSTableViewDropAbove];  // gives us a small blue line to insert BETWEEN existing presets
             return NSDragOperationMove;
         }
         else
@@ -266,11 +330,11 @@
     // prevent illegal multi-select drag'n'drops
     if (row >= [rowIndexes firstIndex] && row <= [rowIndexes lastIndex])
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Illegal Drag'n'Drop Operation"
-                                         defaultButton:@"OK"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Illegal Drag'n'Drop Operation", @"")
+                                         defaultButton:NSLocalizedString(@"OK", @"")
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"It is impossible to insert a range into itself."];
+                             informativeTextWithFormat:NSLocalizedString(@"It is impossible to insert a range into itself.", @"")];
         
         [alert beginSheetModalForWindow:self.window
                           modalDelegate:nil
@@ -289,18 +353,22 @@
     NSLog(@"dropped on: %ld", (long)row);
     
     // remove the items from the preset list
+    [_ampPresetTable beginUpdates];
+    [_ampPresetTable removeRowsAtIndexes:rowIndexes withAnimation:NSTableViewAnimationSlideUp | NSTableViewAnimationEffectFade];
     [self.currentBackup presetsRemoveObjectsInArray:draggedItemsArray];
+    [_ampPresetTable endUpdates];
 
     // items have been removed, so we have to correct the target row if it is *after* the dragged items
     if ([rowIndexes firstIndex] < row)
-        row = row - draggedItemsArray.count + 1;
+        row = row - draggedItemsArray.count;
 
     // now put them in their new location
+    [_ampPresetTable beginUpdates];
     NSIndexSet *newIndexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(row, draggedItemsArray.count)];
     [self.currentBackup presetsInsertObjects:draggedItemsArray atIndexes:newIndexes];
+    [_ampPresetTable insertRowsAtIndexes:newIndexes withAnimation:NSTableViewAnimationSlideDown | NSTableViewAnimationEffectGap];
+    [_ampPresetTable endUpdates];
 
-    [self.ampPresetTable reloadData];
-    [self.ampPresetTable deselectAll:nil];
     // re-select the dragged items for improved user feedback
     [self.ampPresetTable selectRowIndexes:newIndexes byExtendingSelection:NO];
     [self refreshUI];
@@ -323,6 +391,8 @@
     
     [self refreshUI];
 }
+
+
 
 #pragma mark - UI Actions
 - (IBAction)onReloadBtn:(id)sender
@@ -382,22 +452,22 @@
         NSAlert *alert;
         if (success)
         {
-            alert = [NSAlert alertWithMessageText:@"The backup file has been saved"
-                                    defaultButton:@"OK"
+            alert = [NSAlert alertWithMessageText:NSLocalizedString(@"The backup file has been saved", @"")
+                                    defaultButton:NSLocalizedString(@"OK", @"")
                                   alternateButton:nil
                                       otherButton:nil
-                        informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@",[[newURL absoluteString]lastPathComponent]];
+                        informativeTextWithFormat:NSLocalizedString(@"SaveMessageOK", @""), [[newURL absoluteString] lastPathComponent]];
 
             [self loadBackupFile:newURL];
             [self refreshUI];
         }
         else
         {
-            alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                    defaultButton:@"OK"
+            alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to save backup", @"")
+                                    defaultButton:NSLocalizedString(@"OK", @"")
                                   alternateButton:nil
                                       otherButton:nil
-                        informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+                        informativeTextWithFormat:NSLocalizedString(@"There was an error trying to save the new backup file.", @"")];
         }
 
         [alert beginSheetModalForWindow:self.window
@@ -427,22 +497,22 @@
             NSAlert *alert;
             if (success)
             {
-                alert = [NSAlert alertWithMessageText:@"The new backup file has been saved"
-                                        defaultButton:@"OK"
+                alert = [NSAlert alertWithMessageText:NSLocalizedString(@"The new backup file has been saved", @"")
+                                        defaultButton:NSLocalizedString(@"OK", @"")
                                       alternateButton:nil
                                           otherButton:nil
-                            informativeTextWithFormat:@"You'll now need to use Fender FUSE to transfer the backup to your amp.\nUse backup folder: %@", [[newURL absoluteString] lastPathComponent]];
+                            informativeTextWithFormat:NSLocalizedString(@"SaveMessageOK", @""), [[newURL absoluteString] lastPathComponent]];
 
                 [self loadBackupFile:newURL];
                 [self refreshUI];
             }
             else
             {
-                alert = [NSAlert alertWithMessageText:@"Unable to save backup"
-                                        defaultButton:@"OK"
+                alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to save backup", @"")
+                                        defaultButton:NSLocalizedString(@"OK", @"")
                                       alternateButton:nil
                                           otherButton:nil
-                            informativeTextWithFormat:@"There was an error trying to save the new backup file."];
+                            informativeTextWithFormat:NSLocalizedString(@"There was an error trying to save the new backup file.", @"")];
             }
 
             [alert beginSheetModalForWindow:self.window
@@ -458,6 +528,9 @@
 {
     if (! self.currentBackup)
         return;
+
+    [self.ampPresetTable reloadData];
+
 
     NSString *thePresetList;
     thePresetList = [[NSString alloc] init];
@@ -478,11 +551,11 @@
     [[NSPasteboard generalPasteboard] setString:thePresetList  forType:NSStringPboardType];
 
     NSAlert *alert;
-    alert = [NSAlert alertWithMessageText:@"Copy Presetlist"
-                            defaultButton:@"OK"
+    alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Copy Presetlist", @"")
+                            defaultButton:NSLocalizedString(@"OK", @"")
                           alternateButton:nil
                               otherButton:nil
-                informativeTextWithFormat:@"Copied all your preset numbers and names to the clipboard."];
+                informativeTextWithFormat:NSLocalizedString(@"Copied all your preset numbers and names to the clipboard.", @"")];
 
     [alert beginSheetModalForWindow:self.window
                       modalDelegate:nil
@@ -522,6 +595,10 @@
 - (void) loadBackupFile:(NSURL *)url
 {
     self.currentBackup = [[MFFuseBackup alloc] init];
+
+    // put the to be loaded folder on top of the "Open Recent >" menu
+    [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:url];
+
     [self.currentBackup loadBackup:url withCompletion:^(BOOL success)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -550,7 +627,7 @@
     [self refreshUI];
 }
 
-
+// called by MFQuickAccessView after a preset was dropped
 - (void) presetDidChangeForQAView:(MFQuickAccessView *)qaView
 {
     int qaSlot = 0;
@@ -569,9 +646,10 @@
         qaSlot = 2;
     }
 
-//    MFPreset *oldPreset = [self.currentBackup presetForQASlot:qaSlot];
-//
-//    if (![oldPreset.uuid isEqualToString:qaView.preset.uuid])   // any change?
+
+    // now store the new QA slot in MFBackup for later saving to the filesystem
+    MFPreset *oldPreset = [self.currentBackup presetForQASlot:qaSlot];
+    if (![oldPreset.uuid isEqualToString:qaView.preset.uuid])   // any change?
         [self.currentBackup setPreset:qaView.preset toQASlot:qaSlot];
 
     [self refreshUI];

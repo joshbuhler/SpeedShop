@@ -16,6 +16,8 @@
 @end
 
 @implementation MFQuickAccessView
+    MFPreset * _preset;
+    int _ampIndex;      // the global (00-99) index where the current QA preset is stored on the amp
 
 
 - (id)initWithFrame:(NSRect)frame
@@ -53,20 +55,25 @@
     // Drawing code here.
 }
 
-- (void) setPreset:(MFPreset *)preset
+
+- (MFPreset *) preset
 {
-    _preset = preset;
+    return _preset;
+}
+
+
+- (void)setPreset:(MFPreset *)newPreset fromAmpIndex:(int) newAmpIndex
+{
+    _preset = newPreset;
+    _ampIndex = newAmpIndex;
     
     [self refreshUI];
 }
 
 - (void) refreshUI
 {
-    NSString *presetName = @"";
     if (_preset)
-        presetName = _preset.name;
-        
-    [self.presetLabel setStringValue:presetName];
+        [_presetLabel setStringValue:[NSString stringWithFormat:@"[%02d]\n%@", _ampIndex, _preset.name]];
 }
 
 
@@ -96,10 +103,10 @@
         NSData *rowData = [pBoard dataForType:DropTypeMFPreset];
         NSMutableDictionary *dragData = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
         
-        MFPreset *thePreset = [dragData objectForKey:@"preset"];
-        self.preset = thePreset;
-        [_presetLabel setStringValue:thePreset.name];
-        
+        _preset = [dragData objectForKey:@"preset"];
+        NSIndexSet * theIndexes = [dragData objectForKey:@"rowIndexes"];
+        _ampIndex = theIndexes.firstIndex;
+
         if (self.delegate)
         {
             if ([self.delegate respondsToSelector:@selector(presetDidChangeForQAView:)])

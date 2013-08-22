@@ -19,7 +19,9 @@
     self = [super init];
     if (self) {
         _backupDescription = [[NSString alloc] initWithString:aDescription];
-        _presets = [[NSMutableArray alloc] initWithArray:presets];
+
+        // perform deep copy of presets array, as names of presets may have been edited
+        _presets = [NSKeyedUnarchiver unarchiveObjectWithData: [NSKeyedArchiver archivedDataWithRootObject: presets]];
         _quickAccessPresets = [[NSMutableArray alloc] initWithArray:qaPresets];
         _quickAccessPresetsUUID = [[NSMutableArray alloc] initWithArray:qaPresetsUUID];
     }

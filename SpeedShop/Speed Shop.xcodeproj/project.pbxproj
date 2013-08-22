@@ -36,9 +36,6 @@
 		03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
 		03404042170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
 		03404043170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03404019170E83AA008EFA2C /* MFQuickAccessView.xib */; };
-		03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
-		03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
-		03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0340401A170E83AA008EFA2C /* ReleaseNotes.txt */; };
 		03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */; };
 		0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */; };
@@ -90,6 +87,9 @@
 		1CC93958E5ED27A8AFAD7823 /* MFFuseBackupHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */; };
 		1CC93AA7A5085F99FF73DB97 /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
 		1CC93B58F37020E7686518AF /* MFFuseBackupMemento.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */; };
+		FF193253178B5DA3000FFF5A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF193257178B5DA3000FFF5A /* Localizable.strings */; };
+		FF193254178B5DA3000FFF5A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF193257178B5DA3000FFF5A /* Localizable.strings */; };
+		FF193255178B5DA3000FFF5A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF193257178B5DA3000FFF5A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,7 +132,6 @@
 		03404017170E83AA008EFA2C /* MFQuickAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFQuickAccessView.h; sourceTree = "<group>"; };
 		03404018170E83AA008EFA2C /* MFQuickAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFQuickAccessView.m; sourceTree = "<group>"; };
 		03404019170E83AA008EFA2C /* MFQuickAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFQuickAccessView.xib; sourceTree = "<group>"; };
-		0340401A170E83AA008EFA2C /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		0340401D170E83AA008EFA2C /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0340401E170E83AA008EFA2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		03404020170E83AA008EFA2C /* MainWindowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainWindowBG.png; sourceTree = "<group>"; };
@@ -165,6 +164,22 @@
 		1CC9378680EC93690ECABA17 /* MFFuseBackupHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFuseBackupHistory.h; sourceTree = "<group>"; };
 		1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackupMemento.m; sourceTree = "<group>"; };
 		1CC93F31417A47DA67C42E0C /* MFFuseBackupHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFuseBackupHistory.m; sourceTree = "<group>"; };
+		FF193256178B5DA3000FFF5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF193258178B5DAD000FFF5A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF2057C517A06EE1000EB918 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = es.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FF2057C617A06EE1000EB918 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF2057C717A06EE1000EB918 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FF2057C817A06EE1000EB918 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF2057C917A06EE2000EB918 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF250944178B4B5B003E0B41 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FF250945178B4B5B003E0B41 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF250946178B4B5B003E0B41 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FF250947178B4B5B003E0B41 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFB027D81795AF2400A2BA17 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = fr.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FFB027D91795AF2400A2BA17 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFB027DA1795AF2400A2BA17 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FFB027DB1795AF2400A2BA17 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFB027DC1795AF2400A2BA17 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +228,6 @@
 				03404017170E83AA008EFA2C /* MFQuickAccessView.h */,
 				03404018170E83AA008EFA2C /* MFQuickAccessView.m */,
 				03404019170E83AA008EFA2C /* MFQuickAccessView.xib */,
-				0340401A170E83AA008EFA2C /* ReleaseNotes.txt */,
 				0340401B170E83AA008EFA2C /* Resources */,
 				03404024170E83AA008EFA2C /* Speed Shop-Info.plist */,
 				03404025170E83AA008EFA2C /* Speed Shop-Prefix.pch */,
@@ -221,6 +235,7 @@
 				1CC9378680EC93690ECABA17 /* MFFuseBackupHistory.h */,
 				1CC93D9292E0F3592C19541F /* MFFuseBackupMemento.m */,
 				1CC935A06ECB7C8BA2653B7D /* MFFuseBackupMemento.h */,
+				FF193257178B5DA3000FFF5A /* Localizable.strings */,
 			);
 			path = SpeedShop;
 			sourceTree = "<group>";
@@ -422,6 +437,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				fr,
+				es,
 			);
 			mainGroup = 03BF543116DF11CF00895128;
 			productRefGroup = 03BF543B16DF11CF00895128 /* Products */;
@@ -446,7 +464,6 @@
 				0340402B170E83AA008EFA2C /* InfoPlist.strings in Resources */,
 				0340402E170E83AA008EFA2C /* MainMenu.xib in Resources */,
 				03404043170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
-				03404046170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
 				03404049170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
 				0340404C170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
 				0340404F170E83AA008EFA2C /* MainWindowBG.png in Resources */,
@@ -457,6 +474,7 @@
 				03404070170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
 				03404073170E840D008EFA2C /* QAWellBG.png in Resources */,
 				03404076170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
+				FF193255178B5DA3000FFF5A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +488,6 @@
 				03404029170E83AA008EFA2C /* InfoPlist.strings in Resources */,
 				0340402C170E83AA008EFA2C /* MainMenu.xib in Resources */,
 				03404041170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
-				03404044170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
 				0340404D170E83AA008EFA2C /* MainWindowBG.png in Resources */,
 				03404050170E83AA008EFA2C /* MainWindowBG@2x.png in Resources */,
 				03404053170E83AA008EFA2C /* QAWellBG.png in Resources */,
@@ -481,6 +498,7 @@
 				0340406E170E840D008EFA2C /* MainWindowBG@2x.png in Resources */,
 				03404071170E840D008EFA2C /* QAWellBG.png in Resources */,
 				03404074170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
+				FF193253178B5DA3000FFF5A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +511,6 @@
 				0340402A170E83AA008EFA2C /* InfoPlist.strings in Resources */,
 				0340402D170E83AA008EFA2C /* MainMenu.xib in Resources */,
 				03404042170E83AA008EFA2C /* MFQuickAccessView.xib in Resources */,
-				03404045170E83AA008EFA2C /* ReleaseNotes.txt in Resources */,
 				03404048170E83AA008EFA2C /* OpenSans-ExtraBold.ttf in Resources */,
 				0340404B170E83AA008EFA2C /* OpenSans-Light.ttf in Resources */,
 				0340404E170E83AA008EFA2C /* MainWindowBG.png in Resources */,
@@ -509,6 +526,7 @@
 				03404075170E840D008EFA2C /* QAWellBG@2x.png in Resources */,
 				0340407D170E848E008EFA2C /* InfoPlist.strings in Resources */,
 				0340407F170E848E008EFA2C /* Speed ShopTests-Info.plist in Resources */,
+				FF193254178B5DA3000FFF5A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +633,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				03404008170E83AA008EFA2C /* en */,
+				FF250944178B4B5B003E0B41 /* de */,
+				FFB027D81795AF2400A2BA17 /* fr */,
+				FF2057C517A06EE1000EB918 /* es */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -623,6 +644,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				0340400A170E83AA008EFA2C /* en */,
+				FF250945178B4B5B003E0B41 /* de */,
+				FFB027D91795AF2400A2BA17 /* fr */,
+				FF2057C617A06EE1000EB918 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -631,6 +655,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				0340400C170E83AA008EFA2C /* en */,
+				FF250946178B4B5B003E0B41 /* de */,
+				FFB027DA1795AF2400A2BA17 /* fr */,
+				FF2057C717A06EE1000EB918 /* es */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -639,8 +666,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				03404079170E848E008EFA2C /* en */,
+				FF250947178B4B5B003E0B41 /* de */,
+				FFB027DC1795AF2400A2BA17 /* fr */,
+				FF2057C917A06EE2000EB918 /* es */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FF193257178B5DA3000FFF5A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF193256178B5DA3000FFF5A /* en */,
+				FF193258178B5DAD000FFF5A /* de */,
+				FFB027DB1795AF2400A2BA17 /* fr */,
+				FF2057C817A06EE1000EB918 /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
