@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Speed Shop
+
+  Created by Wolfram Esser on 08.07.13.
+  Copyright (c) 2013 Joshua Buhler. All rights reserved.
+*/
+
+"No" = "Nein";
+"Yes" = "Ja";
+"OK" = "OK";
+
+"modified" = " [modifiziert!]";
+
+"Illegal Drag'n'Drop Operation" = "Illegale Drag'n'Drop Operation";
+"It is impossible to insert a range into itself." = "Es ist nicht möglich, einen Bereich auf sich selber zu ziehen.";
+
+"The backup file has been saved" = "Das Backup wurde gespeichert";
+"SaveMessageOK" = "Jetzt brauchst Du deine Fender FUSE Software, um das Backup auf Deinen Amp zu laden.\nBenutze den Backup-Ordner: %@";
+
+"Unable to save backup" = "Speichern des Backups fehlgeschlagen";
+"There was an error trying to save the new backup file." = "Es gab einen Fehler beim Speichern des Backups.";
+
+"The new backup file has been saved" = "Das neue Backup wurde gespeichert";
+
+"Copy Presetlist" = "Kopiere Preset-Liste";
+"Copied all your preset numbers and names to the clipboard." = "Die Nummern und Namen Deiner Presets befinden sich jetzt in der Zwischenablage.";
+
+"Do you really want to procede?" = "Möchtest Du das wirklich?";
+"Your backup has been modified, and unsaved changes will be lost." = "Dein Backup wurde verändert. Ungespeicherte Änderungen gehen verloren.";

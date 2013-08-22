@@ -116,6 +116,7 @@ extern NSString *const DropTypeMFPreset;
 @property (nonatomic, strong) MFFuseBackup *backup;
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *originalName;   // if differs from name we must change file contents at saving
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *description;
 

@@ -386,10 +386,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
         [docRoot replaceChildAtIndex:2 withNode:qa3];
         
-        //    NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+        NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
         NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint];
-        //    NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
-        [settingsData writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
+        NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
+        [exportString writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
                       atomically:YES
                         encoding:NSUTF8StringEncoding
                            error:&error];
@@ -469,19 +469,35 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         MFPreset *cPreset = [_presets objectAtIndex:i];
         NSString *oldFilename = [cPreset.fileURL lastPathComponent];
         //NSLog(@"old fileName: %@", oldFilename);
-        
+
         int oldIndex = [[oldFilename substringToIndex:2] intValue];
         int newIndex = i;
         //NSLog(@"    old: %d new: %d", oldIndex, newIndex);
         
-        NSString *presetName = [oldFilename substringFromIndex:2];
-        NSString *newFilename = [NSString stringWithFormat:@"%02d%@", newIndex, presetName];
-        //NSLog(@"    newFilename: %@", newFilename);
-        
+        NSString * lastNamePart = [NSString stringWithString:cPreset.name];
+        // clean up new file name from dangerous characters that are allowed on amps LCD display and XML storage, but not on file names
+        lastNamePart = [lastNamePart stringByReplacingOccurrencesOfString: @":" withString:@""];
+        NSString *newFilename = @"";
+        if (_ampSeries == AmpSeries_GDec)
+            newFilename = [NSString stringWithFormat:@"%02d.fuse", newIndex];
+        else
+            newFilename = [NSString stringWithFormat:@"%02d_%@.fuse", newIndex, lastNamePart];
+
         [fileMan copyItemAtPath:[cPreset.fileURL path]
                          toPath:[[newPresetDir path] stringByAppendingPathComponent:newFilename]
                           error:&error];
-        
+
+        // preset name was changed by user edit, so patch preset XML file after copying
+        if (! [cPreset.name isEqualToString:cPreset.originalName])
+        {
+            BOOL presetPatchNameOK = [self patchPresetXMLAtPath:[[newPresetDir path] stringByAppendingPathComponent:newFilename]
+                                                    withNewName:cPreset.name];
+            if (presetPatchNameOK == NO)
+            {
+                [self completeSaving:NO];
+            }
+        }
+
         // now move the item from the FUSE folder to it's new spot
         NSString *oldFuseFilename = [NSString stringWithFormat:@"%02d.fuse", oldIndex];
         NSString *newFuseFilename = [NSString stringWithFormat:@"%02d.fuse", newIndex];
@@ -500,11 +516,49 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     return YES;
 }
 
+// patch a preset XML with a new preset name
+- (BOOL)patchPresetXMLAtPath:(NSString *)path withNewName:(NSString*) newName{
+    NSError *error = nil;
+    NSURL *presetFile = [NSURL fileURLWithPath:path];
+    NSXMLDocument *presetXML = [[NSXMLDocument alloc] initWithContentsOfURL:presetFile
+                                                                    options:NSXMLDocumentTidyXML
+                                                                      error:&error];
+
+    if (error)
+        return NO;
+
+    NSXMLElement *docRoot = [presetXML rootElement];
+
+    NSArray *nodes = [presetXML nodesForXPath:@"/Preset/FUSE/Info" error:&error];
+    if ([nodes count] < 1)
+        return NO;
+
+    NSXMLElement *infoNode = (NSXMLElement*) [nodes objectAtIndex:0];
+    NSXMLNode * presetName = [infoNode attributeForName:@"name"];
+    [presetName setStringValue:newName];
+
+    NSString *newXMLContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>%@"
+                                                        , [presetXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
+
+    NSLog(@"*** Saving patched preset XML to path: %@", path);
+    [newXMLContent writeToURL:presetFile
+                atomically:YES
+                  encoding:NSUTF8StringEncoding
+                     error:&error];
+
+    if (error)
+        return NO;
+
+    return YES;
+}
+
+
 - (void) completeSaving:(BOOL)success
 {
     if (_saveCompletionBlock)
         _saveCompletionBlock(success, _newFolderURL);
 }
+
 
 
 #pragma mark - Other Private Stuff
@@ -560,6 +614,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     return -1;
 }
 
+
 - (NSString *) newUUID
 {
     NSString *uuidString = nil;
@@ -589,6 +644,22 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 
 - (void)presetsInsertObjects:(NSArray *)anOtherArray atIndexes:(NSIndexSet *)anIndexSet {
     [_presets insertObjects:anOtherArray atIndexes:anIndexSet];
+    [self storeStateToMemento];
+    _isModified = YES;
+}
+
+
+// if user changes name of a preset
+- (void)setNewName:(NSString *)newName toPresetAtIndex:(NSUInteger)index {
+    newName = [newName stringByReplacingOccurrencesOfString: @"\"" withString:@""];
+    newName = [newName stringByReplacingOccurrencesOfString: @"/" withString:@""];
+    newName = [newName stringByReplacingOccurrencesOfString: @"\\" withString:@""];
+
+    MFPreset * preset = [_presets objectAtIndex:index];
+    if ([preset.name isEqualToString:newName])
+        return;
+
+    preset.name = [NSString stringWithString:newName];
     [self storeStateToMemento];
     _isModified = YES;
 }
