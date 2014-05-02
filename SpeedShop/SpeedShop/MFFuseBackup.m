@@ -566,13 +566,16 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 // Get the preset for a QA slot, identified by the preset's UUID
 - (MFPreset *)presetForQASlot:(int)qaSlot
 {
-    NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
-    
-    for (int i = 0; i < self.presets.count; i++)
+    if (qaSlot < [_quickAccessPresetsUUID count])
     {
-        MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
-        if ([qaPresetUUID isEqualToString:cPreset.uuid])
-            return cPreset;
+        NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
+        
+        for (int i = 0; i < self.presets.count; i++)
+        {
+            MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
+            if ([qaPresetUUID isEqualToString:cPreset.uuid])
+                return cPreset;
+        }
     }
     
     return nil;
