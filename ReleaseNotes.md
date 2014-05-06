@@ -45,3 +45,7 @@ Release Notes
 * **New feature:** Put currently loaded backup name into titlebar.
 * **Improvement:** Undo/redo support.
 * **Improvement:** Misc UI improvements.
+
+# 0.9.6
+* **Bug Fix:** Resolves a potential crash when loading backups
+* **Bug Fix:** Fixes an issue where backups could be saved incorrectly, preventing them from being opened again.
