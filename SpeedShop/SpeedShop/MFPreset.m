@@ -166,7 +166,7 @@ didStartElement:(NSString *)elementName
         self.originalName = [NSString stringWithString:self.name];  // remember, if name is edited
         self.author = [attributeDict valueForKey:@"author"];
         
-        NSLog(@"     Preset: %@ by %@. Orig: %@", self.name, self.author, self.originalName);
+        //NSLog(@"     Preset: %@ by %@. Orig: %@", self.name, self.author, self.originalName);
     }
     
     // reset for the next node
