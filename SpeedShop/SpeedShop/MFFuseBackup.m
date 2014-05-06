@@ -475,6 +475,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         //NSLog(@"    old: %d new: %d", oldIndex, newIndex);
         
         NSString * lastNamePart = [NSString stringWithString:cPreset.name];
+        
         // clean up new file name from dangerous characters that are allowed on amps LCD display and XML storage, but not on file names
         lastNamePart = [lastNamePart stringByReplacingOccurrencesOfString: @":" withString:@""];
         NSString *newFilename = @"";
@@ -537,8 +538,9 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSXMLNode * presetName = [infoNode attributeForName:@"name"];
     [presetName setStringValue:newName];
 
-    NSString *newXMLContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>%@"
-                                                        , [presetXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
+//    NSString *newXMLContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>%@"
+//                                                        , [presetXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
+    NSString *newXMLContent = [presetXML XMLStringWithOptions:NSXMLNodePrettyPrint];
 
     NSLog(@"*** Saving patched preset XML to path: %@", path);
     [newXMLContent writeToURL:presetFile

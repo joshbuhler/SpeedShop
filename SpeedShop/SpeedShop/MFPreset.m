@@ -118,32 +118,32 @@ didStartElement:(NSString *)elementName
             if (self.backup.ampSeries != AmpSeries_GDec)
             {
                 _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
-                NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
+                //NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
             }
         }
         
         if (_parsingStomp)
         {
             _fxStomp = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxStomp: %@", [MFPreset getNameForFXStomp:_fxStomp]);
+            //NSLog(@"_fxStomp: %@", [MFPreset getNameForFXStomp:_fxStomp]);
         }
         
         if (_parsingMod)
         {
             _fxModulation = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxModulation: %@", [MFPreset getNameForFXModulation:_fxModulation]);
+            //NSLog(@"_fxModulation: %@", [MFPreset getNameForFXModulation:_fxModulation]);
         }
         
         if (_parsingDelay)
         {
             _fxDelay = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxDelay: %@", [MFPreset getNameForFXDelay:_fxDelay]);
+            //NSLog(@"_fxDelay: %@", [MFPreset getNameForFXDelay:_fxDelay]);
         }
         
         if (_parsingReverb)
         {
             _fxReverb = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxReverb: %@", [MFPreset getNameForFXReverb:_fxReverb]);
+            //NSLog(@"_fxReverb: %@", [MFPreset getNameForFXReverb:_fxReverb]);
         }
     }
     
@@ -166,7 +166,7 @@ didStartElement:(NSString *)elementName
         self.originalName = [NSString stringWithString:self.name];  // remember, if name is edited
         self.author = [attributeDict valueForKey:@"author"];
         
-        //NSLog(@"     Preset: %@ by %@", self.name, self.author);
+        NSLog(@"     Preset: %@ by %@. Orig: %@", self.name, self.author, self.originalName);
     }
     
     // reset for the next node
