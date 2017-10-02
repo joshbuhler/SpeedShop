@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preset amplifier="Mustang V2 III/IV/V" ProductId="13">
+  <Amplifier>
+    <Module ID="255" POS="0" BypassState="1">
+      <Param ControlIndex="0">47616</Param>
+      <Param ControlIndex="1">40192</Param>
+      <Param ControlIndex="2">33024</Param>
+      <Param ControlIndex="3">65280</Param>
+      <Param ControlIndex="4">45056</Param>
+      <Param ControlIndex="5">43264</Param>
+      <Param ControlIndex="6">42496</Param>
+      <Param ControlIndex="7">34560</Param>
+      <Param ControlIndex="8">33024</Param>
+      <Param ControlIndex="9">65535</Param>
+      <Param ControlIndex="10">33024</Param>
+      <Param ControlIndex="11">33024</Param>
+      <Param ControlIndex="12">4</Param>
+      <Param ControlIndex="13">17</Param>
+      <Param ControlIndex="14">17</Param>
+      <Param ControlIndex="15">2</Param>
+      <Param ControlIndex="16">3</Param>
+      <Param ControlIndex="17">10</Param>
+      <Param ControlIndex="18">17</Param>
+      <Param ControlIndex="19">1</Param>
+      <Param ControlIndex="20">0</Param>
+      <Param ControlIndex="21">1</Param>
+      <Param ControlIndex="22">0</Param>
+    </Module>
+  </Amplifier>
+  <FX>
+    <Stompbox ID="1">
+      <Module ID="271" POS="0" BypassState="1">
+        <Param ControlIndex="0">44032</Param>
+        <Param ControlIndex="1">40192</Param>
+        <Param ControlIndex="2">17664</Param>
+      </Module>
+    </Stompbox>
+    <Modulation ID="2">
+      <Module ID="18" POS="4" BypassState="1">
+        <Param ControlIndex="0">30976</Param>
+        <Param ControlIndex="1">0</Param>
+        <Param ControlIndex="2">36096</Param>
+        <Param ControlIndex="3">6912</Param>
+        <Param ControlIndex="4">33024</Param>
+      </Module>
+    </Modulation>
+    <Delay ID="3">
+      <Module ID="43" POS="6" BypassState="1">
+        <Param ControlIndex="0">25344</Param>
+        <Param ControlIndex="1">34048</Param>
+        <Param ControlIndex="2">10496</Param>
+        <Param ControlIndex="3">18176</Param>
+        <Param ControlIndex="4">33024</Param>
+        <Param ControlIndex="5">256</Param>
+      </Module>
+    </Delay>
+    <Reverb ID="4">
+      <Module ID="36" POS="7" BypassState="1">
+        <Param ControlIndex="0">20992</Param>
+        <Param ControlIndex="1">26112</Param>
+        <Param ControlIndex="2">42496</Param>
+        <Param ControlIndex="3">20992</Param>
+        <Param ControlIndex="4">65280</Param>
+      </Module>
+    </Reverb>
+  </FX>
+  <Band Type="0" Repeat="0">
+    <SongFile Location="6">No Band</SongFile>
+    <AudioMix>0</AudioMix>
+    <Balance>29127</Balance>
+    <Speed>100</Speed>
+    <Pitch>0</Pitch>
+    <Tempo />
+    <Transpose />
+    <DrumSolo />
+    <CountIn />
+  </Band>
+  <FUSE>
+    <Info name="Pigs Can Fly" author="Fender FUSE" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+    <PedalColors>
+      <Color ID="1">14</Color>
+      <Color ID="2">1</Color>
+      <Color ID="3">2</Color>
+      <Color ID="4">10</Color>
+    </PedalColors>
+  </FUSE>
+  <FirstExpressionPedal VolumeModeBehavior="1" ExpressionModeBehavior="6" HeelSetting="0" ToeSetting="65280" PedalMode="0" BypassEffectWhenVolumeMode="0" VolumeSwitchRevert="0" DefaultPedalState="0" PedalOverrideState="0" ParameterIndex="0" />
+  <UsbGain>0</UsbGain>
+</Preset>

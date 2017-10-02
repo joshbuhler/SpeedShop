@@ -365,6 +365,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if (_ampSeries == AmpSeries_Mustang || _ampSeries == AmpSeries_Mustang_V2)
     {
         NSURL *settingsFile = [_folderURL URLByAppendingPathComponent:SETTINGS_FILENAME];
+        
         NSXMLDocument *settingsXML = [[NSXMLDocument alloc] initWithContentsOfURL:settingsFile
                                                                           options:NSXMLDocumentTidyXML
                                                                             error:&error];
@@ -386,10 +387,12 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         NSXMLElement *qa3 = [NSXMLElement elementWithName:@"QA" stringValue:[NSString stringWithFormat:@"%d", index3]];
         [docRoot replaceChildAtIndex:2 withNode:qa3];
         
-        NSString *dtdString = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+        // set header info
+        [settingsXML setVersion:@"1.0"];
+        [settingsXML setCharacterEncoding:@"UTF-8"];
+        
         NSString *settingsData = [settingsXML XMLStringWithOptions:NSXMLNodePrettyPrint];
-        NSString *exportString = [NSString stringWithFormat:@"%@%@", dtdString, settingsData];
-        [exportString writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
+        [settingsData writeToURL:[tempDir URLByAppendingPathComponent:SETTINGS_FILENAME]
                       atomically:YES
                         encoding:NSUTF8StringEncoding
                            error:&error];
@@ -475,6 +478,7 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
         //NSLog(@"    old: %d new: %d", oldIndex, newIndex);
         
         NSString * lastNamePart = [NSString stringWithString:cPreset.name];
+        
         // clean up new file name from dangerous characters that are allowed on amps LCD display and XML storage, but not on file names
         lastNamePart = [lastNamePart stringByReplacingOccurrencesOfString: @":" withString:@""];
         NSString *newFilename = @"";
@@ -527,8 +531,6 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     if (error)
         return NO;
 
-    NSXMLElement *docRoot = [presetXML rootElement];
-
     NSArray *nodes = [presetXML nodesForXPath:@"/Preset/FUSE/Info" error:&error];
     if ([nodes count] < 1)
         return NO;
@@ -537,8 +539,10 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
     NSXMLNode * presetName = [infoNode attributeForName:@"name"];
     [presetName setStringValue:newName];
 
-    NSString *newXMLContent = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>%@"
-                                                        , [presetXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
+    // set header info
+    [presetXML setVersion:@"1.0"];
+    [presetXML setCharacterEncoding:@"UTF-8"];
+    NSString *newXMLContent = [presetXML XMLStringWithOptions:NSXMLNodePrettyPrint];
 
     NSLog(@"*** Saving patched preset XML to path: %@", path);
     [newXMLContent writeToURL:presetFile
@@ -566,13 +570,16 @@ NSString *SETTINGS_FILENAME = @"SystemSettings.fuse";
 // Get the preset for a QA slot, identified by the preset's UUID
 - (MFPreset *)presetForQASlot:(int)qaSlot
 {
-    NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
-    
-    for (int i = 0; i < self.presets.count; i++)
+    if (qaSlot < [_quickAccessPresetsUUID count])
     {
-        MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
-        if ([qaPresetUUID isEqualToString:cPreset.uuid])
-            return cPreset;
+        NSString* qaPresetUUID = [_quickAccessPresetsUUID objectAtIndex:qaSlot];
+        
+        for (int i = 0; i < self.presets.count; i++)
+        {
+            MFPreset *cPreset = (MFPreset *)[self.presets objectAtIndex:i];
+            if ([qaPresetUUID isEqualToString:cPreset.uuid])
+                return cPreset;
+        }
     }
     
     return nil;

@@ -48,6 +48,25 @@ NSString *const DropTypeMFPreset = @"DropTypeMFPreset";
     [cParser setShouldResolveExternalEntities:YES];
     
     [cParser parse];
+    
+
+    NSLog(@"Preset: %@", self.name);
+    
+    NSString *searchString = @"UNKNOWN";
+    if ([[[MFPreset getNameForAmpModel:_ampModel] lowercaseString] rangeOfString:[searchString lowercaseString]].location != NSNotFound)
+        NSLog(@"    _ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
+    
+    if ([[[MFPreset getNameForFXStomp:_fxStomp] lowercaseString] rangeOfString:[searchString lowercaseString]].location != NSNotFound)
+        NSLog(@"    _fxStomp: %@", [MFPreset getNameForFXStomp:_fxStomp]);
+    
+    if ([[[MFPreset getNameForFXModulation:_fxModulation] lowercaseString] rangeOfString:[searchString lowercaseString]].location != NSNotFound)
+        NSLog(@"    _fxModulation: %@", [MFPreset getNameForFXModulation:_fxModulation]);
+    
+    if ([[[MFPreset getNameForFXDelay:_fxDelay] lowercaseString] rangeOfString:[searchString lowercaseString]].location != NSNotFound)
+        NSLog(@"    _fxDelay: %@", [MFPreset getNameForFXDelay:_fxDelay]);
+    
+    if ([[[MFPreset getNameForFXReverb:_fxReverb] lowercaseString] rangeOfString:[searchString lowercaseString]].location != NSNotFound)
+        NSLog(@"    _fxReverb: %@", [MFPreset getNameForFXReverb:_fxReverb]);
 }
 
 - (NSURL *) fileURL
@@ -118,32 +137,32 @@ didStartElement:(NSString *)elementName
             if (self.backup.ampSeries != AmpSeries_GDec)
             {
                 _ampModel = [[attributeDict valueForKey:@"ID"] intValue];
-                NSLog(@"_ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
+                //NSLog(@"    _ampModel: %@", [MFPreset getNameForAmpModel:_ampModel]);
             }
         }
         
         if (_parsingStomp)
         {
             _fxStomp = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxStomp: %@", [MFPreset getNameForFXStomp:_fxStomp]);
+//            NSLog(@"    _fxStomp: %@", [MFPreset getNameForFXStomp:_fxStomp]);
         }
         
         if (_parsingMod)
         {
             _fxModulation = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxModulation: %@", [MFPreset getNameForFXModulation:_fxModulation]);
+//            NSLog(@"    _fxModulation: %@", [MFPreset getNameForFXModulation:_fxModulation]);
         }
         
         if (_parsingDelay)
         {
             _fxDelay = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxDelay: %@", [MFPreset getNameForFXDelay:_fxDelay]);
+//            NSLog(@"    _fxDelay: %@", [MFPreset getNameForFXDelay:_fxDelay]);
         }
         
         if (_parsingReverb)
         {
             _fxReverb = [[attributeDict valueForKey:@"ID"] intValue];
-            NSLog(@"_fxReverb: %@", [MFPreset getNameForFXReverb:_fxReverb]);
+//            NSLog(@"    _fxReverb: %@", [MFPreset getNameForFXReverb:_fxReverb]);
         }
     }
     
@@ -166,7 +185,8 @@ didStartElement:(NSString *)elementName
         self.originalName = [NSString stringWithString:self.name];  // remember, if name is edited
         self.author = [attributeDict valueForKey:@"author"];
         
-        //NSLog(@"     Preset: %@ by %@", self.name, self.author);
+        //NSLog(@"Preset: %@ by %@. Orig: %@", self.name, self.author, self.originalName);
+//        NSLog(@"\nPreset: %@", self.name);
     }
     
     // reset for the next node
@@ -313,7 +333,7 @@ didStartElement:(NSString *)elementName
             return @"Metal 2000";            
             
         default:
-            return @"**** Unknown Amp Model ****";
+            return [NSString stringWithFormat:@"**** UNKNOWN Amp Model: %d", model];
     }
 }
 
